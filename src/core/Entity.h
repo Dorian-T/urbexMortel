@@ -2,6 +2,7 @@
 #define _ENTITY
 
 #include "Vector2D.h"
+#include "Room.h"
 
 class Entity {
     private:
@@ -63,8 +64,27 @@ class Entity {
         Vector2D getPosition();
 
         /**
+         * @brief Deplacement vers le haut
+         */
+        void up(const Room & R);
+
+        /**
+         * @brief Deplacement vers la droite
+         */
+        void right(const Room & R);
+
+        /**
+         * @brief Deplacement vers le bas
+         */
+        void down(const Room & R);
+
+        /**
+         * @brief Deplacement vers la gauche
+         */
+        void left(const Room & R);
+
+        /**
          * @brief Test de non-regression
-         * 
          */
         void regressionTest();
 };
