@@ -11,7 +11,16 @@ void Player::up (const Room & R) {
 }
 
 void Player::right (const Room & R) {
-	// TODO
+	Vector2D RightPosition;
+	RightPosition.setX(getPosition().getX());
+	RightPosition.setY(getPosition().getY());
+	RightPosition.setX(RightPosition.getX()+1);
+	bool b;
+	b= R&.isMovePossible(RightPosition);
+	if(b)
+	{
+		setPosition(RightPosition);
+	}
 }
 
 void Player::down (const Room & R) {

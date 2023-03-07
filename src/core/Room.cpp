@@ -1,4 +1,5 @@
 #include "Vector2D.h"
+#include "Building.h"
 #include "Room.h"
 #include <iostream>
 
@@ -19,14 +20,17 @@ Room::~Room() {
     arrayObstacle = NULL;
 }
 
-Obstacle Room::getObstacle(Vector2D V) {
+Obstacle Room::getObstacle(const Vector2D & V) const {
     return arrayObstacle[V.getX()*dimX + V.getY()];
 }
 
-bool Room::isMovePossible(const Vector2D & Position) {
-    // TODO
+// TODO : ajouter la gestion des autres obstacles
+bool Room::isMovePossible(const Vector2D & Position) const {
+    if(getObstacle(Position) == nothing) return true;
+    else return false;
 }
 
-Vector2D* Room::pixelToCell(const Vector2D & Pixel) {
-    // TODO
+Vector2D* Room::pixelToCell(const Vector2D & Pixel) const {
+    Vector2D* V = new Vector2D(Pixel.getX()*DIM_ROOM_X/PIXEL_ROOM_X, Pixel.getY()*DIM_ROOM_Y/PIXEL_ROOM_Y);
+    return V;
 }
