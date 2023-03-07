@@ -29,6 +29,8 @@ public:
     
     bool isMovePossible(const Vector2D & Position);
 
+    Vector2D* pixelToCell(const Vector2D & Pixel);
+
 };
 
 
