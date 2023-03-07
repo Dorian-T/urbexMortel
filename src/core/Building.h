@@ -50,6 +50,11 @@ class Building
          * @brief Passe à la salle suivante
          */
         void gotonextRoom();
+
+        /**
+         * @brief Test de regression
+         */
+        void regressionTest();
 };
 
 #endif
