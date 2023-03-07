@@ -62,6 +62,14 @@ class Entity {
          * @return Vector2D 
          */
         Vector2D getPosition();
+        
+        /**
+         * @brief modifie la position
+         * 
+         * @param V 
+         * @return Void 
+         */
+        void setPosition(Vector2D V);
 
         /**
          * @brief Deplacement vers le haut

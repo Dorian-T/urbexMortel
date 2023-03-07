@@ -28,6 +28,12 @@ Vector2D Entity::getPosition() {
     return position;
 }
 
+void Entity::setPosition(Vector2D V){
+    position.setX(V.getX());
+    position.setY(V.getY());
+}
+
+
 void Entity::up(const Room & R) {}
 
 void Entity::right(const Room & R) {}
