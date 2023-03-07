@@ -78,7 +78,11 @@ class Room {
          * @param Pixel 
          * @return Vector2D*
          */
+<<<<<<< HEAD
         Vector2D* pixelToCell(const Vector2D & Pixel) const; // dans l'affichage
+=======
+        Vector2D* pixelToCell(const Vector2D & Pixel) const;/* mettre en privé*/
+>>>>>>> 476a299857eb1f1252f300f80517c5ec36ed11c5
 };
 
 #endif
