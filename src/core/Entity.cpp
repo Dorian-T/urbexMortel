@@ -1,7 +1,7 @@
 #include "Vector2D.h"
 #include "Entity.h"
 #include <iostream>
-#include <cassert>
+#include <assert.h>
 using namespace std;
 
 Entity::Entity() {
@@ -27,6 +27,14 @@ unsigned int Entity::getW() {
 Vector2D Entity::getPosition() {
     return position;
 }
+
+void Entity::up(const Room & R) {}
+
+void Entity::right(const Room & R) {}
+
+void Entity::down(const Room & R) {}
+
+void Entity::left(const Room & R) {}
 
 void Entity::regressionTest() {
     cout << "Test de non-regression de la classe Entity" << endl;
