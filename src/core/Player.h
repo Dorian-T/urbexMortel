@@ -22,6 +22,18 @@ class Player : public Entity {
          */
         unsigned int hp;
 
+        /**
+         * @brief bool pour savoir si le joeur vient d'être blésser
+         * 
+         */
+        bool hurted;
+
+        /**
+         * @brief temps où le joeur est invincible
+         * 
+         */
+        unsigned int TimeInvincible;
+
     public:
 
         /**
@@ -31,6 +43,13 @@ class Player : public Entity {
          * @param Php
          */
         Player(Skin Pskin, unsigned int Php);
+
+        /**
+         * @brief modifie les points de vie du joeur
+         * 
+         * @param H 
+         */
+        void setHp(unsigned int H);
 
         /**
          * @brief Deplacement vers le haut (saut)
@@ -59,6 +78,12 @@ class Player : public Entity {
          * @param R 
          */
         void left(const Room & R) ;
+
+        void Hurted();       
+
+        void DecreaseTimeInvincible();
+
+        bool isDead();
 };
 
 #endif
