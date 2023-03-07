@@ -1,11 +1,14 @@
 #include <iostream>
+#include <assert.h>
+
+using namespace std;
 
 #include "Building.h"
 
 Building::Building()
 {
-    arrayRoom=NULL;
-    currentRoom=0;
+    arrayRoom = new Room[NB_ROOM];
+    currentRoom = 0;
 }
 
 Building::~Building()
@@ -26,6 +29,18 @@ void Building::gotonextRoom()
 
 void Building::regressionTest()
 {
-    cout << "Test de non-regression de la classe Building" << endl;
-    
+    cout << "Test de regression de la classe Building" << endl;
+
+    assert(arrayRoom != NULL && currentRoom == 0);
+    cout<<"\tconstructeur par defaut : OK"<<endl;
+
+    gotonextRoom();
+    assert(currentRoom == 1);
+    cout<<"\tmethode gotonextRoom : OK"<<endl;
+
+    assert(getcurrentRoom() == &arrayRoom[1]);
+    cout<<"\tmethode getcurrentRoom : OK"<<endl;
+
+    cout << "Test de regression de la classe Building : OK" << endl;
+
 }
