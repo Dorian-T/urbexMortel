@@ -70,7 +70,7 @@ class Room {
          * @param Position 
          * @return bool
          */
-        bool isMovePossible(const Vector2D & Position);
+        bool isMovePossible(const Vector2D & Position) const;
 
         /**
          * @brief Convertit les coordonnees en pixels en coordonnees en cellules
@@ -78,7 +78,7 @@ class Room {
          * @param Pixel 
          * @return Vector2D*
          */
-        Vector2D* pixelToCell(const Vector2D & Pixel);
+        Vector2D* pixelToCell(const Vector2D & Pixel) const;
 };
 
 #endif

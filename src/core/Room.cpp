@@ -25,12 +25,12 @@ Obstacle Room::getObstacle(const Vector2D & V) const {
 }
 
 // TODO : ajouter la gestion des autres obstacles
-bool Room::isMovePossible(const Vector2D & Position) {
+bool Room::isMovePossible(const Vector2D & Position) const {
     if(getObstacle(Position) == nothing) return true;
     else return false;
 }
 
-Vector2D* Room::pixelToCell(const Vector2D & Pixel) {
+Vector2D* Room::pixelToCell(const Vector2D & Pixel) const {
     Vector2D* V = new Vector2D(Pixel.getX()*DIM_ROOM_X/PIXEL_ROOM_X, Pixel.getY()*DIM_ROOM_Y/PIXEL_ROOM_Y);
     return V;
 }
