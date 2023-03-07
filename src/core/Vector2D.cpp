@@ -35,33 +35,22 @@ void Vector2D::setY(unsigned int Vy)
     y = Vy;
 }
 
-void Vector2D::displayVector()
-{
-    cout << "coordonnee x : " << x << endl;
-    cout << "coordonnee y : " << y << endl;
-}
+void Vector2D::regressionTest() {
+    cout << endl << "Test de la classe Vector2D" << endl;
 
-void Vector2D::regressionTest()
-{
-    cout << "Test de non-regression de la classe Vector2D" << endl;
-
-    Vector2D V;
-    assert(V.getX() == 0);
-    assert(V.getY() == 0);
+    assert(x == 0 && y == 0);
     cout << "\tconstructeur par defaut : OK" << endl;
 
-    Vector2D W(6,8) ;
-    assert(W.getX() == 6);
-    assert(W.getY() == 8);
+    Vector2D V(6,8);
+    assert(V.x == 6 && V.y == 8);
     cout << "\tconstructeur parametre : OK" << endl;
-    
-    V.setX(42);
-    V.setY(63);
-    assert(V.getX() == 42);
-    assert(V.getY() == 63);
-    cout << "\tset : OK" << endl;
-    
-    V.displayVector();
-    W.displayVector();
-    cout << "Test de non-regression de la classe Entity : OK" << endl;
+
+    assert(V.getX() == 6 && V.getY() == 8);
+    cout << "\taccesseurs : OK" << endl;
+
+    V.setX(42); V.setY(63);
+    assert(V.x == 42 && V.y == 63);
+    cout << "\tmodificateurs : OK" << endl;
+
+    cout << "Test de la classe Entity : OK" << endl;
 }

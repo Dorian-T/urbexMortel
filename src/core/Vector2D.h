@@ -46,12 +46,6 @@ public:
      * 
      */
     void setY(unsigned int Vy);
-    
-    /**
-     * @brief affiche un vector
-     * 
-     */
-    void displayVector();
 
     /**
      * @brief verifie que tout le module Vector2D fonctionne
