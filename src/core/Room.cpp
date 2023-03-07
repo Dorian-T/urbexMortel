@@ -8,7 +8,7 @@ Room::Room() {
     dimY = 0;
     arrayObstacle = NULL;  
 }
-
+/* en haut avec les constantes et en bas sup*/
 Room::Room(int X , int Y) {
     dimX = X;
     dimY = Y;
