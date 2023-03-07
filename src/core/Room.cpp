@@ -27,3 +27,18 @@ Room::~Room()
     DIMY = 0;
     arrayObstacle = NULL;
 }
+
+obstacle Room::getObstacle(Vector2D V)
+{
+    
+}
+
+bool Room::isMovePossible(const Vector2D & Position)
+{
+
+}
+
+Vector2D* Room::pixelToCell(const Vector2D & Pixel)
+{
+
+}
