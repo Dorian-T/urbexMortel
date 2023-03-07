@@ -11,11 +11,19 @@ private:
     unsigned int w;
     bool HasBeenTaken;
 
-
-
 public:
+    /**
+     * @brief Constructeur avec paramètre de potion
+     * 
+     * @param V 
+     */
     Potion(Vector2D V);
     
+    /**
+     * @brief modéfie HasBeenTaken
+     * 
+     * @param b 
+     */
     void SetHasBeenTaken(bool b);
 
 };
