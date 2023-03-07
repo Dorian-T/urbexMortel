@@ -43,13 +43,17 @@ void Entity::down(const Room & R) {}
 void Entity::left(const Room & R) {}
 
 void Entity::regressionTest() {
-    cout << "Test de non-regression de la classe Entity" << endl;
+    cout << endl << "Test de la classe Entity" << endl;
+
     assert(position.getX() == 0 && position.getY() == 0 && h == 0 && w == 0);
     cout << "\tconstructeur par defaut : OK" << endl;
-    Entity e = Entity(Vector2D(1, 2), 3, 4);
+
+    Entity e(Vector2D(1, 2), 3, 4);
     assert(e.position.getX() == 1 && e.position.getY() == 2 && e.h == 3 && e.w == 4);
     cout << "\tconstructeur parametre : OK" << endl;
+
     assert(e.getPosition().getX() == 1 && e.getPosition().getY() == 2); assert(e.getH() == 3); assert(e.getW() == 4);
     cout << "\taccesseurs : OK" << endl;
-    cout << "Test de non-regression de la classe Entity : OK" << endl;
+
+    cout << "Test de la classe Entity : OK" << endl;
 }

@@ -6,6 +6,8 @@
 const unsigned int NB_ROOM = 10;
 const unsigned int DIM_ROOM_X = 16;
 const unsigned int DIM_ROOM_Y = 9;
+const unsigned int PIXEL_ROOM_X = 16;
+const unsigned int PIXEL_ROOM_Y = 16;
 
 /**
  * @brief Ensemble des niveaux du jeu
@@ -15,14 +17,14 @@ class Building
     private:
 
         /**
-         * @brief Tableau des salles
+         * @brief Tableau 1 dimension de salles
          */
         Room* arrayRoom;
 
         /**
          * @brief Salle courante
          */
-        Room* currentRoom;
+        unsigned int currentRoom;
 
     public:
 
@@ -42,13 +44,17 @@ class Building
          * @brief Retourne la salle courante
          * @return Room* 
          */
-        Room* getRoom(unsigned int i);
+        Room* getcurrentRoom();
 
         /**
-         * @brief Retourne la salle courante
-         * @return Room* 
+         * @brief Passe à la salle suivante
          */
-        Room* getcurrentRoom();
+        void gotonextRoom();
+
+        /**
+         * @brief Test de regression
+         */
+        void regressionTest();
 };
 
 #endif
