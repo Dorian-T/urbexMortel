@@ -62,7 +62,7 @@ class Room {
          * @param V 
          * @return obstacle 
          */
-        Obstacle getObstacle(const Vector2D & V) const;
+        Obstacle getObstacle(const Vector2D & V) const; // pas besoin
 
         /**
          * @brief Verifie si le deplacement est possible
@@ -78,7 +78,7 @@ class Room {
          * @param Pixel 
          * @return Vector2D*
          */
-        Vector2D* pixelToCell(const Vector2D & Pixel) const;
+        Vector2D* pixelToCell(const Vector2D & Pixel) const; // dans l'affichage
 };
 
 #endif
