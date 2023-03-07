@@ -6,10 +6,26 @@
 class Poison
 {
 private:
-    unsigned int timeLeft
+    unsigned int timeLeft;
 public:
+    /**
+     * @brief Constructeur de poison avec paramètre
+     * 
+     * @param time 
+     */
     Poison(int time);
+
+    /**
+     * @brief réduit le temps de 1
+     * 
+     */
     void decreaseTime();
+
+    /**
+     * @brief augmente le temps
+     * 
+     * @param p 
+     */
     void increaseTime(Potion p);
 };
 #endif

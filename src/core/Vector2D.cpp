@@ -45,19 +45,25 @@ void Vector2D::displayVector()
 
 void Vector2D::regressionTest()
 {
+    cout << "Test de non-regression de la classe Vector2D" << endl;
+
     Vector2D V;
     assert(V.getX() == 0);
     assert(V.getY() == 0);
+    cout << "\tconstructeur par defaut : OK" << endl;
 
     Vector2D W(6,8) ;
     assert(W.getX() == 6);
     assert(W.getY() == 8);
-
+    cout << "\tconstructeur parametre : OK" << endl;
+    
     V.setX(42);
     V.setY(63);
     assert(V.getX() == 42);
     assert(V.getY() == 63);
-
+    cout << "\tset : OK" << endl;
+    
     V.displayVector();
     W.displayVector();
+    cout << "Test de non-regression de la classe Entity : OK" << endl;
 }
