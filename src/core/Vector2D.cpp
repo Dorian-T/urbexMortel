@@ -17,13 +17,11 @@ Vector2D::Vector2D(unsigned int Vx , unsigned int Vy)
     y = Vy;
 }
 
-unsigned int Vector2D::getX()
-{
+unsigned int Vector2D::getX() const {
     return x;
 }
 
-unsigned int Vector2D::getY()
-{
+unsigned int Vector2D::getY() const {
     return y;
 }
 

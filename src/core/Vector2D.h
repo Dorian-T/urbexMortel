@@ -26,14 +26,14 @@ public:
      * 
      * @return unsigned int 
      */
-    unsigned int getX();
+    unsigned int getX() const;
 
     /**
      * @brief retourne la coordonnée y
      * 
      * @return unsigned int 
      */
-    unsigned int getY();
+    unsigned int getY() const;
 
     /**
      * @brief change la coordonnée x

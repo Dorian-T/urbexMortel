@@ -62,13 +62,13 @@ class Room {
          * @param V 
          * @return obstacle 
          */
-        Obstacle getObstacle(Vector2D V) ;
+        Obstacle getObstacle(const Vector2D & V) const;
 
         /**
          * @brief Verifie si le deplacement est possible
          * 
          * @param Position 
-         * @return bool 
+         * @return bool
          */
         bool isMovePossible(const Vector2D & Position);
 
@@ -80,6 +80,5 @@ class Room {
          */
         Vector2D* pixelToCell(const Vector2D & Pixel);
 };
-
 
 #endif
