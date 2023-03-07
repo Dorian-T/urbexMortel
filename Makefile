@@ -1,3 +1,11 @@
+all: bin/tests
+
+bin/tests: obj/tests.o obj/Vector2D.o obj/Entity.o
+	g++ -g -Wall obj/tests.o obj/Vector2D.o obj/Entity.o -o bin/tests
+
+obj/tests.o: src/core/tests.cpp src/core/Entity.h src/core/Vector2D.h
+	g++ -g -Wall -c src/core/tests.cpp -o obj/tests.o
+
 obj/Room.o: src/core/Room.h src/core/Room.cpp src/core/Vector2D.h
 	g++ -g -Wall -c src/core/Room.cpp -o obj/Room.o
 
