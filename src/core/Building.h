@@ -3,22 +3,52 @@
 
 #include "Room.h"
 
+const unsigned int NB_ROOM = 10;
+const unsigned int DIM_ROOM_X = 16;
+const unsigned int DIM_ROOM_Y = 9;
+
+/**
+ * @brief Ensemble des niveaux du jeu
+ */
 class Building
 {
-    private :
-    Room* arrayRoom;
-    Room* currentRoom;
+    private:
 
-    public :
-    Building();
+        /**
+         * @brief Tableau des salles
+         */
+        Room* arrayRoom;
 
-    ~Building();
+        /**
+         * @brief Salle courante
+         */
+        Room* currentRoom;
 
-    Room* getRoom();
+    public:
 
-    Room* getcurrentRoom();
+        /**
+         * @brief Constructeur par defaut
+         * 
+         */
+        Building();
 
+        /**
+         * @brief Destructeur
+         * 
+         */
+        ~Building();
 
+        /**
+         * @brief Retourne la salle courante
+         * @return Room* 
+         */
+        Room* getRoom(unsigned int i);
+
+        /**
+         * @brief Retourne la salle courante
+         * @return Room* 
+         */
+        Room* getcurrentRoom();
 };
 
 #endif
