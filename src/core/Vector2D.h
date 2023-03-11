@@ -1,57 +1,63 @@
 #ifndef _VECTOR2D
 #define _VECTOR2D
 
-class Vector2D
-{
-private:
-    unsigned int x;
-    unsigned int y;/* data */
-public:
-    /**
-     * @brief Constructeur par défaut
-     * 
-     */
-    Vector2D();
+class Vector2D {
+    private:
 
-    /**
-     * @brief Constructeur avec coordonnée intégré 
-     * 
-     * @param Vx 
-     * @param Vy 
-     */
-    Vector2D(unsigned int Vx , unsigned int Vy);
+        /**
+         * @brief coordonnee x
+         */
+        unsigned int x;
 
-    /**
-     * @brief retourne la coordonnée x
-     * 
-     * @return unsigned int 
-     */
-    unsigned int getX() const;
+        /**
+         * @brief coordonnee y
+         */
+        unsigned int y;
 
-    /**
-     * @brief retourne la coordonnée y
-     * 
-     * @return unsigned int 
-     */
-    unsigned int getY() const;
+    public:
 
-    /**
-     * @brief change la coordonnée x
-     * 
-     */
-    void setX(unsigned int Vx);
+        /**
+         * @brief Constructeur par defaut
+         * 
+         */
+        Vector2D();
 
-    /**
-     * @brief change la coordonnée y
-     * 
-     */
-    void setY(unsigned int Vy);
+        /**
+         * @brief Constructeur parametre
+         * 
+         * @param Vx 
+         * @param Vy 
+         */
+        Vector2D(unsigned int Vx , unsigned int Vy);
 
-    /**
-     * @brief verifie que tout le module Vector2D fonctionne
-     * 
-     */
-    void regressionTest();
+        /**
+         * @brief retourne la coordonnee x
+         * 
+         * @return unsigned int 
+         */
+        unsigned int getX() const;
+
+        /**
+         * @brief retourne la coordonnee y
+         * 
+         * @return unsigned int 
+         */
+        unsigned int getY() const;
+
+        /**
+         * @brief change la coordonnee x
+         */
+        void setX(unsigned int Vx);
+
+        /**
+         * @brief change la coordonnee y
+         */
+        void setY(unsigned int Vy);
+
+        /**
+         * @brief test de non-regression
+         */
+        void regressionTest();
 };
 
 #endif

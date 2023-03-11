@@ -1,18 +1,14 @@
 #include <iostream>
 #include <assert.h>
 #include "Vector2D.h"
-
-
 using namespace std;
 
-Vector2D::Vector2D()
-{
+Vector2D::Vector2D() {
     x = 0;
     y = 0;
 }
 
-Vector2D::Vector2D(unsigned int Vx , unsigned int Vy)
-{
+Vector2D::Vector2D(unsigned int Vx , unsigned int Vy) {
     x = Vx;
     y = Vy;
 }
@@ -25,13 +21,11 @@ unsigned int Vector2D::getY() const {
     return y;
 }
 
-void Vector2D::setX(unsigned int Vx)
-{
+void Vector2D::setX(unsigned int Vx) {
     x = Vx;
 }
 
-void Vector2D::setY(unsigned int Vy)
-{
+void Vector2D::setY(unsigned int Vy) {
     y = Vy;
 }
 
