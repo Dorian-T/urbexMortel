@@ -8,68 +8,56 @@ class Entity {
     private:
 
         /**
-         * @brief Position de l'entite
-         * 
+         * @brief Position du coin en haut gauche de la hitbox
          */
         Vector2D position;
 
         /**
-         * @brief Hauteur de la hitbox de l'entite
-         * 
+         * @brief Hauteur de la hitbox
          */
-        unsigned int h;
+        unsigned int height;
 
         /**
-         * @brief Largeur de la hitbox de l'entite
-         * 
+         * @brief Largeur de la hitbox
          */
-        unsigned int w;
+        unsigned int width;
 
     public:
 
         /**
-         * @brief Constructeur par defaut de l'entite
-         * 
+         * @brief Constructeur par defaut
          */
         Entity();
 
         /**
-         * @brief Constructeur parametre de l'entite
+         * @brief Constructeur parametre
          * 
-         * @param Eposition 
-         * @param Eh 
-         * @param Ew 
+         * @param p 
+         * @param h 
+         * @param w 
          */
-        Entity(Vector2D Eposition , unsigned int Eh, unsigned int Ew);
+        Entity(Vector2D p, unsigned int h, unsigned int w);
 
         /**
-         * @brief Accesseur de la hauteur de la hitbox de l'entite
-         * 
-         * @return unsigned int 
-         */
-        unsigned int getH();
-
-        /**
-         * @brief Accesseur de la largeur de la hitbox de l'entite
+         * @brief Accesseur de la hauteur de la hitbox
          * 
          * @return unsigned int 
          */
-        unsigned int getW();
+        unsigned int getHeight();
 
         /**
-         * @brief Accesseur de la position de l'entite
+         * @brief Accesseur de la largeur de la hitbox
+         * 
+         * @return unsigned int 
+         */
+        unsigned int getWidth();
+
+        /**
+         * @brief Accesseur de la position
          * 
          * @return Vector2D 
          */
         Vector2D getPosition();
-        
-        /**
-         * @brief modifie la position
-         * 
-         * @param V 
-         * @return Void 
-         */
-        void setPosition(Vector2D V);
 
         /**
          * @brief Deplacement vers le haut
@@ -90,6 +78,13 @@ class Entity {
          * @brief Deplacement vers la gauche
          */
         void left(const Room & R);
+
+        /**
+         * @brief Applique la gravite
+         * 
+         * @param R 
+         */
+        void gravity(const Room & R);
 
         /**
          * @brief Test de non-regression
