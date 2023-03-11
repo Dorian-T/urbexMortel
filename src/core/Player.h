@@ -35,6 +35,11 @@ class Player : public Entity {
         unsigned int TimeInvincible;
 
     public:
+        /**
+         * @brief Constructeur par défaut
+         * 
+         */
+        Player();
 
         /**
          * @brief Constructeur parametre
@@ -56,33 +61,54 @@ class Player : public Entity {
          * 
          * @param R 
          */
-        void up(const Room & R) ;
+        void up(Room *R) ;
 
         /**
          * @brief Deplacement vers la droite
          * 
          * @param R 
          */
-        void right(const Room & R) ;
+        void right(Room * R) ;
 
         /**
          * @brief Deplacement vers le bas
          * 
          * @param R 
          */
-        void down(const Room & R) ;
+        void down(Room * R) ;
 
         /**
          * @brief Deplacement vers la gauche
          * 
          * @param R 
          */
-        void left(const Room & R) ;
+        void left(Room * R) ;
 
+        /**
+         * @brief applique la gravité
+         * 
+         * @param R 
+         */
+        void gravity(Room * R);
+
+        /**
+         * @brief fonction qui change l'état du joueur quand il est bléssé
+         * 
+         */
         void Hurted();       
 
-        void DecreaseTimeInvincible();
+        /**
+         * @brief fonction qui baisse le temps d'invincibilité
+         * 
+         */
+        void decreaseTimeInvincible();
 
+        /**
+         * @brief fonction qui dit si le joueur est en vie ou pas
+         * 
+         * @return true 
+         * @return false 
+         */
         bool isDead();
 };
 
