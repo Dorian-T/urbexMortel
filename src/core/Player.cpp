@@ -1,75 +1,66 @@
 #include "Player.h"
 #include "Room.h"
+#include <iostream>
+#include <assert.h>
+using namespace std;
 
 Player::Player() {
 	skin = M;
 	hp = 0;
-	hurted = false;
-	TimeInvincible = 0;
+	timeInvincible = 0;
 }
 
-
-Player::Player(Skin Pskin, unsigned int Php) {
-	skin = Pskin;
-	hp = Php;
-	hurted = false;
-	TimeInvincible = 0;
+Player::Player(const Vector2D & P, unsigned int h, unsigned int w, Skin s, unsigned int health): Entity(P, h, w) {
+	skin = s;
+	hp = h;
+	timeInvincible = 0;
 }
 
-void Player::setHp(unsigned int H)
-{
-	hp = H;
-}
-
-void Player::up (Room * R) {
-	Vector2D UpPosition;
-	UpPosition.setX(getPosition().getX());
-	UpPosition.setY(getPosition().getY());
-	UpPosition.setY(UpPosition.getY()+1);
-	bool b;
-	b= R->isMovePossible(UpPosition);
-	if(b)
-	{
-		setPosition(UpPosition);
+bool Player::decreaseHp(unsigned int h) {
+	if(timeInvincible == 0) {
+		hp -= h;
+		if(hp == 0)
+			return false;
+		else {
+			timeInvincible = 5; // a modifier
+			return false;
+		}
 	}
 }
 
-void Player::right (Room * R) {
-	Vector2D RightPosition;
-	RightPosition.setX(getPosition().getX());
-	RightPosition.setY(getPosition().getY());
-	RightPosition.setX(RightPosition.getX()+1);
-	bool b;
-	b= R->isMovePossible(RightPosition);
-	if(b)
-	{
-		setPosition(RightPosition);
+void Player::decreaseTimeInvincible() {
+	timeInvincible--;
+}
+
+void Player::up(Room * R) { // peut-etre qu'il faudra modifier en passant a la version graphique
+	Vector2D V;
+	V.setX(getPosition().getX());
+	if(getPosition().getY() > 1) {
+		V.setY(getPosition().getY() - 1);
+		if(R->isMovePossible(V)) setPosition(V);
 	}
 }
 
-void Player::down (Room * R) {
-	Vector2D DownPosition;
-	DownPosition.setX(getPosition().getX());
-	DownPosition.setY(getPosition().getY());
-	DownPosition.setY(DownPosition.getY()-1);
-	bool b;
-	b= R->isMovePossible(DownPosition);
-	if(b)
-	{
-		setPosition(DownPosition);
-	}
+void Player::right(Room * R) {
+	Vector2D V;
+	V.setX(getPosition().getX());
+	V.setY(getPosition().getY() + 1);
+	if(R->isMovePossible(V)) setPosition(V);
+}
+
+void Player::down(Room * R) {
+	Vector2D V;
+	V.setX(getPosition().getX());
+	V.setY(getPosition().getY() + 1);
+	if(R->isMovePossible(V)) setPosition(V);
 }
 
 void Player::left (Room * R) {
-	Vector2D LeftPosition;
-	LeftPosition.setX(getPosition().getX());
-	LeftPosition.setY(getPosition().getY());
-	LeftPosition.setX(LeftPosition.getX()-1);
-	bool b;
-	b= R->isMovePossible(LeftPosition);
-	if(b)
-	{
-		setPosition(LeftPosition);
+	Vector2D V;
+	V.setX(getPosition().getX());
+	if(getPosition().getY() > 1) {
+		V.setY(getPosition().getY() - 1);
+		if(R->isMovePossible(V)) setPosition(V);
 	}
 }
 
@@ -77,17 +68,31 @@ void Player::gravity(Room * R) {
 	down(R);
 }
 
-void Player::Hurted() {
-	hurted = true;
-	TimeInvincible = 5;
-}
+void Player::regressionTest() {
+	cout << endl << "Test de la classe Player" << endl;
 
-void Player::decreaseTimeInvincible()
-{
-	TimeInvincible--;
-}
+	assert(getPosition().getX() == 0 && getPosition().getY() == 0 && getHeight() == 0 && getWidth() == 0);
+	assert(skin == M && hp == 0 && timeInvincible == 0);
+	cout << "\tconstructeur par defaut : OK" << endl;
 
-bool Player::isDead() {
-	if(hp==0){return true;}
-	return false;
+	Player P(Vector2D(1, 2), 1, 1, F, 3);
+	assert(P.getPosition().getX() == 1 && P.getPosition().getY() == 2 && P.getHeight() == 1 && P.getWidth() == 1);
+	assert(P.skin == F && P.hp == 3 && P.timeInvincible == 0);
+	cout << "\tconstructeur parametre : OK" << endl;
+
+	assert(P.decreaseHp(1) == true);
+	assert(P.hp == 2);
+	assert(P.decreaseHp(2) == false);
+	assert(P.hp == 0);
+	cout << "\tdecreaseHp : OK" << endl;
+
+	assert(P.timeInvincible == 5);
+	P.decreaseTimeInvincible();
+	assert(P.timeInvincible == 4);
+	cout << "\tdecreaseTimeInvincible : OK" << endl;
+
+	// P.up(Room("data/test.txt"));
+	// TODO
+
+	cout << "Test de la classe Player : OK" << endl;
 }

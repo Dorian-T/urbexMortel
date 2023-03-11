@@ -8,6 +8,7 @@
 using namespace std;
 
 int main () {
+
 	Vector2D V;
 	V.regressionTest();
 

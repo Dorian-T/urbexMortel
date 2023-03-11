@@ -8,29 +8,29 @@ class Entity {
     private:
 
         /**
-         * @brief Position du coin en haut gauche de la hitbox
+         * @brief position du coin haut gauche de la hitbox
          */
         Vector2D position;
 
         /**
-         * @brief Hauteur de la hitbox
+         * @brief hauteur de la hitbox
          */
         unsigned int height;
 
         /**
-         * @brief Largeur de la hitbox
+         * @brief largeur de la hitbox
          */
         unsigned int width;
 
     public:
 
         /**
-         * @brief Constructeur par defaut
+         * @brief constructeur par défaut
          */
         Entity();
 
         /**
-         * @brief Constructeur parametre
+         * @brief constructeur paramètre
          * 
          * @param p 
          * @param h 
@@ -39,55 +39,60 @@ class Entity {
         Entity(Vector2D p, unsigned int h, unsigned int w);
 
         /**
-         * @brief Accesseur de la hauteur de la hitbox
+         * @brief accesseur de la hauteur de la hitbox
          * 
          * @return unsigned int 
          */
         unsigned int getHeight();
 
         /**
-         * @brief Accesseur de la largeur de la hitbox
+         * @brief accesseur de la largeur de la hitbox
          * 
          * @return unsigned int 
          */
         unsigned int getWidth();
 
         /**
-         * @brief Accesseur de la position
+         * @brief accesseur de la position
          * 
          * @return Vector2D 
          */
         Vector2D getPosition();
 
         /**
-         * @brief Deplacement vers le haut
+         * @brief modificateur de la position
+         */
+        void setPosition(Vector2D p);
+
+        /**
+         * @brief déplacement vers le haut
          */
         void up(const Room & R);
 
         /**
-         * @brief Deplacement vers la droite
+         * @brief déplacement vers la droite
          */
         void right(const Room & R);
 
         /**
-         * @brief Deplacement vers le bas
+         * @brief déplacement vers le bas
          */
         void down(const Room & R);
 
         /**
-         * @brief Deplacement vers la gauche
+         * @brief déplacement vers la gauche
          */
         void left(const Room & R);
 
         /**
-         * @brief Applique la gravite
+         * @brief application de la gravité
          * 
          * @param R 
          */
         void gravity(const Room & R);
 
         /**
-         * @brief Test de non-regression
+         * @brief test de non-regression
          */
         void regressionTest();
 };

@@ -13,65 +13,67 @@ class Player : public Entity {
     private:
 
         /**
-         * @brief choix du skin du joueur
+         * @brief choix du skin
          */
         Skin skin;
 
         /**
-         * @brief Points de vie du joueur
+         * @brief points de vie
          */
         unsigned int hp;
 
         /**
-         * @brief bool pour savoir si le joeur vient d'être blésser
-         * 
+         * @brief temps où le joueur est invincible après s'être pris un coup
          */
-        bool hurted;
-
-        /**
-         * @brief temps où le joeur est invincible
-         * 
-         */
-        unsigned int TimeInvincible;
+        unsigned int timeInvincible;
 
     public:
         /**
-         * @brief Constructeur par défaut
-         * 
+         * @brief constructeur par défaut
          */
         Player();
 
         /**
-         * @brief Constructeur parametre
+         * @brief constructeur paramétré
          * 
-         * @param Pskin
-         * @param Php
+         * @param s
+         * @param h
          */
-        Player(Skin Pskin, unsigned int Php);
+        Player(const Vector2D & p, unsigned int h, unsigned int w, Skin s, unsigned int health);
 
         /**
-         * @brief modifie les points de vie du joeur
+         * @brief baisse les points de vie
          * 
-         * @param H 
+         * @details si le joueur est invincible, les points de vie ne sont pas baissés
+         * @details renvoie faux si le joueur est mort
+         * 
+         * @param h
+         * 
+         * @return bool
          */
-        void setHp(unsigned int H);
+        bool decreaseHp(unsigned int h);
 
         /**
-         * @brief Deplacement vers le haut (saut)
-         * 
-         * @param R 
+         * @brief baisse le temps d'invincibilité
          */
-        void up(Room *R) ;
+        void decreaseTimeInvincible();
 
         /**
-         * @brief Deplacement vers la droite
+         * @brief déplacement vers le haut (saut)
+         * 
+         * @param R
+         */
+        void up(Room * R) ;
+
+        /**
+         * @brief déplacement vers la droite
          * 
          * @param R 
          */
         void right(Room * R) ;
 
         /**
-         * @brief Deplacement vers le bas
+         * @brief déplacement vers le bas
          * 
          * @param R 
          */
@@ -85,31 +87,16 @@ class Player : public Entity {
         void left(Room * R) ;
 
         /**
-         * @brief applique la gravité
+         * @brief application de la gravité
          * 
          * @param R 
          */
         void gravity(Room * R);
 
         /**
-         * @brief fonction qui change l'état du joueur quand il est bléssé
-         * 
+         * @brief test de non-regression
          */
-        void Hurted();       
-
-        /**
-         * @brief fonction qui baisse le temps d'invincibilité
-         * 
-         */
-        void decreaseTimeInvincible();
-
-        /**
-         * @brief fonction qui dit si le joueur est en vie ou pas
-         * 
-         * @return true 
-         * @return false 
-         */
-        bool isDead();
+        void regressionTest();
 };
 
 #endif
