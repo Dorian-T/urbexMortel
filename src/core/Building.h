@@ -4,10 +4,6 @@
 #include "Room.h"
 
 const unsigned int NB_ROOM = 10;
-const unsigned int DIM_ROOM_X = 16;
-const unsigned int DIM_ROOM_Y = 9;
-const unsigned int PIXEL_ROOM_X = 9;
-const unsigned int PIXEL_ROOM_Y = 16;
 
 /**
  * @brief Ensemble des niveaux du jeu
