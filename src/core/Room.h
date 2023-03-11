@@ -2,6 +2,12 @@
 #define _ROOM
 
 #include "Vector2D.h"
+#include <string>
+
+const unsigned int DIM_ROOM_X = 16;
+const unsigned int DIM_ROOM_Y = 9;
+const unsigned int PIXEL_ROOM_X = 9;
+const unsigned int PIXEL_ROOM_Y = 16;
 
 /**
  * @brief Enumeration des obstacles
@@ -44,17 +50,30 @@ class Room {
         Room();
 
         /**
-         * @brief Constructeur parametre
+         * @brief Constructeur depuis un fichier texte
          * 
-         * @param X 
-         * @param Y 
+         * @param filename
          */
-        Room(int X , int Y);
+        Room(const std::string & filename);
 
         /**
          * @brief Destructeur
          */
         ~Room();
+
+        /**
+         * @brief Retourne la dimension en X
+         * 
+         * @return int 
+         */
+        int getDimX() const;
+
+        /**
+         * @brief Retourne la dimension en Y
+         * 
+         * @return int 
+         */
+        int getDimY() const;
 
         /**
          * @brief Retourne l'obstacle a la position V
@@ -71,14 +90,6 @@ class Room {
          * @return bool
          */
         bool isMovePossible(const Vector2D & Position) const;
-
-        /**
-         * @brief Convertit les coordonnees en pixels en coordonnees en cellules
-         * 
-         * @param Pixel 
-         * @return Vector2D*
-         */
-        Vector2D* pixelToCell(const Vector2D & Pixel) const; // dans l'affichage
 };
 
 #endif

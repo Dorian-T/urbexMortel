@@ -2,17 +2,36 @@
 #include "Building.h"
 #include "Room.h"
 #include <iostream>
+#include <fstream>
+#include <string.h>
+using namespace std;
 
 Room::Room() {
-    dimX = 0;
-    dimY = 0;
+    dimX = DIM_ROOM_X;
+    dimY = DIM_ROOM_Y;
     arrayObstacle = NULL;  
 }
-/* en haut avec les constantes et en bas sup*/
-Room::Room(int X , int Y) {
-    dimX = X;
-    dimY = Y;
-    arrayObstacle = new Obstacle[dimX*dimY];
+
+Room::Room(const std::string & filename) {
+    ifstream file;
+    file.open(filename);
+    if(file.is_open()) {
+        file >> dimX;
+        file >> dimY;
+        arrayObstacle = new Obstacle[dimX*dimY];
+        for(int i = 0; i < dimX*dimY; i++) {
+            int tmp;
+            file >> tmp;
+            arrayObstacle[i] = (Obstacle)tmp;
+        }
+    }
+    else {
+        cout << "Erreur lors de l'ouverture du fichier " << filename << endl;
+        cout << "Initialisation de la salle par defaut" << endl;
+        dimX = DIM_ROOM_X;
+        dimY = DIM_ROOM_Y;
+        arrayObstacle = NULL;
+    }
 }
 
 Room::~Room() {
@@ -20,17 +39,20 @@ Room::~Room() {
     arrayObstacle = NULL;
 }
 
+int Room::getDimX() const {
+    return dimX;
+}
+
+int Room::getDimY() const {
+    return dimY;
+}
+
 Obstacle Room::getObstacle(const Vector2D & V) const {
-    return arrayObstacle[V.getX()*dimX + V.getY()];
+    return arrayObstacle[V.getY()*dimX + V.getX()];
 }
 
 // TODO : ajouter la gestion des autres obstacles
 bool Room::isMovePossible(const Vector2D & Position) const {
     if(getObstacle(Position) == nothing) return true;
     else return false;
-}
-
-Vector2D* Room::pixelToCell(const Vector2D & Pixel) const {
-    Vector2D* V = new Vector2D(Pixel.getX()*DIM_ROOM_X/PIXEL_ROOM_X, Pixel.getY()*DIM_ROOM_Y/PIXEL_ROOM_Y);
-    return V;
 }
