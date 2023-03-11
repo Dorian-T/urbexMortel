@@ -6,25 +6,25 @@
 #endif // WIN32
 #include "winTxt.h"
 
-#include "Game.h"
+#include "../core/Game.h"
+#include "../core/Vector2D.h"
 #include "txtGame.h"
 
 void txtAff(WinTXT & win, const Game & ga) {
-	const Terrain& ter = ga.getConstTerrain();
-	const Pacman& pac = ga.getConstPacman();
-	const Fantome& fan = ga.getConstFantome();
+	const Building& bui = ga.getBuilding();
+	const Player& pla = ga.getPlayer();
+	
 
 	win.clear();
 
     // Affichage des murs et des pastilles
-	for(int x=0;x<ter.getDimX();++x)
-		for(int y=0;y<ter.getDimY();++y)
-			win.print( x, y, ter.getXYasChar(x,y));
+	for(int x=0;x<bui.getcurrentRoom()->getDimX();++x)
+		for(int y=0;y<bui.getcurrentRoom()->getDimY();++y)
+			win.print( x, y,(char) bui.getcurrentRoom()->getObstacle(Vector2D(x,y)));
 
     // Affichage de Pacman
-	win.print(pac.getX(),pac.getY(),'P');
-	// Affichage du Fantome
-	win.print(fan.getX(),fan.getY(),'F');
+	win.print(pla.getPosition().getX(),pla.getPosition().getY(),'P');
+	
 
 	win.draw();
 }
@@ -32,13 +32,13 @@ void txtAff(WinTXT & win, const Game & ga) {
 void txtBoucle (Game & ga) {
 	// Creation d'une nouvelle fenetre en mode texte
 	// => fenetre de dimension et position (WIDTH,HEIGHT,STARTX,STARTY)
-    WinTXT win (ga.getConstTerrain().getDimX(),ga.getConstTerrain().getDimY());
+    WinTXT win (ga.getBuilding().getcurrentRoom()->getDimX(),ga.getBuilding().getcurrentRoom()->getDimY());
 
 	bool ok = true;
 	int c;
 
 	do {
-	    txtAff(win,jeu);
+	    txtAff(win,ga);
 
         #ifdef _WIN32
         Sleep(100);
@@ -46,23 +46,23 @@ void txtBoucle (Game & ga) {
 		usleep(100000);
         #endif // WIN32
 
-		game.actionsAutomatiques();
+		ga.actionsAutomatiques();
 
 		c = win.getCh();
 		switch (c) {
-			case 'k':
-				ga.actionClavier('g');
+			case 'q':
+				ga.actionClavier('q');
 				break;
-			case 'm':
+			case 's':
+				ga.actionClavier('s');
+				break;
+			case 'z':
+				ga.actionClavier('z');
+				break;
+			case 'd':
 				ga.actionClavier('d');
 				break;
-			case 'l':
-				ga.actionClavier('h');
-				break;
-			case 'o':
-				ga.actionClavier('b');
-				break;
-			case 'q':
+			case 'p':
 				ok = false;
 				break;
 		}
