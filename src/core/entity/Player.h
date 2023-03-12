@@ -63,35 +63,35 @@ class Player : public Entity {
          * 
          * @param R
          */
-        void up(Room * R) ;
+        void up(const Room & R);
 
         /**
          * @brief déplacement vers la droite
          * 
          * @param R 
          */
-        void right(Room * R) ;
+        void right(const Room & R);
 
         /**
          * @brief déplacement vers le bas
          * 
          * @param R 
          */
-        void down(Room * R) ;
+        void down(const Room & R);
 
         /**
-         * @brief Deplacement vers la gauche
+         * @brief déplacement vers la gauche
          * 
          * @param R 
          */
-        void left(Room * R) ;
+        void left(const Room & R);
 
         /**
          * @brief application de la gravité
          * 
          * @param R 
          */
-        void gravity(Room * R);
+        void gravity(const Room & R);
 
         /**
          * @brief test de non-regression

@@ -32,39 +32,39 @@ void Player::decreaseTimeInvincible() {
 	timeInvincible--;
 }
 
-void Player::up(Room * R) { // peut-etre qu'il faudra modifier en passant a la version graphique
+void Player::up(const Room & R) { // peut-etre qu'il faudra modifier en passant a la version graphique
 	Vector2D V;
 	V.setX(getPosition().getX());
 	if(getPosition().getY() > 1) {
 		V.setY(getPosition().getY() - 1);
-		if(R->isMovePossible(V)) setPosition(V);
+		if(R.isMovePossible(V)) setPosition(V);
 	}
 }
 
-void Player::right(Room * R) {
+void Player::right(const Room & R) {
 	Vector2D V;
 	V.setX(getPosition().getX());
 	V.setY(getPosition().getY() + 1);
-	if(R->isMovePossible(V)) setPosition(V);
+	if(R.isMovePossible(V)) setPosition(V);
 }
 
-void Player::down(Room * R) {
+void Player::down(const Room & R) {
 	Vector2D V;
 	V.setX(getPosition().getX());
 	V.setY(getPosition().getY() + 1);
-	if(R->isMovePossible(V)) setPosition(V);
+	if(R.isMovePossible(V)) setPosition(V);
 }
 
-void Player::left (Room * R) {
+void Player::left (const Room & R) {
 	Vector2D V;
 	V.setX(getPosition().getX());
 	if(getPosition().getY() > 1) {
 		V.setY(getPosition().getY() - 1);
-		if(R->isMovePossible(V)) setPosition(V);
+		if(R.isMovePossible(V)) setPosition(V);
 	}
 }
 
-void Player::gravity(Room * R) {
+void Player::gravity(const Room & R) {
 	down(R);
 }
 

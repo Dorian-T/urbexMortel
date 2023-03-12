@@ -39,11 +39,11 @@ Room::~Room() {
     arrayObstacle = NULL;
 }
 
-int Room::getDimX() const {
+unsigned int Room::getDimX() const {
     return dimX;
 }
 
-int Room::getDimY() const {
+unsigned int Room::getDimY() const {
     return dimY;
 }
 

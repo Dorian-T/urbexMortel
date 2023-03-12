@@ -30,12 +30,12 @@ class Room {
         /**
          * @brief Dimension de la salle en X
          */
-        int dimX;
+        unsigned int dimX;
 
         /**
          * @brief Dimension de la salle en Y
          */
-        int dimY;
+        unsigned int dimY;
 
         /**
          * @brief Tableau des obstacles
@@ -64,24 +64,24 @@ class Room {
         /**
          * @brief Retourne la dimension en X
          * 
-         * @return int 
+         * @return unsigned int 
          */
-        int getDimX() const;
+        unsigned int getDimX() const;
 
         /**
          * @brief Retourne la dimension en Y
          * 
-         * @return int 
+         * @return unsigned int 
          */
-        int getDimY() const;
+        unsigned int getDimY() const;
 
         /**
          * @brief Retourne l'obstacle a la position V
          * 
          * @param V 
-         * @return obstacle 
+         * @return Obstacle 
          */
-        Obstacle getObstacle(const Vector2D & V) const; // pas besoin
+        Obstacle getObstacle(const Vector2D & V) const; // pas besoin ? ah bon ?
 
         /**
          * @brief Verifie si le deplacement est possible

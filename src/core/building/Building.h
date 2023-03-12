@@ -8,36 +8,35 @@ const unsigned int NB_ROOM = 10;
 /**
  * @brief Ensemble des niveaux du jeu
  */
-class Building
-{
+class Building {
+
     private:
 
         /**
-         * @brief Tableau 1 dimension de salles
+         * @brief tableau 1D de salles
          */
         Room* arrayRoom;
 
         /**
-         * @brief Salle courante
+         * @brief indice de la salle courante
          */
         unsigned int currentRoom;
 
     public:
 
         /**
-         * @brief Constructeur par defaut
-         * 
+         * @brief constructeur par defaut
          */
         Building();
 
         /**
          * @brief Destructeur
-         * 
          */
         ~Building();
 
         /**
          * @brief Retourne la salle courante
+         * 
          * @return Room* 
          */
         Room* getcurrentRoom();
@@ -45,7 +44,7 @@ class Building
         /**
          * @brief Passe à la salle suivante
          */
-        void gotonextRoom();
+        void goToNextRoom();
 
         /**
          * @brief Test de regression

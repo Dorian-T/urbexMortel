@@ -20,8 +20,7 @@ Room* Building::getcurrentRoom()
     return &arrayRoom[currentRoom];
 }
 
-void Building::gotonextRoom()
-{
+void Building::goToNextRoom() {
     currentRoom++;
 }
 
@@ -32,7 +31,7 @@ void Building::regressionTest()
     assert(arrayRoom != NULL && currentRoom == 0);
     cout<<"\tconstructeur par defaut : OK"<<endl;
 
-    gotonextRoom();
+    goToNextRoom();
     assert(currentRoom == 1);
     cout<<"\tmethode gotonextRoom : OK"<<endl;
 

@@ -5,6 +5,7 @@
 #include "../building/Room.h"
 
 class Entity {
+
     private:
 
         /**
@@ -30,39 +31,39 @@ class Entity {
         Entity();
 
         /**
-         * @brief constructeur paramètre
+         * @brief constructeur paramétré
          * 
          * @param p 
          * @param h 
          * @param w 
          */
-        Entity(Vector2D p, unsigned int h, unsigned int w);
+        Entity(const Vector2D & p, unsigned int h, unsigned int w);
 
         /**
          * @brief accesseur de la hauteur de la hitbox
          * 
          * @return unsigned int 
          */
-        unsigned int getHeight();
+        unsigned int getHeight() const;
 
         /**
          * @brief accesseur de la largeur de la hitbox
          * 
          * @return unsigned int 
          */
-        unsigned int getWidth();
+        unsigned int getWidth() const;
 
         /**
          * @brief accesseur de la position
          * 
          * @return Vector2D 
          */
-        Vector2D getPosition();
+        Vector2D getPosition() const; // le type de retour fait plus de 8 octets
 
         /**
          * @brief modificateur de la position
          */
-        void setPosition(Vector2D p);
+        void setPosition(const Vector2D & p);
 
         /**
          * @brief déplacement vers le haut

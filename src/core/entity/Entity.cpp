@@ -10,26 +10,26 @@ Entity::Entity() {
     width = 0;
 }
 
-Entity::Entity(Vector2D p, unsigned int h, unsigned int w) {
+Entity::Entity(const Vector2D & p, unsigned int h, unsigned int w) {
     position = p;
     height = h;
     width = w;
 }
 
-unsigned int Entity::getHeight() {
+unsigned int Entity::getHeight() const {
     return height;
 }
 
-unsigned int Entity::getWidth() {
+unsigned int Entity::getWidth() const {
     return width;
 }
 
-Vector2D Entity::getPosition() {
+Vector2D Entity::getPosition() const {
     return position;
 }
 
-void Entity::setPosition(Vector2D p) {
-    position = p;
+void Entity::setPosition(const Vector2D & p) {
+    position = p; //mettre un assert pour verifier que la position est dans la room ?
 }
 
 void Entity::up(const Room & R) {}
@@ -40,7 +40,7 @@ void Entity::down(const Room & R) {}
 
 void Entity::left(const Room & R) {}
 
-void gravity(const Room & R) {}
+void Entity::gravity(const Room & R) {}
 
 void Entity::regressionTest() {
     cout << endl << "Test de la classe Entity" << endl;
