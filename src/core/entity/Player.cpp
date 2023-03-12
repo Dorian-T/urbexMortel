@@ -12,7 +12,7 @@ Player::Player() {
 
 Player::Player(const Vector2D & P, unsigned int h, unsigned int w, Skin s, unsigned int health): Entity(P, h, w) {
 	skin = s;
-	hp = h;
+	hp = health;
 	timeInvincible = 0;
 }
 
@@ -30,7 +30,7 @@ bool Player::decreaseHp(unsigned int h) {
 void Player::decreaseTimeInvincible() {
 	timeInvincible--;
 }
-
+// on prend pas en compte sa hauteur !
 void Player::up(const Room & R) { // peut-etre qu'il faudra modifier en passant a la version graphique
 	Vector2D V;
 	V.setX(getPosition().getX());
@@ -42,12 +42,12 @@ void Player::up(const Room & R) { // peut-etre qu'il faudra modifier en passant 
 
 void Player::right(const Room & R) {
 	Vector2D V;
-	V.setX(getPosition().getX());
-	V.setY(getPosition().getY() + 1);
+	V.setY(getPosition().getY());
+	V.setX(getPosition().getX() + 1);
 	if(R.isMovePossible(V)) setPosition(V);
 }
 
-void Player::down(const Room & R) {
+void Player::down(const Room & R) { // il va y avoir un probleme avec les trappes (en plus gravity utilise down)
 	Vector2D V;
 	V.setX(getPosition().getX());
 	V.setY(getPosition().getY() + 1);
@@ -56,9 +56,9 @@ void Player::down(const Room & R) {
 
 void Player::left (const Room & R) {
 	Vector2D V;
-	V.setX(getPosition().getX());
-	if(getPosition().getY() > 1) {
-		V.setY(getPosition().getY() - 1);
+	V.setY(getPosition().getY());
+	if(getPosition().getX() > 1) {
+		V.setX(getPosition().getX() - 1);
 		if(R.isMovePossible(V)) setPosition(V);
 	}
 }
@@ -74,34 +74,49 @@ void Player::regressionTest() {
 	assert(skin == M && hp == 0 && timeInvincible == 0);
 	cout << "\tconstructeur par defaut : OK" << endl;
 
-	Player P(Vector2D(2, 2), 1, 1, F, 3);
-	assert(P.getPosition().getX() == 2 && P.getPosition().getY() == 2 && P.getHeight() == 1 && P.getWidth() == 1);
-	assert(P.skin == F && P.hp == 3 && P.timeInvincible == 0);
+	Player P(Vector2D(2, 3), 1, 1, F, 3);
+	assert(P.getPosition().getX() == 2 && P.getPosition().getY() == 3 && P.getHeight() == 1 && P.getWidth() == 1);
+	assert(P.skin == F), assert(P.hp == 3); assert(P.timeInvincible == 0);
 	cout << "\tconstructeur parametre : OK" << endl;
 
 	assert(P.decreaseHp(1) == true);
 	assert(P.hp == 2);
-	assert(P.decreaseHp(2) == false);
-	assert(P.hp == 0);
-	cout << "\tdecreaseHp : OK" << endl;
-
 	assert(P.timeInvincible == 5);
 	P.decreaseTimeInvincible();
 	assert(P.timeInvincible == 4);
 	cout << "\tdecreaseTimeInvincible : OK" << endl;
+	for(unsigned int i = 0; i < 4; i++)
+		P.decreaseTimeInvincible();
+	assert(P.decreaseHp(2) == false);
+	assert(P.hp == 0);
+	cout << "\tdecreaseHp : OK" << endl;
 
 	Room R("data/test.txt");
-	P.gravity(R);
-	assert(P.getPosition().getX() == 2 && P.getPosition().getY() == 3);
+	P.left(R); // gauche qui fonctionne
+	assert(P.getPosition().getX() == 1 && P.getPosition().getY() == 3);
+	P.left(R); // gauche qui ne fonctionne pas
+	assert(P.getPosition().getX() == 1 && P.getPosition().getY() == 3);
+	cout << "\tleft : OK" << endl;
+
+	P.up(R); // haut qui fonctionne
+	assert(P.getPosition().getX() == 1 && P.getPosition().getY() == 2);
+	P.up(R); // haut qui ne fonctionne pas
+	assert(P.getPosition().getX() == 1 && P.getPosition().getY() == 2);
+	cout << "\tup : OK" << endl;
+
+	P.gravity(R); // gravite qui fonctionne
+	assert(P.getPosition().getX() == 1 && P.getPosition().getY() == 3);
+	P.gravity(R); // gravite qui ne fonctionne pas
+	assert(P.getPosition().getX() == 1 && P.getPosition().getY() == 3);
 	cout << "\tgravity : OK" << endl;
 
-	P.right(R);
+	P.right(R); // droite qui fonctionne
+	assert(P.getPosition().getX() == 2 && P.getPosition().getY() == 3);
+	P.right(R); // droite qui ne fonctionne pas
 	assert(P.getPosition().getX() == 2 && P.getPosition().getY() == 3);
 	cout << "\tright : OK" << endl;
 
-	P.left(R);
-	assert(P.getPosition().getX() == 1 && P.getPosition().getY() == 3);
-	cout << "\tleft : OK" << endl;
+	// TODO : down
 
 	cout << "Test de la classe Player : OK" << endl;
 }
