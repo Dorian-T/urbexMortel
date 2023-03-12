@@ -16,8 +16,8 @@ int main () {
 	E.regressionTest();
 
 	Room R("data/room1.txt");
-	for(int i = 0; i < R.getDimY(); i++) {
-		for(int j = 0; j < R.getDimX(); j++) {
+	for(unsigned int i = 0; i < R.getDimY(); i++) {
+		for(unsigned int j = 0; j < R.getDimX(); j++) {
 			cout << R.getObstacle(Vector2D(j,i)) << " ";
 		}
 		cout << endl;

@@ -19,7 +19,7 @@ Room::Room(const std::string & filename) {
         file >> dimX;
         file >> dimY;
         arrayObstacle = new Obstacle[dimX*dimY];
-        for(int i = 0; i < dimX*dimY; i++) {
+        for(unsigned int i = 0; i < dimX*dimY; i++) {
             int tmp;
             file >> tmp;
             arrayObstacle[i] = (Obstacle)tmp;
