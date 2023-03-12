@@ -1,7 +1,7 @@
 #ifndef _ROOM
 #define _ROOM
 
-#include "Vector2D.h"
+#include "../Vector2D.h"
 #include <string>
 
 const unsigned int DIM_ROOM_X = 16;

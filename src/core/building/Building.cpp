@@ -1,9 +1,7 @@
+#include "Building.h"
 #include <iostream>
 #include <assert.h>
-
 using namespace std;
-
-#include "Building.h"
 
 Building::Building()
 {

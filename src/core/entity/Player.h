@@ -2,7 +2,7 @@
 #define _PLAYER
 
 #include "Entity.h"
-#include "Room.h"
+#include "../building/Room.h"
 
 enum Skin {
     M,

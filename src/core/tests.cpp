@@ -1,8 +1,8 @@
 #include "Vector2D.h"
-#include "Entity.h"
-#include "Room.h"
+#include "entity/Entity.h"
+#include "building/Room.h"
 
-#include <iostream>
+#include <iostream> // provisoir
 #include <fstream>
 #include <string.h>
 using namespace std;

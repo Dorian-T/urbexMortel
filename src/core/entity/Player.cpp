@@ -1,5 +1,5 @@
 #include "Player.h"
-#include "Room.h"
+#include "../building/Room.h"
 #include <iostream>
 #include <assert.h>
 using namespace std;
