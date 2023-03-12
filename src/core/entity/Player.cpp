@@ -21,11 +21,10 @@ bool Player::decreaseHp(unsigned int h) {
 		hp -= h;
 		if(hp == 0)
 			return false;
-		else {
+		else
 			timeInvincible = 5; // a modifier
-			return false;
-		}
 	}
+	return true;
 }
 
 void Player::decreaseTimeInvincible() {
@@ -75,8 +74,8 @@ void Player::regressionTest() {
 	assert(skin == M && hp == 0 && timeInvincible == 0);
 	cout << "\tconstructeur par defaut : OK" << endl;
 
-	Player P(Vector2D(1, 2), 1, 1, F, 3);
-	assert(P.getPosition().getX() == 1 && P.getPosition().getY() == 2 && P.getHeight() == 1 && P.getWidth() == 1);
+	Player P(Vector2D(2, 2), 1, 1, F, 3);
+	assert(P.getPosition().getX() == 2 && P.getPosition().getY() == 2 && P.getHeight() == 1 && P.getWidth() == 1);
 	assert(P.skin == F && P.hp == 3 && P.timeInvincible == 0);
 	cout << "\tconstructeur parametre : OK" << endl;
 
@@ -91,8 +90,18 @@ void Player::regressionTest() {
 	assert(P.timeInvincible == 4);
 	cout << "\tdecreaseTimeInvincible : OK" << endl;
 
-	// P.up(Room("data/test.txt"));
-	// TODO
+	Room R("data/test.txt");
+	P.gravity(R);
+	assert(P.getPosition().getX() == 2 && P.getPosition().getY() == 3);
+	cout << "\tgravity : OK" << endl;
+
+	P.right(R);
+	assert(P.getPosition().getX() == 2 && P.getPosition().getY() == 3);
+	cout << "\tright : OK" << endl;
+
+	P.left(R);
+	assert(P.getPosition().getX() == 1 && P.getPosition().getY() == 3);
+	cout << "\tleft : OK" << endl;
 
 	cout << "Test de la classe Player : OK" << endl;
 }

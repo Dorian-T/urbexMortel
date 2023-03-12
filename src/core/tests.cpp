@@ -1,5 +1,6 @@
-#include "Vector2D.h"
+#include "entity/Vector2D.h"
 #include "entity/Entity.h"
+#include "entity/Player.h"
 #include "building/Room.h"
 
 #include <iostream> // provisoir
@@ -14,6 +15,9 @@ int main () {
 
 	Entity E;
 	E.regressionTest();
+
+	Player P;
+	P.regressionTest();
 
 	Room R("data/room1.txt");
 	for(unsigned int i = 0; i < R.getDimY(); i++) {

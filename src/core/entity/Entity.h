@@ -1,7 +1,7 @@
 #ifndef _ENTITY
 #define _ENTITY
 
-#include "../Vector2D.h"
+#include "../entity/Vector2D.h"
 #include "../building/Room.h"
 
 class Entity {
