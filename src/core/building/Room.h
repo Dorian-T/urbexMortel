@@ -13,12 +13,12 @@ const unsigned int PIXEL_ROOM_Y = 16;
  * @brief Enumeration des obstacles
  */
 enum Obstacle {
-	nothing = 0,
-	barbedWire = 1,
-	block = 2,
-    door = 3,
-	ladder = 4,
-	trapdoor = 5,
+	nothing = '.',
+	barbedWire = '*',
+	block = '#',
+    door = 'D',
+	ladder = 'H',
+	trapdoor = '_'
 };
 
 /**
