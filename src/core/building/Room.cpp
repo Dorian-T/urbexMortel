@@ -52,7 +52,15 @@ Obstacle Room::getObstacle(const Vector2D & V) const {
 }
 
 // TODO : ajouter la gestion des autres obstacles
-bool Room::isMovePossible(const Vector2D & Position) const {
-    if(getObstacle(Position) == nothing) return true;
-    else return false;
+int Room::isMovePossible(const Vector2D & Position) const {
+    switch(getObstacle(Position)) {
+        case nothing:
+            return -1;
+        case barbedWire:
+            return 1;
+        case block:
+            return 0;
+        case door:
+            return 0;
+    }
 }

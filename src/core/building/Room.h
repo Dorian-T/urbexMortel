@@ -13,11 +13,12 @@ const unsigned int PIXEL_ROOM_Y = 16;
  * @brief Enumeration des obstacles
  */
 enum Obstacle {
-	nothing = 0,
-	barbedWire = 1,
-	block = 2,
-	ladder = 3,
-	trapdoor = 4,
+	nothing = '.',
+	barbedWire = '*',
+	block = '#',
+    door = 'D',
+	ladder = 'H',
+	trapdoor = '_'
 };
 
 /**
@@ -84,12 +85,15 @@ class Room {
         Obstacle getObstacle(const Vector2D & V) const; // pas besoin ? ah bon ?
 
         /**
-         * @brief Verifie si le deplacement est possible
+         * @brief verifie si le deplacement est possible
+         * 
+         * @details retourne -1 si le deplacement est possible
+         * @details retourne un entier positif indiquant le nb de dégats si le déplacement est impossible
          * 
          * @param Position 
-         * @return bool
+         * @return int
          */
-        bool isMovePossible(const Vector2D & Position) const;
+        int isMovePossible(const Vector2D & Position) const;
 };
 
 #endif
