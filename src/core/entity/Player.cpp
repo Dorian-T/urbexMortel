@@ -85,7 +85,7 @@ int Player::isMovePossibleSide(const Vector2D & position, Room * R) const {
 	}
 }
 
-void Player::down(Room * R) { // il va y avoir un probleme avec les trappes (en plus gravity utilise down)
+void Player::down(Room * R) {
 	Vector2D V;
 	V.setX(getPosition().getX());
 	V.setY(getPosition().getY() + 1);
