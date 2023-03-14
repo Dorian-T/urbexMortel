@@ -1,8 +1,8 @@
 #ifndef _GAME
 #define _GAME
 
-#include "building/Building.h""
-#include "entity/Player.h""
+#include "building/Building.h"
+#include "entity/Player.h"
 
 class Game
 {
