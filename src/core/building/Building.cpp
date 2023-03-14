@@ -14,7 +14,7 @@ Building::Building()
     arrayRoom = new Room[NB_ROOM];
     string f="../../daty/entry.txt";
     arrayRoom[0]= Room(f);
-    int i;
+    unsigned int i;
     for(i=1;i<NB_ROOM;i++)
     {
         aleatoire = (rand() % nombreDeValeurs) + min;
