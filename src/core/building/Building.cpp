@@ -5,25 +5,21 @@
 #include <time.h> 
 using namespace std;
 
-Building::Building()
-{
-    int aleatoire;
-    int min = 1, max = 3;
-    int nombreDeValeurs = max - min + 1 ;
-    srand((unsigned int)time(NULL));
+Building::Building() {
+    srand(time(NULL));
+    int n;
     arrayRoom = new Room[NB_ROOM];
-    string f="../../daty/entrance.txt";
-    arrayRoom[0]= Room(f);
-    unsigned int i;
-    for(i=1;i<NB_ROOM;i++)
-    {
-        aleatoire = (rand() % nombreDeValeurs) + min;
-        f="../../daty/room" + aleatoire ;
-        f= f + ".txt";
-        arrayRoom[i]=f;
+    arrayRoom[0] = Room("data/entrance.txt");
+    for(unsigned int i = 1; i < NB_ROOM-1; i++) {
+        n = rand() % 3;
+        if(n == 0)
+            arrayRoom[i] = Room("data/room1.txt");
+        else if(n == 1)
+            arrayRoom[i] = Room("data/room2.txt");
+        else
+            arrayRoom[i] = Room("data/room3.txt");
     }
-    f="../../daty/exit.txt";
-    arrayRoom[NB_ROOM]=f;
+    arrayRoom[NB_ROOM-1] = Room("data/exit.txt");
     currentRoom = 0;
 }
 
