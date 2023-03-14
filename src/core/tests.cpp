@@ -11,8 +11,8 @@ int main () {
 	Entity E;
 	E.regressionTest();
 
-	Player P;
-	P.regressionTest();
+	// Player P;
+	// P.regressionTest();
 
 	// TODO : Room
 

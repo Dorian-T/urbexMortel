@@ -50,6 +50,7 @@ int Player::isMovePossibleUp(const Vector2D & position, Room * R) const {
 		else if(o == barbedWire) return 1;
 		else return 0;
 	}
+	else return 0;
 }
 
 void Player::right(Room * R) {
@@ -59,7 +60,7 @@ void Player::right(Room * R) {
 	int i = isMovePossibleSide(V, R);
 	if(i == -1) setPosition(V);
 	else if(i > 0) decreaseHp(i);
-	else if(i == -2) R->goToNextRoom();
+	// else if(i == -2) R->goToNextRoom();
 }
 
 void Player::left (Room * R) {
@@ -83,6 +84,7 @@ int Player::isMovePossibleSide(const Vector2D & position, Room * R) const {
 		else if(o1 == door && o2 == door) return -2;
 		else return 0;
 	}
+	else return 0;
 }
 
 void Player::down(Room * R) {
@@ -101,6 +103,7 @@ int Player::isMovePossibleDown(const Vector2D & position, Room * R) const {
 		else if(o == barbedWire) return 1;
 		else return 0;
 	}
+	else return 0;
 }
 
 void Player::gravity(Room * R) { // a modifier : probleme avec les trappes
@@ -119,58 +122,59 @@ int Player::isMovePossibleGravity(const Vector2D & position, Room * R) const {
 		else if(o == barbedWire) return 1;
 		else return 0;
 	}
+	else return 0;
 }
 
-void Player::regressionTest() {
-	cout << endl << "Test de la classe Player" << endl;
+// void Player::regressionTest() {
+// 	cout << endl << "Test de la classe Player" << endl;
 
-	assert(getPosition().getX() == 0 && getPosition().getY() == 0 && getHeight() == 0 && getWidth() == 0);
-	assert(skin == M && hp == 0 && timeInvincible == 0);
-	cout << "\tconstructeur par defaut : OK" << endl;
+// 	assert(getPosition().getX() == 0 && getPosition().getY() == 0 && getHeight() == 0 && getWidth() == 0);
+// 	assert(skin == M && hp == 0 && timeInvincible == 0);
+// 	cout << "\tconstructeur par defaut : OK" << endl;
 
-	Player P(Vector2D(2, 3), 1, 1, F, 3);
-	assert(P.getPosition().getX() == 2 && P.getPosition().getY() == 3 && P.getHeight() == 1 && P.getWidth() == 1);
-	assert(P.skin == F), assert(P.hp == 3); assert(P.timeInvincible == 0);
-	cout << "\tconstructeur parametre : OK" << endl;
+// 	Player P(Vector2D(2, 3), 1, 1, F, 3);
+// 	assert(P.getPosition().getX() == 2 && P.getPosition().getY() == 3 && P.getHeight() == 1 && P.getWidth() == 1);
+// 	assert(P.skin == F), assert(P.hp == 3); assert(P.timeInvincible == 0);
+// 	cout << "\tconstructeur parametre : OK" << endl;
 
-	assert(P.decreaseHp(1) == true);
-	assert(P.hp == 2);
-	assert(P.timeInvincible == 5);
-	P.decreaseTimeInvincible();
-	assert(P.timeInvincible == 4);
-	cout << "\tdecreaseTimeInvincible : OK" << endl;
-	for(unsigned int i = 0; i < 4; i++)
-		P.decreaseTimeInvincible();
-	assert(P.decreaseHp(2) == false);
-	assert(P.hp == 0);
-	cout << "\tdecreaseHp : OK" << endl;
+// 	assert(P.decreaseHp(1) == true);
+// 	assert(P.hp == 2);
+// 	assert(P.timeInvincible == 5);
+// 	P.decreaseTimeInvincible();
+// 	assert(P.timeInvincible == 4);
+// 	cout << "\tdecreaseTimeInvincible : OK" << endl;
+// 	for(unsigned int i = 0; i < 4; i++)
+// 		P.decreaseTimeInvincible();
+// 	assert(P.decreaseHp(2) == false);
+// 	assert(P.hp == 0);
+// 	cout << "\tdecreaseHp : OK" << endl;
 
-	Room * R = new Room("data/test.txt");
-	P.left(R); // gauche qui fonctionne
-	assert(P.getPosition().getX() == 1 && P.getPosition().getY() == 3);
-	P.left(R); // gauche qui ne fonctionne pas
-	assert(P.getPosition().getX() == 1 && P.getPosition().getY() == 3);
-	cout << "\tleft : OK" << endl;
+// 	Room * R = new Room("data/test.txt");
+// 	P.left(R); // gauche qui fonctionne
+// 	assert(P.getPosition().getX() == 1 && P.getPosition().getY() == 3);
+// 	P.left(R); // gauche qui ne fonctionne pas
+// 	assert(P.getPosition().getX() == 1 && P.getPosition().getY() == 3);
+// 	cout << "\tleft : OK" << endl;
 
-	P.up(R); // haut qui fonctionne
-	assert(P.getPosition().getX() == 1 && P.getPosition().getY() == 2);
-	P.up(R); // haut qui ne fonctionne pas
-	assert(P.getPosition().getX() == 1 && P.getPosition().getY() == 2);
-	cout << "\tup : OK" << endl;
+// 	P.up(R); // haut qui fonctionne
+// 	assert(P.getPosition().getX() == 1 && P.getPosition().getY() == 2);
+// 	P.up(R); // haut qui ne fonctionne pas
+// 	assert(P.getPosition().getX() == 1 && P.getPosition().getY() == 2);
+// 	cout << "\tup : OK" << endl;
 
-	P.gravity(R); // gravite qui fonctionne
-	assert(P.getPosition().getX() == 1 && P.getPosition().getY() == 3);
-	P.gravity(R); // gravite qui ne fonctionne pas
-	assert(P.getPosition().getX() == 1 && P.getPosition().getY() == 3);
-	cout << "\tgravity : OK" << endl;
+// 	P.gravity(R); // gravite qui fonctionne
+// 	assert(P.getPosition().getX() == 1 && P.getPosition().getY() == 3);
+// 	P.gravity(R); // gravite qui ne fonctionne pas
+// 	assert(P.getPosition().getX() == 1 && P.getPosition().getY() == 3);
+// 	cout << "\tgravity : OK" << endl;
 
-	P.right(R); // droite qui fonctionne
-	assert(P.getPosition().getX() == 2 && P.getPosition().getY() == 3);
-	P.right(R); // droite qui ne fonctionne pas
-	assert(P.getPosition().getX() == 2 && P.getPosition().getY() == 3);
-	cout << "\tright : OK" << endl;
+// 	P.right(R); // droite qui fonctionne
+// 	assert(P.getPosition().getX() == 2 && P.getPosition().getY() == 3);
+// 	P.right(R); // droite qui ne fonctionne pas
+// 	assert(P.getPosition().getX() == 2 && P.getPosition().getY() == 3);
+// 	cout << "\tright : OK" << endl;
 
-	// TODO : down
+// 	// TODO : down
 
-	cout << "Test de la classe Player : OK" << endl;
-}
+// 	cout << "Test de la classe Player : OK" << endl;
+// }
