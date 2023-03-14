@@ -39,7 +39,23 @@ class Player : public Entity {
          */
         int isMovePossibleUp(const Vector2D & position, Room * R) const;
 
+        /**
+         * @brief vérifie si le déplacement vers la gauche ou la droite est possible
+         * 
+         * @details retourne -1 si le déplacement est possible
+         * @details retourne un entier positif indiquant le nombre de dégats si le déplacement est impossible
+         * 
+         * @details retourne -2 si le déplacement change de salle
+         * 
+         * @param position 
+         * @param R 
+         * @return int 
+         */
+        int isMovePossibleSide(const Vector2D & position, Room * R) const;
+
         int isMovePossibleDown(const Vector2D & position, Room * R) const;
+
+        int isMovePossibleGravity(const Vector2D & position, Room * R) const;
 
     public:
         /**
