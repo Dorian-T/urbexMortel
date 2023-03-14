@@ -45,6 +45,6 @@ void Game::actionClavier (const char touche) {
 }
 
 void Game::actionsAutomatiques () {
-    pla->gravity(bui.getcurrentRoom());
+    pla->gravity(bui->getcurrentRoom());
 }
 

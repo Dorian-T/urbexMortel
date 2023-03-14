@@ -17,12 +17,10 @@ void txtAff(WinTXT & win, const Game & ga) {
 
 	win.clear();
 
-    // Affichage des murs et des pastilles
-	for(int x=0;x<bui->getcurrentRoom()->getDimX();++x)
-		for(int y=0;y<bui->getcurrentRoom()->getDimY();++y)
+	for(unsigned int x=0;x<bui->getcurrentRoom()->getDimX();++x)
+		for(unsigned int y=0;y<bui->getcurrentRoom()->getDimY();++y)
 			win.print( x, y,(char) bui->getcurrentRoom()->getObstacle(Vector2D(x,y)));
 
-    // Affichage de Pacman
 	win.print(pla->getPosition().getX(),pla->getPosition().getY(),'P');
 	
 
@@ -30,8 +28,6 @@ void txtAff(WinTXT & win, const Game & ga) {
 }
 
 void txtBoucle (Game & ga) {
-	// Creation d'une nouvelle fenetre en mode texte
-	// => fenetre de dimension et position (WIDTH,HEIGHT,STARTX,STARTY)
     WinTXT win (ga.getBuilding()->getcurrentRoom()->getDimX(),ga.getBuilding()->getcurrentRoom()->getDimY());
 
 	bool ok = true;

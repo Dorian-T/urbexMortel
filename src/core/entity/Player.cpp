@@ -1,7 +1,7 @@
 #include "Player.h"
 #include "../building/Room.h"
-#include <iostream>
 #include <assert.h>
+#include <iostream>
 using namespace std;
 
 Player::Player() {
@@ -10,7 +10,7 @@ Player::Player() {
 	timeInvincible = 0;
 }
 
-Player::Player(const Vector2D & P, unsigned int h, unsigned int w, Skin s, unsigned int health): Entity(P, h, w) {
+Player::Player(const Vector2D & P, Skin s, unsigned int health): Entity(P, 2, 1) {
 	skin = s;
 	hp = health;
 	timeInvincible = 0;
@@ -30,41 +30,74 @@ bool Player::decreaseHp(unsigned int h) {
 void Player::decreaseTimeInvincible() {
 	timeInvincible--;
 }
-// on prend pas en compte sa hauteur !
-void Player::up(const Room & R) { // peut-etre qu'il faudra modifier en passant a la version graphique
+
+void Player::up(Room * R) { // peut-etre qu'il faudra modifier en passant a la version graphique
 	Vector2D V;
 	V.setX(getPosition().getX());
 	if(getPosition().getY() > 1) {
 		V.setY(getPosition().getY() - 1);
-		if(R.isMovePossible(V)) setPosition(V);
+		int i = isMovePossibleUp(V, R);
+		if(i == -1) setPosition(V);
+		else if(i > 0) decreaseHp(i);
 	}
 }
 
-void Player::right(const Room & R) {
+int Player::isMovePossibleUp(const Vector2D & position, Room * R) const {
+	if(position.getX() < R->getDimX() && position.getY() < R->getDimY() && position.getX() > 0 && position.getY() > 0) {
+		Vector2D V(position.getX(), position.getY() + 1);
+		Obstacle o = R->getObstacle(V);
+		if(o == nothing || o == trapdoor || o == ladder) return -1;
+		else if(o == barbedWire) return 1;
+		else return 0;
+	}
+}
+
+void Player::right(Room * R) {
 	Vector2D V;
 	V.setY(getPosition().getY());
 	V.setX(getPosition().getX() + 1);
-	if(R.isMovePossible(V)) setPosition(V);
+	if(R->isMovePossible(V)) setPosition(V);
 }
 
-void Player::down(const Room & R) { // il va y avoir un probleme avec les trappes (en plus gravity utilise down)
-	Vector2D V;
-	V.setX(getPosition().getX());
-	V.setY(getPosition().getY() + 1);
-	if(R.isMovePossible(V)) setPosition(V);
-}
-
-void Player::left (const Room & R) {
+void Player::left (Room * R) {
 	Vector2D V;
 	V.setY(getPosition().getY());
 	if(getPosition().getX() > 1) {
 		V.setX(getPosition().getX() - 1);
-		if(R.isMovePossible(V)) setPosition(V);
+		int i = isMovePossibleUp(V, R);
+		if(i == -1) setPosition(V);
+		else if(i > 0) decreaseHp(i); // !!!
 	}
 }
 
-void Player::gravity(const Room & R) {
-	down(R);
+void Player::down(Room * R) { // il va y avoir un probleme avec les trappes (en plus gravity utilise down)
+	Vector2D V;
+	V.setX(getPosition().getX());
+	V.setY(getPosition().getY() + 1);
+	int i = isMovePossibleUp(V, R);
+	if(i == -1) setPosition(V);
+	else if(i > 0) decreaseHp(i);
+}
+
+int Player::isMovePossibleDown(const Vector2D & position, Room * R) const {
+	if(position.getX() < R->getDimX() && position.getY() < R->getDimY() && position.getX() > 0 && position.getY() > 0) {
+		Obstacle o = R->getObstacle(position);
+		if(o == nothing || o == trapdoor || o == ladder) return -1;
+		else if(o == barbedWire) return 1;
+		else return 0;
+	}
+}
+
+void Player::gravity(Room * R) { // a modifier : probleme avec les trappes
+	Vector2D V;
+	
+}
+
+// TODO : ajouter la gestion des autres obstacles
+int Player::isMovePossible(const Vector2D & position, Room * R) const {
+	if(position.getX() < R->getDimX() || position.getY() < R->getDimY() || position.getX() > 0 || position.getY() > 0) {
+		if(R->getObstacle(position) == nothing && R-> getObstacle(position.setY(position.getY() - 1)) == nothing)
+	}
 }
 
 void Player::regressionTest() {
@@ -91,7 +124,7 @@ void Player::regressionTest() {
 	assert(P.hp == 0);
 	cout << "\tdecreaseHp : OK" << endl;
 
-	Room R("data/test.txt");
+	Room * R = new Room("data/test.txt");
 	P.left(R); // gauche qui fonctionne
 	assert(P.getPosition().getX() == 1 && P.getPosition().getY() == 3);
 	P.left(R); // gauche qui ne fonctionne pas
