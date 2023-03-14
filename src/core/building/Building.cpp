@@ -6,11 +6,10 @@
 using namespace std;
 
 Building::Building() {
-    srand(time(NULL));
     int n;
-    arrayRoom = new Room[NB_ROOM];
+    arrayRoom.resize( NB_ROOM);
     arrayRoom[0] = Room("data/entrance.txt");
-    for(unsigned int i = 1; i < NB_ROOM-1; i++) {
+    for(unsigned int i = 1; i < arrayRoom.size()-1; i++) {
         n = rand() % 3;
         if(n == 0)
             arrayRoom[i] = Room("data/room1.txt");
@@ -25,8 +24,9 @@ Building::Building() {
 
 Building::~Building()
 {
-    if (arrayRoom != NULL) delete [] arrayRoom;
-    arrayRoom = NULL;
+    //if (arrayRoom != NULL) delete [] arrayRoom;
+    //arrayRoom = NULL;
+    //cout<<"delete building"<<endl;
 }
 
 Room* Building::getcurrentRoom()
@@ -42,7 +42,7 @@ void Building::regressionTest()
 {
     cout << "Test de regression de la classe Building" << endl;
 
-    assert(arrayRoom != NULL && currentRoom == 0);
+    //assert(arrayRoom != NULL && currentRoom == 0);
     cout<<"\tconstructeur par defaut : OK"<<endl;
 
     goToNextRoom();

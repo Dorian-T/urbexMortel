@@ -2,7 +2,7 @@
 #define _BUILDING
 
 #include "Room.h"
-
+#include <vector>
 const unsigned int NB_ROOM = 10;
 
 /**
@@ -15,7 +15,7 @@ class Building {
         /**
          * @brief tableau 1D de salles
          */
-        Room* arrayRoom;
+        std::vector<Room> arrayRoom;
 
         /**
          * @brief indice de la salle courante

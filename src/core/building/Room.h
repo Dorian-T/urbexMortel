@@ -3,6 +3,7 @@
 
 #include "../entity/Vector2D.h"
 #include <string>
+#include <vector>
 
 const unsigned int DIM_ROOM_X = 16;
 const unsigned int DIM_ROOM_Y = 9;
@@ -41,7 +42,7 @@ class Room {
         /**
          * @brief Tableau des obstacles
          */
-        Obstacle* arrayObstacle;
+        std::vector<Obstacle> arrayObstacle;
 
     public:
 

@@ -1,11 +1,13 @@
 #include "Game.h"
-
+#include <iostream>
+using namespace std;
 Game::Game ()  {
 	bui = new Building;
 	pla = new Player;
 }
 
 Game::~Game() {
+	cout<<"delete Game"<<endl;
 	if (bui!=NULL)
 	{
 		delete bui;

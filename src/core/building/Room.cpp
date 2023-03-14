@@ -4,12 +4,14 @@
 #include <iostream>
 #include <fstream>
 #include <string.h>
+#include <assert.h>
+#include <unistd.h>
 using namespace std;
 
 Room::Room() {
     dimX = DIM_ROOM_X;
     dimY = DIM_ROOM_Y;
-    arrayObstacle = NULL;  
+    //arrayObstacle = NULL;  
 }
 
 Room::Room(const std::string & filename) {
@@ -18,7 +20,9 @@ Room::Room(const std::string & filename) {
     if(file.is_open()) {
         file >> dimX;
         file >> dimY;
-        arrayObstacle = new Obstacle[dimX*dimY];
+        arrayObstacle.resize( dimX*dimY);
+        //cout<<dimX<<" "<<dimY<<" "<<arrayObstacle<<endl;
+        
         for(unsigned int i = 0; i < dimX*dimY; i++) {
             int tmp;
             file >> tmp;
@@ -30,13 +34,16 @@ Room::Room(const std::string & filename) {
         cout << "Initialisation de la salle par defaut" << endl;
         dimX = DIM_ROOM_X;
         dimY = DIM_ROOM_Y;
-        arrayObstacle = NULL;
+        //arrayObstacle = NULL;
+        arrayObstacle.resize(0);
     }
 }
 
 Room::~Room() {
-    if (arrayObstacle != NULL) delete [] arrayObstacle;
-    arrayObstacle = NULL;
+    //if (arrayObstacle != NULL) delete [] arrayObstacle;
+    //arrayObstacle = NULL;
+    //cout<<"delete"<<endl;
+    //sleep(1);
 }
 
 unsigned int Room::getDimX() const {
@@ -48,5 +55,7 @@ unsigned int Room::getDimY() const {
 }
 
 Obstacle Room::getObstacle(const Vector2D & V) const {
+    assert( V.getY()*dimX + V.getX() < dimX*dimY);
+    //cout<<arrayObstacle<<" "<<V.getX()<<" "<<V.getY()<<endl;
     return arrayObstacle[V.getY()*dimX + V.getX()];
 }

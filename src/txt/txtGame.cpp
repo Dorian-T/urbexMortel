@@ -9,12 +9,13 @@
 #include "../core/Game.h"
 #include "../core/entity/Vector2D.h"
 #include "txtGame.h"
+#include <unistd.h>
 
 void txtAff(WinTXT & win, const Game & ga) {
 	Building* bui = ga.getBuilding();
 	Player* pla = ga.getPlayer();
 	
-
+	sleep(1);
 	win.clear();
 
 	for(unsigned int x=0;x<bui->getcurrentRoom()->getDimX();++x)
