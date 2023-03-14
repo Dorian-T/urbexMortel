@@ -59,7 +59,7 @@ void Player::right(Room * R) {
 	int i = isMovePossibleSide(V, R);
 	if(i == -1) setPosition(V);
 	else if(i > 0) decreaseHp(i);
-	else if(i == -2) R->goToNextRoom();
+	// else if(i == -2) R->goToNextRoom();
 }
 
 void Player::left (Room * R) {
