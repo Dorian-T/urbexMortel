@@ -12,7 +12,7 @@ Building::Building()
     int nombreDeValeurs = max - min + 1 ;
     srand((unsigned int)time(NULL));
     arrayRoom = new Room[NB_ROOM];
-    string f="../../daty/entry.txt";
+    string f="../../daty/entrance.txt";
     arrayRoom[0]= Room(f);
     unsigned int i;
     for(i=1;i<NB_ROOM;i++)
