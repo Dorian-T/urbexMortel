@@ -1,4 +1,4 @@
-T_PATH = stc/txt/
+T_PATH = src/txt/
 
 B_PATH = src/core/building/
 
@@ -42,7 +42,7 @@ obj/Game.o: src/core/Game.h src/core/Game.cpp $(B_PATH)Building.h $(E_PATH)Playe
 obj/winTxt.o: $(T_PATH)winTxt.h $(T_PATH)winTxt.cpp 
 	g++ -g -Wall -c $(T_PATH)winTxt.cpp -o obj/winTxt.o
 
-obj/txtGame.o: $(T_PATH)txtGame.h $(T_PATH)txtGame.cpp /src/Game.h 
+obj/txtGame.o: $(T_PATH)txtGame.h $(T_PATH)txtGame.cpp src/core/Game.h 
 	g++ -g -Wall -c $(T_PATH)txtGame.cpp -o obj/txtGame.o
 
 obj/main_txt.o: src/txt/main_txt.cpp $(T_PATH)winTxt.h $(T_PATH)txtGame.h
