@@ -1,14 +1,27 @@
 #include "Game.h"
 
 Game::Game ()  {
-
+	bui = new Building;
+	pla = new Player;
 }
 
-const Building& Game::getBuilding() const {
+Game::~Game() {
+	if (bui!=NULL)
+	{
+		delete bui;
+	}
+	if (pla!=NULL)
+	{
+		delete pla;
+	}
+	
+}
+
+Building * Game::getBuilding() const {
     return bui;
 }
 
-const Player& Game::getPlayer() const {
+Player * Game::getPlayer() const {
     return pla;
 }
 
@@ -17,21 +30,21 @@ const Player& Game::getPlayer() const {
 void Game::actionClavier (const char touche) {
 	switch(touche) {
 		case 'q' :
-				pla.left(bui.getcurrentRoom());
+				pla->left(bui->getcurrentRoom());
 				break;
 		case 'd' :
-				pla.right(bui.getcurrentRoom());
+				pla->right(bui->getcurrentRoom());
 				break;
 		case 'z' :
-				pla.up(bui.getcurrentRoom());
+				pla->up(bui->getcurrentRoom());
 				break;
 		case 's' :
-				pla.down(bui.getcurrentRoom());
+				pla->down(bui->getcurrentRoom());
 				break;
 	}
 }
 
 void Game::actionsAutomatiques () {
-    pla.gravity(bui.getcurrentRoom());
+    pla->gravity(bui.getcurrentRoom());
 }
 

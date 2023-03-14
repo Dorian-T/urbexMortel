@@ -9,16 +9,17 @@ class Game
 
 private :
 
-	Building bui;
-	Player pla;
+	Building * bui;
+	Player * pla;
 
 
 public :
 
     Game ();
+    ~Game();
 
-    const Building& getBuilding() const;                      
-    const Player& getPlayer () const;                                                     
+    Building * getBuilding() const;                      
+    Player * getPlayer () const;                                                     
     void actionsAutomatiques ();
     void actionClavier(const char touche);          
 
