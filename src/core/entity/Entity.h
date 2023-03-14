@@ -9,7 +9,7 @@ class Entity {
     private:
 
         /**
-         * @brief position du coin haut gauche de la hitbox
+         * @brief position du coin bas gauche de la hitbox
          */
         Vector2D position;
 
