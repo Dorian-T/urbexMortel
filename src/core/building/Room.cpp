@@ -50,17 +50,3 @@ unsigned int Room::getDimY() const {
 Obstacle Room::getObstacle(const Vector2D & V) const {
     return arrayObstacle[V.getY()*dimX + V.getX()];
 }
-
-// TODO : ajouter la gestion des autres obstacles
-int Room::isMovePossible(const Vector2D & Position) const {
-    switch(getObstacle(Position)) {
-        case nothing:
-            return -1;
-        case barbedWire:
-            return 1;
-        case block:
-            return 0;
-        case door:
-            return 0;
-    }
-}

@@ -83,17 +83,6 @@ class Room {
          * @return Obstacle 
          */
         Obstacle getObstacle(const Vector2D & V) const; // pas besoin ? ah bon ?
-
-        /**
-         * @brief verifie si le deplacement est possible
-         * 
-         * @details retourne -1 si le deplacement est possible
-         * @details retourne un entier positif indiquant le nb de dégats si le déplacement est impossible
-         * 
-         * @param Position 
-         * @return int
-         */
-        int isMovePossible(const Vector2D & Position) const;
 };
 
 #endif

@@ -27,6 +27,20 @@ class Player : public Entity {
          */
         unsigned int timeInvincible;
 
+        /**
+         * @brief vérifie si le déplacement vers le haut est possible
+         * 
+         * @details renvoie -1 si le déplacement est possible
+         * @details retourne un entier positif indiquant le nombre de dégats si le déplacement est impossible
+         * 
+         * @param position 
+         * @param R 
+         * @return int 
+         */
+        int isMovePossibleUp(const Vector2D & position, Room * R) const;
+
+        int isMovePossibleDown(const Vector2D & position, Room * R) const;
+
     public:
         /**
          * @brief constructeur par défaut
@@ -39,7 +53,7 @@ class Player : public Entity {
          * @param s
          * @param h
          */
-        Player(const Vector2D & p, unsigned int h, unsigned int w, Skin s, unsigned int health);
+        Player(const Vector2D & p, Skin s, unsigned int health);
 
         /**
          * @brief baisse les points de vie
@@ -63,40 +77,52 @@ class Player : public Entity {
          * 
          * @param R
          */
-        void up(const Room & R);
+        void up(Room * R);
 
         /**
          * @brief déplacement vers la droite
          * 
          * @param R 
          */
-        void right(const Room & R);
+        void right(Room * R);
 
         /**
          * @brief déplacement vers le bas
          * 
          * @param R 
          */
-        void down(const Room & R);
+        void down(Room * R);
 
         /**
          * @brief déplacement vers la gauche
          * 
          * @param R 
          */
-        void left(const Room & R);
+        void left(Room * R);
 
         /**
          * @brief application de la gravité
          * 
          * @param R 
          */
-        void gravity(const Room & R);
+        void gravity(Room * R);
 
         /**
          * @brief test de non-regression
          */
         void regressionTest();
+
+        /**
+         * @brief verifie si le deplacement est possible
+         * 
+         * @details retourne -2 si le deplacement change de salle
+         * @details retourne -1 si le deplacement est possible
+         * @details retourne un entier positif indiquant le nb de dégats si le déplacement est impossible
+         * 
+         * @param Position 
+         * @return int
+         */
+        int isMovePossible(const Vector2D & Position, Room * R) const;
 };
 
 #endif
