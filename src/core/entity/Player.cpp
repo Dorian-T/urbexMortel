@@ -40,7 +40,7 @@ void Player::up(Building * B) { // peut-etre qu'il faudra modifier en passant a 
 		if(i == -1) setPosition(V);
 		else if(i > 0) decreaseHp(i);
 		else if(i == -3) {
-			V.setY(V.getY()-3);
+			V.setY(V.getY()-2);
 			setPosition(V);
 		}
 	}
@@ -97,7 +97,7 @@ void Player::down(Building * B) {
 	Vector2D V;
 	V.setX(getPosition().getX());
 	V.setY(getPosition().getY() + 1);
-	int i = isMovePossibleUp(V, B->getCurrentRoom());
+	int i = isMovePossibleDown(V, B->getCurrentRoom());
 	if(i == -1) setPosition(V);
 	else if(i > 0) decreaseHp(i);
 }
@@ -121,7 +121,7 @@ void Player::gravity(Building * B) { // a modifier : probleme avec les trappes
 }
 
 int Player::isMovePossibleGravity(const Vector2D & position, Room * R) const {
-	if(position.getX() < R->getDimX() && position.getY() < R->getDimY() && position.getX() > 0 && position.getY() > 0) {
+	if(position.getY() < R->getDimY()) {
 		Obstacle o = R->getObstacle(position);
 		if(o == nothing) return -1;
 		else if(o == barbedWire) return 1;
