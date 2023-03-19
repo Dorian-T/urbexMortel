@@ -12,9 +12,8 @@ Room::Room() {
     dimX = DIM_ROOM_X;
     dimY = DIM_ROOM_Y;
     arrayObstacle.resize(DIM_ROOM_X*DIM_ROOM_Y);
-    for(unsigned int i = 0; i < DIM_ROOM_X*DIM_ROOM_Y; i++) {
+    for(unsigned int i = 0; i < DIM_ROOM_X*DIM_ROOM_Y; i++)
         arrayObstacle[i] = nothing;
-    }
 }
 
 Room::Room(const std::string & filename) {
@@ -25,7 +24,7 @@ Room::Room(const std::string & filename) {
         file >> dimY;
         arrayObstacle.resize( dimX*dimY);        
         for(unsigned int i = 0; i < dimX*dimY; i++) {
-            int tmp;
+            char tmp;
             file >> tmp;
             arrayObstacle[i] = (Obstacle)tmp;
         }
@@ -36,9 +35,8 @@ Room::Room(const std::string & filename) {
         dimX = DIM_ROOM_X;
         dimY = DIM_ROOM_Y;
         arrayObstacle.resize(DIM_ROOM_X*DIM_ROOM_Y);
-        for(unsigned int i = 0; i < DIM_ROOM_X*DIM_ROOM_Y; i++) {
+        for(unsigned int i = 0; i < DIM_ROOM_X*DIM_ROOM_Y; i++)
             arrayObstacle[i] = nothing;
-        }
     }
 }
 
@@ -79,7 +77,6 @@ void Room::regressionTest() {
     for(unsigned int i = 0; i < 10; i++)
         for(unsigned int j = 0; j < 15; j++) {
             o = (Obstacle)R.getObstacle(Vector2D(j, i));
-            cout << o << endl;
             assert(o == nothing || o == barbedWire || o == block || o == door || o == ladder || o == trapdoor);
         }
     cout << "\tTest du constructeur depuis un fichier : OK" << endl;
