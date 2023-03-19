@@ -78,7 +78,12 @@ class Room {
          * @param V 
          * @return Obstacle 
          */
-        Obstacle getObstacle(const Vector2D & V) const; // pas besoin ? ah bon ?
+        Obstacle getObstacle(const Vector2D & V) const;
+
+        /**
+         * @brief Test de regression
+         */
+        void regressionTest();
 };
 
 #endif

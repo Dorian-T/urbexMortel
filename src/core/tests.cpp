@@ -15,7 +15,8 @@ int main () {
 	// Player P;
 	// P.regressionTest();
 
-	// TODO : Room
+	Room R;
+	R.regressionTest();
 
 	Building B;
 	B.regressionTest();
