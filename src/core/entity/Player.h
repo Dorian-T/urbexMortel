@@ -144,6 +144,13 @@ class Player : public Entity {
         void gravity(Building * B);
 
         /**
+         * @brief Get the Hp object
+         * 
+         * @return unsigned int 
+         */
+        unsigned int getHp();
+
+        /**
          * @brief test de non-regression
          */
         void regressionTest();
