@@ -96,7 +96,7 @@ void WinTXT::print (int x, int y, char c) {
     win[y*dimx+x] = c;
 }
 
-void WinTXT::print (int x, int y, char* c) {
+void WinTXT::print (int x, int y,const char* c) {
     int i=0;
     while (c[i]!='\0') {print(x+i,y,c[i]);++i;}
 }

@@ -146,9 +146,7 @@ void Player::regressionTest() {
 	assert(P.skin == F), assert(P.hp == 3); assert(P.timeInvincible == 0);
 	cout << "\tconstructeur parametre : OK" << endl;
 
-	cout << getHp()<<endl; /* je teste des trucs*/
 	assert(P.decreaseHp(1) == true);
-	cout << getHp()<<endl; /* je teste des trucs*/
 	assert(P.hp == 2);
 	assert(P.timeInvincible == 5);
 	P.decreaseTimeInvincible();
@@ -159,7 +157,6 @@ void Player::regressionTest() {
 	assert(P.decreaseHp(2) == false);
 	assert(P.hp == 0);
 	cout << "\tdecreaseHp : OK" << endl;
-	cout << getHp()<<endl; /* je teste des trucs*/
 
 	// Room * R = new Room("data/test.txt");
 	// P.left(R); // gauche qui fonctionne
