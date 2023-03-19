@@ -27,7 +27,9 @@ void txtAff(WinTXT & win, const Game & ga) {
 	win.print(pla->getPosition().getX(),pla->getPosition().getY()-1,'M');
 	
 	unsigned int hp = pla->getHp();
+	unsigned int TimeInv = pla->getTimeInvincible();
 	win.print(0,18,std::to_string(hp).c_str());
+	win.print(2,18,std::to_string(TimeInv).c_str());
 	
 	
 
