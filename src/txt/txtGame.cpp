@@ -21,6 +21,9 @@ void txtAff(WinTXT & win, const Game & ga) {
 	for(unsigned int x=0;x<bui->getcurrentRoom()->getDimX();++x)
 		for(unsigned int y=0;y<bui->getcurrentRoom()->getDimY();++y)
 			win.print( x, y,(char) bui->getcurrentRoom()->getObstacle(Vector2D(x,y)));
+	for(unsigned int x=0;x<bui->getcurrentRoom()->getDimX();++x)
+		for(unsigned int y=0;y<bui->getcurrentRoom()->getDimY();++y)
+			win.print( x, y,".");		
 
 	win.print(pla->getPosition().getX(),pla->getPosition().getY(),'P');
 	
