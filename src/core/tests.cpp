@@ -2,6 +2,7 @@
 #include "entity/Entity.h"
 #include "entity/Player.h"
 #include "building/Room.h"
+#include "building/Building.h"
 
 int main () {
 
@@ -15,6 +16,9 @@ int main () {
 	// P.regressionTest();
 
 	// TODO : Room
+
+	Building B;
+	B.regressionTest();
 
 	return 0;
 }

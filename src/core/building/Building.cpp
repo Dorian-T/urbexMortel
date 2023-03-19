@@ -7,7 +7,7 @@ using namespace std;
 
 Building::Building() {
     int n;
-    arrayRoom.resize( NB_ROOM);
+    arrayRoom.resize(NB_ROOM);
     arrayRoom[0] = Room("data/entrance.txt");
     for(unsigned int i = 1; i < arrayRoom.size()-1; i++) {
         n = rand() % 3;
@@ -22,15 +22,7 @@ Building::Building() {
     currentRoom = 0;
 }
 
-Building::~Building()
-{
-    //if (arrayRoom != NULL) delete [] arrayRoom;
-    //arrayRoom = NULL;
-    //cout<<"delete building"<<endl;
-}
-
-Room* Building::getcurrentRoom()
-{
+Room* Building::getcurrentRoom() {
     return &arrayRoom[currentRoom];
 }
 
@@ -40,18 +32,18 @@ void Building::goToNextRoom() {
 
 void Building::regressionTest()
 {
-    cout << "Test de regression de la classe Building" << endl;
+    cout << endl << "Test de regression de la classe Building" << endl;
 
-    //assert(arrayRoom != NULL && currentRoom == 0);
+    assert(arrayRoom.capacity() == NB_ROOM && arrayRoom.size() == NB_ROOM);
+    assert(currentRoom == 0);
     cout<<"\tconstructeur par defaut : OK"<<endl;
 
     goToNextRoom();
     assert(currentRoom == 1);
-    cout<<"\tmethode gotonextRoom : OK"<<endl;
+    cout<<"\tgoToNextRoom : OK"<<endl;
 
     assert(getcurrentRoom() == &arrayRoom[1]);
-    cout<<"\tmethode getcurrentRoom : OK"<<endl;
+    cout<<"\tmethode getCurrentRoom : OK"<<endl;
 
     cout << "Test de regression de la classe Building : OK" << endl;
-
 }

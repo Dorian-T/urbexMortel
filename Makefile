@@ -12,8 +12,8 @@ T_OBJ = obj/winTxt.o obj/txtGame.o
 
 all: bin/tests bin/main_txt
 
-bin/tests: obj/tests.o obj/Room.o $(E_OBJ)
-	g++ -g -Wall obj/tests.o obj/Room.o $(E_OBJ) -o bin/tests
+bin/tests: obj/tests.o $(E_OBJ) $(B_OBJ)
+	g++ -g -Wall obj/tests.o $(E_OBJ) $(B_OBJ) -o bin/tests
 
 obj/tests.o: src/core/tests.cpp $(B_PATH)Room.h $(E_HEADERS)
 	g++ -g -Wall -c src/core/tests.cpp -o obj/tests.o

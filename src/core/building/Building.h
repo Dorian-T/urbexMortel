@@ -30,11 +30,6 @@ class Building {
         Building();
 
         /**
-         * @brief Destructeur
-         */
-        ~Building();
-
-        /**
          * @brief Retourne la salle courante
          * 
          * @return Room* 
