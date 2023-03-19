@@ -25,6 +25,7 @@ void txtAff(WinTXT & win, const Game & ga) {
 	
 	win.print(pla->getPosition().getX(),pla->getPosition().getY(),'M');
 	win.print(pla->getPosition().getX(),pla->getPosition().getY()-1,'M');
+	win.print(bui->getCurrentRoom()->getDimX(),0,(char)pla->getHp());
 	
 	
 
@@ -32,7 +33,7 @@ void txtAff(WinTXT & win, const Game & ga) {
 }
 
 void txtBoucle (Game & ga) {
-    WinTXT win (ga.getBuilding()->getCurrentRoom()->getDimX(),ga.getBuilding()->getCurrentRoom()->getDimY());
+    WinTXT win (ga.getBuilding()->getCurrentRoom()->getDimX()+1,ga.getBuilding()->getCurrentRoom()->getDimY()+1);
 
 	bool ok = true;
 	int c;

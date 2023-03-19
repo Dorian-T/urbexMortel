@@ -126,6 +126,10 @@ int Player::isMovePossibleGravity(const Vector2D & position, Room * R) const {
 	return 0;
 }
 
+unsigned int Player::getHp() {
+	return hp;
+}
+
 void Player::regressionTest() {
 	cout << endl << "Test de la classe Player" << endl;
 
