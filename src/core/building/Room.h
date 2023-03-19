@@ -59,11 +59,6 @@ class Room {
         Room(const std::string & filename);
 
         /**
-         * @brief Destructeur
-         */
-        ~Room();
-
-        /**
          * @brief Retourne la dimension en X
          * 
          * @return unsigned int 
