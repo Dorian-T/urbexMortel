@@ -23,8 +23,8 @@ void txtAff(WinTXT & win, const Game & ga) {
 			win.print( x, y,(char) bui->getcurrentRoom()->getObstacle(Vector2D(x,y)));
 	
 	
-	win.print(pla->getPosition().getX(),pla->getPosition().getY(),'P');
-	win.print(pla->getPosition().getX(),pla->getPosition().getY()-1,'P');
+	win.print(pla->getPosition().getX(),pla->getPosition().getY(),'M');
+	win.print(pla->getPosition().getX(),pla->getPosition().getY()-1,'M');
 	
 	
 
