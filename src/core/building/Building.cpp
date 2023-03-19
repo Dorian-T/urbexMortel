@@ -32,7 +32,7 @@ void Building::goToNextRoom() {
 
 void Building::regressionTest()
 {
-    cout << "Test de regression de la classe Building" << endl;
+    cout << endl << "Test de regression de la classe Building" << endl;
 
     assert(arrayRoom.capacity() == NB_ROOM && arrayRoom.size() == NB_ROOM);
     assert(currentRoom == 0);
