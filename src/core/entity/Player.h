@@ -9,7 +9,6 @@ enum Skin {
     M,
     F
 };
-
 class Player : public Entity {
     private:
 
@@ -54,8 +53,28 @@ class Player : public Entity {
          */
         int isMovePossibleSide(const Vector2D & position, Room * R) const;
 
+        /**
+         * @brief vérifie si le déplacement vers le bas est possible
+         * 
+         * @details retourne -1 si le déplacement est possible
+         * @details retourne un entier positif indiquant le nombre de dégats si le déplacement est impossible
+         * 
+         * @param position 
+         * @param R 
+         * @return int 
+         */
         int isMovePossibleDown(const Vector2D & position, Room * R) const;
 
+        /**
+         * @brief vérifie si le déplacement vers le bas est possible
+         * 
+         * @details retourne -1 si le déplacement est possible
+         * @details retourne un entier positif indiquant le nombre de dégats si le déplacement est impossible
+         * 
+         * @param position 
+         * @param R 
+         * @return int 
+         */
         int isMovePossibleGravity(const Vector2D & position, Room * R) const;
 
     public:
@@ -128,18 +147,6 @@ class Player : public Entity {
          * @brief test de non-regression
          */
         void regressionTest();
-
-        /**
-         * @brief verifie si le deplacement est possible
-         * 
-         * @details retourne -2 si le deplacement change de salle
-         * @details retourne -1 si le deplacement est possible
-         * @details retourne un entier positif indiquant le nb de dégats si le déplacement est impossible
-         * 
-         * @param Position 
-         * @return int
-         */
-        int isMovePossible(const Vector2D & Position, Building * B) const;
 };
 
 #endif
