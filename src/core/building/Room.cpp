@@ -81,6 +81,5 @@ void Room::regressionTest() {
         }
     cout << "\tTest du constructeur depuis un fichier : OK" << endl;
 
-
     cout << "Test de la classe Room : OK" << endl;
 }
