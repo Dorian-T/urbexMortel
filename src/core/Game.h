@@ -20,7 +20,7 @@ public :
 
     Building * getBuilding() const;                      
     Player * getPlayer () const;                                                     
-    void actionsAutomatiques ();
+    void actionsAutomatiques (bool b);
     void actionClavier(const char touche);          
 
 };

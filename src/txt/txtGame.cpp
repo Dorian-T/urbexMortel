@@ -36,7 +36,7 @@ void txtAff(WinTXT & win, const Game & ga) {
 
 void txtBoucle (Game & ga) {
     WinTXT win (ga.getBuilding()->getCurrentRoom()->getDimX()+1,ga.getBuilding()->getCurrentRoom()->getDimY()+1);
-
+	bool gra = true;
 	bool ok = true;
 	int c;
 
@@ -49,7 +49,8 @@ void txtBoucle (Game & ga) {
 		usleep(100000);
         #endif // WIN32
 
-		ga.actionsAutomatiques();
+		
+		ga.actionsAutomatiques(gra);
 
 		c = win.getCh();
 		switch (c) {

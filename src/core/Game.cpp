@@ -46,8 +46,11 @@ void Game::actionClavier (const char touche) {
 	}
 }
 
-void Game::actionsAutomatiques () {
-    pla->gravity(bui);
+void Game::actionsAutomatiques (bool b) {
+    if(b == true){
+		pla->gravity(bui); b= false;
+		}
+	else b=true;
 	if(pla->getTimeInvincible()>=0){
 		pla->decreaseTimeInvincible();
 	}
