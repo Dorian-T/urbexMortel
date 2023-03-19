@@ -3,7 +3,7 @@
 using namespace std;
 Game::Game ()  {
 	bui = new Building;
-	pla = new Player;
+	pla = new Player(Vector2D(16,17),M,3);
 }
 
 Game::~Game() {
