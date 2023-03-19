@@ -2,6 +2,7 @@
 #define _PLAYER
 
 #include "Entity.h"
+#include "../building/Room.h"
 #include "../building/Building.h"
 
 enum Skin {
@@ -37,7 +38,7 @@ class Player : public Entity {
          * @param R 
          * @return int 
          */
-        int isMovePossibleUp(const Vector2D & position, Building * B) const;
+        int isMovePossibleUp(const Vector2D & position, Room * R) const;
 
         /**
          * @brief vérifie si le déplacement vers la gauche ou la droite est possible
@@ -51,11 +52,11 @@ class Player : public Entity {
          * @param R 
          * @return int 
          */
-        int isMovePossibleSide(const Vector2D & position, Building * B) const;
+        int isMovePossibleSide(const Vector2D & position, Room * R) const;
 
-        int isMovePossibleDown(const Vector2D & position, Building * B) const;
+        int isMovePossibleDown(const Vector2D & position, Room * R) const;
 
-        int isMovePossibleGravity(const Vector2D & position, Building * B) const;
+        int isMovePossibleGravity(const Vector2D & position, Room * R) const;
 
     public:
         /**
