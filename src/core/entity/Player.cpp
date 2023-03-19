@@ -31,7 +31,7 @@ void Player::decreaseTimeInvincible() {
 	timeInvincible--;
 }
 
-void Player::up(Room * R) { // peut-etre qu'il faudra modifier en passant a la version graphique
+void Player::up(Building * B) { // peut-etre qu'il faudra modifier en passant a la version graphique
 	Vector2D V;
 	V.setX(getPosition().getX());
 	if(getPosition().getY() > 1) {
@@ -39,21 +39,26 @@ void Player::up(Room * R) { // peut-etre qu'il faudra modifier en passant a la v
 		int i = isMovePossibleUp(V, R);
 		if(i == -1) setPosition(V);
 		else if(i > 0) decreaseHp(i);
+		else if(i == -3) {
+			V.setY(V.getY()-3);
+			setPosition(V);
+		}
 	}
 }
 
-int Player::isMovePossibleUp(const Vector2D & position, Room * R) const {
-	if(position.getX() < R->getDimX() && position.getY() < R->getDimY() && position.getX() > 0 && position.getY() > 0) {
-		Vector2D V(position.getX(), position.getY() + 1);
-		Obstacle o = R->getObstacle(V);
-		if(o == nothing || o == trapdoor || o == ladder) return -1; // TODO: quand on monte sur une trappe, on monte beaucoup
+int Player::isMovePossibleUp(const Vector2D & position, Building * B) const {
+	Vector2D tete(position.getX(), position.getY() + 1);
+	if(position.getX() < B->getCurrentRoom()->getDimX() && position.getY() < B->getCurrentRoom()->getDimY() && position.getX() > 0 && tete.getY() > 0) {
+		Obstacle o = B->getCurrentRoom()->getObstacle(tete);
+		if(o == nothing || o == ladder) return -1; // TODO: quand on monte sur une trappe, on monte beaucoup
 		else if(o == barbedWire) return 1;
+		else if(o == trapdoor) return -3;
 		else return 0;
 	}
 	else return 0;
 }
 
-void Player::right(Room * R) {
+void Player::right(Building * B) {
 	Vector2D V;
 	V.setY(getPosition().getY());
 	V.setX(getPosition().getX() + 1);
@@ -63,7 +68,7 @@ void Player::right(Room * R) {
 	// else if(i == -2) R->goToNextRoom();
 }
 
-void Player::left (Room * R) {
+void Player::left (Building * B) {
 	Vector2D V;
 	V.setY(getPosition().getY());
 	if(getPosition().getX() > 1) {
@@ -74,7 +79,7 @@ void Player::left (Room * R) {
 	}
 }
 
-int Player::isMovePossibleSide(const Vector2D & position, Room * R) const {
+int Player::isMovePossibleSide(const Vector2D & position, Building * B) const {
 	if(position.getX() < R->getDimX() && position.getY() < R->getDimY() && position.getX() > 0 && position.getY() > 0) {
 		Vector2D V(position.getX(), position.getY() + 1);
 		Obstacle o1 = R->getObstacle(position);
@@ -87,7 +92,7 @@ int Player::isMovePossibleSide(const Vector2D & position, Room * R) const {
 	else return 0;
 }
 
-void Player::down(Room * R) {
+void Player::down(Building * B) {
 	Vector2D V;
 	V.setX(getPosition().getX());
 	V.setY(getPosition().getY() + 1);
@@ -96,7 +101,7 @@ void Player::down(Room * R) {
 	else if(i > 0) decreaseHp(i);
 }
 
-int Player::isMovePossibleDown(const Vector2D & position, Room * R) const {
+int Player::isMovePossibleDown(const Vector2D & position, Building * B) const {
 	if(position.getX() < R->getDimX() && position.getY() < R->getDimY() && position.getX() > 0 && position.getY() > 0) {
 		Obstacle o = R->getObstacle(position);
 		if(o == nothing || o == trapdoor || o == ladder) return -1;
@@ -106,7 +111,7 @@ int Player::isMovePossibleDown(const Vector2D & position, Room * R) const {
 	else return 0;
 }
 
-void Player::gravity(Room * R) { // a modifier : probleme avec les trappes
+void Player::gravity(Building * B) { // a modifier : probleme avec les trappes
 	Vector2D V;
 	V.setX(getPosition().getX());
 	V.setY(getPosition().getY() + 1);
@@ -115,7 +120,7 @@ void Player::gravity(Room * R) { // a modifier : probleme avec les trappes
 	else if(i > 0) decreaseHp(i);
 }
 
-int Player::isMovePossibleGravity(const Vector2D & position, Room * R) const {
+int Player::isMovePossibleGravity(const Vector2D & position, Building * B) const {
 	if(position.getX() < R->getDimX() && position.getY() < R->getDimY() && position.getX() > 0 && position.getY() > 0) {
 		Obstacle o = R->getObstacle(position);
 		if(o == nothing) return -1;
@@ -149,7 +154,7 @@ void Player::regressionTest() {
 	assert(P.hp == 0);
 	cout << "\tdecreaseHp : OK" << endl;
 
-	Room * R = new Room("data/test.txt");
+	Building * B = new Room("data/test.txt");
 	P.left(R); // gauche qui fonctionne
 	assert(P.getPosition().getX() == 1 && P.getPosition().getY() == 3);
 	P.left(R); // gauche qui ne fonctionne pas

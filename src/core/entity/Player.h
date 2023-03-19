@@ -2,7 +2,7 @@
 #define _PLAYER
 
 #include "Entity.h"
-#include "../building/Room.h"
+#include "../building/Building.h"
 
 enum Skin {
     M,
@@ -37,7 +37,7 @@ class Player : public Entity {
          * @param R 
          * @return int 
          */
-        int isMovePossibleUp(const Vector2D & position, Room * R) const;
+        int isMovePossibleUp(const Vector2D & position, Building * B) const;
 
         /**
          * @brief vérifie si le déplacement vers la gauche ou la droite est possible
@@ -51,11 +51,11 @@ class Player : public Entity {
          * @param R 
          * @return int 
          */
-        int isMovePossibleSide(const Vector2D & position, Room * R) const;
+        int isMovePossibleSide(const Vector2D & position, Building * B) const;
 
-        int isMovePossibleDown(const Vector2D & position, Room * R) const;
+        int isMovePossibleDown(const Vector2D & position, Building * B) const;
 
-        int isMovePossibleGravity(const Vector2D & position, Room * R) const;
+        int isMovePossibleGravity(const Vector2D & position, Building * B) const;
 
     public:
         /**
@@ -93,35 +93,35 @@ class Player : public Entity {
          * 
          * @param R
          */
-        void up(Room * R);
+        void up(Building * B);
 
         /**
          * @brief déplacement vers la droite
          * 
          * @param R 
          */
-        void right(Room * R);
+        void right(Building * B);
 
         /**
          * @brief déplacement vers le bas
          * 
          * @param R 
          */
-        void down(Room * R);
+        void down(Building * B);
 
         /**
          * @brief déplacement vers la gauche
          * 
          * @param R 
          */
-        void left(Room * R);
+        void left(Building * B);
 
         /**
          * @brief application de la gravité
          * 
          * @param R 
          */
-        void gravity(Room * R);
+        void gravity(Building * B);
 
         /**
          * @brief test de non-regression
@@ -138,7 +138,7 @@ class Player : public Entity {
          * @param Position 
          * @return int
          */
-        int isMovePossible(const Vector2D & Position, Room * R) const;
+        int isMovePossible(const Vector2D & Position, Building * B) const;
 };
 
 #endif

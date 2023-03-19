@@ -34,7 +34,7 @@ class Building {
          * 
          * @return Room* 
          */
-        Room* getcurrentRoom();
+        Room* getCurrentRoom();
 
         /**
          * @brief Passe à la salle suivante

@@ -22,7 +22,7 @@ Building::Building() {
     currentRoom = 0;
 }
 
-Room* Building::getcurrentRoom() {
+Room* Building::getCurrentRoom() {
     return &arrayRoom[currentRoom];
 }
 
@@ -42,7 +42,7 @@ void Building::regressionTest()
     assert(currentRoom == 1);
     cout<<"\tgoToNextRoom : OK"<<endl;
 
-    assert(getcurrentRoom() == &arrayRoom[1]);
+    assert(getCurrentRoom() == &arrayRoom[1]);
     cout<<"\tmethode getCurrentRoom : OK"<<endl;
 
     cout << "Test de regression de la classe Building : OK" << endl;
