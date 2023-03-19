@@ -130,6 +130,10 @@ unsigned int Player::getHp() {
 	return hp;
 }
 
+unsigned int Player::getTimeInvincible() {
+	return timeInvincible;
+}
+
 void Player::regressionTest() {
 	cout << endl << "Test de la classe Player" << endl;
 

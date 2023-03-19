@@ -151,6 +151,12 @@ class Player : public Entity {
         unsigned int getHp();
 
         /**
+         * @brief Get the Time Invincible object
+         * 
+         * @return unsigned int 
+         */
+        unsigned int getTimeInvincible();
+        /**
          * @brief test de non-regression
          */
         void regressionTest();
