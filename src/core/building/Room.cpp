@@ -38,6 +38,7 @@ Room::Room(const std::string & filename) {
         for(unsigned int i = 0; i < DIM_ROOM_X*DIM_ROOM_Y; i++)
             arrayObstacle[i] = nothing;
     }
+    file.close();
 }
 
 unsigned int Room::getDimX() const {

@@ -75,6 +75,7 @@ void txtBoucle (Game & ga) {
 	if (ga.getPlayer()->getHp()==0)	{
 		ok = false;
 		}
+		ok =false ;
 	} while (ok);
 
 }
