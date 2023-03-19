@@ -18,7 +18,7 @@ Building::Building() {
         else
             arrayRoom[i] = Room("data/room3.txt");
     }
-    arrayRoom[NB_ROOM-1] = Room("data/exit.txt");
+    arrayRoom[arrayRoom.size()-1] = Room("data/exit.txt");
     currentRoom = 0;
 }
 
