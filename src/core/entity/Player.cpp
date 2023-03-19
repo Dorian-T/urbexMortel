@@ -64,7 +64,10 @@ void Player::right(Building * B) {
 	int i = isMovePossibleSide(V, B->getCurrentRoom());
 	if(i == -1) setPosition(V);
 	else if(i > 0) decreaseHp(i);
-	else if(i == -2) B->goToNextRoom();
+	else if(i == -2) {
+		B->goToNextRoom();
+		setPosition(Vector2D(1,B->getCurrentRoom()->getDimY()-2));
+	}
 }
 
 void Player::left (Building * B) {

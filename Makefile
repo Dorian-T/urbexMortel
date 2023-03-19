@@ -33,7 +33,7 @@ obj/Player.o: $(E_PATH)Player.h $(E_PATH)Player.cpp $(E_PATH)Entity.h
 
 # building 
 
-obj/Building.o: $(B_PATH)Building.h $(B_PATH)Building.cpp $(B_PATH)Room.h
+obj/Building.o: $(B_PATH)Building.h $(B_PATH)Building.cpp $(B_PATH)Room.h 
 	g++ -g -Wall -c $(B_PATH)Building.cpp -o obj/Building.o
 
 obj/Room.o: $(B_PATH)Room.h $(B_PATH)Room.cpp $(E_HEADERS)
