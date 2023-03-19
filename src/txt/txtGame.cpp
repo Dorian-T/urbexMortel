@@ -18,13 +18,14 @@ void txtAff(WinTXT & win, const Game & ga) {
 	sleep(1);
 	win.clear();
 
-	for(unsigned int x=0;x<bui->getcurrentRoom()->getDimX();++x)
-		for(unsigned int y=0;y<bui->getcurrentRoom()->getDimY();++y)
-			win.print( x, y,(char) bui->getcurrentRoom()->getObstacle(Vector2D(x,y)));
+	for(unsigned int x=0;x<bui->getCurrentRoom()->getDimX();++x)
+		for(unsigned int y=0;y<bui->getCurrentRoom()->getDimY();++y)
+			win.print( x, y,(char) bui->getCurrentRoom()->getObstacle(Vector2D(x,y)));
 	
 	
 	win.print(pla->getPosition().getX(),pla->getPosition().getY(),'M');
 	win.print(pla->getPosition().getX(),pla->getPosition().getY()-1,'M');
+	win.print(bui->getCurrentRoom()->getDimX(),0,(char)pla->getHp());
 	
 	
 
@@ -32,7 +33,7 @@ void txtAff(WinTXT & win, const Game & ga) {
 }
 
 void txtBoucle (Game & ga) {
-    WinTXT win (ga.getBuilding()->getcurrentRoom()->getDimX(),ga.getBuilding()->getcurrentRoom()->getDimY());
+    WinTXT win (ga.getBuilding()->getCurrentRoom()->getDimX()+1,ga.getBuilding()->getCurrentRoom()->getDimY()+1);
 
 	bool ok = true;
 	int c;

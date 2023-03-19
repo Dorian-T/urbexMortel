@@ -32,21 +32,21 @@ Player * Game::getPlayer() const {
 void Game::actionClavier (const char touche) {
 	switch(touche) {
 		case 'q' :
-				pla->left(bui->getcurrentRoom());
+				pla->left(bui);
 				break;
 		case 'd' :
-				pla->right(bui->getcurrentRoom());
+				pla->right(bui);
 				break;
 		case 'z' :
-				pla->up(bui->getcurrentRoom());
+				pla->up(bui);
 				break;
 		case 's' :
-				pla->down(bui->getcurrentRoom());
+				pla->down(bui);
 				break;
 	}
 }
 
 void Game::actionsAutomatiques () {
-    pla->gravity(bui->getcurrentRoom());
+    pla->gravity(bui);
 }
 
