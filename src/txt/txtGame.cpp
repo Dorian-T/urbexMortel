@@ -25,7 +25,7 @@ void txtAff(WinTXT & win, const Game & ga) {
 	
 	win.print(pla->getPosition().getX(),pla->getPosition().getY(),'M');
 	win.print(pla->getPosition().getX(),pla->getPosition().getY()-1,'M');
-	win.print(0,bui->getCurrentRoom()->getDimY(),(char)pla->getHp());
+	win.print(0,0,(char)pla->getHp());
 	
 	
 
