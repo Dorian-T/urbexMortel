@@ -7,8 +7,8 @@ using namespace std;
 
 Building::Building(unsigned int nb) {
     int n;
-    Nb_ROOM=nb;
-    arrayRoom.resize(Nb_ROOM);
+    nbRoom = nb;
+    arrayRoom.resize(nbRoom);
     arrayRoom[0] = Room("data/entrance.txt");
     for(unsigned int i = 1; i < arrayRoom.size()-1; i++) {
         n = rand() % 3;
@@ -20,6 +20,13 @@ Building::Building(unsigned int nb) {
             arrayRoom[i] = Room("data/room3.txt");
     }
     arrayRoom[arrayRoom.size()-1] = Room("data/exit.txt");
+    currentRoom = 0;
+}
+
+Building::Building(std::string filename) {
+    nbRoom = 1;
+    arrayRoom.resize(nbRoom);
+    arrayRoom[0] = Room(filename);
     currentRoom = 0;
 }
 
@@ -36,7 +43,7 @@ void Building::goToNextRoom() {
 }
 
 bool Building::isLastRoom() {
-    if(currentRoom ==Nb_ROOM-1) return true;
+    if(currentRoom == nbRoom-1) return true;
     return false;
 }
 
@@ -52,9 +59,16 @@ void Building::regressionTest()
 {
     cout << endl << "Test de regression de la classe Building" << endl;
 
-    assert(arrayRoom.capacity() == Nb_ROOM && arrayRoom.size() == Nb_ROOM);
+    assert(nbRoom != 0);
+    assert(arrayRoom.capacity() == nbRoom && arrayRoom.size() == nbRoom);
     assert(currentRoom == 0);
     cout<<"\tconstructeur par defaut : OK"<<endl;
+
+    Building B("data/entrance.txt");
+    assert(nbRoom == 1);
+    assert(B.arrayRoom.capacity() == B.nbRoom && B.arrayRoom.size() == B.nbRoom);
+    assert(B.currentRoom == 0);
+    cout<<"\tconstructeur depuis un fichier : OK"<<endl;
 
     goToNextRoom();
     assert(currentRoom == 1);

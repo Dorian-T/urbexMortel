@@ -175,32 +175,5 @@ void Player::regressionTest() {
 	assert(P.hp == 0);
 	cout << "\tdecreaseHp : OK" << endl;
 
-	// Room * R = new Room("data/test.txt");
-	// P.left(R); // gauche qui fonctionne
-	// assert(P.getPosition().getX() == 1 && P.getPosition().getY() == 3);
-	// P.left(R); // gauche qui ne fonctionne pas
-	// assert(P.getPosition().getX() == 1 && P.getPosition().getY() == 3);
-	// cout << "\tleft : OK" << endl;
-
-	// P.up(R); // haut qui fonctionne
-	// assert(P.getPosition().getX() == 1 && P.getPosition().getY() == 2);
-	// P.up(R); // haut qui ne fonctionne pas
-	// assert(P.getPosition().getX() == 1 && P.getPosition().getY() == 2);
-	// cout << "\tup : OK" << endl;
-
-	// P.gravity(R); // gravite qui fonctionne
-	// assert(P.getPosition().getX() == 1 && P.getPosition().getY() == 3);
-	// P.gravity(R); // gravite qui ne fonctionne pas
-	// assert(P.getPosition().getX() == 1 && P.getPosition().getY() == 3);
-	// cout << "\tgravity : OK" << endl;
-
-	// P.right(R); // droite qui fonctionne
-	// assert(P.getPosition().getX() == 2 && P.getPosition().getY() == 3);
-	// P.right(R); // droite qui ne fonctionne pas
-	// assert(P.getPosition().getX() == 2 && P.getPosition().getY() == 3);
-	// cout << "\tright : OK" << endl;
-
-	// TODO : down
-
 	cout << "Test de la classe Player : OK" << endl;
  }

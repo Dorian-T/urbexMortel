@@ -2,8 +2,8 @@
 #define _BUILDING
 
 #include "Room.h"
+#include <string>
 #include <vector>
-/*const unsigned int NB_ROOM = 10;*/
 
 /**
  * @brief Ensemble des niveaux du jeu
@@ -23,10 +23,9 @@ class Building {
         unsigned int currentRoom;
 
         /**
-         * @brief nombre de salle contenant le buiding
-         * 
+         * @brief nombre de salle dans le buiding
          */
-        unsigned int Nb_ROOM;
+        unsigned int nbRoom;
 
     public:
 
@@ -34,6 +33,8 @@ class Building {
          * @brief constructeur avec paramètre de nombre de salle 
          */
         Building(unsigned int Nb);
+
+        Building(std::string filename);
 
         /**
          * @brief Retourne la salle courante
@@ -43,7 +44,7 @@ class Building {
         Room* getCurrentRoom();
 
         /**
-         * @brief Get the Int Current Room object
+         * @brief Retourne l'indice de la salle courante
          * 
          * @return unsigned int 
          */
