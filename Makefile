@@ -11,13 +11,13 @@ T_HEADERS = $(T_PATH)winTxt.h $(T_PATH)txtGame.h
 T_OBJ = obj/winTxt.o obj/txtGame.o
 
 S_PATH = src/sfml/
-# S_HEADERS = 
+S_HEADERS = mainSFML.h
 # S_OBJ = 
 SFML_O = -I/usr/include/SFML 
 SFML_E = -lsfml-graphics -lsfml-window -lsfml-system
 
 
-all: bin/tests bin/mainTxt bin/mainSfml
+all: bin/tests bin/mainTxt bin/mainSFML
 
 
 # tests
@@ -73,11 +73,11 @@ bin/mainTxt: obj/mainTxt.o $(T_OBJ) $(E_OBJ) $(B_OBJ) obj/Game.o
 
 # sfml
 
-obj/mainSfml.o: $(S_PATH)mainSfml.cpp
-	g++ -g -Wall -c $(S_PATH)mainSfml.cpp -o obj/mainSfml.o $(SFML_O)
+obj/mainSFML.o: $(S_PATH)mainSFML.cpp
+	g++ -g -Wall -c $(S_PATH)mainSFML.cpp -o obj/mainSFML.o $(SFML_O)
 
-bin/mainSfml: obj/mainSfml.o
-	g++ -g -Wall obj/mainSfml.o -o bin/mainSfml $(SFML_E)
+bin/mainSFML: obj/mainSFML.o
+	g++ -g -Wall obj/mainSFML.o -o bin/mainSFML $(SFML_E)
 
 
 clean:
