@@ -70,7 +70,7 @@ bool Player::right(Building * B) {
 	else if(i > 0) decreaseHp(i);
 	else if(i == -2) {
 		b = B->finish();
-		if(b==true)setPosition(Vector2D(1,B->getCurrentRoom()->getDimY()-2));
+		if(b)setPosition(Vector2D(1,B->getCurrentRoom()->getDimY()-2));
 	}
 	return b;
 }
