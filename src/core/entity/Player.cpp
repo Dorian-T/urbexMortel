@@ -32,16 +32,18 @@ void Player::decreaseTimeInvincible() {
 }
 
 void Player::up(Building * B) { // peut-etre qu'il faudra modifier en passant a la version graphique
-	Vector2D V;
-	V.setX(getPosition().getX());
-	if(getPosition().getY() > 1) {
-		V.setY(getPosition().getY() - 1);
-		int i = isMovePossibleUp(V, B->getCurrentRoom());
-		if(i == -1) setPosition(V);
-		else if(i > 0) decreaseHp(i);
-		else if(i == -3) {
-			V.setY(V.getY()-2);
-			setPosition(V);
+	if(standingOnBlock(B))
+	{Vector2D V;
+		V.setX(getPosition().getX());
+		if(getPosition().getY() > 1) {
+			V.setY(getPosition().getY() - 1);
+			int i = isMovePossibleUp(V, B->getCurrentRoom());
+			if(i == -1) setPosition(V);
+			else if(i > 0) decreaseHp(i);
+			else if(i == -3) {
+				V.setY(V.getY()-2);
+				setPosition(V);
+			}
 		}
 	}
 }
@@ -109,6 +111,15 @@ int Player::isMovePossibleDown(const Vector2D & position, Room * R) const {
 		else if(o == barbedWire) return 1;
 	}
 	return 0;
+}
+
+bool Player::standingOnBlock(Building * B) {
+	Vector2D V;
+	V.setX(getPosition().getX());
+	V.setY(getPosition().getY() + 1);
+	Obstacle o = B->getCurrentRoom()->getObstacle(V);
+	if(o == trapdoor || o == ladder || o == barbedWire || o == block) return true;
+	return false ;
 }
 
 void Player::gravity(Building * B) { // a modifier : probleme avec les trappes

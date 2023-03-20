@@ -137,6 +137,15 @@ class Player : public Entity {
         void left(Building * B);
 
         /**
+         * @brief renvoie si il est sur un block ou non
+         * 
+         * @param b 
+         * @return true 
+         * @return false 
+         */
+        bool standingOnBlock(Building * b);
+
+        /**
          * @brief application de la gravité
          * 
          * @param R 
