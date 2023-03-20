@@ -18,7 +18,7 @@ int main () {
 	Room R;
 	R.regressionTest();
 
-	Building B;
+	Building B(10);
 	B.regressionTest();
 
 	return 0;

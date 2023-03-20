@@ -3,7 +3,7 @@
 
 #include "Room.h"
 #include <vector>
-const unsigned int NB_ROOM = 10;
+/*const unsigned int NB_ROOM = 10;*/
 
 /**
  * @brief Ensemble des niveaux du jeu
@@ -22,12 +22,18 @@ class Building {
          */
         unsigned int currentRoom;
 
+        /**
+         * @brief nombre de salle contenant le buiding
+         * 
+         */
+        unsigned int Nb_ROOM;
+
     public:
 
         /**
-         * @brief constructeur par defaut
+         * @brief constructeur avec paramètre de nombre de salle 
          */
-        Building();
+        Building(unsigned int Nb);
 
         /**
          * @brief Retourne la salle courante
@@ -47,6 +53,14 @@ class Building {
          * @brief Passe à la salle suivante
          */
         void goToNextRoom();
+
+        /**
+         * @brief renvoi si on est à la dernière Room
+         * 
+         * @return true 
+         * @return false 
+         */
+        bool isLastRoom();
 
         /**
          * @brief Test de regression

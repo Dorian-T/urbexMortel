@@ -2,7 +2,7 @@
 #include <iostream>
 using namespace std;
 Game::Game ()  {
-	bui = new Building;
+	bui = new Building(5);
 	pla = new Player(Vector2D(12,16),M,3);
 }
 
