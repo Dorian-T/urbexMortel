@@ -3,7 +3,7 @@
 using namespace std;
 Game::Game ()  {
 	bui = new Building(5);
-	pla = new Player(Vector2D(10,16),M,3);
+	pla = new Player(Vector2D(12,16),M,3);
 }
 
 Game::~Game() {
@@ -46,6 +46,7 @@ bool Game::actionClavier (const char touche) {
 				pla->down(bui);
 				return true;
 	}
+	return true;
 }
 
 int Game::actionsAutomatiques (int time) {

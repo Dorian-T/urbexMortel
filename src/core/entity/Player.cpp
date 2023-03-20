@@ -18,6 +18,7 @@ Player::Player(const Vector2D & P, Skin s, unsigned int health): Entity(P, 2, 1)
 
 bool Player::decreaseHp(unsigned int h) {
 	if(timeInvincible == 0) {
+		if (hp<h) hp -= hp;
 		hp -= h;
 		if(hp == 0)
 			return false;
