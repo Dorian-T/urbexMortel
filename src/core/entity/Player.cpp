@@ -59,17 +59,19 @@ int Player::isMovePossibleUp(const Vector2D & position, Room * R) const {
 	return 0;
 }
 
-void Player::right(Building * B) {
+bool Player::right(Building * B) {
 	Vector2D V;
+	bool b=true;
 	V.setY(getPosition().getY());
 	V.setX(getPosition().getX() + 1);
 	int i = isMovePossibleSide(V, B->getCurrentRoom());
 	if(i == -1) setPosition(V);
 	else if(i > 0) decreaseHp(i);
 	else if(i == -2) {
-		B->goToNextRoom();
-		setPosition(Vector2D(1,B->getCurrentRoom()->getDimY()-2));
+		b = B->finish();
+		if(b==true)setPosition(Vector2D(1,B->getCurrentRoom()->getDimY()-2));
 	}
+	return b;
 }
 
 void Player::left (Building * B) {

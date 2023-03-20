@@ -63,6 +63,14 @@ class Building {
         bool isLastRoom();
 
         /**
+         * @brief renvoi si on a atteint la sortie de la dernière salle
+         * 
+         * @return true pas la sortie
+         * @return false la sortie
+         */
+        bool finish();
+
+        /**
          * @brief Test de regression
          */
         void regressionTest();

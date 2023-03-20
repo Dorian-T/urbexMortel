@@ -21,7 +21,7 @@ public :
     Building * getBuilding() const;                      
     Player * getPlayer () const;                                                     
     int actionsAutomatiques (int time);
-    void actionClavier(const char touche);          
+    bool actionClavier(const char touche);          
 
 };
 

@@ -40,6 +40,14 @@ bool Building::isLastRoom() {
     return false;
 }
 
+bool Building::finish() {
+    if(isLastRoom()) return false;
+    else {
+        goToNextRoom();
+        return true;
+    }
+}
+
 void Building::regressionTest()
 {
     cout << endl << "Test de regression de la classe Building" << endl;

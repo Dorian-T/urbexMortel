@@ -62,16 +62,16 @@ void txtBoucle (Game & ga) {
 		c = win.getCh();
 		switch (c) {
 			case 'q':
-				ga.actionClavier('q');
+				ok = ga.actionClavier('q');
 				break;
 			case 's':
-				ga.actionClavier('s');
+				ok = ga.actionClavier('s');
 				break;
 			case 'z':
-				ga.actionClavier('z');
+				ok = ga.actionClavier('z');
 				break;
 			case 'd':
-				ga.actionClavier('d');
+				ok = ga.actionClavier('d');
 				break;
 			case 'p':
 				ok = false;

@@ -116,11 +116,11 @@ class Player : public Entity {
         void up(Building * B);
 
         /**
-         * @brief déplacement vers la droite
+         * @brief déplacement vers la droite et renvoie un bool si on a fini
          * 
          * @param R 
          */
-        void right(Building * B);
+        bool right(Building * B);
 
         /**
          * @brief déplacement vers le bas
