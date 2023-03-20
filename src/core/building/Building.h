@@ -37,6 +37,13 @@ class Building {
         Room* getCurrentRoom();
 
         /**
+         * @brief Get the Int Current Room object
+         * 
+         * @return unsigned int 
+         */
+        unsigned int getIntCurrentRoom();
+
+        /**
          * @brief Passe à la salle suivante
          */
         void goToNextRoom();

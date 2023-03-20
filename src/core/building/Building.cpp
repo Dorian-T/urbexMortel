@@ -26,6 +26,10 @@ Room* Building::getCurrentRoom() {
     return &arrayRoom[currentRoom];
 }
 
+unsigned int Building::getIntCurrentRoom() {
+    return currentRoom;
+}
+
 void Building::goToNextRoom() {
     currentRoom++;
 }
