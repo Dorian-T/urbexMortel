@@ -34,17 +34,17 @@ bool Game::actionClavier (const char touche) {
 	switch(touche) {
 		case 'q' :
 				pla->left(bui);
-				return true;
+				break;
 		case 'd' :
 				
 				b = pla->right(bui);
 				return b;
 		case 'z' :
 				pla->up(bui);
-				return true;
+				break;
 		case 's' :
 				pla->down(bui);
-				return true;
+				break;
 	}
 	return true;
 }
