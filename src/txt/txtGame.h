@@ -5,5 +5,4 @@
 
 void txtBoucle (Game & g);
 
-
 #endif

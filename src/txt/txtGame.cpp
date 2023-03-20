@@ -17,14 +17,17 @@ void txtAff(WinTXT & win, const Game & ga) {
 	
 	sleep(1);
 	win.clear();
+	char c;
 
 	for(unsigned int x=0;x<bui->getCurrentRoom()->getDimX();++x)
-		for(unsigned int y=0;y<bui->getCurrentRoom()->getDimY();++y)
-			win.print( x, y,(char) bui->getCurrentRoom()->getObstacle(Vector2D(x,y)));
+		for(unsigned int y=0;y<bui->getCurrentRoom()->getDimY();++y) {
+			c = (char) bui->getCurrentRoom()->getObstacle(Vector2D(x,y));
+			if( c == '.') win.print(x, y, ' ');
+			else win.print(x, y, c);
+		}	
 	
-	
-	win.print(pla->getPosition().getX(),pla->getPosition().getY(),'M');
-	win.print(pla->getPosition().getX(),pla->getPosition().getY()-1,'M');
+	win.print(pla->getPosition().getX(),pla->getPosition().getY(),'X');
+	win.print(pla->getPosition().getX(),pla->getPosition().getY()-1,'O');
 	
 	unsigned int hp = pla->getHp();
 	unsigned int TimeInv = pla->getTimeInvincible();

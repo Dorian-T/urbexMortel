@@ -11,7 +11,7 @@ public:
     /**
      * @brief Constructeur de poison avec paramètre
      * 
-     * @param time 
+     * @param time
      */
     Poison(int time);
 
