@@ -53,7 +53,7 @@ void txtBoucle (Game & ga) {
         #ifdef _WIN32
         Sleep(100);
 		#else
-		usleep(10000);
+		usleep(5000);
         #endif // WIN32
 
 		
@@ -62,13 +62,13 @@ void txtBoucle (Game & ga) {
 		c = win.getCh();
 		switch (c) {
 			case 'q':
-				ok = ga.actionClavier('q');
+				ga.actionClavier('q');
 				break;
 			case 's':
-				ok = ga.actionClavier('s');
+				ga.actionClavier('s');
 				break;
 			case 'z':
-				ok = ga.actionClavier('z');
+				ga.actionClavier('z');
 				time = 3;
 				break;
 			case 'd':
