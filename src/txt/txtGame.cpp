@@ -69,6 +69,7 @@ void txtBoucle (Game & ga) {
 				break;
 			case 'z':
 				ok = ga.actionClavier('z');
+				time = 3;
 				break;
 			case 'd':
 				ok = ga.actionClavier('d');
