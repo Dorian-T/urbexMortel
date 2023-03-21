@@ -24,8 +24,7 @@ enum Obstacle {
 
 /**
  * @brief Les niveaux du jeu
- */
-class Room {
+ */class Room {
 
     private:
 
@@ -47,7 +46,7 @@ class Room {
     public:
 
         /**
-         * @brief Constructeur par defaut
+         * @brief Constructeur par défaut
          */
         Room();
 
@@ -73,7 +72,7 @@ class Room {
         unsigned int getDimY() const;
 
         /**
-         * @brief Retourne l'obstacle a la position V
+         * @brief Retourne l'obstacle à la position V
          * 
          * @param V 
          * @return Obstacle 
@@ -81,7 +80,7 @@ class Room {
         Obstacle getObstacle(const Vector2D & V) const;
 
         /**
-         * @brief Test de regression
+         * @brief Test de non-regression
          */
         void regressionTest();
 };

@@ -22,7 +22,7 @@ private :
 public :
 
     /**
-     * @brief Constructeur par defaut
+     * @brief Constructeur par défaut
      */
     Game ();
 
@@ -46,7 +46,7 @@ public :
     Player * getPlayer () const;
 
     /**
-     * @brief Fonction qui gère les actions automatiques
+     * @brief Réalisation des actions automatiques
      * 
      * @param time 
      * @return int 
@@ -54,14 +54,12 @@ public :
     int actionsAutomatiques (int time);
 
     /**
-     * @brief Fonction qui gère les actions du clavier
+     * @brief Redistribution des actions clavier vers les focntions de déplacement
      * 
-     * @param touche 
-     * @return bool 
+     * @param touche
+     * @return bool
      */
     bool actionClavier(const char touche);
-
 };
-
 
 #endif

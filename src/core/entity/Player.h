@@ -9,26 +9,32 @@ enum Skin {
     M,
     F
 };
+
+/**
+ * @brief Classe du joueur
+ * 
+ * @details classe héritée de Entity
+ */
 class Player : public Entity {
     private:
 
         /**
-         * @brief choix du skin
+         * @brief Choix du skin
          */
         Skin skin;
 
         /**
-         * @brief points de vie
+         * @brief Points de vie
          */
         unsigned int hp;
 
         /**
-         * @brief temps où le joueur est invincible après s'être pris un coup
+         * @brief Temps où le joueur est invincible après s'être pris un coup
          */
         unsigned int timeInvincible;
 
         /**
-         * @brief vérifie si le déplacement vers le haut est possible
+         * @brief Vérifie si le déplacement vers le haut est possible
          * 
          * @details renvoie -1 si le déplacement est possible
          * @details retourne un entier positif indiquant le nombre de dégats si le déplacement est impossible
@@ -40,7 +46,7 @@ class Player : public Entity {
         int isMovePossibleUp(const Vector2D & position, Room * R) const;
 
         /**
-         * @brief vérifie si le déplacement vers la gauche ou la droite est possible
+         * @brief Vérifie si le déplacement vers la gauche ou la droite est possible
          * 
          * @details retourne -1 si le déplacement est possible
          * @details retourne un entier positif indiquant le nombre de dégats si le déplacement est impossible
@@ -54,7 +60,7 @@ class Player : public Entity {
         int isMovePossibleSide(const Vector2D & position, Room * R) const;
 
         /**
-         * @brief vérifie si le déplacement vers le bas est possible
+         * @brief Vérifie si le déplacement vers le bas est possible
          * 
          * @details retourne -1 si le déplacement est possible
          * @details retourne un entier positif indiquant le nombre de dégats si le déplacement est impossible
@@ -66,7 +72,7 @@ class Player : public Entity {
         int isMovePossibleDown(const Vector2D & position, Room * R) const;
 
         /**
-         * @brief vérifie si le déplacement vers le bas est possible
+         * @brief Vérifie si le déplacement vers le bas est possible
          * 
          * @details retourne -1 si le déplacement est possible
          * @details retourne un entier positif indiquant le nombre de dégats si le déplacement est impossible
@@ -79,12 +85,12 @@ class Player : public Entity {
 
     public:
         /**
-         * @brief constructeur par défaut
+         * @brief Constructeur par défaut
          */
         Player();
 
         /**
-         * @brief constructeur paramétré
+         * @brief Constructeur paramétré
          * 
          * @param s
          * @param h
@@ -92,7 +98,7 @@ class Player : public Entity {
         Player(const Vector2D & p, Skin s, unsigned int health);
 
         /**
-         * @brief baisse les points de vie
+         * @brief Baisse les points de vie
          * 
          * @details si le joueur est invincible, les points de vie ne sont pas baissés
          * @details renvoie faux si le joueur est mort
@@ -104,69 +110,69 @@ class Player : public Entity {
         bool decreaseHp(unsigned int h);
 
         /**
-         * @brief baisse le temps d'invincibilité
+         * @brief Baisse le temps d'invincibilité
          */
         void decreaseTimeInvincible();
 
         /**
-         * @brief déplacement vers le haut (saut)
+         * @brief Déplacement vers le haut (saut)
          * 
          * @param R
          */
         void up(Building * B);
 
         /**
-         * @brief déplacement vers la droite et renvoie un bool si on a fini
+         * @brief Déplacement vers la droite et renvoie un bool si on a fini
          * 
          * @param R 
          */
         bool right(Building * B);
 
         /**
-         * @brief déplacement vers le bas
+         * @brief Déplacement vers le bas
          * 
          * @param R 
          */
         void down(Building * B);
 
         /**
-         * @brief déplacement vers la gauche
+         * @brief Déplacement vers la gauche
          * 
          * @param R 
          */
         void left(Building * B);
 
         /**
-         * @brief renvoie si il est sur un block ou non
+         * @brief Renvoie si le joueur est sur un block ou non
          * 
          * @param b 
-         * @return true 
-         * @return false 
+         * @return bool
          */
         bool standingOnBlock(Building * b);
 
         /**
-         * @brief application de la gravité
+         * @brief Application de la gravité
          * 
          * @param R 
          */
         void gravity(Building * B);
 
         /**
-         * @brief Get the Hp object
+         * @brief Accesseur de hp
          * 
          * @return unsigned int 
          */
         unsigned int getHp();
 
         /**
-         * @brief Get the Time Invincible object
+         * @brief Accesseur de timeInvincible
          * 
          * @return unsigned int 
          */
         unsigned int getTimeInvincible();
+
         /**
-         * @brief test de non-regression
+         * @brief Test de non-regression
          */
         void regressionTest();
 };
