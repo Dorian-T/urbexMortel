@@ -7,7 +7,7 @@ int main ( int argc, char** argv ) {
 	srand(time(NULL));
     termClear();
 	Game ga;
-	txtBoucle(ga);
+	txtLoop(ga);
     termClear();
 	return 0;
 }

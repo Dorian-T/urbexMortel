@@ -32,7 +32,7 @@ Player * Game::getPlayer() const {
 
 
 
-bool Game::actionClavier (const char touche) {
+bool Game::keyboardAction (const char touche) {
 	bool b;
 	switch(touche) {
 		case 'q' :
@@ -52,7 +52,7 @@ bool Game::actionClavier (const char touche) {
 	return true;
 }
 
-int Game::actionsAutomatiques (int time) {
+int Game::automaticAction (int time) {
     if(time == 0){
 		pla->gravity(bui);
 		}

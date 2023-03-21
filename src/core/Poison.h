@@ -9,14 +9,14 @@ private:
     unsigned int timeLeft;
 public:
     /**
-     * @brief Constructeur de poison avec paramètre
+     * @brief Constructeur de poison 
      * 
      * @param time
      */
-    Poison(int time);
+    Poison();
 
     /**
-     * @brief réduit le temps de 1
+     * @brief réduit le temps
      * 
      */
     void decreaseTime();
@@ -26,6 +26,6 @@ public:
      * 
      * @param p 
      */
-    void increaseTime(Potion p);
+    void increaseTime();
 };
 #endif

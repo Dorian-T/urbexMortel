@@ -11,7 +11,7 @@
 #include "txtGame.h"
 #include <unistd.h>
 
-void txtAff(WinTXT & win, const Game & ga) {
+void txtDraw(WinTXT & win, const Game & ga) {
 	Building* bui = ga.getBuilding();
 	Player* pla = ga.getPlayer();
 	
@@ -49,14 +49,14 @@ void txtAff(WinTXT & win, const Game & ga) {
 	win.draw();
 }
 
-void txtBoucle (Game & ga) {
+void txtLoop (Game & ga) {
     WinTXT win (ga.getBuilding()->getCurrentRoom()->getDimX()+1,ga.getBuilding()->getCurrentRoom()->getDimY()+1);
 	int time = 3;
 	bool ok = true;
 	int c;
 
 	do {
-	    txtAff(win,ga);
+	    txtDraw(win,ga);
 
         #ifdef _WIN32
         Sleep(100);
@@ -65,22 +65,22 @@ void txtBoucle (Game & ga) {
         #endif // WIN32
 
 		
-		time=ga.actionsAutomatiques(time);
+		time=ga.automaticAction(time);
 
 		c = win.getCh();
 		switch (c) {
 			case 'q':
-				ga.actionClavier('q');
+				ga.keyboardAction('q');
 				break;
 			case 's':
-				ga.actionClavier('s');
+				ga.keyboardAction('s');
 				break;
 			case 'z':
-				ga.actionClavier('z');
+				ga.keyboardAction('z');
 				time = 2;
 				break;
 			case 'd':
-				ok = ga.actionClavier('d');
+				ok = ga.keyboardAction('d');
 				break;
 			case 'p':
 				ok = false;

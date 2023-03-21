@@ -51,7 +51,7 @@ public :
      * @param time 
      * @return int 
      */
-    int actionsAutomatiques (int time);
+    int automaticAction (int time);
 
     /**
      * @brief Redistribution des actions clavier vers les focntions de déplacement
@@ -59,7 +59,7 @@ public :
      * @param touche
      * @return bool
      */
-    bool actionClavier(const char touche);
+    bool keyboardAction (const char touche);
 };
 
 #endif
