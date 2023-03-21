@@ -38,6 +38,7 @@ class Player : public Entity {
          * 
          * @details renvoie -1 si le déplacement est possible
          * @details retourne un entier positif indiquant le nombre de dégats si le déplacement est impossible
+         * @details retourne -3 si on monte sur une trappe
          * 
          * @param position 
          * @param R 
