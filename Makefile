@@ -61,7 +61,7 @@ obj/Game.o: src/core/Game.h src/core/Game.cpp $(B_HEADERS) $(E_HEADERS)
 obj/winTxt.o: $(T_PATH)winTxt.h $(T_PATH)winTxt.cpp 
 	g++ -g -Wall -c $(T_PATH)winTxt.cpp -o obj/winTxt.o
 
-obj/txtGame.o: $(T_PATH)txtGame.h $(T_PATH)txtGame.cpp src/core/Game.h 
+obj/txtGame.o: $(T_PATH)txtGame.h $(T_PATH)txtGame.cpp src/core/Game.h $(E_PATH)Vector2D.h
 	g++ -g -Wall -c $(T_PATH)txtGame.cpp -o obj/txtGame.o
 
 obj/mainTxt.o: src/txt/mainTxt.cpp $(T_PATH)winTxt.h $(T_PATH)txtGame.h src/core/Game.h
