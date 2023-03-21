@@ -3,6 +3,9 @@
 
 #include "Vector2D.h"
 
+/**
+ * @brief work in progress
+ */
 class Potion
 {
 private:

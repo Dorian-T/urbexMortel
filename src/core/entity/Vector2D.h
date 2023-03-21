@@ -1,6 +1,9 @@
 #ifndef _VECTOR2D
 #define _VECTOR2D
 
+/**
+ * @brief Classe représentant un vecteur à deux dimension, x et y
+ */
 class Vector2D {
     private:
 

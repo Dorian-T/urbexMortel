@@ -4,6 +4,9 @@
 #include "../entity/Vector2D.h"
 #include "../building/Room.h"
 
+/**
+ * @brief Classe abstraite représentant une entité
+ */
 class Entity {
 
     private:

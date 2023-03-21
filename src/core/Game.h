@@ -4,6 +4,9 @@
 #include "building/Building.h"
 #include "entity/Player.h"
 
+/**
+ * @brief Classe représentant le jeu
+ */
 class Game
 {
 
