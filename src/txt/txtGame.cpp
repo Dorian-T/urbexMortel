@@ -15,7 +15,7 @@ void txtDraw(WinTXT & win, const Game & ga) {
 	Building* bui = ga.getBuilding();
 	Player* pla = ga.getPlayer();
 	
-	sleep(1);
+	
 	win.clear();
 	char c;
 
@@ -61,7 +61,7 @@ void txtLoop (Game & ga) {
         #ifdef _WIN32
         Sleep(100);
 		#else
-		usleep(500);
+		usleep(100000);
         #endif // WIN32
 
 		
