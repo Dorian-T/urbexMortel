@@ -17,19 +17,27 @@ void txtAff(WinTXT & win, const Game & ga) {
 	
 	sleep(1);
 	win.clear();
+	char c;
 
 	for(unsigned int x=0;x<bui->getCurrentRoom()->getDimX();++x)
-		for(unsigned int y=0;y<bui->getCurrentRoom()->getDimY();++y)
-			win.print( x, y,(char) bui->getCurrentRoom()->getObstacle(Vector2D(x,y)));
+		for(unsigned int y=0;y<bui->getCurrentRoom()->getDimY();++y) {
+			c = (char) bui->getCurrentRoom()->getObstacle(Vector2D(x,y));
+			if( c == '.') win.print(x, y, ' ');
+			else win.print(x, y, c);
+		}	
 	
-	
-	win.print(pla->getPosition().getX(),pla->getPosition().getY(),'M');
-	win.print(pla->getPosition().getX(),pla->getPosition().getY()-1,'M');
+	win.print(pla->getPosition().getX(),pla->getPosition().getY(),'X');
+	win.print(pla->getPosition().getX(),pla->getPosition().getY()-1,'O');
 	
 	unsigned int hp = pla->getHp();
 	unsigned int TimeInv = pla->getTimeInvincible();
-	win.print(0,18,std::to_string(hp).c_str());
-	win.print(2,18,std::to_string(TimeInv).c_str());
+	win.print(0,18,'H');
+	win.print(2,18,std::to_string(hp).c_str());
+	win.print(4,18,'I');
+	win.print(6,18,std::to_string(TimeInv).c_str());
+	win.print(8,18,'R');
+	win.print(10,18,std::to_string(bui->getIntCurrentRoom()).c_str());
+
 	
 	
 
@@ -48,7 +56,7 @@ void txtBoucle (Game & ga) {
         #ifdef _WIN32
         Sleep(100);
 		#else
-		usleep(10000);
+		usleep(5000);
         #endif // WIN32
 
 		
@@ -64,17 +72,19 @@ void txtBoucle (Game & ga) {
 				break;
 			case 'z':
 				ga.actionClavier('z');
+				time = 3;
 				break;
 			case 'd':
-				ga.actionClavier('d');
+				ok = ga.actionClavier('d');
 				break;
 			case 'p':
 				ok = false;
 				break;
 		}
-	if (ga.getPlayer()->getHp()==0)	{
+		if (ga.getPlayer()->getHp()==0)	{
 		ok = false;
 		}
+
 	} while (ok);
 
 }

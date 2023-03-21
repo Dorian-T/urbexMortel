@@ -18,6 +18,7 @@ Player::Player(const Vector2D & P, Skin s, unsigned int health): Entity(P, 2, 1)
 
 bool Player::decreaseHp(unsigned int h) {
 	if(timeInvincible == 0) {
+		if (hp<h) hp -= hp;
 		hp -= h;
 		if(hp == 0)
 			return false;
@@ -32,16 +33,18 @@ void Player::decreaseTimeInvincible() {
 }
 
 void Player::up(Building * B) { // peut-etre qu'il faudra modifier en passant a la version graphique
-	Vector2D V;
-	V.setX(getPosition().getX());
-	if(getPosition().getY() > 1) {
-		V.setY(getPosition().getY() - 1);
-		int i = isMovePossibleUp(V, B->getCurrentRoom());
-		if(i == -1) setPosition(V);
-		else if(i > 0) decreaseHp(i);
-		else if(i == -3) {
-			V.setY(V.getY()-2);
-			setPosition(V);
+	if(standingOnBlock(B))
+	{Vector2D V;
+		V.setX(getPosition().getX());
+		if(getPosition().getY() > 1) {
+			V.setY(getPosition().getY() - 1);
+			int i = isMovePossibleUp(V, B->getCurrentRoom());
+			if(i == -1) setPosition(V);
+			else if(i > 0) decreaseHp(i);
+			else if(i == -3) {
+				V.setY(V.getY()-2);
+				setPosition(V);
+			}
 		}
 	}
 }
@@ -57,17 +60,19 @@ int Player::isMovePossibleUp(const Vector2D & position, Room * R) const {
 	return 0;
 }
 
-void Player::right(Building * B) {
+bool Player::right(Building * B) {
 	Vector2D V;
+	bool b=true;
 	V.setY(getPosition().getY());
 	V.setX(getPosition().getX() + 1);
 	int i = isMovePossibleSide(V, B->getCurrentRoom());
 	if(i == -1) setPosition(V);
 	else if(i > 0) decreaseHp(i);
 	else if(i == -2) {
-		B->goToNextRoom();
-		setPosition(Vector2D(1,B->getCurrentRoom()->getDimY()-2));
+		b = B->finish();
+		if(b)setPosition(Vector2D(1,B->getCurrentRoom()->getDimY()-2));
 	}
+	return b;
 }
 
 void Player::left (Building * B) {
@@ -109,6 +114,15 @@ int Player::isMovePossibleDown(const Vector2D & position, Room * R) const {
 		else if(o == barbedWire) return 1;
 	}
 	return 0;
+}
+
+bool Player::standingOnBlock(Building * B) {
+	Vector2D V;
+	V.setX(getPosition().getX());
+	V.setY(getPosition().getY() + 1);
+	Obstacle o = B->getCurrentRoom()->getObstacle(V);
+	if(o == trapdoor || o == ladder || o == barbedWire || o == block) return true;
+	return false ;
 }
 
 void Player::gravity(Building * B) { // a modifier : probleme avec les trappes
@@ -160,33 +174,6 @@ void Player::regressionTest() {
 	assert(P.decreaseHp(2) == false);
 	assert(P.hp == 0);
 	cout << "\tdecreaseHp : OK" << endl;
-
-	// Room * R = new Room("data/test.txt");
-	// P.left(R); // gauche qui fonctionne
-	// assert(P.getPosition().getX() == 1 && P.getPosition().getY() == 3);
-	// P.left(R); // gauche qui ne fonctionne pas
-	// assert(P.getPosition().getX() == 1 && P.getPosition().getY() == 3);
-	// cout << "\tleft : OK" << endl;
-
-	// P.up(R); // haut qui fonctionne
-	// assert(P.getPosition().getX() == 1 && P.getPosition().getY() == 2);
-	// P.up(R); // haut qui ne fonctionne pas
-	// assert(P.getPosition().getX() == 1 && P.getPosition().getY() == 2);
-	// cout << "\tup : OK" << endl;
-
-	// P.gravity(R); // gravite qui fonctionne
-	// assert(P.getPosition().getX() == 1 && P.getPosition().getY() == 3);
-	// P.gravity(R); // gravite qui ne fonctionne pas
-	// assert(P.getPosition().getX() == 1 && P.getPosition().getY() == 3);
-	// cout << "\tgravity : OK" << endl;
-
-	// P.right(R); // droite qui fonctionne
-	// assert(P.getPosition().getX() == 2 && P.getPosition().getY() == 3);
-	// P.right(R); // droite qui ne fonctionne pas
-	// assert(P.getPosition().getX() == 2 && P.getPosition().getY() == 3);
-	// cout << "\tright : OK" << endl;
-
-	// TODO : down
 
 	cout << "Test de la classe Player : OK" << endl;
  }

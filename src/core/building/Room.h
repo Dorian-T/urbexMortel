@@ -19,7 +19,7 @@ enum Obstacle {
 	block = '#',
     door = 'D',
 	ladder = 'H',
-	trapdoor = '_'
+	trapdoor = '-'
 };
 
 /**

@@ -116,11 +116,11 @@ class Player : public Entity {
         void up(Building * B);
 
         /**
-         * @brief déplacement vers la droite
+         * @brief déplacement vers la droite et renvoie un bool si on a fini
          * 
          * @param R 
          */
-        void right(Building * B);
+        bool right(Building * B);
 
         /**
          * @brief déplacement vers le bas
@@ -135,6 +135,15 @@ class Player : public Entity {
          * @param R 
          */
         void left(Building * B);
+
+        /**
+         * @brief renvoie si il est sur un block ou non
+         * 
+         * @param b 
+         * @return true 
+         * @return false 
+         */
+        bool standingOnBlock(Building * b);
 
         /**
          * @brief application de la gravité

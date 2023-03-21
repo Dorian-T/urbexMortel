@@ -9,19 +9,57 @@ class Game
 
 private :
 
+    /**
+     * @brief Pointeur vers le batiment
+     */
 	Building * bui;
-	Player * pla;
 
+    /**
+     * @brief Pointeur vers le joueur
+     */
+	Player * pla;
 
 public :
 
+    /**
+     * @brief Constructeur par defaut
+     */
     Game ();
+
+    /**
+     * @brief Destructeur
+     */
     ~Game();
 
-    Building * getBuilding() const;                      
-    Player * getPlayer () const;                                                     
+    /**
+     * @brief Accesseur vers le batiment
+     * 
+     * @return Building*
+     */
+    Building * getBuilding() const;
+
+    /**
+     * @brief Accesseur vers le joueur
+     * 
+     * @return Player* 
+     */
+    Player * getPlayer () const;
+
+    /**
+     * @brief Fonction qui gère les actions automatiques
+     * 
+     * @param time 
+     * @return int 
+     */
     int actionsAutomatiques (int time);
-    void actionClavier(const char touche);          
+
+    /**
+     * @brief Fonction qui gère les actions du clavier
+     * 
+     * @param touche 
+     * @return bool 
+     */
+    bool actionClavier(const char touche);
 
 };
 
