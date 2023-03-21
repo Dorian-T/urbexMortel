@@ -30,23 +30,30 @@ class Building {
     public:
 
         /**
-         * @brief constructeur avec paramètre de nombre de salle 
+         * @brief Constructeur paramétré
+         * 
+         * @param nb
          */
-        Building(unsigned int Nb);
+        Building(unsigned int nb);
 
+        /**
+         * @brief Constructeur paramétré
+         * 
+         * @param filename
+         */
         Building(std::string filename);
 
         /**
          * @brief Retourne la salle courante
          * 
-         * @return Room* 
+         * @return Room*
          */
         Room* getCurrentRoom();
 
         /**
          * @brief Retourne l'indice de la salle courante
          * 
-         * @return unsigned int 
+         * @return unsigned int
          */
         unsigned int getIntCurrentRoom();
 
@@ -56,18 +63,16 @@ class Building {
         void goToNextRoom();
 
         /**
-         * @brief renvoi si on est à la dernière Room
+         * @brief Renvoie vrai si on est à la dernière Room
          * 
-         * @return true 
-         * @return false 
+         * @return bool
          */
         bool isLastRoom();
 
         /**
-         * @brief renvoi si on a atteint la sortie de la dernière salle
+         * @brief Renvoie si on a atteint la sortie de la dernière salle
          * 
-         * @return true pas la sortie
-         * @return false la sortie
+         * @return bool
          */
         bool finish();
 
