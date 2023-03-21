@@ -38,19 +38,10 @@ unsigned int Building::getIntCurrentRoom() {
     return currentRoom;
 }
 
-void Building::goToNextRoom() {
-    currentRoom++;
-}
-
-bool Building::isLastRoom() {
-    if(currentRoom == nbRoom-1) return true;
-    return false;
-}
-
-bool Building::finish() {
-    if(isLastRoom()) return false;
+bool Building::finishRoom() {
+    if(currentRoom == nbRoom-1) return false;
     else {
-        goToNextRoom();
+        currentRoom++;
         return true;
     }
 }
@@ -70,7 +61,7 @@ void Building::regressionTest()
     assert(B.currentRoom == 0);
     cout<<"\tconstructeur depuis un fichier : OK"<<endl;
 
-    goToNextRoom();
+    finishRoom();
     assert(currentRoom == 1);
     cout<<"\tgoToNextRoom : OK"<<endl;
 

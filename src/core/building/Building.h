@@ -56,25 +56,15 @@ class Building {
          * @return unsigned int
          */
         unsigned int getIntCurrentRoom();
+      
 
         /**
-         * @brief Passe à la salle suivante
-         */
-        void goToNextRoom();
-
-        /**
-         * @brief Renvoie vrai si on est à la dernière Room
+         * @brief Renvoie faux si on a atteint la sortie de la dernière salle sinon renvoie vrai
+         * et change de salle
          * 
          * @return bool
          */
-        bool isLastRoom();
-
-        /**
-         * @brief Renvoie si on a atteint la sortie de la dernière salle
-         * 
-         * @return bool
-         */
-        bool finish();
+        bool finishRoom();
 
         /**
          * @brief Test de regression
