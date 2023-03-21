@@ -23,7 +23,7 @@ bool Player::decreaseHp(unsigned int h) {
 		if(hp == 0)
 			return false;
 		else
-			timeInvincible = 5; // a modifier
+			timeInvincible = 20; // a modifier
 	}
 	return true;
 }
