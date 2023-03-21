@@ -32,11 +32,16 @@ void txtAff(WinTXT & win, const Game & ga) {
 	unsigned int hp = pla->getHp();
 	unsigned int TimeInv = pla->getTimeInvincible();
 	win.print(0,18,'H');
+	win.print(1,18,':');
 	win.print(2,18,std::to_string(hp).c_str());
 	win.print(4,18,'I');
+	win.print(5,18,':');
 	win.print(6,18,std::to_string(TimeInv).c_str());
 	win.print(8,18,'R');
-	win.print(10,18,std::to_string(bui->getIntCurrentRoom()).c_str());
+	win.print(9,18,':');
+	win.print(10,18,std::to_string(bui->getIntCurrentRoom()+1).c_str());
+	win.print(11,18,'/');
+	win.print(12,18,std::to_string(bui->getNbRoom()).c_str());
 
 	
 	
@@ -72,7 +77,7 @@ void txtBoucle (Game & ga) {
 				break;
 			case 'z':
 				ga.actionClavier('z');
-				time = 3;
+				time = 2;
 				break;
 			case 'd':
 				ok = ga.actionClavier('d');

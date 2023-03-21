@@ -38,6 +38,10 @@ unsigned int Building::getIntCurrentRoom() {
     return currentRoom;
 }
 
+unsigned int Building::getNbRoom() {
+    return nbRoom;
+}
+
 bool Building::finishRoom() {
     if(currentRoom == nbRoom-1) return false;
     else {
