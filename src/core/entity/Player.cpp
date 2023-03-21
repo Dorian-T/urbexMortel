@@ -99,12 +99,14 @@ int Player::isMovePossibleSide(const Vector2D & position, Room * R) const {
 }
 
 void Player::down(Building * B) {
+	if(standingOnBlock(B)) {
 	Vector2D V;
 	V.setX(getPosition().getX());
 	V.setY(getPosition().getY() + 1);
 	int i = isMovePossibleDown(V, B->getCurrentRoom());
 	if(i == -1) setPosition(V);
 	else if(i > 0) decreaseHp(i);
+	}
 }
 
 int Player::isMovePossibleDown(const Vector2D & position, Room * R) const {

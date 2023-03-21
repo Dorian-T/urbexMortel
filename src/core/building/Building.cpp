@@ -1,8 +1,10 @@
 #include "Building.h"
+
 #include <iostream>
 #include <assert.h>
 #include <stdlib.h> 
 #include <time.h> 
+
 using namespace std;
 
 Building::Building(unsigned int nb) {
@@ -36,6 +38,10 @@ Room* Building::getCurrentRoom() {
 
 unsigned int Building::getIntCurrentRoom() {
     return currentRoom;
+}
+
+unsigned int Building::getNbRoom() {
+    return nbRoom;
 }
 
 bool Building::finishRoom() {

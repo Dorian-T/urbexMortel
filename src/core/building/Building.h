@@ -56,6 +56,13 @@ class Building {
          * @return unsigned int
          */
         unsigned int getIntCurrentRoom();
+
+        /**
+         * @brief Retourne le nombre de salle
+         * 
+         * @return unsigned int 
+         */
+        unsigned int getNbRoom();
       
 
         /**
