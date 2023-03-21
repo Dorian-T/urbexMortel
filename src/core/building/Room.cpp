@@ -75,10 +75,10 @@ void Room::regressionTest() {
 
     Room R("data/test.txt");
     Obstacle o;
-    assert(R.getDimX() == 15 && R.getDimY() == 10);
-    assert(R.arrayObstacle.capacity() == 15*10 && R.arrayObstacle.size() == 15*10);
-    for(unsigned int i = 0; i < 10; i++)
-        for(unsigned int j = 0; j < 15; j++) {
+    assert(R.getDimX() == 6 && R.getDimY() == 9);
+    assert(R.arrayObstacle.capacity() == 6*9 && R.arrayObstacle.size() == 6*9);
+    for(unsigned int i = 0; i < 9; i++)
+        for(unsigned int j = 0; j < 6; j++) {
             o = (Obstacle)R.getObstacle(Vector2D(j, i));
             assert(o == nothing || o == barbedWire || o == block || o == door || o == ladder || o == trapdoor);
         }

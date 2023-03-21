@@ -25,7 +25,7 @@ Building::Building(unsigned int nb) {
     currentRoom = 0;
 }
 
-Building::Building(std::string filename) {
+Building::Building(string filename) {
     nbRoom = 1;
     arrayRoom.resize(nbRoom);
     arrayRoom[0] = Room(filename);
@@ -59,20 +59,20 @@ void Building::regressionTest()
     assert(nbRoom != 0);
     assert(arrayRoom.capacity() == nbRoom && arrayRoom.size() == nbRoom);
     assert(currentRoom == 0);
-    cout<<"\tconstructeur par defaut : OK"<<endl;
+    cout << "\tconstructeur par defaut : OK" << endl;
 
-    Building B("data/entrance.txt");
-    assert(nbRoom == 1);
+    Building B("data/test.txt");
+    assert(B.nbRoom == 1);
     assert(B.arrayRoom.capacity() == B.nbRoom && B.arrayRoom.size() == B.nbRoom);
     assert(B.currentRoom == 0);
-    cout<<"\tconstructeur depuis un fichier : OK"<<endl;
+    cout << "\tconstructeur depuis un fichier : OK" << endl;
 
     finishRoom();
     assert(currentRoom == 1);
-    cout<<"\tgoToNextRoom : OK"<<endl;
+    cout << "\tgoToNextRoom : OK" << endl;
 
     assert(getCurrentRoom() == &arrayRoom[1]);
-    cout<<"\tmethode getCurrentRoom : OK"<<endl;
+    cout << "\tmethode getCurrentRoom : OK" << endl;
 
     cout << "Test de regression de la classe Building : OK" << endl;
 }
