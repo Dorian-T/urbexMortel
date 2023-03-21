@@ -37,11 +37,11 @@ void txtDraw(WinTXT & win, const Game & ga) {
 	win.print(4,18,'I');
 	win.print(5,18,':');
 	win.print(6,18,std::to_string(TimeInv).c_str());
-	win.print(8,18,'R');
-	win.print(9,18,':');
-	win.print(10,18,std::to_string(bui->getIntCurrentRoom()+1).c_str());
-	win.print(11,18,'/');
-	win.print(12,18,std::to_string(bui->getNbRoom()).c_str());
+	win.print(9,18,'R');
+	win.print(10,18,':');
+	win.print(11,18,std::to_string(bui->getIntCurrentRoom()+1).c_str());
+	win.print(12,18,'/');
+	win.print(13,18,std::to_string(bui->getNbRoom()).c_str());
 
 	
 	
@@ -77,7 +77,7 @@ void txtLoop (Game & ga) {
 				break;
 			case 'z':
 				ga.keyboardAction('z');
-				time = 2;
+				time = 4;
 				break;
 			case 'd':
 				ok = ga.keyboardAction('d');
