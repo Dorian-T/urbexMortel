@@ -1,6 +1,8 @@
+#include "Vector2D.h"
+
 #include <iostream>
 #include <assert.h>
-#include "Vector2D.h"
+
 using namespace std;
 
 Vector2D::Vector2D() {

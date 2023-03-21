@@ -1,8 +1,10 @@
 #include "Building.h"
+
 #include <iostream>
 #include <assert.h>
 #include <stdlib.h> 
 #include <time.h> 
+
 using namespace std;
 
 Building::Building(unsigned int nb) {
