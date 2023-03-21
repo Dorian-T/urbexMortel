@@ -61,7 +61,7 @@ void txtBoucle (Game & ga) {
         #ifdef _WIN32
         Sleep(100);
 		#else
-		usleep(5000);
+		usleep(500);
         #endif // WIN32
 
 		
