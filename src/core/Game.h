@@ -57,7 +57,7 @@ public :
     int automaticAction (int time);
 
     /**
-     * @brief Redistribution des actions clavier vers les focntions de déplacement
+     * @brief Redistribution des actions clavier vers les fonctions de déplacement
      * 
      * @param touche
      * @return bool
