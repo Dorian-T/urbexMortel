@@ -18,10 +18,20 @@ private :
 	Building * bui;
 
     /**
-     * @brief Pointeur vers le joueur
+     * @brief Pointeur vers le joueur 1
      */
 	Player * pla;
 
+    /**
+     * @brief Pointeur vers le joueur 2
+     * 
+     */
+    Player * pla2;
+    /**
+     * @brief bool pour savoir si on est en 1 ou 2 joeur
+     * 
+     */
+    bool multyplayer;
 public :
 
     /**
