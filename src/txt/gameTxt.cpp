@@ -8,7 +8,7 @@
 
 #include "../core/Game.h"
 #include "../core/entity/Vector2D.h"
-#include "txtGame.h"
+#include "gameTxt.h"
 #include <unistd.h>
 
 void txtDraw(WinTXT & win, const Game & ga) {

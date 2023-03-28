@@ -1,5 +1,5 @@
 #include "winTxt.h"
-#include "txtGame.h"
+#include "gameTxt.h"
 #include "../core/Game.h"
 
 #include <time.h>

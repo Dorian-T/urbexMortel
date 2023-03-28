@@ -1,5 +1,5 @@
-#ifndef _TXTGAME_H
-#define _TXTGAME_H
+#ifndef _gameTxt_H
+#define _gameTxt_H
 
 #include "../core/Game.h"
 
