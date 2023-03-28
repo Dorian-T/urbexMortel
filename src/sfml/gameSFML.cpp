@@ -5,27 +5,30 @@
 using namespace sf;
 
 void sfmlLoop(Game & game, RenderWindow & window) {
+	int time = 4;
 	while(window.isOpen()) {
         Event event;
+		time = game.automaticAction(time);
         while(window.pollEvent(event)) {
 			if(event.type == Event::Closed)
 				window.close();
 			else if(event.type == Event::KeyPressed)
 				switch(event.key.code) {
 
-					case Keyboard::Up:
+					case Keyboard::Z:
 						game.getPlayer()->up(game.getBuilding());
+						time = 4;
 						break;
 
-					case Keyboard::Right:
+					case Keyboard::D:
 						game.getPlayer()->right(game.getBuilding());
 						break;
 
-					case Keyboard::Down:
+					case Keyboard::S:
 						game.getPlayer()->down(game.getBuilding());
 						break;
 
-					case Keyboard::Left:
+					case Keyboard::Q:
 						game.getPlayer()->left(game.getBuilding());
 						break;
 
@@ -101,6 +104,13 @@ void sfmlDraw(Game & game, RenderWindow & window) {
 				default:
 					break;
 			}
+			Texture playerTexture;
+			playerTexture.loadFromFile("data/player.png");
+			playerTexture.setSmooth(true);
+			Sprite player(playerTexture);
+			player.setScale((float) spriteSize * 2 / 400, (float) spriteSize * 2 / 400);
+			player.setPosition(game.getPlayer()->getPosition().getX()*spriteSize, game.getPlayer()->getPosition().getY()*spriteSize - spriteSize);
+			window.draw(player);
 		}
 	window.display();
 }
