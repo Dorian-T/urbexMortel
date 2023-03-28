@@ -22,17 +22,17 @@ int main ( int argc, char** argv ) {
     termClear();
 	unsigned int d = chooseDifficulty();
 	Game ga;
-	if (d==1)
-	{
-		ga.getBuilding()->setTimetot(ga.getBuilding()->getTimetot()*20);
-	}
-	else if (d==2)
+	if (d==2)
 	{
 		ga.getBuilding()->setTimetot(ga.getBuilding()->getTimetot()*15);
 	}
 	else if (d==3)
 	{
 		ga.getBuilding()->setTimetot(ga.getBuilding()->getTimetot()*10);
+	}
+	else 
+	{
+		ga.getBuilding()->setTimetot(ga.getBuilding()->getTimetot()*20);
 	}
 	txtLoop(ga);
     termClear();
