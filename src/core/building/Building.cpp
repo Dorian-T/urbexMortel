@@ -13,13 +13,15 @@ Building::Building(unsigned int nb) {
     arrayRoom.resize(nbRoom);
     arrayRoom[0] = Room("data/entrance.txt");
     for(unsigned int i = 1; i < arrayRoom.size()-1; i++) {
-        n = rand() % 3;
+        n = rand() % 4;
         if(n == 0)
             arrayRoom[i] = Room("data/room1.txt");
         else if(n == 1)
             arrayRoom[i] = Room("data/room2.txt");
-        else
+        else if(n==2)
             arrayRoom[i] = Room("data/room3.txt");
+        else
+            arrayRoom[i] = Room("data/room4.txt");
     }
     arrayRoom[arrayRoom.size()-1] = Room("data/exit.txt");
     currentRoom = 0;
