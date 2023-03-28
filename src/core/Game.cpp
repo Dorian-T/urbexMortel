@@ -12,16 +12,10 @@ Game::Game ()  {
 }
 
 Game::~Game() {
-	cout<<"delete Game"<<endl;
 	if (bui!=NULL)
-	{
 		delete bui;
-	}
 	if (pla!=NULL)
-	{
 		delete pla;
-	}
-	
 }
 
 Building * Game::getBuilding() const {
