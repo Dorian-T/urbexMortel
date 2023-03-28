@@ -11,8 +11,8 @@ T_HEADERS = $(T_PATH)winTxt.h $(T_PATH)gameTxt.h
 T_OBJ = obj/winTxt.o obj/gameTxt.o
 
 S_PATH = src/sfml/
-S_HEADERS = mainSFML.h
-# S_OBJ = 
+S_HEADERS = $(S_PATH)gameSFML.h
+S_OBJ = obj/gameSFML.o obj/mainSFML.o
 SFML_O = -I/usr/include/SFML 
 SFML_E = -lsfml-graphics -lsfml-window -lsfml-system
 
@@ -61,7 +61,7 @@ obj/Game.o: src/core/Game.h src/core/Game.cpp $(B_HEADERS) $(E_HEADERS)
 obj/winTxt.o: $(T_PATH)winTxt.h $(T_PATH)winTxt.cpp 
 	g++ -g -Wall -c $(T_PATH)winTxt.cpp -o obj/winTxt.o
 
-obj/gameTxt.o: $(T_PATH)gameTxt.h $(T_PATH)gameTxt.cpp src/core/Game.h $(E_PATH)Vector2D.h
+obj/gameTxt.o: $(T_PATH)gameTxt.h $(T_PATH)gameTxt.cpp $(T_PATH)winTxt.h src/core/Game.h $(E_PATH)Vector2D.h
 	g++ -g -Wall -c $(T_PATH)gameTxt.cpp -o obj/gameTxt.o
 
 obj/mainTxt.o: src/txt/mainTxt.cpp $(T_PATH)winTxt.h $(T_PATH)gameTxt.h src/core/Game.h
@@ -73,11 +73,14 @@ bin/mainTxt: obj/mainTxt.o $(T_OBJ) $(E_OBJ) $(B_OBJ) obj/Game.o
 
 # sfml
 
-obj/mainSFML.o: $(S_PATH)mainSFML.cpp
+obj/gameSFML.o: $(S_PATH)gameSFML.h $(S_PATH)gameSFML.cpp src/core/Game.h $(E_PATH)Vector2D.h
+	g++ -g -Wall -c $(S_PATH)gameSFML.cpp -o obj/gameSFML.o $(SFML_O)
+
+obj/mainSFML.o: $(S_PATH)mainSFML.cpp $(S_HEADERS) src/core/Game.h $(E_PATH)Vector2D.h
 	g++ -g -Wall -c $(S_PATH)mainSFML.cpp -o obj/mainSFML.o $(SFML_O)
 
-bin/mainSFML: obj/mainSFML.o
-	g++ -g -Wall obj/mainSFML.o -o bin/mainSFML $(SFML_E)
+bin/mainSFML: obj/mainSFML.o $(S_OBJ) $(E_OBJ) $(B_OBJ) obj/Game.o
+	g++ -g -Wall -o bin/mainSFML $(S_OBJ) $(E_OBJ) $(B_OBJ) obj/Game.o $(SFML_E)
 
 
 clean:
