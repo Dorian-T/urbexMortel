@@ -91,6 +91,7 @@ void txtLoop (Game & ga) {
 		if (ga.getPlayer()->getHp()==0)	{
 		ok = false;
 		}
+		if(ga.getBuilding()->getTimetot()==0) {ok = false;}
 
 	} while (ok);
 

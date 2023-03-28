@@ -56,6 +56,7 @@ int Game::automaticAction (int time) {
 	if(pla->getTimeInvincible()>0){
 		pla->decreaseTimeInvincible();
 	}
+	bui->setTimetot(bui->getTimetot()-1);
 	return time;
 }
 

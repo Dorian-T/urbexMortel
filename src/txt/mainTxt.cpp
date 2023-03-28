@@ -22,17 +22,21 @@ int main ( int argc, char** argv ) {
     termClear();
 	unsigned int d = chooseDifficulty();
 	Game ga;
-	if (d==1)
+	if (d==2)
 	{
-		ga.getBuilding()->setTimetot(ga.getBuilding()->getTimetot()*2);
+		ga.getBuilding()->setTimetot(ga.getBuilding()->getTimetot()*15);
 	}
-	else if (d==2)
+	else if (d==3)
 	{
-		ga.getBuilding()->setTimetot((unsigned int)ga.getBuilding()->getTimetot()*1.5);
+		ga.getBuilding()->setTimetot(ga.getBuilding()->getTimetot()*10);
+	}
+	else 
+	{
+		ga.getBuilding()->setTimetot(ga.getBuilding()->getTimetot()*20);
 	}
 	txtLoop(ga);
     termClear();
-	if(ga.getPlayer()->getHp()==0) cout << "T'es mort, nul !" << endl ;
+	if(ga.getPlayer()->getHp()==0 || ga.getBuilding()->getTimetot()==0) cout << "T'es mort, nul !" << endl ;
 	else cout << "Bravo ! T'es pas nul." << endl ;
 	return 0;
 }

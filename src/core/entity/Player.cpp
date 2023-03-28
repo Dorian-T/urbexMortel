@@ -43,7 +43,9 @@ void Player::up(Building * B) { // peut-etre qu'il faudra modifier en passant a 
 			else if(i > 0) decreaseHp(i);
 			else if(i == -3) {
 				V.setY(V.getY()-2);
-				setPosition(V);
+				Obstacle o =B->getCurrentRoom()->getObstacle(V);
+				if(o == barbedWire) decreaseHp(1);
+				if(o == nothing) setPosition(V);
 			}
 		}
 	}
