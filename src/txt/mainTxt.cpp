@@ -24,11 +24,15 @@ int main ( int argc, char** argv ) {
 	Game ga;
 	if (d==1)
 	{
-		ga.getBuilding()->setTimetot(ga.getBuilding()->getTimetot()*2);
+		ga.getBuilding()->setTimetot(ga.getBuilding()->getTimetot()*20);
 	}
 	else if (d==2)
 	{
-		ga.getBuilding()->setTimetot((unsigned int)ga.getBuilding()->getTimetot()*1.5);
+		ga.getBuilding()->setTimetot(ga.getBuilding()->getTimetot()*15);
+	}
+	else if (d==3)
+	{
+		ga.getBuilding()->setTimetot(ga.getBuilding()->getTimetot()*10);
 	}
 	txtLoop(ga);
     termClear();
