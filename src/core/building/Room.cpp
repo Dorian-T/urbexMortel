@@ -24,6 +24,7 @@ Room::Room(const std::string & filename) {
     if(file.is_open()) {
         file >> dimX;
         file >> dimY;
+        file >> time;
         arrayObstacle.resize( dimX*dimY);        
         for(unsigned int i = 0; i < dimX*dimY; i++) {
             char tmp;
@@ -54,6 +55,10 @@ unsigned int Room::getDimY() const {
 Obstacle Room::getObstacle(const Vector2D & V) const {
     assert(V.getY() < dimY && V.getX() < dimX);
     return arrayObstacle[V.getY()*dimX + V.getX()];
+}
+
+unsigned int Room::getTime() const {
+    return time;
 }
 
 void Room::regressionTest() {

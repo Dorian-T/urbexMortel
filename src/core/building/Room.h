@@ -43,6 +43,11 @@ enum Obstacle {
          */
         std::vector<Obstacle> arrayObstacle;
 
+        /**
+         * @brief Temps pour sortir de la salle
+        */
+        unsigned int time;
+
     public:
 
         /**
@@ -83,6 +88,13 @@ enum Obstacle {
          * @brief Test de non-regression
          */
         void regressionTest();
+
+        /**
+         * @brief Retourne le temps pour sortir de la salle
+         * 
+         * @return unsigned int
+        */
+        unsigned int getTime() const;
 };
 
 #endif

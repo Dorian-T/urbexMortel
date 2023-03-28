@@ -42,8 +42,10 @@ void txtDraw(WinTXT & win, const Game & ga) {
 	win.print(11,18,std::to_string(bui->getIntCurrentRoom()+1).c_str());
 	win.print(12,18,'/');
 	win.print(13,18,std::to_string(bui->getNbRoom()).c_str());
+    win.print(15,18,'T');
+	win.print(16,18,':');
+	win.print(17,18,std::to_string(bui->getTimetot()).c_str());
 
-	
 	
 
 	win.draw();

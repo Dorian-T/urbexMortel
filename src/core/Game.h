@@ -74,12 +74,6 @@ public :
      */
     bool keyboardAction (const char touche);
 
-    /**
-     * @brief Choix de la difficulté
-     * 
-     * @return int
-    */
-    int chooseDifficulty();
 };
 
 #endif

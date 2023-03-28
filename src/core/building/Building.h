@@ -27,6 +27,11 @@ class Building {
          */
         unsigned int nbRoom;
 
+        /**
+         * @brief Temps total pour sortir du building
+        */
+        unsigned int timetot;
+
     public:
 
         /**
@@ -72,6 +77,20 @@ class Building {
          * @return bool
          */
         bool finishRoom();
+
+        /**
+         * @brief Retourne le temps total pour sortir du building
+         * 
+         * @return unsigned int
+        */
+        unsigned int getTimetot();
+
+        /**
+         * @brief Met à jour le temps total pour sortir du building
+         * 
+         * @return void
+        */
+        void setTimetot(unsigned int t);
 
         /**
          * @brief Test de regression

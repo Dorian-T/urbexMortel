@@ -25,6 +25,7 @@ Building::Building(unsigned int nb) {
     }
     arrayRoom[arrayRoom.size()-1] = Room("data/exit.txt");
     currentRoom = 0;
+    for(unsigned int i=0;i<arrayRoom.size();i++) {timetot+=arrayRoom[i].getTime();}
 }
 
 Building::Building(string filename) {
@@ -52,6 +53,14 @@ bool Building::finishRoom() {
         currentRoom++;
         return true;
     }
+}
+
+unsigned int Building::getTimetot() {
+    return timetot;
+}
+
+void Building::setTimetot(unsigned int t) {
+    timetot = t;
 }
 
 void Building::regressionTest()
