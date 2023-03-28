@@ -9,11 +9,11 @@ using namespace std;
 
 int chooseDifficulty() {
 	int diff;
-	cout<<"Choisissez la difficulté :"<<endl;
-	cout<<"1. Facile"<<endl;
-	cout<<"2. Moyen"<<endl;
-	cout<<"3. Difficile"<<endl;
-	cin>>diff;
+	cout << "Choisissez la difficulté :" << endl;
+	cout << "1. Facile" << endl;
+	cout << "2. Moyen" << endl;
+	cout << "3. Difficile" << endl;
+	cin >> diff;
 	return diff;
 }
 
@@ -23,17 +23,11 @@ int main ( int argc, char** argv ) {
 	unsigned int d = chooseDifficulty();
 	Game ga;
 	if (d==2)
-	{
 		ga.getBuilding()->setTimetot(ga.getBuilding()->getTimetot()*15);
-	}
 	else if (d==3)
-	{
 		ga.getBuilding()->setTimetot(ga.getBuilding()->getTimetot()*10);
-	}
 	else 
-	{
 		ga.getBuilding()->setTimetot(ga.getBuilding()->getTimetot()*20);
-	}
 	txtLoop(ga);
     termClear();
 	if(ga.getPlayer()->getHp()==0 || ga.getBuilding()->getTimetot()==0) cout << "T'es mort, nul !" << endl ;
