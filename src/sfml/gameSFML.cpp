@@ -92,6 +92,7 @@ void sfmlDraw(Game & game, RenderWindow & window) {
 						ladder.setFillColor(Color (176, 196, 222));
 						window.draw(ladder);
 					}
+					break;
 
 				case trapdoor:
 					{
