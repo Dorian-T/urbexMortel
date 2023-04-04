@@ -74,6 +74,11 @@ bool Player::right(Building * B) {
 		b = B->finishRoom();
 		if(b)setPosition(Vector2D(1,B->getCurrentRoom()->getDimY()-2));
 	}
+	else if (i == -4) {
+		setPosition (V);
+		int t=B->getTimetot();
+		B->setTimetot(t+10);
+	}
 	return b;
 }
 
@@ -85,6 +90,11 @@ void Player::left (Building * B) {
 		int i = isMovePossibleSide(V, B->getCurrentRoom());
 		if(i == -1) setPosition(V);
 		else if(i > 0) decreaseHp(i);
+		else if (i == -4) {
+			setPosition (V);
+			int t=B->getTimetot();
+			B->setTimetot(t+10);
+		}
 	}
 }
 
@@ -96,18 +106,24 @@ int Player::isMovePossibleSide(const Vector2D & position, Room * R) const {
 		if((o1 == nothing || o1 == ladder) && (o2 == nothing || o2 == ladder)) return -1;
 		else if(o1 == barbedWire || o2 == barbedWire) return 1;
 		else if(o1 == door && o2 == door) return -2;
+		else if (o1 == potion || o2 == potion) return -4;
 	}
 	return 0;
 }
 
 void Player::down(Building * B) {
 	if(standingOnBlock(B)) {
-	Vector2D V;
-	V.setX(getPosition().getX());
-	V.setY(getPosition().getY() + 1);
-	int i = isMovePossibleDown(V, B->getCurrentRoom());
-	if(i == -1) setPosition(V);
-	else if(i > 0) decreaseHp(i);
+		Vector2D V;
+		V.setX(getPosition().getX());
+		V.setY(getPosition().getY() + 1);
+		int i = isMovePossibleDown(V, B->getCurrentRoom());
+		if(i == -1) setPosition(V);
+		else if(i > 0) decreaseHp(i);
+		else if (i == -4) {
+			setPosition (V);
+			int t=B->getTimetot();
+			B->setTimetot(t+10);
+		}
 	}
 }
 
@@ -116,6 +132,7 @@ int Player::isMovePossibleDown(const Vector2D & position, Room * R) const {
 		Obstacle o = R->getObstacle(position);
 		if(o == nothing || o == trapdoor || o == ladder) return -1;
 		else if(o == barbedWire) return 1;
+		else if (o == potion) return -4;
 	}
 	return 0;
 }
