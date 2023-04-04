@@ -8,6 +8,8 @@
 
 #include "../core/Game.h"
 #include "../core/entity/Vector2D.h"
+#include "../core/entity/Player.h"
+#include "../core/building/Building.h"
 #include "gameTxt.h"
 #include <unistd.h>
 
@@ -28,7 +30,9 @@ void txtDraw(WinTXT & win, const Game & ga) {
 	
 	win.print(pla->getPosition().getX(),pla->getPosition().getY(),'X');
 	win.print(pla->getPosition().getX(),pla->getPosition().getY()-1,'O');
-	
+	// for(unsigned int i = 0; i < bui->getCurrentRoom()->arrayRat.size(); i++)
+	// 	win.print(bui->getCurrentRoom()->arrayRat[i].getPosition().getX(), bui->getCurrentRoom()->arrayRat[i].getPosition().getY(),'R');
+
 	unsigned int hp = pla->getHp();
 	unsigned int TimeInv = pla->getTimeInvincible();
 	win.print(0,18,'H');

@@ -1,6 +1,6 @@
 E_PATH = src/core/entity/
-E_HEADERS = $(E_PATH)Vector2D.h $(E_PATH)Entity.h $(E_PATH)Player.h
-E_OBJ = obj/Vector2D.o obj/Entity.o obj/Player.o
+E_HEADERS = $(E_PATH)Vector2D.h $(E_PATH)Entity.h $(E_PATH)Player.h $(E_PATH)Rat.h
+E_OBJ = obj/Vector2D.o obj/Entity.o obj/Player.o obj/Rat.o
 
 B_PATH = src/core/building/
 B_HEADERS = $(B_PATH)Building.h $(B_PATH)Room.h
@@ -39,6 +39,9 @@ obj/Entity.o: $(E_PATH)Entity.h $(E_PATH)Entity.cpp $(E_PATH)Vector2D.h $(B_PATH
 
 obj/Player.o: $(E_PATH)Player.h $(E_PATH)Player.cpp $(E_PATH)Entity.h
 	g++ -g -Wall -c $(E_PATH)Player.cpp -o obj/Player.o
+
+obj/Rat.o: $(E_PATH)Rat.h $(E_PATH)Rat.cpp $(E_PATH)Entity.h
+	g++ -g -Wall -c $(E_PATH)Rat.cpp -o obj/Rat.o
 
 
 # building 

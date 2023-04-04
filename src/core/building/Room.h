@@ -5,6 +5,8 @@
 #include <string>
 #include <vector>
 
+// class Rat;
+
 const unsigned int DIM_ROOM_X = 16;
 const unsigned int DIM_ROOM_Y = 9;
 const unsigned int PIXEL_ROOM_X = 9;
@@ -50,6 +52,11 @@ enum Obstacle {
         unsigned int time;
 
     public:
+
+        // /**
+        //  * @brief Tableau des rats
+        //  */
+        // std::vector<Rat> arrayRat; // TODO: private
 
         /**
          * @brief Constructeur par défaut

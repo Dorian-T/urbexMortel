@@ -1,6 +1,7 @@
 #include "entity/Vector2D.h"
 #include "entity/Entity.h"
 #include "entity/Player.h"
+// #include "entity/Rat.h"
 #include "building/Room.h"
 #include "building/Building.h"
 #include <iostream>
@@ -9,7 +10,7 @@
 #include <time.h>
 using namespace std;
 
-void movementRegressionTest() {
+void movementPlayerRegressionTest() {
 	cout << endl << "Test des mouvements" << endl;
 	Building B("data/test.txt");
 	Player P(Vector2D(1, 7), M, 5);
@@ -114,15 +115,18 @@ int main () {
 	E.regressionTest();
 
 	Player P;
-	P.regressionTest();
+	P.regressionTest(); // probleme
 
-	Room R;
-	R.regressionTest();
+	// Rat Ra;
+	// Ra.regressionTest();
+
+	Room Ro;
+	Ro.regressionTest(); // probleme
 
 	Building B(10);
 	B.regressionTest();
 
-	movementRegressionTest();
+	movementPlayerRegressionTest();
 
 	return 0;
 }

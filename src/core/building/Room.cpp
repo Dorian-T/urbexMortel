@@ -1,6 +1,7 @@
-#include "../entity/Vector2D.h"
-#include "Building.h"
 #include "Room.h"
+#include "../entity/Vector2D.h"
+// #include "../entity/Rat.h"
+#include "Building.h"
 
 #include <iostream>
 #include <fstream>
@@ -26,11 +27,16 @@ Room::Room(const std::string & filename) {
         file >> dimY;
         file >> time;
         arrayObstacle.resize( dimX*dimY);        
-        for(unsigned int i = 0; i < dimX*dimY; i++) {
-            char tmp;
-            file >> tmp;
-            arrayObstacle[i] = (Obstacle)tmp;
-        }
+        for(unsigned int x = 0; x < dimX; x++)
+            for(unsigned int y = 0; y < dimY; y++) {
+                char tmp;
+                file >> tmp;
+                // if(tmp = 'R') {
+                //     arrayRat.push_back(Rat(Vector2D(x, y), 1, 1));
+                //     tmp = '.';
+                // }
+                arrayObstacle[x*y] = (Obstacle)tmp;
+            }
     }
     else {
         cout << "Erreur lors de l'ouverture du fichier " << filename << endl;
