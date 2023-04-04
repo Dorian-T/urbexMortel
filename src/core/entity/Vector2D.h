@@ -57,6 +57,8 @@ class Vector2D {
          */
         void setY(unsigned int Vy);
 
+        Vector2D operator+(const Vector2D & v) const;
+
         /**
          * @brief Test de non-regression
          */

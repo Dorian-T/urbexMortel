@@ -31,6 +31,10 @@ void Vector2D::setY(unsigned int Vy) {
     y = Vy;
 }
 
+Vector2D Vector2D::operator+(const Vector2D & v) const {
+    return Vector2D(x + v.x, y + v.y);
+}
+
 void Vector2D::regressionTest() {
     cout << endl << "Test de la classe Vector2D" << endl;
 
@@ -47,6 +51,10 @@ void Vector2D::regressionTest() {
     V.setX(42); V.setY(63);
     assert(V.x == 42 && V.y == 63);
     cout << "\tmodificateurs : OK" << endl;
+
+    Vector2D W(1,2);
+    assert((V + W).x == 43 && (V + W).y == 65);
+    cout << "\toperateur + : OK" << endl;
 
     cout << "Test de la classe Entity : OK" << endl;
 }
