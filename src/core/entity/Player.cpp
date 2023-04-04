@@ -8,12 +8,18 @@ Player::Player() {
 	skin = M;
 	hp = 0;
 	timeInvincible = 0;
+	isMoving = false;
+	isFailling = false;
+	isJumping = false
 }
 
 Player::Player(const Vector2D & P, Skin s, unsigned int health): Entity(P, 2, 1) {
 	skin = s;
 	hp = health;
 	timeInvincible = 0;
+	isMoving = false;
+	isFailling = false;
+	isJumping = false
 }
 
 bool Player::decreaseHp(unsigned int h) {

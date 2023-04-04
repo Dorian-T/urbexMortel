@@ -34,6 +34,24 @@ class Player : public Entity {
         unsigned int timeInvincible;
 
         /**
+         * @brief savoir si il est entrain de tomber
+         * 
+         */
+        bool isFailling;
+
+        /**
+         * @brief savoir si il est entrain de bouger
+         * 
+         */
+        bool isMoving;
+
+        /**
+         * @brief savoir si il est entrain de sauter
+         * 
+         */
+        bool isJumping;
+
+        /**
          * @brief Vérifie si le déplacement vers le haut est possible
          * 
          * @details renvoie -1 si le déplacement est possible
