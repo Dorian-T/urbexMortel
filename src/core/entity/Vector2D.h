@@ -57,7 +57,15 @@ class Vector2D {
          */
         void setY(unsigned int Vy);
 
+        /**
+         * @brief Surcharge de l'opérateur +
+         * 
+         * @param v 
+         * @return Vector2D 
+         */
         Vector2D operator+(const Vector2D & v) const;
+
+        float distance(const Vector2D & V) const;
 
         /**
          * @brief Test de non-regression

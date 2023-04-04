@@ -2,6 +2,7 @@
 
 #include <iostream>
 #include <assert.h>
+#include <math.h>
 
 using namespace std;
 
@@ -31,8 +32,12 @@ void Vector2D::setY(unsigned int Vy) {
     y = Vy;
 }
 
-Vector2D Vector2D::operator+(const Vector2D & v) const {
-    return Vector2D(x + v.x, y + v.y);
+Vector2D Vector2D::operator+(const Vector2D & V) const {
+    return Vector2D(x + V.x, y + V.y);
+}
+
+float Vector2D::distance(const Vector2D & V) const {
+    return sqrt(pow(x - V.x, 2) + pow(y - V.y, 2));
 }
 
 void Vector2D::regressionTest() {
@@ -48,13 +53,16 @@ void Vector2D::regressionTest() {
     assert(V.getX() == 6 && V.getY() == 8);
     cout << "\taccesseurs : OK" << endl;
 
-    V.setX(42); V.setY(63);
-    assert(V.x == 42 && V.y == 63);
+    V.setX(3); V.setY(4);
+    assert(V.x == 3 && V.y == 4);
     cout << "\tmodificateurs : OK" << endl;
 
-    Vector2D W(1,2);
-    assert((V + W).x == 43 && (V + W).y == 65);
+    Vector2D W(1, 2);
+    assert((V + W).x == 4 && (V + W).y == 6);
     cout << "\toperateur + : OK" << endl;
+
+    assert(V.distance(W) == (float) sqrt(8));
+    cout << "\tdistance : OK" << endl;
 
     cout << "Test de la classe Entity : OK" << endl;
 }
