@@ -23,7 +23,7 @@ public:
     Potion(Vector2D V);
     
     /**
-     * @brief modéfie HasBeenTaken
+     * @brief modifie HasBeenTaken
      * 
      * @param b 
      */
