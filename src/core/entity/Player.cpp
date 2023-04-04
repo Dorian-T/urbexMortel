@@ -181,6 +181,38 @@ unsigned int Player::getTimeInvincible() {
 	return timeInvincible;
 }
 
+bool Player::getIsFailling() {
+	return isFailling;
+}
+
+bool Player::getIsMoving() {
+	return isMoving;
+}
+
+bool Player::getIsJumping() {
+	return isJumping;
+}
+
+bool Player::getDirection() {
+	return direction;
+}
+
+void Player::setDirection(bool D) {
+	direction=D;
+}
+
+void Player::setIsFailling(bool F) {
+	direction=F;
+}
+
+void Player::setIsJumping(bool J) {
+	direction=J;
+}
+
+void Player::setIsMoving(bool M) {
+	direction=M;
+}
+
 void Player::regressionTest() {
 	cout << endl << "Test de la classe Player" << endl;
 
