@@ -10,7 +10,7 @@ Player::Player() {
 	timeInvincible = 0;
 	isMoving = false;
 	isFailling = false;
-	isJumping = false
+	isJumping = false;
 }
 
 Player::Player(const Vector2D & P, Skin s, unsigned int health): Entity(P, 2, 1) {
@@ -19,7 +19,7 @@ Player::Player(const Vector2D & P, Skin s, unsigned int health): Entity(P, 2, 1)
 	timeInvincible = 0;
 	isMoving = false;
 	isFailling = false;
-	isJumping = false
+	isJumping = false;
 }
 
 bool Player::decreaseHp(unsigned int h) {
@@ -84,6 +84,7 @@ bool Player::right(Building * B) {
 		setPosition (V);
 		int t=B->getTimetot();
 		B->setTimetot(t+10);
+		B->getCurrentRoom()->setObstacle(V,nothing);
 	}
 	return b;
 }
@@ -100,6 +101,7 @@ void Player::left (Building * B) {
 			setPosition (V);
 			int t=B->getTimetot();
 			B->setTimetot(t+10);
+			B->getCurrentRoom()->setObstacle(V,nothing);
 		}
 	}
 }
@@ -129,6 +131,7 @@ void Player::down(Building * B) {
 			setPosition (V);
 			int t=B->getTimetot();
 			B->setTimetot(t+10);
+			B->getCurrentRoom()->setObstacle(V,nothing);
 		}
 	}
 }
