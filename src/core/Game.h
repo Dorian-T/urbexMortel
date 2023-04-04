@@ -31,7 +31,7 @@ private :
      * @brief bool pour savoir si on est en 1 ou 2 joeur
      * 
      */
-    bool multyplayer;
+    bool multiplayer;
 public :
 
     /**
