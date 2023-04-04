@@ -3,6 +3,7 @@
 #include "../core/Game.h"
 
 #include <time.h>
+#include <stdlib.h>
 #include <iostream>
 
 using namespace std;
