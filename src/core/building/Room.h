@@ -88,7 +88,7 @@ enum Obstacle {
         /**
          * @brief Modifie l'obstacle à la position V
         */
-        Obstacle setObstacle(const Vector2D & V, Obstacle o);
+        void setObstacle(const Vector2D & V, Obstacle o);
 
         /**
          * @brief Test de non-regression
