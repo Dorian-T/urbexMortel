@@ -5,23 +5,29 @@
 using namespace sf;
 
 void sfmlLoop(Game & game, RenderWindow & window) {
+	window.setKeyRepeatEnabled( false );
 	Clock cl;
-	int time = 2;
+	int time = 1;
 	while(window.isOpen()) {
-		float elapsed = cl.getElapsedTime().asSeconds();
-		if(elapsed > 0.1) {
-		Clock clo;
+		float elapsed = cl.getElapsedTime().asMicroseconds();
+		if(elapsed > 10) {
 		time = game.automaticAction(time);
+		cl.restart();
 		};
 		Event event;
 		while(window.pollEvent(event)) {
+			elapsed = cl.getElapsedTime().asMicroseconds();
+			if(elapsed > 10) {
+			time = game.automaticAction(time);
+			cl.restart();
+			};
 			if(event.type == Event::Closed)
 			window.close();
 			else if(event.type == Event::KeyPressed) 
 				switch(event.key.code) {
 					case Keyboard::Z:
 						game.getPlayer()->up(game.getBuilding());
-						time = 2;
+						time = 1;
 						break;
 
 					case Keyboard::D:
