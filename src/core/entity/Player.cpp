@@ -40,7 +40,9 @@ void Player::decreaseTimeInvincible() {
 
 void Player::up(Building * B) { // peut-etre qu'il faudra modifier en passant a la version graphique
 	if(standingOnBlock(B))
-	{Vector2D V;
+	{
+		isJumping=true;
+		Vector2D V;
 		V.setX(getPosition().getX());
 		if(getPosition().getY() > 1) {
 			V.setY(getPosition().getY() - 1);
@@ -125,7 +127,10 @@ void Player::down(Building * B) {
 		V.setX(getPosition().getX());
 		V.setY(getPosition().getY() + 1);
 		int i = isMovePossibleDown(V, B->getCurrentRoom());
-		if(i == -1) setPosition(V);
+		if(i == -1) {
+			setPosition(V);
+			if(B->getCurrentRoom()->getObstacle(V)==nothing) {isFailling=false;}
+		}
 		else if(i > 0) decreaseHp(i);
 		else if (i == -4) {
 			setPosition (V);

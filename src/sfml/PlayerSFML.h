@@ -2,6 +2,7 @@
 #define _PLAYERSFM
 
 #include "../core/entity/Player.h"
+#include "../core/building/Building.h"
 
 class PlayerSFML
 {
@@ -25,7 +26,7 @@ public:
      * 
      * @param elapse 
      */
-    void update(float elapse);
+    void update(float elapse, Building * B);
 };
 
 #endif
