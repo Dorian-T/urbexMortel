@@ -79,6 +79,9 @@ bin/mainTxt: obj/mainTxt.o $(T_OBJ) $(E_OBJ) $(B_OBJ) obj/Game.o
 obj/gameSFML.o: $(S_PATH)gameSFML.h $(S_PATH)gameSFML.cpp src/core/Game.h $(E_PATH)Vector2D.h
 	g++ -g -Wall -c $(S_PATH)gameSFML.cpp -o obj/gameSFML.o $(SFML_O)
 
+obj/PlayerSFML.o: $(S_PATH)mainSFML.h $(S_PATH)mainSFML.cpp $(E_PATH)Player.h $(B_PATH)Building.h
+	g++ -g -Wall -c $(S_PATH)PlayerSFML.cpp -o obj/PlayerSFML.o $(SFML_O)
+
 obj/mainSFML.o: $(S_PATH)mainSFML.cpp $(S_HEADERS) src/core/Game.h $(E_PATH)Vector2D.h
 	g++ -g -Wall -c $(S_PATH)mainSFML.cpp -o obj/mainSFML.o $(SFML_O)
 

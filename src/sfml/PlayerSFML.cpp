@@ -15,6 +15,18 @@ PlayerSFML::~PlayerSFML() {
     }
 }
 
-void PlayerSFML::update(float elapse) {
+void PlayerSFML::update(float elapse, Building * B) {
+    if (!P->getIsFailling() && !P->standingOnBlock(B))
+    {
+        P->setIsFailling(true);
+    }
+    if (P->getIsFailling() && P->standingOnBlock(B))
+    {
+        P->setIsFailling(false);
+    }
+    if(P->getIsMoving()) {
+        if(P->getDirection()) {P->right(B);}
+        else{P->left(B);}
+    }
 
 }
