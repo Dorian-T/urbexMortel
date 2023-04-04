@@ -17,9 +17,6 @@ SFML_O = -I/usr/include/SFML
 SFML_E = -lsfml-graphics -lsfml-window -lsfml-system
 
 
-j12: all
-	make all -j12
-
 all: bin/tests bin/mainTxt bin/mainSFML
 
 

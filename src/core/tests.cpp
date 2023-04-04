@@ -5,6 +5,8 @@
 #include "building/Building.h"
 #include <iostream>
 #include <assert.h>
+#include <stdlib.h>
+#include <time.h>
 using namespace std;
 
 void movementRegressionTest() {
@@ -103,6 +105,7 @@ void movementRegressionTest() {
 }
 
 int main () {
+	srand(time(NULL));
 
 	Vector2D V;
 	V.regressionTest();
