@@ -57,6 +57,11 @@ Obstacle Room::getObstacle(const Vector2D & V) const {
     return arrayObstacle[V.getY()*dimX + V.getX()];
 }
 
+Obstacle Room::setObstacle(const Vector2D & V, Obstacle o) {
+    assert(V.getY() < dimY && V.getX() < dimX);
+    arrayObstacle[V.getY()*dimX + V.getX()] = o;
+}
+
 unsigned int Room::getTime() const {
     return time;
 }
