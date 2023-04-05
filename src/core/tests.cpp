@@ -1,7 +1,7 @@
 #include "entity/Vector2D.h"
 #include "entity/Entity.h"
 #include "entity/Player.h"
-// #include "entity/Rat.h"
+#include "entity/Rat.h"
 #include "building/Room.h"
 #include "building/Building.h"
 #include <iostream>
@@ -117,8 +117,8 @@ int main () {
 	// Player P;
 	// P.regressionTest(); // probleme
 
-	// Rat Ra;
-	// Ra.regressionTest();
+	Rat Ra;
+	Ra.regressionTest();
 
 	Room Ro;
 	Ro.regressionTest(); // probleme

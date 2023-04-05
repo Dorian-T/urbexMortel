@@ -31,6 +31,8 @@ class Game {
          */
         bool multiplayer;
 
+        // je pense que je vais rajouter les rats ici
+
     public :
 
         /**

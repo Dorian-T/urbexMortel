@@ -70,15 +70,19 @@ bool Rat::isMovePossibleGravity(const Vector2D & position, Room * R) const {
 void Rat::regressionTest() { // a verifier
 	cout << endl << "Test de la classe Rat" << endl;
 
-	assert(getPosition().getX() == 0 && getPosition().getY() == 0); assert(getHeight() == 0 && getWidth() == 0); assert(direction.getX() == 0 && direction.getY() == 0);
+	assert(getPosition().getX() == 0 && getPosition().getY() == 0);
+	assert(getHeight() == 0 && getWidth() == 0);
+	assert(direction.getX() == 0 && direction.getY() == 0);
 	cout << "\tconstructeur par défaut : OK" << endl;
 
 	assert(getDirection().getX() == 0 && getDirection().getY() == 0);
 	cout << "\tgetDirection : OK" << endl;
 
 	Rat R(Vector2D(6, 8), 1, 1);
-	assert(R.getPosition().getX() == 6 && R.getPosition().getY() == 8); assert(R.getHeight() == 1 && R.getWidth() == 1); assert(R.getDirection().getX() == 0 && R.getDirection().getY() == 0);
-	cout << "\tconstructeur : OK" << endl;
+	assert(R.getPosition().getX() == 6 && R.getPosition().getY() == 8);
+	assert(R.getHeight() == 1 && R.getWidth() == 1);
+	assert(R.getDirection().getX() == 0 && R.getDirection().getY() == 0);
+	cout << "\tconstructeur par defaut : OK" << endl;
 
 	// TODO
 
