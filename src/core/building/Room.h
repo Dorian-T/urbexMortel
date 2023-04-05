@@ -42,14 +42,14 @@ enum Obstacle {
         unsigned int dimY;
 
         /**
-         * @brief Tableau des obstacles
-         */
-        std::vector<Obstacle> arrayObstacle;
-
-        /**
          * @brief Temps pour sortir de la salle
         */
         unsigned int time;
+
+        /**
+         * @brief Tableau des obstacles
+         */
+        std::vector<Obstacle> arrayObstacle;
 
     public:
 

@@ -14,6 +14,7 @@ using namespace std;
 Room::Room() {
     dimX = DIM_ROOM_X;
     dimY = DIM_ROOM_Y;
+    time = 0;
     arrayObstacle.resize(DIM_ROOM_X*DIM_ROOM_Y);
     for(unsigned int i = 0; i < DIM_ROOM_X*DIM_ROOM_Y; i++)
         arrayObstacle[i] = nothing;
@@ -42,6 +43,7 @@ Room::Room(const std::string & filename) {
         cout << "Initialisation de la salle par defaut" << endl;
         dimX = DIM_ROOM_X;
         dimY = DIM_ROOM_Y;
+        time = 0;
         arrayObstacle.resize(DIM_ROOM_X*DIM_ROOM_Y);
         for(unsigned int i = 0; i < DIM_ROOM_X*DIM_ROOM_Y; i++)
             arrayObstacle[i] = nothing;
@@ -76,6 +78,7 @@ void Room::regressionTest() {
 
     assert(dimX == DIM_ROOM_X && dimY == DIM_ROOM_Y);
     assert(arrayObstacle.capacity() == DIM_ROOM_X*DIM_ROOM_Y && arrayObstacle.size() == DIM_ROOM_X*DIM_ROOM_Y);
+    assert(time == 0);
     for(unsigned int i = 0; i < DIM_ROOM_Y; i++)
         for(unsigned int j = 0; j < DIM_ROOM_X; j++)
             assert(arrayObstacle[j*i] == nothing);
@@ -88,10 +91,14 @@ void Room::regressionTest() {
     assert(getObstacle(Vector2D(0, 0)) == arrayObstacle[0]);
     cout << "\tTest de getObstacle : OK" << endl;
 
+    assert(getTime() == 0);
+    cout << "\tTest de getTime : OK" << endl;
+
     Room R("data/test.txt");
     Obstacle o;
     assert(R.getDimX() == 6 && R.getDimY() == 9);
     assert(R.arrayObstacle.capacity() == 6*9 && R.arrayObstacle.size() == 6*9);
+    assert(R.getTime() == 1000);
     for(unsigned int i = 0; i < 9; i++)
         for(unsigned int j = 0; j < 6; j++) {
             o = (Obstacle)R.getObstacle(Vector2D(j, i));

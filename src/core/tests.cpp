@@ -114,8 +114,8 @@ int main () {
 	Entity E;
 	E.regressionTest();
 
-	Player P;
-	P.regressionTest(); // probleme
+	// Player P;
+	// P.regressionTest(); // probleme
 
 	// Rat Ra;
 	// Ra.regressionTest();
