@@ -10,14 +10,14 @@ void sfmlLoop(Game & game, RenderWindow & window) {
 	int time = 1;
 	while(window.isOpen()) {
 		float elapsed = cl.getElapsedTime().asMicroseconds();
-		if(elapsed > 10) {
+		if(elapsed > 50) {
 		time = game.automaticAction(time);
 		cl.restart();
 		};
 		Event event;
 		while(window.pollEvent(event)) {
 			elapsed = cl.getElapsedTime().asMicroseconds();
-			if(elapsed > 10) {
+			if(elapsed > 50) {
 			time = game.automaticAction(time);
 			cl.restart();
 			};
