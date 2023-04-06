@@ -5,25 +5,25 @@
 using namespace std;
 
 Game::Game ()  {
-	bui = new Building(5);
-	pla = new Player(Vector2D(12,16),M,3);
+	building = new Building(5);
+	player1 = new Player(Vector2D(12,16),M,3);
 	multiplayer = false;
-	pla2 = NULL;
+	player2 = NULL;
 }
 
 Game::~Game() {
-	if (bui!=NULL)
-		delete bui;
-	if (pla!=NULL)
-		delete pla;
+	if (building!=NULL)
+		delete building;
+	if (player1!=NULL)
+		delete player1;
 }
 
 Building * Game::getBuilding() const {
-    return bui;
+    return building;
 }
 
 Player * Game::getPlayer() const {
-    return pla;
+    return player1;
 }
 
 
@@ -32,17 +32,17 @@ bool Game::keyboardAction (const char touche) {
 	bool b;
 	switch(touche) {
 		case 'q' :
-				pla->left(bui);
+				player1->left(building);
 				break;
 		case 'd' :
 				
-				b = pla->right(bui);
+				b = player1->right(building);
 				return b;
 		case 'z' :
-				pla->up(bui);
+				player1->up(building);
 				break;
 		case 's' :
-				pla->down(bui);
+				player1->down(building);
 				break;
 	}
 	return true;
@@ -50,13 +50,13 @@ bool Game::keyboardAction (const char touche) {
 
 int Game::automaticAction (int time) {
     if(time == 0){
-		pla->gravity(bui);
+		player1->gravity(building);
 		}
 	else time=time-1;
-	if(pla->getTimeInvincible()>0){
-		pla->decreaseTimeInvincible();
+	if(player1->getTimeInvincible()>0){
+		player1->decreaseTimeInvincible();
 	}
-	bui->setTimetot(bui->getTimetot()-1);
+	building->setTimetot(building->getTimetot()-1);
 	return time;
 }
 

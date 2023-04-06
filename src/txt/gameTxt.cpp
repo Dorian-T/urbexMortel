@@ -14,27 +14,27 @@
 #include <unistd.h>
 
 void txtDraw(WinTXT & win, const Game & ga) {
-	Building* bui = ga.getBuilding();
-	Player* pla = ga.getPlayer();
+	Building* building = ga.getBuilding();
+	Player* player1 = ga.getPlayer();
 	
 	
 	win.clear();
 	char c;
 
-	for(unsigned int x=0;x<bui->getCurrentRoom()->getDimX();++x)
-		for(unsigned int y=0;y<bui->getCurrentRoom()->getDimY();++y) {
-			c = (char) bui->getCurrentRoom()->getObstacle(Vector2D(x,y));
+	for(unsigned int x=0;x<building->getCurrentRoom()->getDimX();++x)
+		for(unsigned int y=0;y<building->getCurrentRoom()->getDimY();++y) {
+			c = (char) building->getCurrentRoom()->getObstacle(Vector2D(x,y));
 			if( c == '.') win.print(x, y, ' ');
 			else win.print(x, y, c);
 		}	
 	
-	win.print(pla->getPosition().getX(),pla->getPosition().getY(),'X');
-	win.print(pla->getPosition().getX(),pla->getPosition().getY()-1,'O');
-	// for(unsigned int i = 0; i < bui->getCurrentRoom()->arrayRat.size(); i++)
-	// 	win.print(bui->getCurrentRoom()->arrayRat[i].getPosition().getX(), bui->getCurrentRoom()->arrayRat[i].getPosition().getY(),'R');
+	win.print(player1->getPosition().getX(),player1->getPosition().getY(),'X');
+	win.print(player1->getPosition().getX(),player1->getPosition().getY()-1,'O');
+	// for(unsigned int i = 0; i < building->getCurrentRoom()->arrayRat.size(); i++)
+	// 	win.print(building->getCurrentRoom()->arrayRat[i].getPosition().getX(), building->getCurrentRoom()->arrayRat[i].getPosition().getY(),'R');
 
-	unsigned int hp = pla->getHp();
-	unsigned int TimeInv = pla->getTimeInvincible();
+	unsigned int hp = player1->getHp();
+	unsigned int TimeInv = player1->getTimeInvincible();
 	win.print(0,18,'H');
 	win.print(1,18,':');
 	win.print(2,18,std::to_string(hp).c_str());
@@ -43,12 +43,12 @@ void txtDraw(WinTXT & win, const Game & ga) {
 	win.print(6,18,std::to_string(TimeInv).c_str());
 	win.print(9,18,'R');
 	win.print(10,18,':');
-	win.print(11,18,std::to_string(bui->getIntCurrentRoom()+1).c_str());
+	win.print(11,18,std::to_string(building->getIntCurrentRoom()+1).c_str());
 	win.print(12,18,'/');
-	win.print(13,18,std::to_string(bui->getNbRoom()).c_str());
+	win.print(13,18,std::to_string(building->getNbRoom()).c_str());
     win.print(15,18,'T');
 	win.print(16,18,':');
-	win.print(17,18,std::to_string(bui->getTimetot()).c_str());
+	win.print(17,18,std::to_string(building->getTimetot()).c_str());
 
 	
 

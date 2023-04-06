@@ -14,17 +14,17 @@ class Game {
         /**
          * @brief Pointeur vers le batiment
          */
-        Building * bui;
+        Building * building;
 
         /**
          * @brief Pointeur vers le joueur 1
          */
-        Player * pla;
+        Player * player1;
 
         /**
          * @brief Pointeur vers le joueur 2
          */
-        Player * pla2;
+        Player * player2;
 
         /**
          * @brief bool pour savoir si on est en 1 ou 2 joeur
