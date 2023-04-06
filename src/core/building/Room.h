@@ -52,12 +52,12 @@ enum Obstacle {
          */
         std::vector<Obstacle> arrayObstacle;
 
-    public:
-
         /**
          * @brief Tableau des positions des rats
          */
-        std::vector<Vector2D> arrayRat; // TODO: private
+        std::vector<Vector2D> arrayRat;
+
+    public:
 
         /**
          * @brief Constructeur par défaut
@@ -99,9 +99,19 @@ enum Obstacle {
         void setObstacle(const Vector2D & V, Obstacle o);
 
         /**
-         * @brief Test de non-regression
+         * @brief Retourne le nombre de rats
+         * 
+         * @return unsigned int 
          */
-        void regressionTest();
+        unsigned int getNbRat() const;
+
+        /**
+         * @brief Retourne la position du rat i
+         * 
+         * @param i 
+         * @return Vector2D 
+         */
+        Vector2D* getRat(unsigned int i);
 
         /**
          * @brief Retourne le temps pour sortir de la salle
@@ -109,6 +119,11 @@ enum Obstacle {
          * @return unsigned int
         */
         unsigned int getTime() const;
+
+        /**
+         * @brief Test de non-regression
+         */
+        void regressionTest();
 };
 
 #endif

@@ -37,6 +37,8 @@ Room::Room(const std::string & filename) {
                 }
                 arrayObstacle[y*dimX + x] = (Obstacle)tmp;
             }
+        for(unsigned int i = 0; i < arrayRat.size(); i++)
+            cout << "x: " << arrayRat[i].getX() << " y: " << arrayRat[i].getY() << endl;
     }
     else {
         cout << "Erreur lors de l'ouverture du fichier " << filename << endl;
@@ -73,6 +75,15 @@ unsigned int Room::getTime() const {
     return time;
 }
 
+unsigned int Room::getNbRat() const {
+    return arrayRat.size();
+}
+
+Vector2D* Room::getRat(unsigned int i) {
+    assert(i < arrayRat.size());
+    return &arrayRat[i];
+}
+
 void Room::regressionTest() {
     cout << endl << "Test de la classe Room" << endl;
 
@@ -94,6 +105,9 @@ void Room::regressionTest() {
     assert(getTime() == 0);
     cout << "\tTest de getTime : OK" << endl;
 
+    assert(getNbRat() == 0);
+    cout << "\tTest de getNbRat : OK" << endl;
+
     Room R("data/test.txt");
     Obstacle o;
     assert(R.getDimX() == 6 && R.getDimY() == 9);
@@ -104,7 +118,13 @@ void Room::regressionTest() {
             o = (Obstacle)R.getObstacle(Vector2D(j, i));
             assert(o == nothing || o == barbedWire || o == block || o == door || o == ladder || o == trapdoor);
         }
+    assert(R.getNbRat() == 1); assert(R.getRat(0)->getX() == 1 && R.getRat(0)->getY() == 1);
     cout << "\tTest du constructeur depuis un fichier : OK" << endl;
+    cout << "\tTest de getRat : OK" << endl;
+
+    R.setObstacle(Vector2D(0, 0), ladder);
+    assert(R.getObstacle(Vector2D(0, 0)) == ladder);
+    cout << "\tTest de setObstacle : OK" << endl;
 
     cout << "Test de la classe Room : OK" << endl;
 }
