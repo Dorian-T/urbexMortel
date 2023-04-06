@@ -27,24 +27,24 @@ void Rat::findDirection(Building * B, Player * P) {
 		if(getPosition().getX() < P->getPosition().getX()) direction.setX(1);
 		else if(getPosition().getX() > P->getPosition().getX()) direction.setX(-1);
 		else direction.setX(0);
-		if(getPosition().getY() < P->getPosition().getY()) direction.setY(1);
-		else if(getPosition().getY() > P->getPosition().getY()) direction.setY(-1);
-		else direction.setY(0);
+		// if(getPosition().getY() < P->getPosition().getY()) direction.setY(1);
+		// else if(getPosition().getY() > P->getPosition().getY()) direction.setY(-1);
+		// else direction.setY(0);
 	}
 	else {
 		int x = rand() % 6;
-		int y = rand() % 6;
+		// int y = rand() % 6;
 		if(x == 0) direction.setX(0);
 		else if(x == 1) direction.setX(1);
 		else if(x == 2) direction.setX(-1);
-		if(y == 0) direction.setY(0);
-		else if(y == 1) direction.setY(1);
-		else if(y == 2) direction.setY(-1);
+		// if(y == 0) direction.setY(0);
+		// else if(y == 1) direction.setY(1);
+		// else if(y == 2) direction.setY(-1);
 	}
 }
 
 bool Rat::isPlayerArround(Building * B, Player * P) const {
-	if(getPosition().distance(P->getPosition()) <= 10) // peut-etre que quand les deplacments seront modifier, il faudra changer
+	if(getPosition().distance(P->getPosition()) <= 10) // peut-etre que quand les deplacments seront modifies, il faudra changer
 		return true;
 	else return false;
 }
