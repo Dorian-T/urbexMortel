@@ -2,6 +2,7 @@
 #define _ROOM
 
 #include "../entity/Vector2D.h"
+// #include "../entity/Rat.h"
 #include <string>
 #include <vector>
 
@@ -53,10 +54,10 @@ enum Obstacle {
 
     public:
 
-        // /**
-        //  * @brief Tableau des rats
-        //  */
-        // std::vector<Rat> arrayRat; // TODO: private
+        /**
+         * @brief Tableau des positions des rats
+         */
+        std::vector<Vector2D> arrayRat; // TODO: private
 
         /**
          * @brief Constructeur par défaut
