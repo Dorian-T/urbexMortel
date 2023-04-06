@@ -256,7 +256,7 @@ class Player : public Entity {
         void setIsMoving(bool M);
 
         /**
-         * @brief Test de non-regression
+         * @brief Tests de non-regression
          */
         void regressionTest();
 };

@@ -96,7 +96,7 @@ class Entity {
         void gravity(const Room & R);
 
         /**
-         * @brief Test de non-regression
+         * @brief Tests de non-regression
          */
         void regressionTest();
 };

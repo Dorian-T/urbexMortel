@@ -121,7 +121,7 @@ enum Obstacle {
         unsigned int getTime() const;
 
         /**
-         * @brief Test de non-regression
+         * @brief Tests de non-regression
          */
         void regressionTest();
 };

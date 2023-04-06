@@ -68,7 +68,7 @@ class Vector2D {
         float distance(const Vector2D & V) const;
 
         /**
-         * @brief Test de non-regression
+         * @brief Tests de non-regression
          */
         void regressionTest();
 };
