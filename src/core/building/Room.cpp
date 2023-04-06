@@ -37,8 +37,6 @@ Room::Room(const std::string & filename) {
                 }
                 arrayObstacle[y*dimX + x] = (Obstacle)tmp;
             }
-        for(unsigned int i = 0; i < arrayRat.size(); i++)
-            cout << "x: " << arrayRat[i].getX() << " y: " << arrayRat[i].getY() << endl;
     }
     else {
         cout << "Erreur lors de l'ouverture du fichier " << filename << endl;
