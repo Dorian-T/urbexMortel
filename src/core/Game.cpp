@@ -1,12 +1,17 @@
 #include "Game.h"
+#include "entity/Rat.h"
 
 #include <iostream>
+#include <assert.h>
 
 using namespace std;
 
+const unsigned int nbRoom = 5;
+
 Game::Game ()  {
-	building = new Building(5);
-	player1 = new Player(Vector2D(12,16),M,3);
+	building = new Building("data/room5.txt"); //TODO : mettre nbRoom a la place du nom du fichier
+	room = 0;
+	player1 = new Player(Vector2D(12, 16), M, 3);
 	multiplayer = false;
 	player2 = NULL;
 }
@@ -22,8 +27,17 @@ Building * Game::getBuilding() const {
     return building;
 }
 
-Player * Game::getPlayer() const {
+Player * Game::getPlayer() const { // TODO : a modifier pour le multi
     return player1;
+}
+
+bool Game::changeRoom() {
+	unsigned int n = building->getIntCurrentRoom();
+	if(room != n){
+		room = n;
+		return true;
+	}
+	return false;
 }
 
 
@@ -49,16 +63,57 @@ bool Game::keyboardAction (const char touche) {
 }
 
 int Game::automaticAction (int time) {
-    if(time == 0){
+
+    if(time == 0)
 		player1->gravity(building);
-		}
-	else time=time-1;
-	if(player1->getTimeInvincible()>0){
+	else time = time - 1;
+
+	if(player1->getTimeInvincible() > 0)
 		player1->decreaseTimeInvincible();
-	}
-	building->setTimetot(building->getTimetot()-1);
+
+	building->setTimetot(building->getTimetot() - 1);
+
+	if(changeRoom())
+		for(unsigned int i = building->getCurrentRoom()->getNbRat(); i > 0; i--)
+			rats.push_back(Rat(*building->getCurrentRoom()->getRat(i-1), 1, 1));
+
 	return time;
 }
 
+void Game::regressionTest() {
+	cout << endl << "Test de la classe Game" << endl;
 
+	assert(building->getNbRoom() == nbRoom);
+	assert(room == 0);
+	assert(player1->getPosition().getX() == 12 && player1->getPosition().getY() == 16); assert(player1->getHp() == 3); assert(player1->getSkin() == M);
+	assert(multiplayer == false);
+	assert(player2 == NULL);
+	cout << "Test du constructeur par defaut : OK" << endl;
 
+	assert(getBuilding() == building);
+	cout << "Test de getBuilding : OK" << endl;
+
+	assert(getPlayer() == player1);
+	cout << "Test de getPlayer : OK" << endl;
+
+	assert(changeRoom() == false);
+	if(nbRoom > 1) {
+		assert(building->finishRoom());
+		assert(changeRoom() == true);
+		unsigned int n = building->getCurrentRoom()->getNbRat();
+		if(n > 0) {
+			assert(rats.size() == n);
+			for(unsigned int i = 0; i < n; i++) {
+				assert(rats[i].getPosition().getX() == building->getCurrentRoom()->getRat(i)->getX());
+				assert(rats[i].getPosition().getY() == building->getCurrentRoom()->getRat(i)->getY());
+			}
+		}
+	}
+	cout << "Test de changeRoom : OK" << endl;
+
+	// TODO : tester keyboardAction
+
+	// TODO : tester automaticAction
+
+	cout << "Test de la classe Game : OK" << endl;
+}

@@ -3,6 +3,7 @@
 
 #include "building/Building.h"
 #include "entity/Player.h"
+#include "entity/Rat.h"
 
 /**
  * @brief Classe représentant le jeu
@@ -15,6 +16,11 @@ class Game {
          * @brief Pointeur vers le batiment
          */
         Building * building;
+
+        /**
+         * @brief Numéro de la salle actuelle
+         */
+        unsigned int room;
 
         /**
          * @brief Pointeur vers le joueur 1
@@ -31,7 +37,17 @@ class Game {
          */
         bool multiplayer;
 
-        // je pense que je vais rajouter les rats ici
+        /**
+         * @brief vecteur de rats
+         */
+        std::vector<Rat> rats;
+
+        /**
+         * @brief Détecte un changement de salle
+         * 
+         * @return bool
+         */
+        bool changeRoom();
 
     public :
 
@@ -75,6 +91,10 @@ class Game {
          */
         bool keyboardAction (const char touche);
 
+        /**
+         * @brief Tests de non-regression
+         */
+        void regressionTest();
 };
 
 #endif
