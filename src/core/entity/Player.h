@@ -123,6 +123,13 @@ class Player : public Entity {
         Player(const Vector2D & p, Skin s, unsigned int health);
 
         /**
+         * @brief Accesseur du skin
+         * 
+         * @return Skin
+         */
+        Skin getSkin() const;
+
+        /**
          * @brief Baisse les points de vie
          * 
          * @details si le joueur est invincible, les points de vie ne sont pas baissés

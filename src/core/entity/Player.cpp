@@ -22,6 +22,10 @@ Player::Player(const Vector2D & P, Skin s, unsigned int health): Entity(P, 2, 1)
 	isJumping = false;
 }
 
+Skin Player::getSkin() const {
+	return skin;
+}
+
 bool Player::decreaseHp(unsigned int h) {
 	if(timeInvincible == 0) {
 		if (hp<h) hp -= hp;
@@ -218,7 +222,7 @@ void Player::setIsMoving(bool M) {
 	direction=M;
 }
 
-void Player::regressionTest() {
+void Player::regressionTest() { // a modifier
 	cout << endl << "Test de la classe Player" << endl;
 
 	assert(getPosition().getX() == 0 && getPosition().getY() == 0 && getHeight() == 0 && getWidth() == 0);
