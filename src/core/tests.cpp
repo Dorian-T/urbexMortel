@@ -4,6 +4,8 @@
 #include "entity/Rat.h"
 #include "building/Room.h"
 #include "building/Building.h"
+#include "Game.h"
+
 #include <iostream>
 #include <assert.h>
 #include <stdlib.h>
@@ -11,7 +13,7 @@
 using namespace std;
 
 void movementPlayerRegressionTest() {
-	cout << endl << "Test des mouvements" << endl;
+	cout << endl << "Test des mouvements de Player" << endl;
 	Building B("data/test.txt");
 	Player P(Vector2D(1, 7), M, 5);
 
@@ -102,7 +104,15 @@ void movementPlayerRegressionTest() {
 	assert(!P.right(&B));
 	cout << "\tTest du changement de salle : OK" << endl;
 
-	cout << "Test des mouvements : OK" << endl;
+	cout << "Test des mouvements de Player : OK" << endl;
+}
+
+void movementRatRegressionTest() {
+	cout << endl << "Test des mouvements de Rat" << endl;
+	Building B("data/test.txt");
+	Rat R(Vector2D(1, 7), M, 5);
+
+	// TODO
 }
 
 int main () {
@@ -121,10 +131,13 @@ int main () {
 	Ra.regressionTest();
 
 	Room Ro;
-	Ro.regressionTest(); // probleme
+	Ro.regressionTest();
 
 	Building B(10);
 	B.regressionTest();
+
+	Game G;
+	G.regressionTest();
 
 	movementPlayerRegressionTest();
 
