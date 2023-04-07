@@ -2,30 +2,29 @@
 
 #include <iostream>
 #include <assert.h>
-#include <stdlib.h> 
+#include <stdlib.h>
+#include <string>
 #include <time.h> 
 
 using namespace std;
 
+const int NB_DIFFERENT_ROOM = 5;
+
 Building::Building(unsigned int nb) {
     int n;
-    nbRoom = nb;
+    string s;
+    nbRoom = nb + 2;
     arrayRoom.resize(nbRoom);
     arrayRoom[0] = Room("data/entrance.txt");
-    for(unsigned int i = 1; i < arrayRoom.size()-1; i++) {
-        n = rand() % 4;
-        if(n == 0)
-            arrayRoom[i] = Room("data/room1.txt");
-        else if(n == 1)
-            arrayRoom[i] = Room("data/room2.txt");
-        else if(n==2)
-            arrayRoom[i] = Room("data/room3.txt");
-        else
-            arrayRoom[i] = Room("data/room4.txt");
+    for(unsigned int i = 0; i < nb; i++) {
+        n = rand() % NB_DIFFERENT_ROOM + 1;
+        s = "data/room" + to_string(n) + ".txt";
+        arrayRoom[i+1] = Room(s);
     }
-    arrayRoom[arrayRoom.size()-1] = Room("data/exit.txt");
+    arrayRoom[nbRoom-1] = Room("data/exit.txt");
     currentRoom = 0;
-    for(unsigned int i=0;i<arrayRoom.size();i++) {timetot+=arrayRoom[i].getTime();}
+    for(unsigned int i = 0; i < nbRoom; i++)
+        timetot += arrayRoom[i].getTime();
 }
 
 Building::Building(string filename) {
