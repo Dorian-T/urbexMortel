@@ -6,10 +6,10 @@
 
 using namespace std;
 
-const unsigned int nbRoom = 5;
+const unsigned int NB_ROOM = 3; // nombre de salles intermediaires
 
 Game::Game ()  {
-	building = new Building(nbRoom);
+	building = new Building(NB_ROOM);
 	room = 0;
 	player1 = new Player(Vector2D(12, 16), M, 3);
 	multiplayer = false;
@@ -93,7 +93,7 @@ bool Game::keyboardAction (const char touche) {
 void Game::regressionTest() {
 	cout << endl << "Test de la classe Game" << endl;
 
-	assert(building->getNbRoom() == nbRoom);
+	assert(building->getNbRoom() == NB_ROOM);
 	assert(room == 0);
 	assert(player1->getPosition().getX() == 12 && player1->getPosition().getY() == 16); assert(player1->getHp() == 3); assert(player1->getSkin() == M);
 	assert(multiplayer == false);
@@ -111,7 +111,7 @@ void Game::regressionTest() {
 	// TODO : tester getRat
 
 	assert(changeRoom() == false);
-	if(nbRoom > 1) {
+	if(NB_ROOM > 1) {
 		assert(building->finishRoom());
 		assert(changeRoom() == true);
 		unsigned int n = building->getCurrentRoom()->getNbRat();

@@ -30,8 +30,10 @@ void txtDraw(WinTXT & win, const Game & ga) {
 	
 	win.print(player1->getPosition().getX(),player1->getPosition().getY(),'X');
 	win.print(player1->getPosition().getX(),player1->getPosition().getY()-1,'O');
-	// for(unsigned int i = 0; i < building->getCurrentRoom()->arrayRat.size(); i++)
-	// 	win.print(building->getCurrentRoom()->arrayRat[i].getPosition().getX(), building->getCurrentRoom()->arrayRat[i].getPosition().getY(),'R');
+	for(unsigned int i = 0; i < ga.getNbRat(); i++) {
+		Rat* rat = ga.getRat(i);
+		win.print(rat->getPosition().getX(), ga.getRat(i)->getPosition().getY(), 'R');
+	}
 
 	unsigned int hp = player1->getHp();
 	unsigned int TimeInv = player1->getTimeInvincible();
@@ -50,8 +52,6 @@ void txtDraw(WinTXT & win, const Game & ga) {
 	win.print(16,18,':');
 	win.print(17,18,std::to_string(building->getTimetot()).c_str());
 
-	
-
 	win.draw();
 }
 
@@ -61,7 +61,9 @@ void txtLoop (Game & ga) {
 	bool ok = true;
 	int c;
 
-	do {
+	ga.addRat();
+
+	while (ok) {
 	    txtDraw(win,ga);
 
         #ifdef _WIN32
@@ -70,7 +72,6 @@ void txtLoop (Game & ga) {
 		usleep(100000);
         #endif // WIN32
 
-		
 		time=ga.automaticAction(time);
 
 		c = win.getCh();
@@ -92,11 +93,11 @@ void txtLoop (Game & ga) {
 				ok = false;
 				break;
 		}
-		if (ga.getPlayer()->getHp()==0)	{
-		ok = false;
-		}
-		if(ga.getBuilding()->getTimetot()==0) {ok = false;}
 
-	} while (ok);
+		if (ga.getPlayer()->getHp() == 0)
+			ok = false;
+		if(ga.getBuilding()->getTimetot() == 0)
+			ok = false;
 
+	}
 }
