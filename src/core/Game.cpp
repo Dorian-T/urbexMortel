@@ -9,7 +9,7 @@ using namespace std;
 const unsigned int nbRoom = 5;
 
 Game::Game ()  {
-	building = new Building("data/room5.txt"); //TODO : mettre nbRoom a la place du nom du fichier
+	building = new Building(nbRoom);
 	room = 0;
 	player1 = new Player(Vector2D(12, 16), M, 3);
 	multiplayer = false;
@@ -31,6 +31,14 @@ Player * Game::getPlayer() const { // TODO : a modifier pour le multi
     return player1;
 }
 
+unsigned int Game::getNbRat() const {
+	return rats.size();
+}
+
+Rat * Game::getRat(unsigned int i) {
+	return &rats[i];
+}
+
 bool Game::changeRoom() {
 	unsigned int n = building->getIntCurrentRoom();
 	if(room != n){
@@ -40,7 +48,27 @@ bool Game::changeRoom() {
 	return false;
 }
 
+void Game::addRat() {
+	for(unsigned int i = building->getCurrentRoom()->getNbRat(); i > 0; i--)
+		rats.push_back(Rat(*building->getCurrentRoom()->getRat(i-1), 1, 1));
+}
 
+int Game::automaticAction (int time) {
+
+    if(time == 0)
+		player1->gravity(building);
+	else time = time - 1;
+
+	if(player1->getTimeInvincible() > 0)
+		player1->decreaseTimeInvincible();
+
+	building->setTimetot(building->getTimetot() - 1);
+
+	if(changeRoom())
+		addRat();
+
+	return time;
+}
 
 bool Game::keyboardAction (const char touche) {
 	bool b;
@@ -62,24 +90,6 @@ bool Game::keyboardAction (const char touche) {
 	return true;
 }
 
-int Game::automaticAction (int time) {
-
-    if(time == 0)
-		player1->gravity(building);
-	else time = time - 1;
-
-	if(player1->getTimeInvincible() > 0)
-		player1->decreaseTimeInvincible();
-
-	building->setTimetot(building->getTimetot() - 1);
-
-	if(changeRoom())
-		for(unsigned int i = building->getCurrentRoom()->getNbRat(); i > 0; i--)
-			rats.push_back(Rat(*building->getCurrentRoom()->getRat(i-1), 1, 1));
-
-	return time;
-}
-
 void Game::regressionTest() {
 	cout << endl << "Test de la classe Game" << endl;
 
@@ -88,13 +98,13 @@ void Game::regressionTest() {
 	assert(player1->getPosition().getX() == 12 && player1->getPosition().getY() == 16); assert(player1->getHp() == 3); assert(player1->getSkin() == M);
 	assert(multiplayer == false);
 	assert(player2 == NULL);
-	cout << "Test du constructeur par defaut : OK" << endl;
+	cout << "\tTest du constructeur par defaut : OK" << endl;
 
 	assert(getBuilding() == building);
-	cout << "Test de getBuilding : OK" << endl;
+	cout << "\tTest de getBuilding : OK" << endl;
 
 	assert(getPlayer() == player1);
-	cout << "Test de getPlayer : OK" << endl;
+	cout << "\tTest de getPlayer : OK" << endl;
 
 	assert(changeRoom() == false);
 	if(nbRoom > 1) {
@@ -109,7 +119,7 @@ void Game::regressionTest() {
 			}
 		}
 	}
-	cout << "Test de changeRoom : OK" << endl;
+	cout << "\tTest de changeRoom : OK" << endl;
 
 	// TODO : tester keyboardAction
 

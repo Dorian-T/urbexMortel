@@ -76,6 +76,25 @@ class Game {
         Player * getPlayer () const;
 
         /**
+         * @brief Retourne le nombre de rats
+        */
+        unsigned int getNbRat() const;
+
+        /**
+         * @brief Accesseur vers le rat i
+         * 
+         * @param i 
+         * @return Rat* 
+         */
+        Rat * getRat (unsigned int i);
+
+        /**
+         * @brief ajoute dans rats les rats de la salle
+         * 
+         */
+        void addRat();
+
+        /**
          * @brief Réalisation des actions automatiques
          * 
          * @param time 
