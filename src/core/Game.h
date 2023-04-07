@@ -40,7 +40,7 @@ class Game {
         /**
          * @brief vecteur de rats
          */
-        std::vector<Rat> rats;
+        std::vector<Rat*> rats;
 
         /**
          * @brief Détecte un changement de salle
@@ -86,7 +86,7 @@ class Game {
          * @param i 
          * @return Rat* 
          */
-        Rat * getRat (unsigned int i);
+        Rat * getRat (unsigned int i) const;
 
         /**
          * @brief ajoute dans rats les rats de la salle

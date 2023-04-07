@@ -35,8 +35,8 @@ unsigned int Game::getNbRat() const {
 	return rats.size();
 }
 
-Rat * Game::getRat(unsigned int i) {
-	return &rats[i];
+Rat * Game::getRat(unsigned int i) const {
+	return rats[i];
 }
 
 bool Game::changeRoom() {
@@ -50,7 +50,7 @@ bool Game::changeRoom() {
 
 void Game::addRat() {
 	for(unsigned int i = building->getCurrentRoom()->getNbRat(); i > 0; i--)
-		rats.push_back(Rat(*building->getCurrentRoom()->getRat(i-1), 1, 1));
+		rats.push_back(new Rat(*building->getCurrentRoom()->getRat(i-1), 1, 1));
 }
 
 int Game::automaticAction (int time) {
@@ -106,6 +106,10 @@ void Game::regressionTest() {
 	assert(getPlayer() == player1);
 	cout << "\tTest de getPlayer : OK" << endl;
 
+	// TODO : tester getNbRat
+
+	// TODO : tester getRat
+
 	assert(changeRoom() == false);
 	if(nbRoom > 1) {
 		assert(building->finishRoom());
@@ -114,8 +118,8 @@ void Game::regressionTest() {
 		if(n > 0) {
 			assert(rats.size() == n);
 			for(unsigned int i = 0; i < n; i++) {
-				assert(rats[i].getPosition().getX() == building->getCurrentRoom()->getRat(i)->getX());
-				assert(rats[i].getPosition().getY() == building->getCurrentRoom()->getRat(i)->getY());
+				assert(rats[i]->getPosition().getX() == building->getCurrentRoom()->getRat(i)->getX());
+				assert(rats[i]->getPosition().getY() == building->getCurrentRoom()->getRat(i)->getY());
 			}
 		}
 	}
