@@ -16,11 +16,11 @@ PlayerSFML::~PlayerSFML() {
 }
 
 void PlayerSFML::update(float elapse, Building * B) {
-    if (!P->getIsFailling() && !P->standingOnBlock(B))
+    if (!P->getIsFalling() && !P->standingOnBlock(B))
     {
         P->setIsFailling(true);
     }
-    if (P->getIsFailling() && P->standingOnBlock(B))
+    if (P->getIsFalling() && P->standingOnBlock(B))
     {
         P->setIsFailling(false);
     }

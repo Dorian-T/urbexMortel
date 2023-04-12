@@ -9,7 +9,8 @@ using namespace std;
 const unsigned int NB_ROOM = 3; // nombre de salles intermediaires
 
 Game::Game ()  {
-	building = new Building(NB_ROOM);
+	// building = new Building(NB_ROOM);
+	building = new Building("data/room5.txt");
 	room = 0;
 	player1 = new Player(Vector2D(12, 16), M, 3);
 	multiplayer = false;
@@ -66,6 +67,10 @@ int Game::automaticAction (int time) {
 
 	if(changeRoom())
 		addRat();
+	for(unsigned int i = 0; i < getNbRat(); i++) {
+		rats[i]->move(building, player1); // TODO : a modifier pour le multi
+		// rats[i]->gravity(building);
+	}
 
 	return time;
 }

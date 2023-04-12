@@ -18,7 +18,7 @@ Vector2D Rat::getDirection() const {
 
 void Rat::move(Building * B, Player * P) {
 	findDirection(B, P);
-	if(isMovePossible(B, direction))
+	if(isMovePossible(B, getPosition() + direction))
 	setPosition(getPosition() + direction);
 }
 
@@ -27,30 +27,25 @@ void Rat::findDirection(Building * B, Player * P) {
 		if(getPosition().getX() < P->getPosition().getX()) direction.setX(1);
 		else if(getPosition().getX() > P->getPosition().getX()) direction.setX(-1);
 		else direction.setX(0);
-		// if(getPosition().getY() < P->getPosition().getY()) direction.setY(1);
-		// else if(getPosition().getY() > P->getPosition().getY()) direction.setY(-1);
-		// else direction.setY(0);
 	}
-	else {
-		int x = rand() % 6;
-		// int y = rand() % 6;
+	else { // directions : 0 = rien, 1 = droite, -1 = gauche
+		int x = rand() % 6; // 4/6 de chance de continuer dans la meme direction, 2/6 de chance de changer de direction
 		if(x == 0) direction.setX(0);
 		else if(x == 1) direction.setX(1);
 		else if(x == 2) direction.setX(-1);
-		// if(y == 0) direction.setY(0);
-		// else if(y == 1) direction.setY(1);
-		// else if(y == 2) direction.setY(-1);
 	}
 }
 
-bool Rat::isPlayerArround(Building * B, Player * P) const {
-	if(getPosition().distance(P->getPosition()) <= 10) // peut-etre que quand les deplacments seront modifies, il faudra changer
-		return true;
+bool Rat::isPlayerArround(Building * B, Player * P) const { // peut-etre que quand les deplacements seront modifies, il faudra changer
+	if(getPosition().distance(P->getPosition()) <= 10) return true;
 	else return false;
 }
 
 bool Rat::isMovePossible(Building *B, const Vector2D & V) const {
-	return true; // TODO
+	if(V.getX() < B->getCurrentRoom()->getDimX() && V.getX() >= 0 && V.getY() < B->getCurrentRoom()->getDimY() && V.getY() >= 0)
+		if(B->getCurrentRoom()->getObstacle(V) == nothing)
+			return true;
+	return false;
 }
 
 void Rat::gravity(Building * B) {
