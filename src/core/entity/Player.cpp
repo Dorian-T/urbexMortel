@@ -28,8 +28,8 @@ Skin Player::getSkin() const {
 
 bool Player::decreaseHp(unsigned int h) {
 	if(timeInvincible == 0) {
-		if (hp<h) hp -= hp;
-		hp -= h;
+		if(hp < h) hp = 0;
+		else hp -= h;
 		if(hp == 0)
 			return false;
 		else
