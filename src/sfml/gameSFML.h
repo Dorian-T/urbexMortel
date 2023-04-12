@@ -37,8 +37,6 @@ class GameSFML {
 		 */
 		std::vector<sf::Texture> texturesObstacles;
 
-		std::vector<sf::Sprite> spritesObstacles; // TODO
-
 		/**
 		 * @brief La taille d'une case
 		 */

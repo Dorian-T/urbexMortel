@@ -37,7 +37,6 @@ GameSFML::GameSFML(const Game & game): window(VideoMode(1920, 1080), "L'Urbex mo
 	texturesObstacles.push_back(potionTexture);
 
 
-	// initialisation des sprites
 	// TODO : Player et Rat
 
 	// initialisation de la taille des sprites
@@ -128,7 +127,6 @@ void GameSFML::drawObstacles(const Room & room) {
 
 void GameSFML::draw(const Game & game) {
 	window.clear(Color::Black);
-	unsigned int spriteSize = window.getSize().x / game.getBuilding()->getCurrentRoom()->getDimX();
 
 	// affichage du fond
 	RectangleShape background(Vector2f(spriteSize*game.getBuilding()->getCurrentRoom()->getDimX(), spriteSize*game.getBuilding()->getCurrentRoom()->getDimY()));
