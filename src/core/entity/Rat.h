@@ -17,6 +17,11 @@ class Rat: public Entity {
 		Vector2D direction;
 
 		/**
+		 * @brief Temps avant le prochain déplacement
+		 */
+		unsigned int time;
+
+		/**
 		 * @brief Choisi une direction
 		 * 
 		 * @param B 

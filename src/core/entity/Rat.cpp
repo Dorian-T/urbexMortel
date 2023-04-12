@@ -18,8 +18,10 @@ Vector2D Rat::getDirection() const {
 
 void Rat::move(Building * B, Player * P) {
 	findDirection(B, P);
-	if(isMovePossible(B, getPosition() + direction))
-	setPosition(getPosition() + direction);
+	if(isMovePossible(B, getPosition() + direction)) {
+		setPosition(getPosition() + direction);
+		time += 5;
+	}
 }
 
 void Rat::findDirection(Building * B, Player * P) {
