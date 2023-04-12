@@ -7,15 +7,12 @@
 
 /* Version finie :
 Dans le vector de textures, on a :
-0 : nothing
-1 : barbedWire
-2 : block
-3 : door
-4 : ladder
-5 : trapdoor
-6 : potion
-7 : player
-8 : rat
+0 : barbedWire
+1 : block
+2 : door
+3 : ladder
+4 : trapdoor
+5 : potion
 */
 
 /* Pour l'instant :
@@ -24,8 +21,6 @@ Dans le vector de textures, on a :
 1 : ladder
 2 : trapdoor
 3 : potion
-4 : player
-5 : rat
 */
 
 class GameSFML {
@@ -38,11 +33,11 @@ class GameSFML {
 		sf::RenderWindow window;
 
 		/**
-		 * @brief Les textures du jeu
+		 * @brief Les textures des obstacles
 		 */
-		std::vector<sf::Texture> textures;
+		std::vector<sf::Texture> texturesObstacles;
 
-		std::vector<sf::Sprite> sprites; // TODO
+		std::vector<sf::Sprite> spritesObstacles; // TODO
 
 		/**
 		 * @brief La taille d'une case
@@ -63,6 +58,13 @@ class GameSFML {
 		 * @param player
 		 */
 		void drawPlayer(const Player & player);
+
+		/**
+		 * @brief Dessine les obstacles dans la fenêtre
+		 * 
+		 * @param obstacle
+		 */
+		void drawObstacles(const Room & room);
 
 	public:
 
