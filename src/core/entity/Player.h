@@ -37,7 +37,7 @@ class Player : public Entity {
          * @brief savoir si il est entrain de tomber
          * 
          */
-        bool isFailling;
+        bool isFalling;
 
         /**
          * @brief savoir si il est entrain de bouger
@@ -225,7 +225,7 @@ class Player : public Entity {
          * @return true 
          * @return false 
          */
-        bool getIsFailling();
+        bool getIsFalling();
 
         /**
          * @brief Accesseur de Direction

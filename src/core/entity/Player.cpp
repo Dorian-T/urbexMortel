@@ -9,7 +9,7 @@ Player::Player() {
 	hp = 0;
 	timeInvincible = 0;
 	isMoving = false;
-	isFailling = false;
+	isFalling = false;
 	isJumping = false;
 }
 
@@ -18,7 +18,7 @@ Player::Player(const Vector2D & P, Skin s, unsigned int health): Entity(P, 2, 1)
 	hp = health;
 	timeInvincible = 0;
 	isMoving = false;
-	isFailling = false;
+	isFalling = false;
 	isJumping = false;
 }
 
@@ -133,7 +133,7 @@ void Player::down(Building * B) {
 		int i = isMovePossibleDown(V, B->getCurrentRoom());
 		if(i == -1) {
 			setPosition(V);
-			if(B->getCurrentRoom()->getObstacle(V)==nothing) {isFailling=false;}
+			if(B->getCurrentRoom()->getObstacle(V)==nothing) {isFalling=false;}
 		}
 		else if(i > 0) decreaseHp(i);
 		else if (i == -4) {
@@ -190,8 +190,8 @@ unsigned int Player::getTimeInvincible() {
 	return timeInvincible;
 }
 
-bool Player::getIsFailling() {
-	return isFailling;
+bool Player::getIsFalling() {
+	return isFalling;
 }
 
 bool Player::getIsMoving() {
