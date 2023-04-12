@@ -75,9 +75,10 @@ int Game::automaticAction (int time) {
 
 	building->setTimetot(building->getTimetot() - 1);
 
-	if(changeRoom())
+	if(changeRoom()) {
 		removeRat();
 		addRat();
+	}
 	for(unsigned int i = 0; i < getNbRat(); i++) {
 		rats[i]->move(building, player1); // TODO : a modifier pour le multi
 		// rats[i]->gravity(building);
