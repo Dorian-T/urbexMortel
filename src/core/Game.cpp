@@ -11,7 +11,7 @@ const unsigned int NB_ROOM = 3; // nombre de salles intermediaires
 Game::Game ()  {
 	building = new Building(NB_ROOM);
 	room = 0;
-	player1 = new Player(Vector2D(12, 16), M, 30);
+	player1 = new Player(Vector2D(12, 16), M, 3);
 	multiplayer = false;
 	player2 = NULL;
 }

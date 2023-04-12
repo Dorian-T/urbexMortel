@@ -3,6 +3,7 @@
 #include "../core/building/Room.h" // utile ?
 #include "../core/Game.h"
 #include "gameSFML.h"
+#include <iostream>
 using namespace sf;
 
 
@@ -125,6 +126,16 @@ void GameSFML::drawObstacles(const Room & room) {
 		}
 }
 
+void GameSFML::drawInfoPlayer(Player * player) {
+	Text Hp;
+	Hp.setString(std::to_string(player->getHp()));
+	Color red(232, 21, 14);
+	Hp.setColor(red);
+	Hp.setCharacterSize(24);
+	window.draw(Hp);
+
+}
+
 void GameSFML::draw(const Game & game) {
 	window.clear(Color::Black);
 
@@ -138,23 +149,26 @@ void GameSFML::draw(const Game & game) {
 	drawObstacles(*game.getBuilding()->getCurrentRoom());
 
 	drawPlayer(*game.getPlayer());
+
+	drawInfoPlayer(game.getPlayer());
+	
 	window.display();
 }
 
 void GameSFML::Loop(Game & game) {
 	window.setKeyRepeatEnabled(false);
 	Clock cl;
-	int time = 1;
+	int time = 3;
 	while(window.isOpen()) {
-		float elapsed = cl.getElapsedTime().asMicroseconds();
-		if(elapsed > 50) {
+		float elapsed = cl.getElapsedTime().asMilliseconds();
+		if(elapsed > 100) {
 		time = game.automaticAction(time);
 		cl.restart();
 		};
 		Event event;
 		while(window.pollEvent(event)) {
-			elapsed = cl.getElapsedTime().asMicroseconds();
-			if(elapsed > 50) {
+			elapsed = cl.getElapsedTime().asMilliseconds();
+			if(elapsed > 100) {
 			time = game.automaticAction(time);
 			cl.restart();
 			};
@@ -163,8 +177,8 @@ void GameSFML::Loop(Game & game) {
 			else if(event.type == Event::KeyPressed) 
 				switch(event.key.code) {
 					case Keyboard::Z:
+						if(game.getPlayer()->standingOnBlock(game.getBuilding())) time = 3;
 						game.getPlayer()->up(game.getBuilding());
-						time = 1;
 						break;
 
 					case Keyboard::D:

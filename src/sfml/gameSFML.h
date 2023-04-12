@@ -64,6 +64,12 @@ class GameSFML {
 		 */
 		void drawObstacles(const Room & room);
 
+		/**
+		 * @brief Dessine les infos du joueur
+		 * 
+		 */
+		void drawInfoPlayer(Player * player);
+
 	public:
 
 		/**

@@ -34,30 +34,6 @@ class Player : public Entity {
         unsigned int timeInvincible;
 
         /**
-         * @brief savoir si il est entrain de tomber
-         * 
-         */
-        bool isFalling;
-
-        /**
-         * @brief savoir si il est entrain de bouger
-         * 
-         */
-        bool isMoving;
-
-        /**
-         * @brief savoir si il est entrain de sauter
-         * 
-         */
-        bool isJumping;
-
-        /**
-         * @brief la direction du personnage, faux=gauche et vrai=droite
-         * 
-         */
-        bool direction;
-
-        /**
          * @brief Vérifie si le déplacement vers le haut est possible
          * 
          * @details renvoie -1 si le déplacement est possible
@@ -202,65 +178,6 @@ class Player : public Entity {
          * @return unsigned int 
          */
         unsigned int getTimeInvincible();
-
-        /**
-         * @brief Accesseur de isJumping
-         * 
-         * @return true 
-         * @return false 
-         */
-        bool getIsJumping();
-
-        /**
-         * @brief Accesseur de isMoving
-         * 
-         * @return true 
-         * @return false 
-         */
-        bool getIsMoving();
-
-        /**
-         * @brief Accessseur de IsJumping
-         * 
-         * @return true 
-         * @return false 
-         */
-        bool getIsFalling();
-
-        /**
-         * @brief Accesseur de Direction
-         * 
-         * @return true 
-         * @return false 
-         */
-        bool getDirection();
-
-        /**
-         * @brief Set the Direction object
-         * 
-         */
-        void setDirection(bool D);
-
-        /**
-         * @brief Set the IsFailling object
-         * 
-         * @param F 
-         */
-        void setIsFailling(bool F);
-
-        /**
-         * @brief Set the IsJumping object
-         * 
-         * @param J 
-         */
-        void setIsJumping(bool J);
-
-        /**
-         * @brief Set the IsMoving object
-         * 
-         * @param M 
-         */
-        void setIsMoving(bool M);
 
         /**
          * @brief Tests de non-regression

@@ -8,18 +8,12 @@ Player::Player() {
 	skin = M;
 	hp = 0;
 	timeInvincible = 0;
-	isMoving = false;
-	isFalling = false;
-	isJumping = false;
 }
 
 Player::Player(const Vector2D & P, Skin s, unsigned int health): Entity(P, 2, 1) {
 	skin = s;
 	hp = health;
 	timeInvincible = 0;
-	isMoving = false;
-	isFalling = false;
-	isJumping = false;
 }
 
 Skin Player::getSkin() const {
@@ -45,7 +39,6 @@ void Player::decreaseTimeInvincible() {
 void Player::up(Building * B) { // peut-etre qu'il faudra modifier en passant a la version graphique
 	if(standingOnBlock(B))
 	{
-		isJumping=true;
 		Vector2D V;
 		V.setX(getPosition().getX());
 		if(getPosition().getY() > 1) {
@@ -133,7 +126,6 @@ void Player::down(Building * B) {
 		int i = isMovePossibleDown(V, B->getCurrentRoom());
 		if(i == -1) {
 			setPosition(V);
-			if(B->getCurrentRoom()->getObstacle(V)==nothing) {isFalling=false;}
 		}
 		else if(i > 0) decreaseHp(i);
 		else if (i == -4) {
@@ -190,37 +182,6 @@ unsigned int Player::getTimeInvincible() {
 	return timeInvincible;
 }
 
-bool Player::getIsFalling() {
-	return isFalling;
-}
-
-bool Player::getIsMoving() {
-	return isMoving;
-}
-
-bool Player::getIsJumping() {
-	return isJumping;
-}
-
-bool Player::getDirection() {
-	return direction;
-}
-
-void Player::setDirection(bool D) {
-	direction=D;
-}
-
-void Player::setIsFailling(bool F) {
-	direction=F;
-}
-
-void Player::setIsJumping(bool J) {
-	direction=J;
-}
-
-void Player::setIsMoving(bool M) {
-	direction=M;
-}
 
 void Player::regressionTest() { // a modifier
 	cout << endl << "Test de la classe Player" << endl;
