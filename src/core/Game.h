@@ -95,6 +95,11 @@ class Game {
         void addRat();
 
         /**
+         * @brief Enlève tous les rats de la salle
+         */
+        void removeRat();
+
+        /**
          * @brief collisions entre les rats et le joueur
          */
         void collisionRat();
