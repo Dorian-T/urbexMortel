@@ -91,7 +91,7 @@ void GameSFML::drawObstacles(const Room & room) {
 					{
 						RectangleShape door(Vector2f(spriteSize, spriteSize));
 						door.setPosition(i*spriteSize, j*spriteSize);
-						door.setFillColor(Color (0, 0, 0));
+						door.setFillColor(Color (139, 69, 19));
 						window.draw(door);
 					}
 					break;
