@@ -54,6 +54,12 @@ void Game::addRat() {
 		rats.push_back(new Rat(*building->getCurrentRoom()->getRat(i-1), 1, 1));
 }
 
+void Game::collisionRat() {
+	for(unsigned int i = 0; i < getNbRat(); i++)
+		if(rats[i]->getPosition().getX() == player1->getPosition().getX() && rats[i]->getPosition().getY() == player1->getPosition().getY())
+			player1->decreaseHp(1);
+}
+
 int Game::automaticAction (int time) {
 
     if(time == 0)
@@ -71,6 +77,7 @@ int Game::automaticAction (int time) {
 		rats[i]->move(building, player1); // TODO : a modifier pour le multi
 		// rats[i]->gravity(building);
 	}
+	collisionRat();
 
 	return time;
 }

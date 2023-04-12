@@ -95,6 +95,11 @@ class Game {
         void addRat();
 
         /**
+         * @brief collisions entre les rats et le joueur
+         */
+        void collisionRat();
+
+        /**
          * @brief Réalisation des actions automatiques
          * 
          * @param time 
