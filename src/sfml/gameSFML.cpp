@@ -129,9 +129,12 @@ void GameSFML::drawObstacles(const Room & room) {
 void GameSFML::drawInfoPlayer(Player * player) {
 	Text Hp;
 	Hp.setString(std::to_string(player->getHp()));
-	Color red(232, 21, 14);
-	Hp.setColor(red);
-	Hp.setCharacterSize(24);
+	Hp.setString("suce");
+	Color red(232, 21, 14, 255);
+	Hp.setFillColor(red);
+	Hp.setCharacterSize(800);
+	Hp.setPosition(0*spriteSize,0*spriteSize);
+	Hp.setScale((float) spriteSize * 1 / 400, (float) spriteSize * 1 / 400);
 	window.draw(Hp);
 
 }
