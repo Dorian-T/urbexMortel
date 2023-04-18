@@ -31,7 +31,7 @@ int main ( int argc, char** argv ) {
 		ga.getBuilding()->setTimetot(ga.getBuilding()->getTimetot()*20);
 	txtLoop(ga);
     termClear();
-	if(ga.getPlayer()->getHp()==0 || ga.getBuilding()->getTimetot()==0) cout << "T'es mort, nul !" << endl ;
+	if(ga.getPlayer()->getHp() == 0 || ga.getBuilding()->getTimetot() == 0) cout << "T'es mort, nul !" << endl ;
 	else cout << "Bravo ! T'es pas nul." << endl ;
 	return 0;
 }

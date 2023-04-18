@@ -55,6 +55,12 @@ class Game {
          */
         bool changeRoom();
 
+        /**
+         * @brief temps qui reste avant de mourir
+         * 
+         */
+        unsigned int timeLeft;
+
     public :
 
         /**

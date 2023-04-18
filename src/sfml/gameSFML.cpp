@@ -22,11 +22,10 @@ GameSFML::GameSFML(const Game & game): window(VideoMode(1920, 1080), "L'Urbex mo
 	window.setFramerateLimit(30);
 
 
-	// initialisation des textures du background et des obstacles
+	// initialisation des textures
 
 	Texture backgroundTexture;
 	backgroundTexture.loadFromFile(PATH_TEXTURES + "background.png");
-	backgroundTexture.setRepeated(true);
 	texturesObstacles.push_back(backgroundTexture);
 
 	Texture barbedWireTexture;
@@ -57,6 +56,18 @@ GameSFML::GameSFML(const Game & game): window(VideoMode(1920, 1080), "L'Urbex mo
 	potionTexture.loadFromFile(PATH_TEXTURES + "potion.png");
 	texturesObstacles.push_back(potionTexture);
 
+	Texture heartTexture;
+	heartTexture.loadFromFile(PATH_TEXTURES + "heart.png");
+	texturesObstacles.push_back(heartTexture);
+
+	Texture poisonSkullTexture;
+	poisonSkullTexture.loadFromFile(PATH_TEXTURES + "poisonSkull.png");
+	texturesObstacles.push_back(poisonSkullTexture);
+
+	Texture poisonBarTexture;
+	poisonBarTexture.loadFromFile(PATH_TEXTURES + "poisonBar.png");
+	texturesObstacles.push_back(poisonBarTexture);
+
 
 	// TODO : Player et Rat
 
@@ -78,9 +89,9 @@ void GameSFML::draw(const Game & game) {
 
 	drawObstacles(*game.getBuilding()->getCurrentRoom());
 
-	drawPlayer(*game.getPlayer());
+	drawPlayer(game.getPlayer());
 
-	drawInfoPlayer(game.getPlayer());
+	drawInfoPlayer(game.getPlayer(), *game.getBuilding()->getCurrentRoom());
 
 	window.display();
 }
@@ -170,29 +181,62 @@ void GameSFML::drawObstacles(const Room & room) {
 		}
 }
 
-void GameSFML::drawPlayer(const Player & player) {
-	Texture playerTexture;
+void GameSFML::drawPlayer(Player * player) {
+	bool clock = true;
+	Texture playerTexture; // TODO : ne pas la recréer à chaque fois
 	playerTexture.loadFromFile(PATH_TEXTURES + "player.png");
 	playerTexture.setSmooth(true);
 	Sprite playerSprite(playerTexture);
 	playerSprite.setScale((float) spriteSize * 2 / 400, (float) spriteSize * 2 / 400);
-	playerSprite.setPosition(player.getPosition().getX()*spriteSize, player.getPosition().getY()*spriteSize - spriteSize);
+	playerSprite.setPosition(player->getPosition().getX()*spriteSize, player->getPosition().getY()*spriteSize - spriteSize);
+
+	if(player->getTimeInvincible() > 0) // à refaire
+		if(clock) playerSprite.setColor(Color(255, 255, 255, 128));
+	clock = !clock;
 	window.draw(playerSprite);
 }
 
-void GameSFML::drawInfoPlayer(Player * player) {
-	Font font;
-	font.loadFromFile(PATH_FONTS + "arial.ttf");
+void GameSFML::drawInfoPlayer(Player * player, Building * building) {
+	// HP :
+	for(unsigned int i = 0; i < player->getHp(); ++i) {
+		RectangleShape heart(Vector2f(spriteSize, spriteSize));
+		heart.setPosition(i*spriteSize + spriteSize, 0);
+		heart.setTexture(&texturesObstacles[8]);
+		window.draw(heart);
+	}
 
-	Color red(232, 21, 14, 255);
+	// Poison :
+	RectangleShape poisonSkull(Vector2f(spriteSize, spriteSize));
+	poisonSkull.setPosition(building->getCurrentRoom()->getDimX()*spriteSize - 6*spriteSize, 0);
+	poisonSkull.setTexture(&texturesObstacles[9]);
+	window.draw(poisonSkull);
 
-	Text Hp;
-	Hp.setFont(font);
-	Hp.setFillColor(red);
-	Hp.setCharacterSize(spriteSize);
-	Hp.setString(to_string(player->getHp()));
-	Hp.setPosition(1*spriteSize,0*spriteSize);
-	window.draw(Hp);
+	RectangleShape poison(Vector2f(4*spriteSize * player->getPoison() / building->getTimetot(), spriteSize));
+	poison.setPosition(building->getCurrentRoom()->getDimX()*spriteSize - 5*spriteSize, 0);
+	poison.setFillColor(Color(138, 34, 156, 255));
+	window.draw(poison);
+
+	RectangleShape poisonBar(Vector2f(4*spriteSize, spriteSize));
+	poisonBar.setPosition(building->getCurrentRoom()->getDimX()*spriteSize - 5*spriteSize, 0);
+	poisonBar.setTexture(&texturesObstacles[10]);
+	window.draw(poisonBar);
+}
+
+
+
+void GameSFML::drawMenu() {
+	// Font font;
+	// font.loadFromFile(PATH_FONTS + "arial.ttf");
+
+	// Color red(232, 21, 14, 255);
+
+	// Text Hp;
+	// Hp.setFont(font);
+	// Hp.setFillColor(red);
+	// Hp.setCharacterSize(spriteSize);
+	// Hp.setString(to_string(player->getHp()));
+	// Hp.setPosition(1*spriteSize,0*spriteSize);
+	// window.draw(Hp);
 }
 
 void GameSFML::Loop(Game & game) {
