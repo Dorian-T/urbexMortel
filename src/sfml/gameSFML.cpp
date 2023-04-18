@@ -22,7 +22,12 @@ GameSFML::GameSFML(const Game & game): window(VideoMode(1920, 1080), "L'Urbex mo
 	window.setFramerateLimit(30);
 
 
-	// initialisation des textures des obstacles
+	// initialisation des textures du background et des obstacles
+
+	Texture backgroundTexture;
+	backgroundTexture.loadFromFile(PATH_TEXTURES + "background.png");
+	backgroundTexture.setRepeated(true);
+	texturesObstacles.push_back(backgroundTexture);
 
 	Texture barbedWireTexture;
 	barbedWireTexture.loadFromFile(PATH_TEXTURES + "barbedWire.png");
@@ -31,6 +36,14 @@ GameSFML::GameSFML(const Game & game): window(VideoMode(1920, 1080), "L'Urbex mo
 	Texture blockTexture;
 	blockTexture.loadFromFile(PATH_TEXTURES + "block.png");
 	texturesObstacles.push_back(blockTexture);
+
+	Texture door1Texture;
+	door1Texture.loadFromFile(PATH_TEXTURES + "door1.png");
+	texturesObstacles.push_back(door1Texture);
+
+	Texture door2Texture;
+	door2Texture.loadFromFile(PATH_TEXTURES + "door2.png");
+	texturesObstacles.push_back(door2Texture);
 
 	Texture ladderTexture;
 	ladderTexture.loadFromFile(PATH_TEXTURES + "ladder.png");
@@ -58,14 +71,35 @@ GameSFML::~GameSFML() {
 
 // Affichage :
 
-void GameSFML::drawPlayer(const Player & player) {
-	Texture playerTexture;
-	playerTexture.loadFromFile(PATH_TEXTURES + "player.png");
-	playerTexture.setSmooth(true);
-	Sprite playerSprite(playerTexture);
-	playerSprite.setScale((float) spriteSize * 2 / 400, (float) spriteSize * 2 / 400);
-	playerSprite.setPosition(player.getPosition().getX()*spriteSize, player.getPosition().getY()*spriteSize - spriteSize);
-	window.draw(playerSprite);
+void GameSFML::draw(const Game & game) {
+	window.clear(Color::Black);
+
+	drawBackground(*game.getBuilding()->getCurrentRoom());
+
+	drawObstacles(*game.getBuilding()->getCurrentRoom());
+
+	drawPlayer(*game.getPlayer());
+
+	drawInfoPlayer(game.getPlayer());
+
+	window.display();
+}
+
+void GameSFML::drawBackground(const Room & room) {
+	unsigned int width = 0;
+	unsigned int height = 0;
+	unsigned int backgroundSize = texturesObstacles[0].getSize().x;
+	while(height < room.getDimY() * spriteSize) {
+		while(width < room.getDimX() * spriteSize) {
+			RectangleShape background(Vector2f(backgroundSize, backgroundSize));
+			background.setPosition(width, height);
+			background.setTexture(&texturesObstacles[0]);
+			window.draw(background);
+			width += backgroundSize;
+		}
+		width = 0;
+		height += backgroundSize;
+	}
 }
 
 void GameSFML::drawObstacles(const Room & room) {
@@ -80,7 +114,7 @@ void GameSFML::drawObstacles(const Room & room) {
 					{
 						RectangleShape barbedWire(Vector2f(spriteSize, spriteSize));
 						barbedWire.setPosition(i*spriteSize, j*spriteSize);
-						barbedWire.setTexture(&texturesObstacles[0]);
+						barbedWire.setTexture(&texturesObstacles[1]);
 						window.draw(barbedWire);
 					}
 					break;
@@ -89,7 +123,7 @@ void GameSFML::drawObstacles(const Room & room) {
 					{
 						RectangleShape block(Vector2f(spriteSize, spriteSize));
 						block.setPosition(i*spriteSize, j*spriteSize);
-						block.setTexture(&texturesObstacles[1]);
+						block.setTexture(&texturesObstacles[2]);
 						window.draw(block);
 					}
 					break;
@@ -98,7 +132,10 @@ void GameSFML::drawObstacles(const Room & room) {
 					{
 						RectangleShape door(Vector2f(spriteSize, spriteSize));
 						door.setPosition(i*spriteSize, j*spriteSize);
-						door.setFillColor(Color (139, 69, 19));
+						if(j == 1 || j == 15)
+							door.setTexture(&texturesObstacles[3]);
+						else
+							door.setTexture(&texturesObstacles[4]);
 						window.draw(door);
 					}
 					break;
@@ -107,7 +144,7 @@ void GameSFML::drawObstacles(const Room & room) {
 					{
 						RectangleShape ladder(Vector2f(spriteSize, spriteSize));
 						ladder.setPosition(i*spriteSize, j*spriteSize);
-						ladder.setTexture(&texturesObstacles[2]);
+						ladder.setTexture(&texturesObstacles[5]);
 						window.draw(ladder);
 					}
 					break;
@@ -116,7 +153,7 @@ void GameSFML::drawObstacles(const Room & room) {
 					{
 						RectangleShape trapdoor(Vector2f(spriteSize, spriteSize));
 						trapdoor.setPosition(i*spriteSize, j*spriteSize);
-						trapdoor.setTexture(&texturesObstacles[3]);
+						trapdoor.setTexture(&texturesObstacles[6]);
 						window.draw(trapdoor);
 					}
 					break;
@@ -125,12 +162,22 @@ void GameSFML::drawObstacles(const Room & room) {
 					{
 						RectangleShape potion(Vector2f(spriteSize, spriteSize));
 						potion.setPosition(i*spriteSize, j*spriteSize);
-						potion.setTexture(&texturesObstacles[4]);
+						potion.setTexture(&texturesObstacles[7]);
 						window.draw(potion);
 					}
 					break;
 			}
 		}
+}
+
+void GameSFML::drawPlayer(const Player & player) {
+	Texture playerTexture;
+	playerTexture.loadFromFile(PATH_TEXTURES + "player.png");
+	playerTexture.setSmooth(true);
+	Sprite playerSprite(playerTexture);
+	playerSprite.setScale((float) spriteSize * 2 / 400, (float) spriteSize * 2 / 400);
+	playerSprite.setPosition(player.getPosition().getX()*spriteSize, player.getPosition().getY()*spriteSize - spriteSize);
+	window.draw(playerSprite);
 }
 
 void GameSFML::drawInfoPlayer(Player * player) {
@@ -146,25 +193,6 @@ void GameSFML::drawInfoPlayer(Player * player) {
 	Hp.setString(to_string(player->getHp()));
 	Hp.setPosition(1*spriteSize,0*spriteSize);
 	window.draw(Hp);
-}
-
-void GameSFML::draw(const Game & game) {
-	window.clear(Color::Black);
-
-	// affichage du fond
-	RectangleShape background(Vector2f(spriteSize*game.getBuilding()->getCurrentRoom()->getDimX(), spriteSize*game.getBuilding()->getCurrentRoom()->getDimY()));
-	background.setPosition(0, 0);
-	background.setFillColor(Color (119, 136, 153));
-	window.draw(background);
-
-	// affichage des obstacles
-	drawObstacles(*game.getBuilding()->getCurrentRoom());
-
-	drawPlayer(*game.getPlayer());
-
-	drawInfoPlayer(game.getPlayer());
-	
-	window.display();
 }
 
 void GameSFML::Loop(Game & game) {
