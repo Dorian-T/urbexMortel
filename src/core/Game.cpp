@@ -22,6 +22,7 @@ Game::Game (int difficulty)  {
 		building = new Building(3);
 		player1 = new Player(Vector2D(12, 16), M, 5);
 	}
+	timeLeft = building->getTimetot();
 	room = 0;
 	multiplayer = false;
 	player2 = NULL;
@@ -122,7 +123,7 @@ int Game::automaticAction (int time) {
 	if(player1->getTimeInvincible() > 0)
 		player1->decreaseTimeInvincible();
 
-	building->setTimetot(building->getTimetot() - 1);
+	timeLeft = timeLeft - 1;
 
 	if(changeRoom()) {
 		removeRat();
