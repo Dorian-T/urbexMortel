@@ -20,7 +20,7 @@ Game::Game (int difficulty)  {
 	}
 	else {
 		building = new Building(3);
-		player1 = new Player(Vector2D(1, 16), M, 5);
+		player1 = new Player(Vector2D(12, 16), M, 5);
 	}
 	timeLeft = building->getTimetot();
 	room = 0;
