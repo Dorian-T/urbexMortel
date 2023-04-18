@@ -1,5 +1,6 @@
 #include "Game.h"
 #include "entity/Rat.h"
+#include "entity/Spider.h"
 
 #include <iostream>
 #include <assert.h>
@@ -14,7 +15,7 @@ Game::Game (int difficulty)  {
 		player1 = new Player(Vector2D(12, 16), M, 1);
 	}
 	else if(difficulty==2) {
-		building = new Building(5);
+		building = new Building("data/rooms/room6.txt");
 		player1 = new Player(Vector2D(12, 16), M, 2);
 	}
 	else {
@@ -35,6 +36,10 @@ Game::~Game() {
 		for (unsigned int i = 0; i < size(rats); i++) { delete rats[i]; }
 		rats.clear();
 	}	
+	if (size(spiders)!=0) {
+		for (unsigned int i = 0; i < size(spiders); i++) { delete spiders[i]; }
+		spiders.clear();
+	}
 }
 
 Building * Game::getBuilding() const {
@@ -51,6 +56,14 @@ unsigned int Game::getNbRat() const {
 
 Rat * Game::getRat(unsigned int i) const {
 	return rats[i];
+}
+
+unsigned int Game::getNbSpider() const {
+	return spiders.size();
+}
+
+Spider * Game::getSpider(unsigned int i) const {
+	return spiders[i];
 }
 
 bool Game::changeRoom() {
@@ -81,6 +94,25 @@ void Game::collisionRat() {
 			player1->decreaseHp(1);
 }
 
+void Game::addSpider() {
+	for(unsigned int i = building->getCurrentRoom()->getNbSpider(); i > 0; i--)
+		spiders.push_back(new Spider(*building->getCurrentRoom()->getSpider(i-1), 1, 1));
+}
+
+void Game::removeSpider() {
+	for (unsigned int i = 0; i < size(spiders); i++)
+	{
+		delete spiders[i];
+	}
+	spiders.clear();
+}
+
+void Game::collisionSpider() {
+	for(unsigned int i = 0; i < getNbSpider(); i++)
+		if(spiders[i]->getPosition().getX() == player1->getPosition().getX() && spiders[i]->getPosition().getY() == player1->getPosition().getY())
+			player1->decreaseHp(1);
+}
+
 int Game::automaticAction (int time) {
 
     if(time == 0)
@@ -95,12 +127,18 @@ int Game::automaticAction (int time) {
 	if(changeRoom()) {
 		removeRat();
 		addRat();
+		removeSpider();
+		addSpider();
 	}
 	for(unsigned int i = 0; i < getNbRat(); i++) {
 		rats[i]->move(building, player1); // TODO : a modifier pour le multi
 		// rats[i]->gravity(building);
 	}
+	for(unsigned int i = 0; i < getNbSpider(); i++) {
+		spiders[i]->move(building);
+	}
 	collisionRat();
+	collisionSpider();
 
 	return time;
 }

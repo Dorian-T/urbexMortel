@@ -36,6 +36,10 @@ Room::Room(const std::string & filename) {
                     arrayRat.push_back(Vector2D(x, y));
                     tmp = '.';
                 }
+                if(tmp == 'S') {
+                    arraySpider.push_back(Vector2D(x, y));
+                    tmp = '.';
+                }
                 arrayObstacle[y*dimX + x] = (Obstacle)tmp;
             }
     }
@@ -81,6 +85,15 @@ unsigned int Room::getNbRat() const {
 Vector2D* Room::getRat(unsigned int i) {
     assert(i < arrayRat.size());
     return &arrayRat[i];
+}
+
+unsigned int Room::getNbSpider() const {
+    return arraySpider.size();
+}
+
+Vector2D* Room::getSpider(unsigned int i) {
+    assert(i < arraySpider.size());
+    return &arraySpider[i];
 }
 
 void Room::regressionTest() {
