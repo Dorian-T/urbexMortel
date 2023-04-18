@@ -15,6 +15,8 @@ Dans le vector de textures, on a :
 5 : ladder
 6 : trapdoor
 7 : potion
+8 : heart
+9 : poisonBar
 */
 
 class GameSFML {
@@ -52,13 +54,6 @@ class GameSFML {
 		void drawBackground(const Room & room);
 
 		/**
-		 * @brief Dessine le joueur dans la fenêtre
-		 * 
-		 * @param player
-		 */
-		void drawPlayer(const Player & player);
-
-		/**
 		 * @brief Dessine les obstacles dans la fenêtre
 		 * 
 		 * @param obstacle
@@ -66,10 +61,19 @@ class GameSFML {
 		void drawObstacles(const Room & room);
 
 		/**
+		 * @brief Dessine le joueur dans la fenêtre
+		 * 
+		 * @param player
+		 */
+		void drawPlayer(Player * player);
+
+		/**
 		 * @brief Dessine les infos du joueur
 		 * 
 		 */
-		void drawInfoPlayer(Player * player);
+		void drawInfoPlayer(Player * player, Building * building);
+
+		void drawMenu();
 
 	public:
 
