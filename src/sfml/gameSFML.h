@@ -71,7 +71,7 @@ class GameSFML {
 		 * @brief Dessine les infos du joueur
 		 * 
 		 */
-		void drawInfoPlayer(Player * player, Building * building);
+		void drawInfoPlayer(const Game & game);
 
 		void drawMenu();
 

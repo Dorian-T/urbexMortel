@@ -91,7 +91,7 @@ void GameSFML::draw(const Game & game) {
 
 	drawPlayer(game.getPlayer());
 
-	drawInfoPlayer(game.getPlayer(), *game.getBuilding()->getCurrentRoom());
+	drawInfoPlayer(game);
 
 	window.display();
 }
@@ -196,9 +196,9 @@ void GameSFML::drawPlayer(Player * player) {
 	window.draw(playerSprite);
 }
 
-void GameSFML::drawInfoPlayer(Player * player, Building * building) {
+void GameSFML::drawInfoPlayer(const Game & game) {
 	// HP :
-	for(unsigned int i = 0; i < player->getHp(); ++i) {
+	for(unsigned int i = 0; i < game.getPlayer()->getHp(); ++i) {
 		RectangleShape heart(Vector2f(spriteSize, spriteSize));
 		heart.setPosition(i*spriteSize + spriteSize, 0);
 		heart.setTexture(&texturesObstacles[8]);
@@ -207,17 +207,17 @@ void GameSFML::drawInfoPlayer(Player * player, Building * building) {
 
 	// Poison :
 	RectangleShape poisonSkull(Vector2f(spriteSize, spriteSize));
-	poisonSkull.setPosition(building->getCurrentRoom()->getDimX()*spriteSize - 6*spriteSize, 0);
+	poisonSkull.setPosition(game.getBuilding()->getCurrentRoom()->getDimX()*spriteSize - 6*spriteSize, 0);
 	poisonSkull.setTexture(&texturesObstacles[9]);
 	window.draw(poisonSkull);
 
-	RectangleShape poison(Vector2f(4*spriteSize * player->getPoison() / building->getTimetot(), spriteSize));
-	poison.setPosition(building->getCurrentRoom()->getDimX()*spriteSize - 5*spriteSize, 0);
+	RectangleShape poison(Vector2f(4*spriteSize * game.getTimeLeft() / game.getBuilding()->getTimetot(), spriteSize));
+	poison.setPosition(game.getBuilding()->getCurrentRoom()->getDimX()*spriteSize - 5*spriteSize, 0);
 	poison.setFillColor(Color(138, 34, 156, 255));
 	window.draw(poison);
 
 	RectangleShape poisonBar(Vector2f(4*spriteSize, spriteSize));
-	poisonBar.setPosition(building->getCurrentRoom()->getDimX()*spriteSize - 5*spriteSize, 0);
+	poisonBar.setPosition(game.getBuilding()->getCurrentRoom()->getDimX()*spriteSize - 5*spriteSize, 0);
 	poisonBar.setTexture(&texturesObstacles[10]);
 	window.draw(poisonBar);
 }

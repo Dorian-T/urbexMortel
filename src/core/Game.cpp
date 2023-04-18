@@ -19,8 +19,8 @@ Game::Game (int difficulty)  {
 		player1 = new Player(Vector2D(12, 16), M, 3);
 	}
 	else {
-		building = new Building(3);
-		player1 = new Player(Vector2D(12, 16), M, 5);
+		building = new Building("data/rooms/room6.txt");
+		player1 = new Player(Vector2D(1, 16), M, 5);
 	}
 	timeLeft = building->getTimetot();
 	room = 0;
@@ -41,6 +41,10 @@ Game::~Game() {
 		for (unsigned int i = 0; i < size(spiders); i++) { delete spiders[i]; }
 		spiders.clear();
 	}
+}
+
+unsigned int Game::getTimeLeft() const {
+	return timeLeft;
 }
 
 Building * Game::getBuilding() const {

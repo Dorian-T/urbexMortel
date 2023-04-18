@@ -88,6 +88,13 @@ class Game {
         Player * getPlayer () const;
 
         /**
+         * @brief Get the Time Left object
+         * 
+         * @return unsigned int 
+         */
+        unsigned int getTimeLeft() const;
+
+        /**
          * @brief Retourne le nombre de rats
         */
         unsigned int getNbRat() const;
