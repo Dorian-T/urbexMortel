@@ -211,7 +211,7 @@ void GameSFML::drawInfoPlayer(const Game & game) {
 	poisonSkull.setTexture(&textures[9]);
 	window.draw(poisonSkull);
 
-	RectangleShape poison(Vector2f(4*spriteSize * (float)game.getTimeLeft() / (float)game.getBuilding()->getTimetot(), spriteSize));
+	RectangleShape poison(Vector2f(4*spriteSize * (1 - (float)game.getTimeLeft() / (float)game.getBuilding()->getTimetot()), spriteSize));
 	poison.setPosition(game.getBuilding()->getCurrentRoom()->getDimX()*spriteSize - 5*spriteSize, 0);
 	poison.setFillColor(Color(138, 34, 156, 255));
 	window.draw(poison);
