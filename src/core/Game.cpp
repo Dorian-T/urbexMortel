@@ -64,6 +64,11 @@ void Game::addRat() {
 }
 
 void Game::removeRat() {
+	for (unsigned int i = 0; i < size(rats); i++)
+	{
+		delete rats[i];
+	}
+	
 	rats.clear();
 }
 
