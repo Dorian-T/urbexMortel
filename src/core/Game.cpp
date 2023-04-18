@@ -64,8 +64,7 @@ void Game::addRat() {
 }
 
 void Game::removeRat() {
-	for(unsigned int i = 0; i < building->getCurrentRoom()->getNbRat(); i++)
-		rats.pop_back();
+	rats.clear();
 }
 
 void Game::collisionRat() {
