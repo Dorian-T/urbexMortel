@@ -15,13 +15,13 @@ Building::Building(unsigned int nb) {
     string s;
     nbRoom = nb + 2;
     arrayRoom.resize(nbRoom);
-    arrayRoom[0] = Room("data/entrance.txt");
+    arrayRoom[0] = Room(PATH_ROOMS + "entrance.txt");
     for(unsigned int i = 0; i < nb; i++) {
         n = rand() % NB_DIFFERENT_ROOM + 1;
-        s = "data/room" + to_string(n) + ".txt";
+        s = PATH_ROOMS + "room" + to_string(n) + ".txt";
         arrayRoom[i+1] = Room(s);
     }
-    arrayRoom[nbRoom-1] = Room("data/exit.txt");
+    arrayRoom[nbRoom-1] = Room(PATH_ROOMS + "exit.txt");
     currentRoom = 0;
     for(unsigned int i = 0; i < nbRoom; i++)
         timetot += arrayRoom[i].getTime();
@@ -71,7 +71,7 @@ void Building::regressionTest()
     assert(currentRoom == 0);
     cout << "\tconstructeur par defaut : OK" << endl;
 
-    Building B("data/test.txt");
+    Building B(PATH_ROOMS + "test.txt");
     assert(B.nbRoom == 1);
     assert(B.arrayRoom.capacity() == B.nbRoom && B.arrayRoom.size() == B.nbRoom);
     assert(B.currentRoom == 0);

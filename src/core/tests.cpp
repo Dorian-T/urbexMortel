@@ -14,7 +14,7 @@ using namespace std;
 
 void movementPlayerRegressionTest() {
 	cout << endl << "Test des mouvements de Player" << endl;
-	Building B("data/test.txt");
+	Building B(PATH_ROOMS + "test.txt");
 	Player P(Vector2D(1, 7), M, 5);
 
 	P.down(&B);
@@ -109,7 +109,7 @@ void movementPlayerRegressionTest() {
 
 void movementRatRegressionTest() {
 	cout << endl << "Test des mouvements de Rat" << endl;
-	Building B("data/test.txt");
+	Building B(PATH_ROOMS + "test.txt");
 	Rat R(Vector2D(1, 7), M, 5);
 
 	// TODO

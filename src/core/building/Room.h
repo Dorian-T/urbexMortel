@@ -2,16 +2,16 @@
 #define _ROOM
 
 #include "../entity/Vector2D.h"
-// #include "../entity/Rat.h"
 #include <string>
 #include <vector>
 
-// class Rat;
 
 const unsigned int DIM_ROOM_X = 16;
 const unsigned int DIM_ROOM_Y = 9;
 const unsigned int PIXEL_ROOM_X = 9;
 const unsigned int PIXEL_ROOM_Y = 16;
+
+const std::string PATH_ROOMS = "data/rooms/";
 
 /**
  * @brief Enumeration des obstacles

@@ -3,9 +3,16 @@
 #include "../core/building/Room.h" // utile ?
 #include "../core/Game.h"
 #include "gameSFML.h"
+
 #include <iostream>
+#include <string>
+
+using namespace std;
 using namespace sf;
 
+
+const string PATH_TEXTURES = "data/textures/";
+const string PATH_FONTS = "data/fonts/";
 
 // Constructeur et destructeur :
 
@@ -18,23 +25,23 @@ GameSFML::GameSFML(const Game & game): window(VideoMode(1920, 1080), "L'Urbex mo
 	// initialisation des textures des obstacles
 
 	Texture barbedWireTexture;
-	barbedWireTexture.loadFromFile("data/barbedWire.png");
+	barbedWireTexture.loadFromFile(PATH_TEXTURES + "barbedWire.png");
 	texturesObstacles.push_back(barbedWireTexture);
 
 	Texture blockTexture;
-	blockTexture.loadFromFile("data/block.png");
+	blockTexture.loadFromFile(PATH_TEXTURES + "block.png");
 	texturesObstacles.push_back(blockTexture);
 
 	Texture ladderTexture;
-	ladderTexture.loadFromFile("data/ladder.png");
+	ladderTexture.loadFromFile(PATH_TEXTURES + "ladder.png");
 	texturesObstacles.push_back(ladderTexture);
 
 	Texture trapdoorTexture;
-	trapdoorTexture.loadFromFile("data/trapdoor.png");
+	trapdoorTexture.loadFromFile(PATH_TEXTURES + "trapdoor.png");
 	texturesObstacles.push_back(trapdoorTexture);
 
 	Texture potionTexture;
-	potionTexture.loadFromFile("data/potion.png");
+	potionTexture.loadFromFile(PATH_TEXTURES + "potion.png");
 	texturesObstacles.push_back(potionTexture);
 
 
@@ -53,7 +60,7 @@ GameSFML::~GameSFML() {
 
 void GameSFML::drawPlayer(const Player & player) {
 	Texture playerTexture;
-	playerTexture.loadFromFile("data/player.png");
+	playerTexture.loadFromFile(PATH_TEXTURES + "player.png");
 	playerTexture.setSmooth(true);
 	Sprite playerSprite(playerTexture);
 	playerSprite.setScale((float) spriteSize * 2 / 400, (float) spriteSize * 2 / 400);
@@ -127,16 +134,18 @@ void GameSFML::drawObstacles(const Room & room) {
 }
 
 void GameSFML::drawInfoPlayer(Player * player) {
-	Text Hp;
-	Hp.setString(std::to_string(player->getHp()));
-	Hp.setString("suce");
-	Color red(232, 21, 14, 255);
-	Hp.setFillColor(red);
-	Hp.setCharacterSize(800);
-	Hp.setPosition(0*spriteSize,0*spriteSize);
-	Hp.setScale((float) spriteSize * 1 / 400, (float) spriteSize * 1 / 400);
-	window.draw(Hp);
+	Font font;
+	font.loadFromFile(PATH_FONTS + "arial.ttf");
 
+	Color red(232, 21, 14, 255);
+
+	Text Hp;
+	Hp.setFont(font);
+	Hp.setFillColor(red);
+	Hp.setCharacterSize(spriteSize);
+	Hp.setString(to_string(player->getHp()));
+	Hp.setPosition(1*spriteSize,0*spriteSize);
+	window.draw(Hp);
 }
 
 void GameSFML::draw(const Game & game) {

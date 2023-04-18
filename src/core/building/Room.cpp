@@ -4,11 +4,12 @@
 
 #include <iostream>
 #include <fstream>
-#include <string.h>
+#include <string>
 #include <assert.h>
 #include <unistd.h>
 
 using namespace std;
+
 
 Room::Room() {
     dimX = DIM_ROOM_X;
@@ -106,7 +107,7 @@ void Room::regressionTest() {
     assert(getNbRat() == 0);
     cout << "\tTest de getNbRat : OK" << endl;
 
-    Room R("data/test.txt");
+    Room R(PATH_ROOMS + "test.txt");
     Obstacle o;
     assert(R.getDimX() == 6 && R.getDimY() == 9);
     assert(R.arrayObstacle.capacity() == 6*9 && R.arrayObstacle.size() == 6*9);
