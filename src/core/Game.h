@@ -4,6 +4,7 @@
 #include "building/Building.h"
 #include "entity/Player.h"
 #include "entity/Rat.h"
+#include "entity/Spider.h"
 
 /**
  * @brief Classe représentant le jeu
@@ -41,6 +42,11 @@ class Game {
          * @brief vecteur de rats
          */
         std::vector<Rat*> rats;
+
+        /**
+         * @brief vecteur de rats
+         */
+        std::vector<Spider*> spiders;
 
         /**
          * @brief Détecte un changement de salle
@@ -103,6 +109,35 @@ class Game {
          * @brief collisions entre les rats et le joueur
          */
         void collisionRat();
+
+                /**
+         * @brief Retourne le nombre de spiders
+        */
+        unsigned int getNbSpider() const;
+
+        /**
+         * @brief Accesseur vers le spider i
+         * 
+         * @param i 
+         * @return Rat* 
+         */
+        Spider * getSpider (unsigned int i) const;
+
+        /**
+         * @brief ajoute dans spiders les spiders de la salle
+         * 
+         */
+        void addSpider();
+
+        /**
+         * @brief Enlève tous les spiders de la salle
+         */
+        void removeSpider();
+
+        /**
+         * @brief collisions entre les spider et le joueur
+         */
+        void collisionSpider();
 
         /**
          * @brief Réalisation des actions automatiques

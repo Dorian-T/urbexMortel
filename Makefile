@@ -1,8 +1,8 @@
 C_PATH = src/core/
 
 E_PATH = $(C_PATH)entity/
-E_HEADERS = $(E_PATH)Vector2D.h $(E_PATH)Entity.h $(E_PATH)Player.h $(E_PATH)Rat.h
-E_OBJ = obj/Vector2D.o obj/Entity.o obj/Player.o obj/Rat.o
+E_HEADERS = $(E_PATH)Vector2D.h $(E_PATH)Entity.h $(E_PATH)Player.h $(E_PATH)Rat.h $(E_PATH)Spider.h
+E_OBJ = obj/Vector2D.o obj/Entity.o obj/Player.o obj/Rat.o obj/Spider.o
 
 B_PATH = $(C_PATH)building/
 B_HEADERS = $(B_PATH)Building.h $(B_PATH)Room.h
@@ -44,6 +44,9 @@ obj/Player.o: $(E_PATH)Player.h $(E_PATH)Player.cpp $(E_PATH)Entity.h
 
 obj/Rat.o: $(E_PATH)Rat.h $(E_PATH)Rat.cpp $(E_PATH)Entity.h
 	g++ -g -Wall -c $(E_PATH)Rat.cpp -o obj/Rat.o
+
+obj/Spider.o: $(E_PATH)Spider.h $(E_PATH)Spider.cpp $(E_PATH)Entity.h
+	g++ -g -Wall -c $(E_PATH)Spider.cpp -o obj/Spider.o
 
 
 # building 

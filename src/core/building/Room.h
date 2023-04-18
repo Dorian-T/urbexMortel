@@ -57,6 +57,11 @@ enum Obstacle {
          */
         std::vector<Vector2D> arrayRat;
 
+        /**
+         * @brief Tableau des positions des spider
+         */
+        std::vector<Vector2D> arraySpider;
+
     public:
 
         /**
@@ -112,6 +117,21 @@ enum Obstacle {
          * @return Vector2D 
          */
         Vector2D* getRat(unsigned int i);
+
+        /**
+         * @brief Retourne le nombre de spider
+         * 
+         * @return unsigned int 
+         */
+        unsigned int getNbSpider() const;
+
+        /**
+         * @brief Retourne la position du spider i
+         * 
+         * @param i 
+         * @return Vector2D 
+         */
+        Vector2D* getSpider(unsigned int i);
 
         /**
          * @brief Retourne le temps pour sortir de la salle
