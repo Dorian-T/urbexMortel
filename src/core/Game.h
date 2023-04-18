@@ -52,9 +52,9 @@ class Game {
     public :
 
         /**
-         * @brief Constructeur par défaut
+         * @brief Constructeur par défaut en fonction de la difficulté
          */
-        Game ();
+        Game (int difficulty = 1);
 
         /**
          * @brief Destructeur

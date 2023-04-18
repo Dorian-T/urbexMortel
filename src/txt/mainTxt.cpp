@@ -22,7 +22,7 @@ int main ( int argc, char** argv ) {
 	srand(time(NULL));
     termClear();
 	unsigned int d = chooseDifficulty();
-	Game ga;
+	Game ga(d);
 	if (d==2)
 		ga.getBuilding()->setTimetot(ga.getBuilding()->getTimetot()*15);
 	else if (d==3)

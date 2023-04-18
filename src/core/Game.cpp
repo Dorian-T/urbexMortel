@@ -6,12 +6,22 @@
 
 using namespace std;
 
-const unsigned int NB_ROOM = 3; // nombre de salles intermediaires
+const int NB_ROOM =3 ;
 
-Game::Game ()  {
-	building = new Building(NB_ROOM);
+Game::Game (int difficulty=1)  {
+	if(difficulty==3) {
+		building = new Building(8);
+		player1 = new Player(Vector2D(12, 16), M, 1);
+	}
+	else if(difficulty==2) {
+		building = new Building(5);
+		player1 = new Player(Vector2D(12, 16), M, 2);
+	}
+	else {
+		building = new Building(3);
+		player1 = new Player(Vector2D(12, 16), M, 3);
+	}
 	room = 0;
-	player1 = new Player(Vector2D(12, 16), M, 3);
 	multiplayer = false;
 	player2 = NULL;
 }

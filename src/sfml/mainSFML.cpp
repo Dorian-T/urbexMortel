@@ -21,7 +21,7 @@ int chooseDifficulty() {
 int main() {
     srand(time(NULL));
     unsigned int d = chooseDifficulty();
-    Game game;
+    Game game(d);
     if (d==2)
 		game.getBuilding()->setTimetot(game.getBuilding()->getTimetot()*15);
 	else if (d==3)
