@@ -31,6 +31,10 @@ Game::~Game() {
 		delete building;
 	if (player1!=NULL)
 		delete player1;
+	if (size(rats)!=0) {
+		for (unsigned int i = 0; i < size(rats); i++) { delete rats[i]; }
+		rats.clear();
+	}	
 }
 
 Building * Game::getBuilding() const {
@@ -64,8 +68,11 @@ void Game::addRat() {
 }
 
 void Game::removeRat() {
-	for(unsigned int i = 0; i < building->getCurrentRoom()->getNbRat(); i++)
-		rats.pop_back();
+	for (unsigned int i = 0; i < size(rats); i++)
+	{
+		delete rats[i];
+	}
+	rats.clear();
 }
 
 void Game::collisionRat() {
