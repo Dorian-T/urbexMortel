@@ -19,7 +19,7 @@ Game::Game (int difficulty)  {
 		player1 = new Player(Vector2D(12, 16), M, 3);
 	}
 	else {
-		building = new Building("data/rooms/room6.txt");
+		building = new Building(3);
 		player1 = new Player(Vector2D(1, 16), M, 5);
 	}
 	timeLeft = building->getTimetot();
