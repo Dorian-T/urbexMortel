@@ -34,6 +34,10 @@ void txtDraw(WinTXT & win, const Game & ga) {
 		Rat* rat = ga.getRat(i);
 		win.print(rat->getPosition().getX(), ga.getRat(i)->getPosition().getY(), 'R');
 	}
+	for(unsigned int i = 0; i < ga.getNbSpider(); i++) {
+		Spider* spider = ga.getSpider(i);
+		win.print(spider->getPosition().getX(), ga.getSpider(i)->getPosition().getY(), 'S');
+	}
 
 	unsigned int hp = player1->getHp();
 	unsigned int TimeInv = player1->getTimeInvincible();
@@ -62,6 +66,7 @@ void txtLoop (Game & ga) {
 	int c;
 
 	ga.addRat();
+	ga.addSpider();
 
 	while (ok) {
 	    txtDraw(win,ga);
