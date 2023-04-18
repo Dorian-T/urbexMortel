@@ -8,7 +8,7 @@ using namespace std;
 
 const int NB_ROOM =3 ;
 
-Game::Game (int difficulty=1)  {
+Game::Game (int difficulty)  {
 	if(difficulty==3) {
 		building = new Building(8);
 		player1 = new Player(Vector2D(12, 16), M, 1);
