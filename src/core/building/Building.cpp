@@ -8,7 +8,7 @@
 
 using namespace std;
 
-const int NB_DIFFERENT_ROOM = 5;
+const int NB_DIFFERENT_ROOM = 6;
 
 Building::Building(unsigned int nb) {
     int n;
