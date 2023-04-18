@@ -47,6 +47,10 @@ unsigned int Game::getTimeLeft() const {
 	return timeLeft;
 }
 
+void Game::setTimeLeft(unsigned int t) {
+	timeLeft = t;
+}
+
 Building * Game::getBuilding() const {
     return building;
 }

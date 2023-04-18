@@ -23,11 +23,11 @@ int main() {
     unsigned int d = chooseDifficulty();
     Game game(d);
     if (d==2)
-		game.getBuilding()->setTimetot(game.getBuilding()->getTimetot()*15);
+		game.setTimeLeft(game.getBuilding()->getTimetot()*15);
 	else if (d==3)
-		game.getBuilding()->setTimetot(game.getBuilding()->getTimetot()*10);
+		game.setTimeLeft(game.getBuilding()->getTimetot()*10);
 	else 
-		game.getBuilding()->setTimetot(game.getBuilding()->getTimetot()*20);
+		game.setTimeLeft(game.getBuilding()->getTimetot()*20);
     GameSFML GSFML(game);
     GSFML.Loop(game);
 }

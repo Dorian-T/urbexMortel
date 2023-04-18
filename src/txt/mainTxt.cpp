@@ -24,11 +24,11 @@ int main ( int argc, char** argv ) {
 	unsigned int d = chooseDifficulty();
 	Game ga(d);
 	if (d==2)
-		ga.getBuilding()->setTimetot(ga.getBuilding()->getTimetot()*15);
+		ga.setTimeLeft(ga.getBuilding()->getTimetot()*15);
 	else if (d==3)
-		ga.getBuilding()->setTimetot(ga.getBuilding()->getTimetot()*10);
+		ga.setTimeLeft(ga.getBuilding()->getTimetot()*10);
 	else 
-		ga.getBuilding()->setTimetot(ga.getBuilding()->getTimetot()*20);
+		ga.setTimeLeft(ga.getBuilding()->getTimetot()*20);
 	txtLoop(ga);
     termClear();
 	if(ga.getPlayer()->getHp() == 0 || ga.getBuilding()->getTimetot() == 0) cout << "T'es mort, nul !" << endl ;

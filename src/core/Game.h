@@ -95,6 +95,12 @@ class Game {
         unsigned int getTimeLeft() const;
 
         /**
+         * @brief Set the Time Left object
+         * 
+         */
+        void setTimeLeft(unsigned int t);
+
+        /**
          * @brief Retourne le nombre de rats
         */
         unsigned int getNbRat() const;
