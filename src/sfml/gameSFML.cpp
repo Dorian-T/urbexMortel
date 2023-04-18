@@ -26,47 +26,47 @@ GameSFML::GameSFML(const Game & game): window(VideoMode(1920, 1080), "L'Urbex mo
 
 	Texture backgroundTexture;
 	backgroundTexture.loadFromFile(PATH_TEXTURES + "background.png");
-	texturesObstacles.push_back(backgroundTexture);
+	textures.push_back(backgroundTexture);
 
 	Texture barbedWireTexture;
 	barbedWireTexture.loadFromFile(PATH_TEXTURES + "barbedWire.png");
-	texturesObstacles.push_back(barbedWireTexture);
+	textures.push_back(barbedWireTexture);
 
 	Texture blockTexture;
 	blockTexture.loadFromFile(PATH_TEXTURES + "block.png");
-	texturesObstacles.push_back(blockTexture);
+	textures.push_back(blockTexture);
 
 	Texture door1Texture;
 	door1Texture.loadFromFile(PATH_TEXTURES + "door1.png");
-	texturesObstacles.push_back(door1Texture);
+	textures.push_back(door1Texture);
 
 	Texture door2Texture;
 	door2Texture.loadFromFile(PATH_TEXTURES + "door2.png");
-	texturesObstacles.push_back(door2Texture);
+	textures.push_back(door2Texture);
 
 	Texture ladderTexture;
 	ladderTexture.loadFromFile(PATH_TEXTURES + "ladder.png");
-	texturesObstacles.push_back(ladderTexture);
+	textures.push_back(ladderTexture);
 
 	Texture trapdoorTexture;
 	trapdoorTexture.loadFromFile(PATH_TEXTURES + "trapdoor.png");
-	texturesObstacles.push_back(trapdoorTexture);
+	textures.push_back(trapdoorTexture);
 
 	Texture potionTexture;
 	potionTexture.loadFromFile(PATH_TEXTURES + "potion.png");
-	texturesObstacles.push_back(potionTexture);
+	textures.push_back(potionTexture);
 
 	Texture heartTexture;
 	heartTexture.loadFromFile(PATH_TEXTURES + "heart.png");
-	texturesObstacles.push_back(heartTexture);
+	textures.push_back(heartTexture);
 
 	Texture poisonSkullTexture;
 	poisonSkullTexture.loadFromFile(PATH_TEXTURES + "poisonSkull.png");
-	texturesObstacles.push_back(poisonSkullTexture);
+	textures.push_back(poisonSkullTexture);
 
 	Texture poisonBarTexture;
 	poisonBarTexture.loadFromFile(PATH_TEXTURES + "poisonBar.png");
-	texturesObstacles.push_back(poisonBarTexture);
+	textures.push_back(poisonBarTexture);
 
 
 	// TODO : Player et Rat
@@ -99,12 +99,12 @@ void GameSFML::draw(const Game & game) {
 void GameSFML::drawBackground(const Room & room) {
 	unsigned int width = 0;
 	unsigned int height = 0;
-	unsigned int backgroundSize = texturesObstacles[0].getSize().x;
+	unsigned int backgroundSize = textures[0].getSize().x;
 	while(height < room.getDimY() * spriteSize) {
 		while(width < room.getDimX() * spriteSize) {
 			RectangleShape background(Vector2f(backgroundSize, backgroundSize));
 			background.setPosition(width, height);
-			background.setTexture(&texturesObstacles[0]);
+			background.setTexture(&textures[0]);
 			window.draw(background);
 			width += backgroundSize;
 		}
@@ -125,7 +125,7 @@ void GameSFML::drawObstacles(const Room & room) {
 					{
 						RectangleShape barbedWire(Vector2f(spriteSize, spriteSize));
 						barbedWire.setPosition(i*spriteSize, j*spriteSize);
-						barbedWire.setTexture(&texturesObstacles[1]);
+						barbedWire.setTexture(&textures[1]);
 						window.draw(barbedWire);
 					}
 					break;
@@ -134,7 +134,7 @@ void GameSFML::drawObstacles(const Room & room) {
 					{
 						RectangleShape block(Vector2f(spriteSize, spriteSize));
 						block.setPosition(i*spriteSize, j*spriteSize);
-						block.setTexture(&texturesObstacles[2]);
+						block.setTexture(&textures[2]);
 						window.draw(block);
 					}
 					break;
@@ -144,9 +144,9 @@ void GameSFML::drawObstacles(const Room & room) {
 						RectangleShape door(Vector2f(spriteSize, spriteSize));
 						door.setPosition(i*spriteSize, j*spriteSize);
 						if(j == 1 || j == 15)
-							door.setTexture(&texturesObstacles[3]);
+							door.setTexture(&textures[3]);
 						else
-							door.setTexture(&texturesObstacles[4]);
+							door.setTexture(&textures[4]);
 						window.draw(door);
 					}
 					break;
@@ -155,7 +155,7 @@ void GameSFML::drawObstacles(const Room & room) {
 					{
 						RectangleShape ladder(Vector2f(spriteSize, spriteSize));
 						ladder.setPosition(i*spriteSize, j*spriteSize);
-						ladder.setTexture(&texturesObstacles[5]);
+						ladder.setTexture(&textures[5]);
 						window.draw(ladder);
 					}
 					break;
@@ -164,7 +164,7 @@ void GameSFML::drawObstacles(const Room & room) {
 					{
 						RectangleShape trapdoor(Vector2f(spriteSize, spriteSize));
 						trapdoor.setPosition(i*spriteSize, j*spriteSize);
-						trapdoor.setTexture(&texturesObstacles[6]);
+						trapdoor.setTexture(&textures[6]);
 						window.draw(trapdoor);
 					}
 					break;
@@ -173,7 +173,7 @@ void GameSFML::drawObstacles(const Room & room) {
 					{
 						RectangleShape potion(Vector2f(spriteSize, spriteSize));
 						potion.setPosition(i*spriteSize, j*spriteSize);
-						potion.setTexture(&texturesObstacles[7]);
+						potion.setTexture(&textures[7]);
 						window.draw(potion);
 					}
 					break;
@@ -201,14 +201,14 @@ void GameSFML::drawInfoPlayer(const Game & game) {
 	for(unsigned int i = 0; i < game.getPlayer()->getHp(); ++i) {
 		RectangleShape heart(Vector2f(spriteSize, spriteSize));
 		heart.setPosition(i*spriteSize + spriteSize, 0);
-		heart.setTexture(&texturesObstacles[8]);
+		heart.setTexture(&textures[8]);
 		window.draw(heart);
 	}
 
 	// Poison :
 	RectangleShape poisonSkull(Vector2f(spriteSize, spriteSize));
 	poisonSkull.setPosition(game.getBuilding()->getCurrentRoom()->getDimX()*spriteSize - 6*spriteSize, 0);
-	poisonSkull.setTexture(&texturesObstacles[9]);
+	poisonSkull.setTexture(&textures[9]);
 	window.draw(poisonSkull);
 
 	RectangleShape poison(Vector2f(4*spriteSize * (float)game.getTimeLeft() / (float)game.getBuilding()->getTimetot(), spriteSize));
@@ -218,7 +218,7 @@ void GameSFML::drawInfoPlayer(const Game & game) {
 
 	RectangleShape poisonBar(Vector2f(4*spriteSize, spriteSize));
 	poisonBar.setPosition(game.getBuilding()->getCurrentRoom()->getDimX()*spriteSize - 5*spriteSize, 0);
-	poisonBar.setTexture(&texturesObstacles[10]);
+	poisonBar.setTexture(&textures[10]);
 	window.draw(poisonBar);
 }
 
@@ -275,6 +275,10 @@ void GameSFML::Loop(Game & game) {
 						game.getPlayer()->left(game.getBuilding());
 						break;
 
+					case Keyboard::R:
+						randomizeTextures();
+						break;
+
 					default:
 						break;
 				}
@@ -282,4 +286,14 @@ void GameSFML::Loop(Game & game) {
 		draw(game);
 		if(game.getPlayer()->getHp()==0) window.close();
     }
+}
+
+void GameSFML::randomizeTextures() {
+	Texture tmp;
+	for(unsigned int i = 0; i < textures.size(); ++i) {
+		int j = rand() % textures.size();
+		tmp = textures[i];
+		textures[i] = textures[j];
+		textures[j] = tmp;
+	}
 }

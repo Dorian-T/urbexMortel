@@ -31,7 +31,7 @@ class GameSFML {
 		/**
 		 * @brief Les textures des obstacles
 		 */
-		std::vector<sf::Texture> texturesObstacles;
+		std::vector<sf::Texture> textures;
 
 		/**
 		 * @brief La taille d'une case
@@ -94,6 +94,11 @@ class GameSFML {
 		 * @param window 
 		 */
 		void Loop(Game & game);
+
+		/**
+		 * @brief Easter egg
+		 */
+		void randomizeTextures();
 };
 
 #endif
