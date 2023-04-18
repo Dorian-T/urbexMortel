@@ -211,7 +211,8 @@ void GameSFML::drawInfoPlayer(const Game & game) {
 	poisonSkull.setTexture(&texturesObstacles[9]);
 	window.draw(poisonSkull);
 
-	RectangleShape poison(Vector2f(4*spriteSize * game.getTimeLeft() / game.getBuilding()->getTimetot(), spriteSize));
+	RectangleShape poison(Vector2f(4*spriteSize * (float)game.getTimeLeft() / (float)game.getBuilding()->getTimetot(), spriteSize));
+	std::cout << (float)game.getTimeLeft() / (float)game.getBuilding()->getTimetot() << endl;
 	poison.setPosition(game.getBuilding()->getCurrentRoom()->getDimX()*spriteSize - 5*spriteSize, 0);
 	poison.setFillColor(Color(138, 34, 156, 255));
 	window.draw(poison);
@@ -221,8 +222,6 @@ void GameSFML::drawInfoPlayer(const Game & game) {
 	poisonBar.setTexture(&texturesObstacles[10]);
 	window.draw(poisonBar);
 }
-
-
 
 void GameSFML::drawMenu() {
 	// Font font;
