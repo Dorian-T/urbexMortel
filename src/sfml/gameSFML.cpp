@@ -276,6 +276,10 @@ void GameSFML::Loop(Game & game) {
 						game.getPlayer()->left(game.getBuilding());
 						break;
 
+					case Keyboard::R:
+						randomizeTextures();
+						break;
+
 					default:
 						break;
 				}
@@ -283,4 +287,14 @@ void GameSFML::Loop(Game & game) {
 		draw(game);
 		if(game.getPlayer()->getHp()==0) window.close();
     }
+}
+
+void GameSFML::randomizeTextures() {
+	Texture tmp;
+	for(unsigned int i = 0; i < textures.size(); ++i) {
+		int j = rand() % textures.size();
+		tmp = textures[i];
+		textures[i] = textures[j];
+		textures[j] = tmp;
+	}
 }

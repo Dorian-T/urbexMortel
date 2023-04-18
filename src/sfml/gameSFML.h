@@ -94,6 +94,11 @@ class GameSFML {
 		 * @param window 
 		 */
 		void Loop(Game & game);
+
+		/**
+		 * @brief Easter egg
+		 */
+		void randomizeTextures();
 };
 
 #endif
