@@ -5,22 +5,16 @@
 #include "../core/Game.h"
 #include <vector>
 
-/* Version finie :
+/*
 Dans le vector de textures, on a :
-0 : barbedWire
-1 : block
-2 : door
-3 : ladder
-4 : trapdoor
-5 : potion
-*/
-
-/* Pour l'instant :
-Dans le vector de textures, on a :
-0 : block
-1 : ladder
-2 : trapdoor
-3 : potion
+0 : background
+1 : barbedWire
+2 : block
+3 : door1
+4 : door2
+5 : ladder
+6 : trapdoor
+7 : potion
 */
 
 class GameSFML {
@@ -49,6 +43,13 @@ class GameSFML {
 		 * @param window 
 		 */
 		void draw(const Game & game);
+
+		/**
+		 * @brief Dessine le background dans la fenêtre
+		 * 
+		 * @param game 
+		 */
+		void drawBackground(const Room & room);
 
 		/**
 		 * @brief Dessine le joueur dans la fenêtre
