@@ -15,12 +15,12 @@ Game::Game (int difficulty)  {
 		player1 = new Player(Vector2D(12, 16), M, 1);
 	}
 	else if(difficulty==2) {
-		building = new Building("data/rooms/room6.txt");
-		player1 = new Player(Vector2D(12, 16), M, 2);
+		building = new Building(5);
+		player1 = new Player(Vector2D(12, 16), M, 3);
 	}
 	else {
 		building = new Building(3);
-		player1 = new Player(Vector2D(12, 16), M, 3);
+		player1 = new Player(Vector2D(12, 16), M, 5);
 	}
 	room = 0;
 	multiplayer = false;
