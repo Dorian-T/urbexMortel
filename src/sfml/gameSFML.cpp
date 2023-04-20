@@ -21,9 +21,7 @@ GameSFML::GameSFML(const Game & game): window(VideoMode(1920, 1080), "L'Urbex mo
 	// initialisation de la fenêtre
 	window.setFramerateLimit(30);
 
-
 	// initialisation des textures
-
 	Texture backgroundTexture;
 	backgroundTexture.loadFromFile(PATH_TEXTURES + "background.png");
 	textures.push_back(backgroundTexture);
@@ -68,11 +66,10 @@ GameSFML::GameSFML(const Game & game): window(VideoMode(1920, 1080), "L'Urbex mo
 	poisonBarTexture.loadFromFile(PATH_TEXTURES + "poisonBar.png");
 	textures.push_back(poisonBarTexture);
 
-
 	// TODO : Player et Rat
 
 	// initialisation de la taille des sprites
-	spriteSize = window.getSize().x / game.getBuilding()->getCurrentRoom()->getDimX();
+	spriteSize = window.getSize().x / 32; // attention : ça ne se modifie plus automatiquement en fonction de la taille de la Room
 }
 
 GameSFML::~GameSFML() {
@@ -85,7 +82,7 @@ GameSFML::~GameSFML() {
 void GameSFML::draw(const Game & game) {
 	window.clear(Color::Black);
 
-	drawBackground(*game.getBuilding()->getCurrentRoom());
+	drawBackground(game.getBuilding()->getCurrentRoom()->getDimX(), game.getBuilding()->getCurrentRoom()->getDimY());
 
 	drawObstacles(*game.getBuilding()->getCurrentRoom());
 
@@ -96,12 +93,12 @@ void GameSFML::draw(const Game & game) {
 	window.display();
 }
 
-void GameSFML::drawBackground(const Room & room) {
+void GameSFML::drawBackground(unsigned int dimX, unsigned int dimY) {
 	unsigned int width = 0;
 	unsigned int height = 0;
 	unsigned int backgroundSize = textures[0].getSize().x;
-	while(height < room.getDimY() * spriteSize) {
-		while(width < room.getDimX() * spriteSize) {
+	while(height < dimY * spriteSize) {
+		while(width < dimX * spriteSize) {
 			RectangleShape background(Vector2f(backgroundSize, backgroundSize));
 			background.setPosition(width, height);
 			background.setTexture(&textures[0]);
@@ -222,6 +219,176 @@ void GameSFML::drawInfoPlayer(const Game & game) {
 	window.draw(poisonBar);
 }
 
+
+// Menus :
+
+void GameSFML::drawStory() {
+	wstring story1 = L"Passionné d'urbex, vous décidez en ce 2 mai 2123 d'explorer un très vieux laboratoire,";
+	wstring story2 = L"le bâtiment Nautibus. Alors que vous vous êtes déjà bien enfoncé dans ce lieu de légende,";
+	wstring story3 = L"vous faites tomber une fiole étrange au sol...";
+	wstring story4 = L"MALHEUR ! Elle se brise et son contenu s'évapore rapidement. Vous commencez à tousser";
+	wstring story5 = L"violement. Il faut à tout prix sortir du bâtiment pour rejoindre l'hôpital le plus proche";
+	wstring story6 = L"avant que vous ne soyez totalement infecté.";
+	wstring story7 = L"DEPECHEZ-VOUS !";
+
+	Font font;
+	font.loadFromFile(PATH_FONTS + "elegantTypeWriter-bold.ttf");
+	Color color(245, 245, 245, 255);
+
+	window.clear();
+	drawBackground(32, 18);
+	window.display();
+	drawString(story1, 1);
+	Text text1(story1, font, spriteSize*2/3);
+	text1.setPosition(spriteSize, spriteSize*1);
+	text1.setFillColor(color);
+
+	window.clear();
+	drawBackground(32, 18);
+	window.draw(text1);
+	window.display();
+	drawString(story2, 2);
+	Text text2(story2, font, spriteSize*2/3);
+	text2.setPosition(spriteSize, spriteSize*2);
+	text2.setFillColor(color);
+
+	window.clear();
+	drawBackground(32, 18);
+	window.draw(text1); window.draw(text2);
+	window.display();
+	drawString(story3, 3);
+	Text text3(story3, font, spriteSize*2/3);
+	text3.setPosition(spriteSize, spriteSize*3);
+	text3.setFillColor(color);
+
+	window.clear();
+	drawBackground(32, 18);
+	window.draw(text1); window.draw(text2); window.draw(text3);
+	window.display();
+	drawString(story4, 4);
+	Text text4(story4, font, spriteSize*2/3);
+	text4.setPosition(spriteSize, spriteSize*4);
+	text4.setFillColor(color);
+
+	window.clear();
+	drawBackground(32, 18);
+	window.draw(text1); window.draw(text2); window.draw(text3); window.draw(text4);
+	window.display();
+	drawString(story5, 5);
+	Text text5(story5, font, spriteSize*2/3);
+	text5.setPosition(spriteSize, spriteSize*5);
+	text5.setFillColor(color);
+
+	window.clear();
+	drawBackground(32, 18);
+	window.draw(text1); window.draw(text2); window.draw(text3); window.draw(text4); window.draw(text5);
+	window.display();
+	drawString(story6, 6);
+	Text text6(story6, font, spriteSize*2/3);
+	text6.setPosition(spriteSize, spriteSize*6);
+	text6.setFillColor(color);
+
+	window.clear();
+	drawBackground(32, 18);
+	window.draw(text1); window.draw(text2); window.draw(text3); window.draw(text4); window.draw(text5); window.draw(text6);
+	window.display();
+	drawString(story7, 7);
+	Text text7(story7, font, spriteSize*2/3);
+	text7.setPosition(spriteSize, spriteSize*7);
+	text7.setFillColor(color);
+
+	bool end = false;
+	Event event;
+	while(!end) {
+		while(window.pollEvent(event)) {
+			if(event.type == Event::Closed)
+				window.close();
+			if(event.type == Event::KeyPressed)
+				end = true;
+		}
+	}
+}
+
+void GameSFML::drawString(const wstring & str, unsigned int y) {
+	Font font;
+	font.loadFromFile(PATH_FONTS + "elegantTypeWriter-bold.ttf");
+
+	Text text;
+	text.setFont(font);
+	text.setCharacterSize(spriteSize*2/3);
+	text.setFillColor(Color(245, 245, 245, 255));
+
+	unsigned int i = 0;
+	while(str[i] != '\0') {
+		text.setPosition(spriteSize, spriteSize*y);
+		text.setString(str.substr(0, i));
+		i++;
+		window.draw(text);
+		window.display();
+	}
+}
+
+void GameSFML::drawDifficultyMenu(Game & game) {
+	Font font;
+	font.loadFromFile(PATH_FONTS + "elegantTypeWriter-bold.ttf");
+
+	Color color(245, 245, 245, 255);
+
+	Text text1(L"Choisissez votre difficulté :", font, spriteSize*2/3);
+	text1.setPosition(spriteSize, spriteSize*1);
+	text1.setFillColor(color);
+
+	Text text2(L"1 - Facile", font, spriteSize*2/3);
+	text2.setPosition(spriteSize, spriteSize*2);
+	text2.setFillColor(color);
+
+	Text text3(L"2 - Moyen", font, spriteSize*2/3);
+	text3.setPosition(spriteSize, spriteSize*3);
+	text3.setFillColor(color);
+
+	Text text4(L"3 - Difficile", font, spriteSize*2/3);
+	text4.setPosition(spriteSize, spriteSize*4);
+	text4.setFillColor(color);
+
+	window.clear();
+	drawBackground(32, 18);
+	window.draw(text1); window.draw(text2); window.draw(text3); window.draw(text4);
+	window.display();
+
+	bool isChoosen = false;
+	Event event;
+	while(!isChoosen) {
+		while(window.pollEvent(event)) {
+			if(event.type == Event::Closed)
+				window.close();
+			if(event.type == Event::KeyPressed)
+				switch(event.key.code) { // à vérifier
+					case Keyboard::Num1:
+					case Keyboard::Numpad1:
+						isChoosen = true;
+						game.setDifficulty(1);
+						cout << "1" << endl;
+						break;
+
+					case Keyboard::Num2:
+					case Keyboard::Numpad2:
+						isChoosen = true;
+						game.setDifficulty(2);
+						break;
+
+					case Keyboard::Num3:
+					case Keyboard::Numpad3:
+						isChoosen = true;
+						game.setDifficulty(3);
+						break;
+
+					default:
+						break;
+				}
+		}
+	}
+}
+
 void GameSFML::drawMenu() {
 	// Font font;
 	// font.loadFromFile(PATH_FONTS + "arial.ttf");
@@ -244,14 +411,14 @@ void GameSFML::Loop(Game & game) {
 	while(window.isOpen()) {
 		float elapsed = cl.getElapsedTime().asMilliseconds();
 		if(elapsed > 100) {
-		time = game.automaticAction(time);
+		time = game.update(time);
 		cl.restart();
 		};
 		Event event;
 		while(window.pollEvent(event)) {
 			elapsed = cl.getElapsedTime().asMilliseconds();
 			if(elapsed > 100) {
-			time = game.automaticAction(time);
+			time = game.update(time);
 			cl.restart();
 			};
 			if(event.type == Event::Closed)

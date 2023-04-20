@@ -18,20 +18,27 @@ int chooseDifficulty() {
 	return diff;
 }
 
-int main ( int argc, char** argv ) {
+int main() {
 	srand(time(NULL));
     termClear();
-	unsigned int d = chooseDifficulty();
-	Game ga(d);
-	if (d==2)
-		ga.setTimeLeft(ga.getBuilding()->getTimetot()*15);
-	else if (d==3)
-		ga.setTimeLeft(ga.getBuilding()->getTimetot()*10);
-	else 
-		ga.setTimeLeft(ga.getBuilding()->getTimetot()*20);
-	txtLoop(ga);
+	Game game;
+
+	int diff;
+	cout << "Choisissez la difficulté :" << endl;
+	cout << "1. Facile" << endl;
+	cout << "2. Moyen" << endl;
+	cout << "3. Difficile" << endl;
+	cin >> diff;
+	game.setDifficulty(diff);
+
+
+	txtLoop(game);
     termClear();
-	if(ga.getPlayer()->getHp() == 0 || ga.getBuilding()->getTimetot() == 0) cout << "T'es mort, nul !" << endl ;
-	else cout << "Bravo ! T'es pas nul." << endl ;
+
+	if(game.getPlayer()->getHp() == 0 || game.getBuilding()->getTimetot() == 0)
+		cout << "T'es mort, nul !" << endl;
+	else
+		cout << "Bravo ! T'es pas nul." << endl;
+
 	return 0;
 }

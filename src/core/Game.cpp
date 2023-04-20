@@ -9,20 +9,9 @@ using namespace std;
 
 const int NB_ROOM =3 ;
 
-Game::Game (int difficulty)  {
-	if(difficulty==3) {
-		building = new Building(8);
-		player1 = new Player(Vector2D(12, 16), M, 1);
-	}
-	else if(difficulty==2) {
-		building = new Building(5);
-		player1 = new Player(Vector2D(12, 16), M, 3);
-	}
-	else {
-		building = new Building(3);
-		player1 = new Player(Vector2D(12, 16), M, 5);
-	}
-	timeLeft = building->getTimetot();
+Game::Game ()  {
+	building = NULL;
+	player1 = NULL;
 	room = 0;
 	multiplayer = false;
 	player2 = NULL;
@@ -41,6 +30,28 @@ Game::~Game() {
 		for (unsigned int i = 0; i < size(spiders); i++) { delete spiders[i]; }
 		spiders.clear();
 	}
+}
+
+void Game::setDifficulty(unsigned int difficulty) {
+	if(difficulty==3) {
+		building = new Building(8);
+		player1 = new Player(Vector2D(12, 16), M, 1);
+		setTimeLeft(getBuilding()->getTimetot()*20);
+		getBuilding()->setTimetot(getBuilding()->getTimetot()*20);
+	}
+	else if(difficulty==2) {
+		building = new Building(5);
+		player1 = new Player(Vector2D(12, 16), M, 3);
+		setTimeLeft(getBuilding()->getTimetot()*15);
+		getBuilding()->setTimetot(getBuilding()->getTimetot()*15);
+	}
+	else {
+		building = new Building(3);
+		player1 = new Player(Vector2D(12, 16), M, 5);
+		setTimeLeft(getBuilding()->getTimetot()*10);
+		getBuilding()->setTimetot(getBuilding()->getTimetot()*10);
+	}
+	timeLeft = building->getTimetot();
 }
 
 unsigned int Game::getTimeLeft() const {
@@ -122,7 +133,7 @@ void Game::collisionSpider() {
 			player1->decreaseHp(1);
 }
 
-int Game::automaticAction (int time) {
+int Game::update (int time) {
 
     if(time == 0)
 		player1->gravity(building);
@@ -172,7 +183,7 @@ bool Game::keyboardAction (const char touche) {
 	return true;
 }
 
-void Game::regressionTest() {
+void Game::regressionTest() { // TODO : à refaire et vérifier
 	cout << endl << "Test de la classe Game" << endl;
 
 	assert(building->getNbRoom() == NB_ROOM);
@@ -209,7 +220,7 @@ void Game::regressionTest() {
 
 	// TODO : tester keyboardAction
 
-	// TODO : tester automaticAction
+	// TODO : tester update
 
 	cout << "Test de la classe Game : OK" << endl;
 }

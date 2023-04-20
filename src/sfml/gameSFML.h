@@ -42,7 +42,6 @@ class GameSFML {
 		 * @brief Dessine le jeu dans la fenêtre
 		 * 
 		 * @param game 
-		 * @param window 
 		 */
 		void draw(const Game & game);
 
@@ -51,7 +50,7 @@ class GameSFML {
 		 * 
 		 * @param game 
 		 */
-		void drawBackground(const Room & room);
+		void drawBackground(unsigned int dimX, unsigned int dimY);
 
 		/**
 		 * @brief Dessine les obstacles dans la fenêtre
@@ -73,7 +72,14 @@ class GameSFML {
 		 */
 		void drawInfoPlayer(const Game & game);
 
+		/**
+		 * @brief Dessine une string caractère par caractère
+		 */
+		void drawString(const std::wstring & str, unsigned int y);
+
 		void drawMenu();
+		void drawGameOver();
+		void drawVictory();
 
 	public:
 
@@ -99,6 +105,16 @@ class GameSFML {
 		 * @brief Easter egg
 		 */
 		void randomizeTextures();
+
+		/**
+		 * @brief Dessine l'histoire du jeu
+		 */
+		void drawStory();
+
+		/**
+		 * @brief Dessine le menu de difficulté
+		 */
+		void drawDifficultyMenu(Game & game);
 };
 
 #endif

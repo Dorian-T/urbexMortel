@@ -64,14 +64,21 @@ class Game {
     public :
 
         /**
-         * @brief Constructeur par défaut en fonction de la difficulté
+         * @brief Constructeur paramétré en fonction de la difficulté
          */
-        Game (int difficulty = 1);
+        Game ();
 
         /**
          * @brief Destructeur
          */
         ~Game();
+
+        /**
+         * @brief Permet de changer la difficulté
+         * 
+         * @param difficulty 
+         */
+        void setDifficulty(unsigned int difficulty);
 
         /**
          * @brief Accesseur vers le batiment
@@ -85,7 +92,7 @@ class Game {
          * 
          * @return Player* 
          */
-        Player * getPlayer () const;
+        Player * getPlayer() const;
 
         /**
          * @brief Get the Time Left object
@@ -111,7 +118,7 @@ class Game {
          * @param i 
          * @return Rat* 
          */
-        Rat * getRat (unsigned int i) const;
+        Rat * getRat(unsigned int i) const;
 
         /**
          * @brief ajoute dans rats les rats de la salle
@@ -140,7 +147,7 @@ class Game {
          * @param i 
          * @return Rat* 
          */
-        Spider * getSpider (unsigned int i) const;
+        Spider * getSpider(unsigned int i) const;
 
         /**
          * @brief ajoute dans spiders les spiders de la salle
@@ -164,7 +171,7 @@ class Game {
          * @param time 
          * @return int 
          */
-        int automaticAction (int time);
+        int update(int time);
 
         /**
          * @brief Redistribution des actions clavier vers les fonctions de déplacement

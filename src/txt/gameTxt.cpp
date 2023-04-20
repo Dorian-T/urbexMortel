@@ -77,7 +77,7 @@ void txtLoop (Game & ga) {
 		usleep(100000);
         #endif // WIN32
 
-		time=ga.automaticAction(time);
+		time=ga.update(time);
 
 		c = win.getCh();
 		switch (c) {
