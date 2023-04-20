@@ -95,6 +95,18 @@ class GameSFML {
 		 */
 		void drawVictory();
 
+		/**
+		 * @brief dessine l'arraigné
+		 * 
+		 */
+		void drawSpider(Spider * spider);
+
+		/**
+		 * @brief dessine le rat
+		 * 
+		 */
+		void drawRat(Rat * rat);
+
 	public:
 
 		/**

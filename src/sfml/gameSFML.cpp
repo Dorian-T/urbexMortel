@@ -90,6 +90,15 @@ void GameSFML::draw(const Game & game) {
 
 	drawInfoPlayer(game);
 
+	for(unsigned int i = 0; i < game.getNbRat(); i++) {
+		Rat* rat = game.getRat(i);
+		drawRat(rat);
+	}
+	for(unsigned int i = 0; i < game.getNbSpider(); i++) {
+		Spider* spider = game.getSpider(i);
+		drawSpider(spider);
+	}
+
 	window.display();
 }
 
@@ -192,6 +201,25 @@ void GameSFML::drawPlayer(Player * player) {
 	clock = !clock;
 	window.draw(playerSprite);
 }
+
+void GameSFML::drawSpider(Spider * spider) {
+	Texture spiderTexture; // TODO : ne pas la recréer à chaque fois
+	spiderTexture.loadFromFile(PATH_TEXTURES + "spider.png");
+	RectangleShape spiderSprite(Vector2f(spriteSize, spriteSize));
+	spiderSprite.setPosition(spider->getPosition().getX()*spriteSize, spider->getPosition().getY()*spriteSize);
+	spiderSprite.setTexture(&spiderTexture);
+	window.draw(spiderSprite);
+}
+
+void GameSFML::drawRat(Rat * rat) {
+	Texture ratTexture; // TODO : ne pas la recréer à chaque fois
+	ratTexture.loadFromFile(PATH_TEXTURES + "rat.png");
+	RectangleShape ratSprite(Vector2f(spriteSize, spriteSize));
+	ratSprite.setPosition(rat->getPosition().getX()*spriteSize, rat->getPosition().getY()*spriteSize);
+	ratSprite.setTexture(&ratTexture);
+	window.draw(ratSprite);
+}
+
 
 void GameSFML::drawInfoPlayer(const Game & game) {
 	// HP :
