@@ -16,7 +16,7 @@ class Game {
         /**
          * @brief Pointeur vers le batiment
          */
-        Building * building;
+        Building *building;
 
         /**
          * @brief Numéro de la salle actuelle
@@ -24,27 +24,17 @@ class Game {
         unsigned int room;
 
         /**
-         * @brief Pointeur vers le joueur 1
+         * @brief Pointeur vers le joueur
          */
-        Player * player1;
+        Player *player;
 
         /**
-         * @brief Pointeur vers le joueur 2
-         */
-        Player * player2;
-
-        /**
-         * @brief bool pour savoir si on est en 1 ou 2 joeur
-         */
-        bool multiplayer;
-
-        /**
-         * @brief vecteur de rats
+         * @brief Vecteur de rats
          */
         std::vector<Rat*> rats;
 
         /**
-         * @brief vecteur de rats
+         * @brief Vecteur d'araignées
          */
         std::vector<Spider*> spiders;
 
@@ -56,17 +46,16 @@ class Game {
         bool changeRoom();
 
         /**
-         * @brief temps qui reste avant de mourir
-         * 
+         * @brief Temps restant avant le game over
          */
         unsigned int timeLeft;
 
     public :
 
         /**
-         * @brief Constructeur paramétré en fonction de la difficulté
+         * @brief Constructeur par défaut
          */
-        Game ();
+        Game();
 
         /**
          * @brief Destructeur
@@ -74,7 +63,7 @@ class Game {
         ~Game();
 
         /**
-         * @brief Permet de changer la difficulté
+         * @brief Permet de changer le niveau de difficulté
          * 
          * @param difficulty 
          */
@@ -85,24 +74,24 @@ class Game {
          * 
          * @return Building*
          */
-        Building * getBuilding() const;
+        Building* getBuilding() const;
 
         /**
          * @brief Accesseur vers le joueur
          * 
          * @return Player* 
          */
-        Player * getPlayer() const;
+        Player* getPlayer() const;
 
         /**
-         * @brief Get the Time Left object
+         * @brief Accesseur vers la salle actuelle
          * 
          * @return unsigned int 
          */
         unsigned int getTimeLeft() const;
 
         /**
-         * @brief Set the Time Left object
+         * @brief Accesseur vers le temps restant avant le game over
          * 
          */
         void setTimeLeft(unsigned int t);
@@ -113,61 +102,60 @@ class Game {
         unsigned int getNbRat() const;
 
         /**
-         * @brief Accesseur vers le rat i
+         * @brief Accesseur vers le rat n°i
          * 
          * @param i 
          * @return Rat* 
          */
-        Rat * getRat(unsigned int i) const;
+        Rat* getRat(unsigned int i) const;
 
         /**
-         * @brief ajoute dans rats les rats de la salle
-         * 
+         * @brief ajoute dans le vecteur de rats ceux de la salle actuelle
          */
         void addRat();
 
         /**
-         * @brief Enlève tous les rats de la salle
+         * @brief Détruit tous les rats
          */
         void removeRat();
 
         /**
-         * @brief collisions entre les rats et le joueur
+         * @brief Test les collisions entre les rats et le joueur
          */
         void collisionRat();
 
-                /**
-         * @brief Retourne le nombre de spiders
+        /**
+         * @brief Retourne le nombre d'araignées
         */
         unsigned int getNbSpider() const;
 
         /**
-         * @brief Accesseur vers le spider i
+         * @brief Accesseur vers l'araignée n°i
          * 
          * @param i 
-         * @return Rat* 
+         * @return Spider* 
          */
-        Spider * getSpider(unsigned int i) const;
+        Spider* getSpider(unsigned int i) const;
 
         /**
-         * @brief ajoute dans spiders les spiders de la salle
-         * 
+         * @brief Ajoute dans le vecteur d'araignées celles de la salle actuelle
          */
         void addSpider();
 
         /**
-         * @brief Enlève tous les spiders de la salle
+         * @brief Détruit toutes les araignées
          */
         void removeSpider();
 
         /**
-         * @brief collisions entre les spider et le joueur
+         * @brief Test les collisions entre les areignées et le joueur
          */
         void collisionSpider();
 
         /**
          * @brief Réalisation des actions automatiques
          * 
+         * @details retourne le nombre de ticks restants avant l'application de la gravité sur le joueur
          * @param time 
          * @return int 
          */

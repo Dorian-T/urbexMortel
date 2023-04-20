@@ -7,21 +7,19 @@
 
 using namespace std;
 
-const int NB_ROOM =3 ;
+const int NB_ROOM = 3;
 
-Game::Game ()  {
+Game::Game() {
 	building = NULL;
-	player1 = NULL;
+	player = NULL;
 	room = 0;
-	multiplayer = false;
-	player2 = NULL;
 }
 
 Game::~Game() {
 	if (building!=NULL)
 		delete building;
-	if (player1!=NULL)
-		delete player1;
+	if (player!=NULL)
+		delete player;
 	if (size(rats)!=0) {
 		for (unsigned int i = 0; i < size(rats); i++) { delete rats[i]; }
 		rats.clear();
@@ -35,19 +33,19 @@ Game::~Game() {
 void Game::setDifficulty(unsigned int difficulty) {
 	if(difficulty==3) {
 		building = new Building(8);
-		player1 = new Player(Vector2D(12, 16), M, 1);
+		player = new Player(Vector2D(12, 16), M, 1);
 		setTimeLeft(getBuilding()->getTimetot()*20);
 		getBuilding()->setTimetot(getBuilding()->getTimetot()*20);
 	}
 	else if(difficulty==2) {
 		building = new Building(5);
-		player1 = new Player(Vector2D(12, 16), M, 3);
+		player = new Player(Vector2D(12, 16), M, 3);
 		setTimeLeft(getBuilding()->getTimetot()*15);
 		getBuilding()->setTimetot(getBuilding()->getTimetot()*15);
 	}
 	else {
 		building = new Building(3);
-		player1 = new Player(Vector2D(12, 16), M, 5);
+		player = new Player(Vector2D(12, 16), M, 5);
 		setTimeLeft(getBuilding()->getTimetot()*10);
 		getBuilding()->setTimetot(getBuilding()->getTimetot()*10);
 	}
@@ -67,7 +65,7 @@ Building * Game::getBuilding() const {
 }
 
 Player * Game::getPlayer() const { // TODO : a modifier pour le multi
-    return player1;
+    return player;
 }
 
 unsigned int Game::getNbRat() const {
@@ -110,8 +108,8 @@ void Game::removeRat() {
 
 void Game::collisionRat() {
 	for(unsigned int i = 0; i < getNbRat(); i++)
-		if(rats[i]->getPosition().getX() == player1->getPosition().getX() && rats[i]->getPosition().getY() == player1->getPosition().getY())
-			player1->decreaseHp(1);
+		if(rats[i]->getPosition().getX() == player->getPosition().getX() && rats[i]->getPosition().getY() == player->getPosition().getY())
+			player->decreaseHp(1);
 }
 
 void Game::addSpider() {
@@ -129,18 +127,18 @@ void Game::removeSpider() {
 
 void Game::collisionSpider() {
 	for(unsigned int i = 0; i < getNbSpider(); i++)
-		if(spiders[i]->getPosition().getX() == player1->getPosition().getX() && spiders[i]->getPosition().getY() == player1->getPosition().getY())
-			player1->decreaseHp(1);
+		if(spiders[i]->getPosition().getX() == player->getPosition().getX() && spiders[i]->getPosition().getY() == player->getPosition().getY())
+			player->decreaseHp(1);
 }
 
 int Game::update (int time) {
 
     if(time == 0)
-		player1->gravity(building);
+		player->gravity(building);
 	else time = time - 1;
 
-	if(player1->getTimeInvincible() > 0)
-		player1->decreaseTimeInvincible();
+	if(player->getTimeInvincible() > 0)
+		player->decreaseTimeInvincible();
 
 	timeLeft = timeLeft - 1;
 
@@ -150,13 +148,10 @@ int Game::update (int time) {
 		removeSpider();
 		addSpider();
 	}
-	for(unsigned int i = 0; i < getNbRat(); i++) {
-		rats[i]->move(building, player1); // TODO : a modifier pour le multi
-		// rats[i]->gravity(building);
-	}
-	for(unsigned int i = 0; i < getNbSpider(); i++) {
+	for(unsigned int i = 0; i < getNbRat(); i++)
+		rats[i]->move(building, player);
+	for(unsigned int i = 0; i < getNbSpider(); i++)
 		spiders[i]->move(building);
-	}
 	collisionRat();
 	collisionSpider();
 
@@ -167,17 +162,17 @@ bool Game::keyboardAction (const char touche) {
 	bool b;
 	switch(touche) {
 		case 'q' :
-				player1->left(building);
+				player->left(building);
 				break;
 		case 'd' :
 				
-				b = player1->right(building);
+				b = player->right(building);
 				return b;
 		case 'z' :
-				player1->up(building);
+				player->up(building);
 				break;
 		case 's' :
-				player1->down(building);
+				player->down(building);
 				break;
 	}
 	return true;
@@ -188,15 +183,13 @@ void Game::regressionTest() { // TODO : à refaire et vérifier
 
 	assert(building->getNbRoom() == NB_ROOM);
 	assert(room == 0);
-	assert(player1->getPosition().getX() == 12 && player1->getPosition().getY() == 16); assert(player1->getHp() == 3); assert(player1->getSkin() == M);
-	assert(multiplayer == false);
-	assert(player2 == NULL);
+	assert(player->getPosition().getX() == 12 && player->getPosition().getY() == 16); assert(player->getHp() == 3); assert(player->getSkin() == M);
 	cout << "\tTest du constructeur par defaut : OK" << endl;
 
 	assert(getBuilding() == building);
 	cout << "\tTest de getBuilding : OK" << endl;
 
-	assert(getPlayer() == player1);
+	assert(getPlayer() == player);
 	cout << "\tTest de getPlayer : OK" << endl;
 
 	// TODO : tester getNbRat

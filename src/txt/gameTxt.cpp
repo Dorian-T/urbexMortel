@@ -15,7 +15,7 @@
 
 void txtDraw(WinTXT & win, const Game & ga) {
 	Building* building = ga.getBuilding();
-	Player* player1 = ga.getPlayer();
+	Player* player = ga.getPlayer();
 	
 	
 	win.clear();
@@ -28,8 +28,8 @@ void txtDraw(WinTXT & win, const Game & ga) {
 			else win.print(x, y, c);
 		}	
 	
-	win.print(player1->getPosition().getX(),player1->getPosition().getY(),'X');
-	win.print(player1->getPosition().getX(),player1->getPosition().getY()-1,'O');
+	win.print(player->getPosition().getX(),player->getPosition().getY(),'X');
+	win.print(player->getPosition().getX(),player->getPosition().getY()-1,'O');
 	for(unsigned int i = 0; i < ga.getNbRat(); i++) {
 		Rat* rat = ga.getRat(i);
 		win.print(rat->getPosition().getX(), ga.getRat(i)->getPosition().getY(), 'R');
@@ -39,8 +39,8 @@ void txtDraw(WinTXT & win, const Game & ga) {
 		win.print(spider->getPosition().getX(), ga.getSpider(i)->getPosition().getY(), 'S');
 	}
 
-	unsigned int hp = player1->getHp();
-	unsigned int TimeInv = player1->getTimeInvincible();
+	unsigned int hp = player->getHp();
+	unsigned int TimeInv = player->getTimeInvincible();
 	win.print(0,18,'H');
 	win.print(1,18,':');
 	win.print(2,18,std::to_string(hp).c_str());
@@ -99,10 +99,7 @@ void txtLoop (Game & ga) {
 				break;
 		}
 
-		if (ga.getPlayer()->getHp() == 0)
+		if (ga.getPlayer()->getHp() == 0 || ga.getTimeLeft() == 0)
 			ok = false;
-		if(ga.getTimeLeft() == 0)
-			ok = false;
-
 	}
 }
