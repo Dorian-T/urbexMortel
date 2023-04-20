@@ -54,7 +54,7 @@ void txtDraw(WinTXT & win, const Game & ga) {
 	win.print(13,18,std::to_string(building->getNbRoom()).c_str());
     win.print(15,18,'T');
 	win.print(16,18,':');
-	win.print(17,18,std::to_string(ga.getTimeLeft()).c_str());
+	win.print(17,18,std::to_string(ga.getBuilding()->getTimeLeft()).c_str());
 
 	win.draw();
 }
@@ -99,7 +99,7 @@ void txtLoop (Game & ga) {
 				break;
 		}
 
-		if (ga.getPlayer()->getHp() == 0 || ga.getTimeLeft() == 0)
+		if (ga.getPlayer()->getHp() == 0 || ga.getBuilding()->getTimeLeft() == 0)
 			ok = false;
 	}
 }
