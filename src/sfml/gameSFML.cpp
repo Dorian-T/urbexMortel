@@ -337,6 +337,60 @@ void GameSFML::drawStory() {
 	}
 }
 
+void GameSFML::drawGameOver() {
+	wstring story1 = L"T'est mort LOL ";
+
+	Font font;
+	font.loadFromFile(PATH_FONTS + "elegantTypeWriter-bold.ttf");
+	Color color(220, 0, 0, 255);
+
+	window.clear();
+	drawBackground(32, 18);
+	window.display();
+	drawString(story1, 1);
+	Text text1(story1, font, spriteSize*2/3);
+	text1.setPosition(spriteSize, spriteSize*1);
+	text1.setFillColor(color);
+
+	bool end = false;
+	Event event;
+	while(!end) {
+		while(window.pollEvent(event)) {
+			if(event.type == Event::Closed)
+				window.close();
+			if(event.type == Event::KeyPressed)
+				end = true;
+		}
+	}
+}
+
+void GameSFML::drawVictory() {
+	wstring story1 = L"T'a gagné LOL ";
+
+	Font font;
+	font.loadFromFile(PATH_FONTS + "elegantTypeWriter-bold.ttf");
+	Color color(220, 0, 0, 255);
+
+	window.clear();
+	drawBackground(32, 18);
+	window.display();
+	drawString(story1, 1);
+	Text text1(story1, font, spriteSize*2/3);
+	text1.setPosition(spriteSize, spriteSize*1);
+	text1.setFillColor(color);
+
+	bool end = false;
+	Event event;
+	while(!end) {
+		while(window.pollEvent(event)) {
+			if(event.type == Event::Closed)
+				window.close();
+			if(event.type == Event::KeyPressed)
+				end = true;
+		}
+	}
+}
+
 void GameSFML::drawString(const wstring & str, unsigned int y) {
 	Font font;
 	font.loadFromFile(PATH_FONTS + "elegantTypeWriter-bold.ttf");
@@ -436,6 +490,7 @@ void GameSFML::Loop(Game & game) {
 	window.setKeyRepeatEnabled(false);
 	Clock cl;
 	int time = 3;
+	bool finish;
 	while(window.isOpen()) {
 		float elapsed = cl.getElapsedTime().asMilliseconds();
 		if(elapsed > 100) {
@@ -459,7 +514,11 @@ void GameSFML::Loop(Game & game) {
 						break;
 
 					case Keyboard::D:
-						game.getPlayer()->right(game.getBuilding());
+						finish=game.getPlayer()->right(game.getBuilding());
+						if(!finish) {
+							drawVictory();
+							window.close();
+						}
 						break;
 
 					case Keyboard::S:
@@ -479,7 +538,10 @@ void GameSFML::Loop(Game & game) {
 				}
         }
 		draw(game);
-		if(game.getPlayer()->getHp()==0) window.close();
+		if(game.getPlayer()->getHp()==0) {
+			drawGameOver();
+			window.close();
+		}
     }
 }
 
