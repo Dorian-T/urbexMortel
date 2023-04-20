@@ -24,14 +24,15 @@ Building::Building(unsigned int nb) {
     arrayRoom[nbRoom-1] = Room(PATH_ROOMS + "exit.txt");
     currentRoom = 0;
     for(unsigned int i = 0; i < nbRoom; i++)
-        timetot += arrayRoom[i].getTime();
+        totalTime += arrayRoom[i].getTime();
 }
 
-Building::Building(string filename) {
+Building::Building(const string & filename) {
     nbRoom = 1;
     arrayRoom.resize(nbRoom);
     arrayRoom[0] = Room(filename);
     currentRoom = 0;
+    totalTime = arrayRoom[0].getTime();
 }
 
 Room* Building::getCurrentRoom() {
@@ -46,6 +47,14 @@ unsigned int Building::getNbRoom() {
     return nbRoom;
 }
 
+unsigned int Building::getTotalTime() {
+    return totalTime;
+}
+
+void Building::setTotalTime(unsigned int t) {
+    totalTime = t;
+}
+
 bool Building::finishRoom() {
     if(currentRoom == nbRoom-1) return false;
     else {
@@ -54,35 +63,44 @@ bool Building::finishRoom() {
     }
 }
 
-unsigned int Building::getTimetot() {
-    return timetot;
-}
-
-void Building::setTimetot(unsigned int t) {
-    timetot = t;
-}
-
 void Building::regressionTest()
 {
-    cout << endl << "Test de regression de la classe Building" << endl;
+    cout << endl << "Test de la classe Building" << endl;
 
-    assert(nbRoom != 0);
+    assert(nbRoom == 3);
     assert(arrayRoom.capacity() == nbRoom && arrayRoom.size() == nbRoom);
     assert(currentRoom == 0);
-    cout << "\tconstructeur par defaut : OK" << endl;
+    assert(totalTime != 0);
+    cout << "\tconstructeur parametre : OK" << endl;
 
     Building B(PATH_ROOMS + "test.txt");
     assert(B.nbRoom == 1);
     assert(B.arrayRoom.capacity() == B.nbRoom && B.arrayRoom.size() == B.nbRoom);
     assert(B.currentRoom == 0);
+    assert(B.totalTime == 1000);
     cout << "\tconstructeur depuis un fichier : OK" << endl;
 
-    finishRoom();
+    assert(getCurrentRoom() == &arrayRoom[currentRoom]);
+    cout << "\tgetCurrentRoom : OK" << endl;
+
+    assert(getIntCurrentRoom() == currentRoom);
+    cout << "\tgetIntCurrentRoom : OK" << endl;
+
+    assert(getNbRoom() == nbRoom);
+    cout << "\tgetNbRoom : OK" << endl;
+
+    assert(getTotalTime() == totalTime);
+    cout << "\tgetTotalTime : OK" << endl;
+
+    setTotalTime(20);
+    assert(totalTime == 20);
+    cout << "\tsetTotalTime : OK" << endl;
+
+    assert(finishRoom());
     assert(currentRoom == 1);
-    cout << "\tgoToNextRoom : OK" << endl;
+    finishRoom();
+    assert(!finishRoom());
+    cout << "\tfinishRoom : OK" << endl;
 
-    assert(getCurrentRoom() == &arrayRoom[1]);
-    cout << "\tmethode getCurrentRoom : OK" << endl;
-
-    cout << "Test de regression de la classe Building : OK" << endl;
+    cout << "Test de la classe Building : OK" << endl;
 }

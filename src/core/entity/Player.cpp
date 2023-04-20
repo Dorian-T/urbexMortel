@@ -81,8 +81,8 @@ bool Player::right(Building * B) {
 	}
 	else if (i == -4) {
 		setPosition (V);
-		int t=B->getTimetot();
-		B->setTimetot(t+150);
+		int t=B->getTotalTime();
+		B->setTotalTime(t+150);
 		B->getCurrentRoom()->setObstacle(V,nothing);
 	}
 	return b;
@@ -98,8 +98,8 @@ void Player::left (Building * B) {
 		else if(i > 0) decreaseHp(i);
 		else if (i == -4) {
 			setPosition (V);
-			int t=B->getTimetot();
-			B->setTimetot(t+150);
+			int t=B->getTotalTime();
+			B->setTotalTime(t+150);
 			B->getCurrentRoom()->setObstacle(V,nothing);
 		}
 	}
@@ -130,8 +130,8 @@ void Player::down(Building * B) {
 		else if(i > 0) decreaseHp(i);
 		else if (i == -4) {
 			setPosition (V);
-			int t=B->getTimetot();
-			B->setTimetot(t+150);
+			int t=B->getTotalTime();
+			B->setTotalTime(t+150);
 			B->getCurrentRoom()->setObstacle(V,nothing);
 		}
 	}

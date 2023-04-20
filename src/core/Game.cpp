@@ -34,22 +34,22 @@ void Game::setDifficulty(unsigned int difficulty) {
 	if(difficulty==3) {
 		building = new Building(8);
 		player = new Player(Vector2D(12, 16), M, 1);
-		setTimeLeft(getBuilding()->getTimetot()*20);
-		getBuilding()->setTimetot(getBuilding()->getTimetot()*20);
+		setTimeLeft(getBuilding()->getTotalTime()*20);
+		getBuilding()->setTotalTime(getBuilding()->getTotalTime()*20);
 	}
 	else if(difficulty==2) {
 		building = new Building(5);
 		player = new Player(Vector2D(12, 16), M, 3);
-		setTimeLeft(getBuilding()->getTimetot()*15);
-		getBuilding()->setTimetot(getBuilding()->getTimetot()*15);
+		setTimeLeft(getBuilding()->getTotalTime()*15);
+		getBuilding()->setTotalTime(getBuilding()->getTotalTime()*15);
 	}
 	else {
 		building = new Building(3);
 		player = new Player(Vector2D(12, 16), M, 5);
-		setTimeLeft(getBuilding()->getTimetot()*10);
-		getBuilding()->setTimetot(getBuilding()->getTimetot()*10);
+		setTimeLeft(getBuilding()->getTotalTime()*10);
+		getBuilding()->setTotalTime(getBuilding()->getTotalTime()*10);
 	}
-	timeLeft = building->getTimetot();
+	timeLeft = building->getTotalTime();
 }
 
 unsigned int Game::getTimeLeft() const {

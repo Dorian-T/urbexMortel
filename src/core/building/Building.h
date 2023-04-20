@@ -2,6 +2,7 @@
 #define _BUILDING
 
 #include "Room.h"
+
 #include <string>
 #include <vector>
 
@@ -13,30 +14,31 @@ class Building {
     private:
 
         /**
-         * @brief tableau 1D de salles
+         * @brief Tableau 1D de salles
          */
         std::vector<Room> arrayRoom;
 
         /**
-         * @brief indice de la salle courante
+         * @brief Indice de la salle courante
          */
         unsigned int currentRoom;
 
         /**
-         * @brief nombre de salle dans le buiding
+         * @brief Nombre de salles dans le Building
          */
         unsigned int nbRoom;
 
         /**
-         * @brief Temps total pour sortir du building
+         * @brief Temps total en secondes avant le game over
         */
-        unsigned int timetot;
+        unsigned int totalTime;
 
     public:
 
         /**
          * @brief Constructeur paramétré
          * 
+         * @details construit un building avec nb salles aléatoires
          * @param nb
          */
         Building(unsigned int nb);
@@ -44,9 +46,10 @@ class Building {
         /**
          * @brief Constructeur paramétré
          * 
+         * @details construit un building avec la salle passée en paramètre
          * @param filename
          */
-        Building(std::string filename);
+        Building(const std::string & filename);
 
         /**
          * @brief Retourne la salle courante
@@ -63,37 +66,37 @@ class Building {
         unsigned int getIntCurrentRoom();
 
         /**
-         * @brief Retourne le nombre de salle
+         * @brief Accesseur du nombre de salles
          * 
          * @return unsigned int 
          */
         unsigned int getNbRoom();
-      
 
         /**
-         * @brief Renvoie faux si on a atteint la sortie de la dernière salle sinon renvoie vrai
-         * et change de salle
+         * @brief Accesseur du temps total avant le game over
          * 
+         * @return unsigned int
+        */
+        unsigned int getTotalTime();
+
+        /**
+         * @brief Mutateur du temps total avant le game over
+         * 
+         * @return void
+        */
+        void setTotalTime(unsigned int t);
+
+        /**
+         * @brief Permet de savoir si la partie est finie
+         * 
+         * @details renvoie vrai et change de salle si la partie n'est pas finie
+         * @details renvoie faux si la partie est finie
          * @return bool
          */
         bool finishRoom();
 
         /**
-         * @brief Retourne le temps total pour sortir du building
-         * 
-         * @return unsigned int
-        */
-        unsigned int getTimetot();
-
-        /**
-         * @brief Met à jour le temps total pour sortir du building
-         * 
-         * @return void
-        */
-        void setTimetot(unsigned int t);
-
-        /**
-         * @brief Test de regression
+         * @brief Test de non-regression
          */
         void regressionTest();
 };

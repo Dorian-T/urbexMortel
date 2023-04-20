@@ -133,7 +133,7 @@ int main () {
 	Room Ro;
 	Ro.regressionTest();
 
-	Building B(10);
+	Building B(1);
 	B.regressionTest();
 
 	Game G;

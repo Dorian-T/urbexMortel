@@ -35,7 +35,7 @@ int main() {
 	txtLoop(game);
     termClear();
 
-	if(game.getPlayer()->getHp() == 0 || game.getBuilding()->getTimetot() == 0)
+	if(game.getPlayer()->getHp() == 0 || game.getBuilding()->getTotalTime() == 0)
 		cout << "T'es mort, nul !" << endl;
 	else
 		cout << "Bravo ! T'es pas nul." << endl;
