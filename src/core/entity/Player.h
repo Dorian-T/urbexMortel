@@ -34,6 +34,12 @@ class Player : public Entity {
         unsigned int timeInvincible;
 
         /**
+         * @brief bool vrai pour le personnage regarde à droite faux à gauche
+         * 
+         */
+        bool orientation;
+
+        /**
          * @brief Vérifie si le déplacement vers le haut est possible
          * 
          * @details renvoie -1 si le déplacement est possible
@@ -178,6 +184,14 @@ class Player : public Entity {
          * @return unsigned int 
          */
         unsigned int getTimeInvincible();
+
+        /**
+         * @brief Get the Orientation object
+         * 
+         * @return true 
+         * @return false 
+         */
+        bool getOrientation();
 
         /**
          * @brief Tests de non-regression

@@ -190,7 +190,8 @@ void GameSFML::drawObstacles(const Room & room) {
 void GameSFML::drawPlayer(Player * player) {
 	bool clock = true;
 	Texture playerTexture; // TODO : ne pas la recréer à chaque fois
-	playerTexture.loadFromFile(PATH_TEXTURES + "player.png");
+	if(player->getOrientation()) playerTexture.loadFromFile(PATH_TEXTURES + "playerRight.png");
+	else playerTexture.loadFromFile(PATH_TEXTURES + "playerLeft.png");
 	playerTexture.setSmooth(true);
 	Sprite playerSprite(playerTexture);
 	playerSprite.setScale((float) spriteSize * 2 / 400, (float) spriteSize * 2 / 400);

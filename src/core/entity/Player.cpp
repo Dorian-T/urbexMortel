@@ -8,12 +8,14 @@ Player::Player() {
 	skin = M;
 	hp = 0;
 	timeInvincible = 0;
+	orientation = true;
 }
 
 Player::Player(const Vector2D & P, Skin s, unsigned int health): Entity(P, 2, 1) {
 	skin = s;
 	hp = health;
 	timeInvincible = 0;
+	orientation = true;
 }
 
 Skin Player::getSkin() const {
@@ -70,6 +72,7 @@ int Player::isMovePossibleUp(const Vector2D & position, Room * R) const {
 bool Player::right(Building * B) {
 	Vector2D V;
 	bool b=true;
+	orientation = true;
 	V.setY(getPosition().getY());
 	V.setX(getPosition().getX() + 1);
 	int i = isMovePossibleSide(V, B->getCurrentRoom());
@@ -90,6 +93,7 @@ bool Player::right(Building * B) {
 
 void Player::left (Building * B) {
 	Vector2D V;
+	orientation = false;
 	V.setY(getPosition().getY());
 	if(getPosition().getX() > 1) {
 		V.setX(getPosition().getX() - 1);
@@ -182,6 +186,9 @@ unsigned int Player::getTimeInvincible() {
 	return timeInvincible;
 }
 
+bool Player::getOrientation() {
+	return orientation;
+}
 
 void Player::regressionTest() { // a modifier
 	cout << endl << "Test de la classe Player" << endl;
