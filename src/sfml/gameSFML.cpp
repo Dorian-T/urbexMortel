@@ -214,7 +214,8 @@ void GameSFML::drawSpider(Spider * spider) {
 
 void GameSFML::drawRat(Rat * rat) {
 	Texture ratTexture; // TODO : ne pas la recréer à chaque fois
-	ratTexture.loadFromFile(PATH_TEXTURES + "rat.png");
+	if(rat->getDirection().getX()>=1) ratTexture.loadFromFile(PATH_TEXTURES + "ratRight.png");
+	else ratTexture.loadFromFile(PATH_TEXTURES + "ratLeft.png");
 	RectangleShape ratSprite(Vector2f(spriteSize, spriteSize));
 	ratSprite.setPosition(rat->getPosition().getX()*spriteSize, rat->getPosition().getY()*spriteSize);
 	ratSprite.setTexture(&ratTexture);
@@ -539,7 +540,7 @@ void GameSFML::Loop(Game & game) {
 				}
         }
 		draw(game);
-		if(game.getPlayer()->getHp()==0) {
+		if(game.getPlayer()->getHp()==0 or game.getBuilding()->getTimeLeft()==0) {
 			drawGameOver();
 			window.close();
 		}
