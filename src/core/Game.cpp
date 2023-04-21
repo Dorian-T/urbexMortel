@@ -21,11 +21,13 @@ Game::~Game() {
 	if (player!=NULL)
 		delete player;
 	if (size(rats)!=0) {
-		for (unsigned int i = 0; i < size(rats); i++) { delete rats[i]; }
+		for (unsigned int i = 0; i < size(rats); i++)
+			delete rats[i];
 		rats.clear();
 	}	
 	if (size(spiders)!=0) {
-		for (unsigned int i = 0; i < size(spiders); i++) { delete spiders[i]; }
+		for (unsigned int i = 0; i < size(spiders); i++)
+			delete spiders[i];
 		spiders.clear();
 	}
 }
