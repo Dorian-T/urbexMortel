@@ -36,31 +36,22 @@ void Game::setDifficulty(unsigned int difficulty) {
 	if(difficulty==3) {
 		building = new Building(8);
 		player = new Player(Vector2D(12, 16), M, 1);
-		setTimeLeft(getBuilding()->getTotalTime()*20);
 		getBuilding()->setTotalTime(getBuilding()->getTotalTime()*20);
 	}
 	else if(difficulty==2) {
 		building = new Building(5);
 		player = new Player(Vector2D(12, 16), M, 3);
-		setTimeLeft(getBuilding()->getTotalTime()*15);
 		getBuilding()->setTotalTime(getBuilding()->getTotalTime()*15);
 	}
 	else {
 		building = new Building(3);
 		player = new Player(Vector2D(12, 16), M, 5);
-		setTimeLeft(getBuilding()->getTotalTime()*10);
 		getBuilding()->setTotalTime(getBuilding()->getTotalTime()*10);
 	}
-	timeLeft = building->getTotalTime();
+	getBuilding()->setTimeLeft(getBuilding()->getTotalTime());
 }
 
-unsigned int Game::getTimeLeft() const {
-	return timeLeft;
-}
 
-void Game::setTimeLeft(unsigned int t) {
-	timeLeft = t;
-}
 
 Building * Game::getBuilding() const {
     return building;
@@ -142,7 +133,7 @@ int Game::update (int time) {
 	if(player->getTimeInvincible() > 0)
 		player->decreaseTimeInvincible();
 
-	timeLeft = timeLeft - 1;
+	getBuilding()->setTimeLeft(getBuilding()->getTimeLeft() - 1);
 
 	if(changeRoom()) {
 		removeRat();

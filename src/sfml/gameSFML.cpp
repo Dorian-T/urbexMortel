@@ -90,6 +90,15 @@ void GameSFML::draw(const Game & game) {
 
 	drawInfoPlayer(game);
 
+	for(unsigned int i = 0; i < game.getNbRat(); i++) {
+		Rat* rat = game.getRat(i);
+		drawRat(rat);
+	}
+	for(unsigned int i = 0; i < game.getNbSpider(); i++) {
+		Spider* spider = game.getSpider(i);
+		drawSpider(spider);
+	}
+
 	window.display();
 }
 
@@ -193,6 +202,25 @@ void GameSFML::drawPlayer(Player * player) {
 	window.draw(playerSprite);
 }
 
+void GameSFML::drawSpider(Spider * spider) {
+	Texture spiderTexture; // TODO : ne pas la recréer à chaque fois
+	spiderTexture.loadFromFile(PATH_TEXTURES + "spider.png");
+	RectangleShape spiderSprite(Vector2f(spriteSize, spriteSize));
+	spiderSprite.setPosition(spider->getPosition().getX()*spriteSize, spider->getPosition().getY()*spriteSize);
+	spiderSprite.setTexture(&spiderTexture);
+	window.draw(spiderSprite);
+}
+
+void GameSFML::drawRat(Rat * rat) {
+	Texture ratTexture; // TODO : ne pas la recréer à chaque fois
+	ratTexture.loadFromFile(PATH_TEXTURES + "rat.png");
+	RectangleShape ratSprite(Vector2f(spriteSize, spriteSize));
+	ratSprite.setPosition(rat->getPosition().getX()*spriteSize, rat->getPosition().getY()*spriteSize);
+	ratSprite.setTexture(&ratTexture);
+	window.draw(ratSprite);
+}
+
+
 void GameSFML::drawInfoPlayer(const Game & game) {
 	// HP :
 	for(unsigned int i = 0; i < game.getPlayer()->getHp(); ++i) {
@@ -208,11 +236,11 @@ void GameSFML::drawInfoPlayer(const Game & game) {
 	poisonSkull.setTexture(&textures[9]);
 	window.draw(poisonSkull);
 
-	RectangleShape poison(Vector2f(4*spriteSize * (1 - (float)game.getTimeLeft() / (float)game.getBuilding()->getTotalTime()), spriteSize));
+	RectangleShape poison(Vector2f(4*spriteSize * (1 - (float)game.getBuilding()->getTimeLeft() / (float)game.getBuilding()->getTotalTime()), spriteSize));
 	poison.setPosition(game.getBuilding()->getCurrentRoom()->getDimX()*spriteSize - 5*spriteSize, 0);
 	poison.setFillColor(Color(138, 34, 156, 255));
 	window.draw(poison);
-
+	
 	RectangleShape poisonBar(Vector2f(4*spriteSize, spriteSize));
 	poisonBar.setPosition(game.getBuilding()->getCurrentRoom()->getDimX()*spriteSize - 5*spriteSize, 0);
 	poisonBar.setTexture(&textures[10]);
@@ -296,6 +324,60 @@ void GameSFML::drawStory() {
 	Text text7(story7, font, spriteSize*2/3);
 	text7.setPosition(spriteSize, spriteSize*7);
 	text7.setFillColor(color);
+
+	bool end = false;
+	Event event;
+	while(!end) {
+		while(window.pollEvent(event)) {
+			if(event.type == Event::Closed)
+				window.close();
+			if(event.type == Event::KeyPressed)
+				end = true;
+		}
+	}
+}
+
+void GameSFML::drawGameOver() {
+	wstring story1 = L"T'est mort LOL ";
+
+	Font font;
+	font.loadFromFile(PATH_FONTS + "elegantTypeWriter-bold.ttf");
+	Color color(220, 0, 0, 255);
+
+	window.clear();
+	drawBackground(32, 18);
+	window.display();
+	drawString(story1, 1);
+	Text text1(story1, font, spriteSize*2/3);
+	text1.setPosition(spriteSize, spriteSize*1);
+	text1.setFillColor(color);
+
+	bool end = false;
+	Event event;
+	while(!end) {
+		while(window.pollEvent(event)) {
+			if(event.type == Event::Closed)
+				window.close();
+			if(event.type == Event::KeyPressed)
+				end = true;
+		}
+	}
+}
+
+void GameSFML::drawVictory() {
+	wstring story1 = L"T'a gagné LOL ";
+
+	Font font;
+	font.loadFromFile(PATH_FONTS + "elegantTypeWriter-bold.ttf");
+	Color color(220, 0, 0, 255);
+
+	window.clear();
+	drawBackground(32, 18);
+	window.display();
+	drawString(story1, 1);
+	Text text1(story1, font, spriteSize*2/3);
+	text1.setPosition(spriteSize, spriteSize*1);
+	text1.setFillColor(color);
 
 	bool end = false;
 	Event event;
@@ -408,6 +490,7 @@ void GameSFML::Loop(Game & game) {
 	window.setKeyRepeatEnabled(false);
 	Clock cl;
 	int time = 3;
+	bool finish;
 	while(window.isOpen()) {
 		float elapsed = cl.getElapsedTime().asMilliseconds();
 		if(elapsed > 100) {
@@ -431,7 +514,11 @@ void GameSFML::Loop(Game & game) {
 						break;
 
 					case Keyboard::D:
-						game.getPlayer()->right(game.getBuilding());
+						finish=game.getPlayer()->right(game.getBuilding());
+						if(!finish) {
+							drawVictory();
+							window.close();
+						}
 						break;
 
 					case Keyboard::S:
@@ -451,7 +538,10 @@ void GameSFML::Loop(Game & game) {
 				}
         }
 		draw(game);
-		if(game.getPlayer()->getHp()==0) window.close();
+		if(game.getPlayer()->getHp()==0) {
+			drawGameOver();
+			window.close();
+		}
     }
 }
 

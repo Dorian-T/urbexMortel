@@ -33,6 +33,11 @@ class Building {
         */
         unsigned int totalTime;
 
+        /**
+         * @brief Temps restant avant le game over
+         */
+        unsigned int timeLeft;
+
     public:
 
         /**
@@ -85,6 +90,19 @@ class Building {
          * @return void
         */
         void setTotalTime(unsigned int t);
+
+        /**
+         * @brief Accesseur vers la salle actuelle
+         * 
+         * @return unsigned int 
+         */
+        unsigned int getTimeLeft() const;
+
+        /**
+         * @brief Accesseur vers le temps restant avant le game over
+         * 
+         */
+        void setTimeLeft(unsigned int t);
 
         /**
          * @brief Permet de savoir si la partie est finie

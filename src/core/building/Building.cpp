@@ -55,6 +55,14 @@ void Building::setTotalTime(unsigned int t) {
     totalTime = t;
 }
 
+unsigned int Building::getTimeLeft() const {
+	return timeLeft;
+}
+
+void Building::setTimeLeft(unsigned int t) {
+	timeLeft = t;
+}
+
 bool Building::finishRoom() {
     if(currentRoom == nbRoom-1) return false;
     else {

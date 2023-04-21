@@ -45,11 +45,6 @@ class Game {
          */
         bool changeRoom();
 
-        /**
-         * @brief Temps restant avant le game over
-         */
-        unsigned int timeLeft;
-
     public :
 
         /**
@@ -83,18 +78,6 @@ class Game {
          */
         Player* getPlayer() const;
 
-        /**
-         * @brief Accesseur vers la salle actuelle
-         * 
-         * @return unsigned int 
-         */
-        unsigned int getTimeLeft() const;
-
-        /**
-         * @brief Accesseur vers le temps restant avant le game over
-         * 
-         */
-        void setTimeLeft(unsigned int t);
 
         /**
          * @brief Retourne le nombre de rats

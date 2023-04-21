@@ -77,9 +77,35 @@ class GameSFML {
 		 */
 		void drawString(const std::wstring & str, unsigned int y);
 
+		/**
+		 * @brief Dessine le menu
+		 * 
+		 */
 		void drawMenu();
+
+		/**
+		 * @brief dessine l'écran de mort 
+		 * 
+		 */
 		void drawGameOver();
+
+		/**
+		 * @brief dessine l'écran de victoire
+		 * 
+		 */
 		void drawVictory();
+
+		/**
+		 * @brief dessine l'arraigné
+		 * 
+		 */
+		void drawSpider(Spider * spider);
+
+		/**
+		 * @brief dessine le rat
+		 * 
+		 */
+		void drawRat(Rat * rat);
 
 	public:
 

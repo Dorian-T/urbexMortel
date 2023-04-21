@@ -81,8 +81,8 @@ bool Player::right(Building * B) {
 	}
 	else if (i == -4) {
 		setPosition (V);
-		int t=B->getTotalTime();
-		B->setTotalTime(t+150);
+		int t=B->getTimeLeft();
+		B->setTimeLeft(t+150);
 		B->getCurrentRoom()->setObstacle(V,nothing);
 	}
 	return b;
