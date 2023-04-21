@@ -7,16 +7,22 @@
 
 /*
 Dans le vector de textures, on a :
-0 : background
-1 : barbedWire
-2 : block
-3 : door1
-4 : door2
-5 : ladder
-6 : trapdoor
-7 : potion
-8 : heart
-9 : poisonBar
+00 : background
+01 : barbedWire
+02 : block
+03 : door1
+04 : door2
+05 : ladder
+06 : trapdoor
+07 : potion
+08 : heart
+09 : poisonSkull
+10 : poisonBar
+11 : playerR
+12 : playerL
+13 : ratR
+14 : ratL
+15 : spider
 */
 
 class GameSFML {
@@ -113,6 +119,11 @@ class GameSFML {
 		 * @brief Constructeur paramétré
 		 */
 		GameSFML(const Game & game);
+
+		/**
+		 * @brief Charge les textures
+		 */
+		void loadTextures();
 
 		/**
 		 * @brief Destructeur

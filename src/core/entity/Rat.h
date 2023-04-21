@@ -14,7 +14,7 @@ class Rat: public Entity {
 		/**
 		 * @brief Direction du rat
 		 */
-		Vector2D direction;
+		unsigned int direction;
 
 		/**
 		 * @brief Temps avant le prochain déplacement
@@ -76,7 +76,7 @@ class Rat: public Entity {
 		 * 
 		 * @return Vector2D
 		 */
-		Vector2D getDirection() const;
+		int getDirection() const;
 
 		/**
 		 * @brief Déplacement du rat
