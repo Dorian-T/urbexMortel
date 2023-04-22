@@ -218,7 +218,7 @@ void GameSFML::drawPlayer(Player * player) {
 	playerSprite.setPosition(player->getPosition().getX()*spriteSize, player->getPosition().getY()*spriteSize - spriteSize);
 
 	if(player->getTimeInvincible() > 0) // à refaire
-		if(clock) playerSprite.setColor(Color(255, 255, 255, 128));
+		if(clock) playerSprite.setColor(Color(255, 0, 0, 128));
 	clock = !clock;
 	window.draw(playerSprite);
 }
