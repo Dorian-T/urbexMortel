@@ -130,7 +130,7 @@ int main () {
 	Rat Ra;
 	Ra.regressionTest();
 
-	Room Ro;
+	Room Ro(PATH_ROOMS + "test.txt");
 	Ro.regressionTest();
 
 	Building B(1);

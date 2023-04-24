@@ -217,7 +217,7 @@ void GameSFML::drawPlayer(Player * player) {
 	playerSprite.setScale((float) spriteSize * 2 / 400, (float) spriteSize * 2 / 400);
 	playerSprite.setPosition(player->getPosition().getX()*spriteSize, player->getPosition().getY()*spriteSize - spriteSize);
 
-	if(player->getTimeInvincible() > 0) // à refaire
+	if(player->getTimeInvincible() > 0)
 		if(clock) playerSprite.setColor(Color(255, 0, 0, 128));
 	clock = !clock;
 	window.draw(playerSprite);
@@ -465,12 +465,11 @@ void GameSFML::drawDifficultyMenu(Game & game) {
 			if(event.type == Event::Closed)
 				window.close();
 			if(event.type == Event::KeyPressed)
-				switch(event.key.code) { // à vérifier
+				switch(event.key.code) {
 					case Keyboard::Num1:
 					case Keyboard::Numpad1:
 						isChoosen = true;
 						game.setDifficulty(1);
-						cout << "1" << endl;
 						break;
 
 					case Keyboard::Num2:

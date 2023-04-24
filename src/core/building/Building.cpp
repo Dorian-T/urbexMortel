@@ -14,14 +14,13 @@ Building::Building(unsigned int nb) {
     int n;
     string s;
     nbRoom = nb + 2;
-    arrayRoom.resize(nbRoom);
-    arrayRoom[0] = Room(PATH_ROOMS + "entrance.txt");
+    arrayRoom.push_back(Room(PATH_ROOMS + "entrance.txt"));
     for(unsigned int i = 0; i < nb; i++) {
         n = rand() % NB_DIFFERENT_ROOM + 1;
         s = PATH_ROOMS + "room" + to_string(n) + ".txt";
-        arrayRoom[i+1] = Room(s);
+        arrayRoom.push_back(Room(s));
     }
-    arrayRoom[nbRoom-1] = Room(PATH_ROOMS + "exit.txt");
+    arrayRoom.push_back((PATH_ROOMS + "exit.txt"));
     currentRoom = 0;
     for(unsigned int i = 0; i < nbRoom; i++)
         totalTime += arrayRoom[i].getTime();
@@ -29,7 +28,6 @@ Building::Building(unsigned int nb) {
 
 Building::Building(const string & filename) {
     nbRoom = 1;
-    arrayRoom.resize(nbRoom);
     arrayRoom[0] = Room(filename);
     currentRoom = 0;
     totalTime = arrayRoom[0].getTime();

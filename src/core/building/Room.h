@@ -2,15 +2,13 @@
 #define _ROOM
 
 #include "../entity/Vector2D.h"
+
 #include <string>
 #include <vector>
 
-
-const unsigned int DIM_ROOM_X = 16;
-const unsigned int DIM_ROOM_Y = 9;
-const unsigned int PIXEL_ROOM_X = 9;
-const unsigned int PIXEL_ROOM_Y = 16;
-
+/**
+ * @brief Chemin vers le dossier des salles
+ */
 const std::string PATH_ROOMS = "data/rooms/";
 
 /**
@@ -28,17 +26,18 @@ enum Obstacle {
 
 /**
  * @brief Les niveaux du jeu
- */class Room {
+ */
+class Room {
 
     private:
 
         /**
-         * @brief Dimension de la salle en X
+         * @brief Taille de la salle en X
          */
         unsigned int dimX;
 
         /**
-         * @brief Dimension de la salle en Y
+         * @brief Taille de la salle en Y
          */
         unsigned int dimY;
 
@@ -65,11 +64,6 @@ enum Obstacle {
     public:
 
         /**
-         * @brief Constructeur par défaut
-         */
-        Room();
-
-        /**
          * @brief Constructeur depuis un fichier texte
          * 
          * @param filename
@@ -77,21 +71,21 @@ enum Obstacle {
         Room(const std::string & filename);
 
         /**
-         * @brief Retourne la dimension en X
+         * @brief Accesseur de la taille en X
          * 
          * @return unsigned int 
          */
         unsigned int getDimX() const;
 
         /**
-         * @brief Retourne la dimension en Y
+         * @brief Accesseur de la taille en Y
          * 
          * @return unsigned int 
          */
         unsigned int getDimY() const;
 
         /**
-         * @brief Retourne l'obstacle à la position V
+         * @brief Accesseur de l'obstacle à la position V
          * 
          * @param V 
          * @return Obstacle 
@@ -119,14 +113,14 @@ enum Obstacle {
         Vector2D* getRat(unsigned int i);
 
         /**
-         * @brief Retourne le nombre de spider
+         * @brief Retourne le nombre d'araignées
          * 
          * @return unsigned int 
          */
         unsigned int getNbSpider() const;
 
         /**
-         * @brief Retourne la position du spider i
+         * @brief Retourne la position de l'araignée i
          * 
          * @param i 
          * @return Vector2D 
