@@ -8,6 +8,11 @@
 
 class Building;
 
+/**
+ * @brief Classe représentant un rat
+ * 
+ * @details classe héritée de Entity
+ */
 class Rat: public Entity {
 	private:
 

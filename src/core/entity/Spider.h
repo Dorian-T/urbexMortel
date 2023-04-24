@@ -7,6 +7,11 @@
 
 class Building;
 
+/**
+ * @brief Classe représentant un spider
+ * 
+ * @details classe héritée de Entity
+ */
 class Spider: public Entity {
 	private:
 

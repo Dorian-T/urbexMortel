@@ -90,16 +90,11 @@ class GameSFML {
 		void drawMenu();
 
 		/**
-		 * @brief dessine l'écran de mort 
+		 * @brief Dessine l'écran de fin du jeu
 		 * 
+		 * @param victory
 		 */
-		void drawGameOver();
-
-		/**
-		 * @brief dessine l'écran de victoire
-		 * 
-		 */
-		void drawVictory();
+		void drawEnd(bool victory);
 
 		/**
 		 * @brief dessine l'arraigné

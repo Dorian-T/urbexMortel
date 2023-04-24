@@ -358,8 +358,12 @@ void GameSFML::drawStory() {
 	}
 }
 
-void GameSFML::drawGameOver() {
-	wstring story1 = L"T'est mort LOL ";
+void GameSFML::drawEnd(bool victory) {
+	wstring str;
+	if(victory)
+		str = L"Vous avez réussi à sortir à temps, vous êtes sauvé !";
+	else
+		str = L"Dommage, vous êtes mort...";
 
 	Font font;
 	font.loadFromFile(PATH_FONTS + "elegantTypeWriter-bold.ttf");
@@ -368,37 +372,10 @@ void GameSFML::drawGameOver() {
 	window.clear();
 	drawBackground(32, 18);
 	window.display();
-	drawString(story1, 1);
-	Text text1(story1, font, spriteSize*2/3);
-	text1.setPosition(spriteSize, spriteSize*1);
-	text1.setFillColor(color);
-
-	bool end = false;
-	Event event;
-	while(!end) {
-		while(window.pollEvent(event)) {
-			if(event.type == Event::Closed)
-				window.close();
-			if(event.type == Event::KeyPressed)
-				end = true;
-		}
-	}
-}
-
-void GameSFML::drawVictory() {
-	wstring story1 = L"T'a gagné LOL ";
-
-	Font font;
-	font.loadFromFile(PATH_FONTS + "elegantTypeWriter-bold.ttf");
-	Color color(220, 0, 0, 255);
-
-	window.clear();
-	drawBackground(32, 18);
-	window.display();
-	drawString(story1, 1);
-	Text text1(story1, font, spriteSize*2/3);
-	text1.setPosition(spriteSize, spriteSize*1);
-	text1.setFillColor(color);
+	drawString(str, 1);
+	Text text(str, font, spriteSize*2/3);
+	text.setPosition(spriteSize, spriteSize*1);
+	text.setFillColor(color);
 
 	bool end = false;
 	Event event;
@@ -536,7 +513,7 @@ void GameSFML::Loop(Game & game) {
 					case Keyboard::D:
 						finish=game.getPlayer()->right(game.getBuilding());
 						if(!finish) {
-							drawVictory();
+							drawEnd(true);
 							window.close();
 						}
 						break;
@@ -559,7 +536,7 @@ void GameSFML::Loop(Game & game) {
         }
 		draw(game);
 		if(game.getPlayer()->getHp()==0) {
-			drawGameOver();
+			drawEnd(false);
 			window.close();
 		}
     }
