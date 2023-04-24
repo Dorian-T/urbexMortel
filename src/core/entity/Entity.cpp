@@ -54,8 +54,11 @@ void Entity::regressionTest() {
     assert(e.position.getX() == 1 && e.position.getY() == 2 && e.height == 3 && e.width == 4);
     cout << "\tconstructeur parametre : OK" << endl;
 
-    assert(e.getPosition().getX() == 1 && e.getPosition().getY() == 2); assert(e.getHeight() == 3); assert(e.getWidth() == 4);
-    cout << "\taccesseurs : OK" << endl;
+    assert(e.getPosition().getX() == 1); assert(e.getPosition().getY() == 2);
+    cout << "\tgetPosition : OK" << endl;
+
+    assert(e.getHeight() == 3); assert(e.getWidth() == 4);
+    cout << "\tgetHeight et getWidth : OK" << endl;
 
     cout << "Test de la classe Entity : OK" << endl;
 }
