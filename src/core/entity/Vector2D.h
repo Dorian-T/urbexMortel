@@ -8,12 +8,12 @@ class Vector2D {
     private:
 
         /**
-         * @brief Coordonnée x
+         * @brief coordonnée x
          */
         unsigned int x;
 
         /**
-         * @brief Coordonnée y
+         * @brief coordonnée y
          */
         unsigned int y;
 
@@ -34,37 +34,43 @@ class Vector2D {
         Vector2D(unsigned int Vx , unsigned int Vy);
 
         /**
-         * @brief Retourne la coordonnée x
+         * @brief Accesseur de la coordonnée x
          * 
          * @return unsigned int 
          */
         unsigned int getX() const;
 
         /**
-         * @brief Retourne la coordonnée y
+         * @brief Accesseur de la coordonnée y
          * 
          * @return unsigned int 
          */
         unsigned int getY() const;
 
         /**
-         * @brief Change la coordonnée x
+         * @brief Mutateur de la coordonnée x
          */
         void setX(unsigned int Vx);
 
         /**
-         * @brief Change la coordonnée y
+         * @brief Mutateur de la coordonnée y
          */
         void setY(unsigned int Vy);
 
         /**
          * @brief Surcharge de l'opérateur +
          * 
-         * @param v 
+         * @param V 
          * @return Vector2D 
          */
-        Vector2D operator+(const Vector2D & v) const;
+        Vector2D operator+(const Vector2D & V) const;
 
+        /**
+         * @brief Renvoie la distance entre deux points
+         * 
+         * @param V 
+         * @return float 
+         */
         float distance(const Vector2D & V) const;
 
         /**

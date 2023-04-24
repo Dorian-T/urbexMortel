@@ -51,11 +51,11 @@ void Vector2D::regressionTest() {
     cout << "\tconstructeur parametre : OK" << endl;
 
     assert(V.getX() == 6 && V.getY() == 8);
-    cout << "\taccesseurs : OK" << endl;
+    cout << "\tgetX et getY : OK" << endl;
 
     V.setX(3); V.setY(4);
     assert(V.x == 3 && V.y == 4);
-    cout << "\tmodificateurs : OK" << endl;
+    cout << "\tsetX et setY : OK" << endl;
 
     Vector2D W(1, 2);
     assert((V + W).x == 4 && (V + W).y == 6);
@@ -64,5 +64,5 @@ void Vector2D::regressionTest() {
     assert(V.distance(W) == (float) sqrt(8));
     cout << "\tdistance : OK" << endl;
 
-    cout << "Test de la classe Entity : OK" << endl;
+    cout << "Test de la classe Vector2D : OK" << endl;
 }

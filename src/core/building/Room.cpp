@@ -81,7 +81,7 @@ Vector2D* Room::getSpider(unsigned int i) {
 }
 
 void Room::regressionTest() {
-    cout << endl << "Test de la classe Room" << endl;
+    cout << endl << "la classe Room" << endl;
 
     char o1, o2;
     assert(dimX == 6 && dimY == 9);
@@ -101,29 +101,29 @@ void Room::regressionTest() {
 
     assert(getDimX() == dimX);
     assert(getDimY() == dimY);
-    cout << "\tTest de getDimX et getDimY : OK" << endl;
+    cout << "\tgetDimX et getDimY : OK" << endl;
 
     assert(getObstacle(Vector2D(0, 0)) == arrayObstacle[0]);
-    cout << "\tTest de getObstacle : OK" << endl;
+    cout << "\tgetObstacle : OK" << endl;
 
     setObstacle(Vector2D(0, 0), ladder);
     assert(getObstacle(Vector2D(0, 0)) == ladder);
-    cout << "\tTest de setObstacle : OK" << endl;
+    cout << "\tsetObstacle : OK" << endl;
 
     assert(getTime() == time);
-    cout << "\tTest de getTime : OK" << endl;
+    cout << "\tgetTime : OK" << endl;
 
     assert(getNbRat() == arrayRat.size());
-    cout << "\tTest de getNbRat : OK" << endl;
+    cout << "\tgetNbRat : OK" << endl;
 
     assert(getRat(0)->getX() == arrayRat[0].getX() && getRat(0)->getY() == arrayRat[0].getY());
-    cout << "\tTest de getRat : OK" << endl;
+    cout << "\tgetRat : OK" << endl;
 
     assert(getNbSpider() == arraySpider.size());
-    cout << "\tTest de getNbSpider : OK" << endl;
+    cout << "\tgetNbSpider : OK" << endl;
 
     assert(getSpider(0)->getX() == arraySpider[0].getX() && getSpider(0)->getY() == arraySpider[0].getY());
-    cout << "\tTest de getSpider : OK" << endl;
+    cout << "\tgetSpider : OK" << endl;
 
-    cout << "Test de la classe Room : OK" << endl;
+    cout << "la classe Room : OK" << endl;
 }
