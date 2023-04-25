@@ -19,8 +19,6 @@ fonctionnalités du programme
 organisation de l'archive
 
 
-Le jeu est un jeu de plateforme vu de côté. L'objectif est de s'enfuir dans un temps limité en évitant les ennemis.
-
 Le jeu est développé en C++. Il est jouable dans le terminal et une interface graphique est développé avec la bibliothèque SFML.
 
 
