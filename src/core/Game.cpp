@@ -118,7 +118,8 @@ void Game::removeSpider() {
 
 void Game::collisionSpider() {
 	for(unsigned int i = 0; i < getNbSpider(); i++)
-		if(spiders[i]->getPosition().getX() == player->getPosition().getX() && spiders[i]->getPosition().getY() == player->getPosition().getY())
+		if((spiders[i]->getPosition().getX() == player->getPosition().getX() && spiders[i]->getPosition().getY() == player->getPosition().getY())
+			|| (spiders[i]->getPosition().getX() == player->getPosition().getX() && spiders[i]->getPosition().getY() == player->getPosition().getY()-1))
 			player->decreaseHp(1);
 }
 
