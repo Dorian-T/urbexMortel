@@ -17,11 +17,14 @@ int Rat::getDirection() const {
 }
 
 void Rat::move(Building * B, Player * P) {
-	findDirection(B, P);
-	if(isMovePossible(B, getPosition() + Vector2D(direction, 0))) {
-		setPosition(getPosition() + Vector2D(direction, 0));
-		time += 5; // est-ce que ça marche vraiment ?
+	if(time == 0) {
+		findDirection(B, P);
+		if(isMovePossible(B, getPosition() + Vector2D(direction, 0))) {
+			setPosition(getPosition() + Vector2D(direction, 0));
+			time += 2; // est-ce que ça marche vraiment ?
+		}
 	}
+	else time -= 1;
 }
 
 void Rat::findDirection(Building * B, Player * P) {

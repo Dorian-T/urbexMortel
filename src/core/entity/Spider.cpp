@@ -17,14 +17,17 @@ int Spider::getDirection() const {
 }
 
 void Spider::move(Building * B) {
-	Vector2D V;
-	V=getPosition();
-	V.setY(V.getY()+direction);
-	if(isMovePossible(B, V)) {
-		setPosition(V);
-		time += 5;
+	if(time==0) {
+		Vector2D V;
+		V=getPosition();
+		V.setY(V.getY()+direction);
+		if(isMovePossible(B, V)) {
+			setPosition(V);
+			time += 2;
+		}
+		else direction= direction * -1;
 	}
-	else direction= direction * -1;
+	else time -=1;
 }
 
 bool Spider::isMovePossible(Building *B, const Vector2D & V) const {
