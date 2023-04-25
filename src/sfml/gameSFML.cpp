@@ -467,6 +467,10 @@ void GameSFML::drawDifficultyMenu(Game & game) {
 	bool isChoosen = false;
 	Event event;
 	while(!isChoosen) {
+		if(!close) {
+			isChoosen = true,
+			game.setDifficulty(1);
+		}
 		while(window.pollEvent(event)) {
 			if(event.type == Event::Closed) {
 				window.close();
