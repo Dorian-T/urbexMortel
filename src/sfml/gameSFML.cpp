@@ -469,10 +469,9 @@ void GameSFML::drawDifficultyMenu(Game & game) {
 }
 
 void GameSFML::drawMenu() {
-	// Font font;
-	// font.loadFromFile(PATH_FONTS + "arial.ttf");
+	Font font;
+	font.loadFromFile(PATH_FONTS + "elegantTypeWriter-bold.ttf");
 
-	// Color red(232, 21, 14, 255);
 
 	// Text Hp;
 	// Hp.setFont(font);
@@ -528,6 +527,9 @@ void GameSFML::Loop(Game & game) {
 
 					case Keyboard::R:
 						randomizeTextures();
+						break;
+
+					case Keyboard::Escape:
 						break;
 
 					default:
