@@ -21,6 +21,9 @@ SFML_E = -lsfml-graphics -lsfml-window -lsfml-system
 
 all: bin/tests bin/mainTxt bin/mainSFML
 
+doc: all
+	doxygen doc/urbex.doxy
+
 
 # tests
 
