@@ -97,7 +97,7 @@ class GameSFML {
 		void drawEnd(bool victory);
 
 		/**
-		 * @brief dessine l'arraigné
+		 * @brief dessine l'arraignée
 		 * 
 		 */
 		void drawSpider(Spider * spider);

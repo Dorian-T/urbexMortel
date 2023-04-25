@@ -469,10 +469,9 @@ void GameSFML::drawDifficultyMenu(Game & game) {
 }
 
 void GameSFML::drawMenu() {
-	// Font font;
-	// font.loadFromFile(PATH_FONTS + "arial.ttf");
+	Font font;
+	font.loadFromFile(PATH_FONTS + "elegantTypeWriter-bold.ttf");
 
-	// Color red(232, 21, 14, 255);
 
 	// Text Hp;
 	// Hp.setFont(font);
@@ -530,12 +529,15 @@ void GameSFML::Loop(Game & game) {
 						randomizeTextures();
 						break;
 
+					case Keyboard::Escape:
+						break;
+
 					default:
 						break;
 				}
         }
 		draw(game);
-		if(game.getPlayer()->getHp()==0) {
+		if(game.getPlayer()->getHp()==0 || game.getBuilding()->getTimeLeft() == 0) {
 			drawEnd(false);
 			window.close();
 		}

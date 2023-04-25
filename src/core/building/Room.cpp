@@ -25,11 +25,11 @@ Room::Room(const std::string & filename) {
                 file >> tmp;
                 if(tmp == 'R') {
                     arrayRat.push_back(Vector2D(x, y));
-                    tmp = '.';
+                    arrayObstacle[y*dimX + x] = nothing;
                 }
                 else if(tmp == 'S') {
                     arraySpider.push_back(Vector2D(x, y));
-                    tmp = '.';
+                    arrayObstacle[y*dimX + x] = nothing;
                 }
                 else
                     arrayObstacle[y*dimX + x] = (Obstacle)tmp;
