@@ -160,10 +160,14 @@ bool Player::standingOnBlock(Building * B) {
 void Player::gravity(Building * B) { // a modifier : probleme avec les trappes
 	Vector2D V;
 	V.setX(getPosition().getX());
+	V.setY(getPosition().getY());
+	Obstacle o = B->getCurrentRoom()->getObstacle(V);
+	if(o !=ladder) {
 	V.setY(getPosition().getY() + 1);
 	int i = isMovePossibleGravity(V, B->getCurrentRoom());
 	if(i == -1) setPosition(V);
 	else if(i > 0) decreaseHp(i);
+	}
 }
 
 int Player::isMovePossibleGravity(const Vector2D & position, Room * R) const {
