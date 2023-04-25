@@ -93,7 +93,7 @@ class Player : public Entity {
         /**
          * @brief Ajoute du temps avant l'empoisonnement
          */
-        void drinkPotion(const Building & B);
+        void drinkPotion(Building & B);
 
     public:
         /**

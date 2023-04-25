@@ -175,11 +175,12 @@ int Player::isMovePossibleGravity(const Vector2D & position, Room * R) const {
 	return 0;
 }
 
-void Player::drinkPotion(const Building & B) {
+void Player::drinkPotion(Building & B) {
 	unsigned int tt = B.getTotalTime();
 	unsigned int tl = B.getTimeLeft();
-	if(tl + 350 > tt) tl = tt;
-	else tl += 350;
+	if(tl + 300 > tt) tl = tt;
+	else tl += 300;
+	B.setTimeLeft(tl);
 }
 
 unsigned int Player::getHp() {
