@@ -219,7 +219,15 @@ void GameSFML::drawObstacles(const Room & room) {
 
 void GameSFML::drawPlayer(Player * player) {
 	bool clock = true;
-	Sprite playerSprite(textures[11]);
+	Sprite playerSprite;
+	if(player->getOrientation()) {
+		Sprite playerSpriteR(textures[11]);
+		playerSprite = playerSpriteR;
+		}
+	else {
+		Sprite playerSpriteL(textures[12]);
+		playerSprite = playerSpriteL;
+		}
 	playerSprite.setScale((float) spriteSize * 2 / 400, (float) spriteSize * 2 / 400);
 	playerSprite.setPosition(player->getPosition().getX()*spriteSize, player->getPosition().getY()*spriteSize - spriteSize);
 
