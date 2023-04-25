@@ -484,11 +484,49 @@ void GameSFML::drawDifficultyMenu(Game & game) {
 void GameSFML::drawMenu() {
 	Font font;
 	font.loadFromFile(PATH_FONTS + "elegantTypeWriter-bold.ttf");
-	bool loop;
+	bool loop = true;
 	Event event;
+	Color color(245, 245, 245, 255);
+
+	Text text1(L"Vous êtes en pause", font, spriteSize*2/3);
+	text1.setPosition(spriteSize, spriteSize*3);
+	text1.setFillColor(color);
+
+	Text text2(L"Appuyer sur les touches suivantes :", font, spriteSize*2/3);
+	text2.setPosition(spriteSize, spriteSize*4);
+	text2.setFillColor(color);
+
+	Text text3(L"R - pour reprendre la partie", font, spriteSize*2/3);
+	text3.setPosition(spriteSize, spriteSize*5);
+	text3.setFillColor(color);
+
+	Text text4(L"échap - pour quitter", font, spriteSize*2/3);
+	text4.setPosition(spriteSize, spriteSize*6);
+	text4.setFillColor(color);
+
+	window.clear();
+	drawBackground(32, 18);
+	window.draw(text1); window.draw(text2); window.draw(text3); window.draw(text4);
+	window.display();
+
 	while(loop)
 	{
+		while(window.pollEvent(event)) {
+			if(event.type == Event::Closed)
+				window.close();
+			if(event.type == Event::KeyPressed)
+				switch(event.key.code) {
+					case Keyboard::R:
+						loop = false;
+						break;
 
+					case Keyboard::Escape:
+						window.close();	
+						break;
+					default:
+						break;
+				}
+		}
 	}
 }
 
@@ -540,6 +578,7 @@ void GameSFML::Loop(Game & game) {
 						break;
 
 					case Keyboard::Escape:
+						drawMenu();
 						break;
 
 					default:
