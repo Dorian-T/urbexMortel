@@ -24,8 +24,6 @@ GameSFML::GameSFML(const Game & game): window(VideoMode(1920, 1080), "L'Urbex mo
 	// initialisation des textures
 	loadTextures();
 
-	// TODO : Player et Rat
-
 	// initialisation de la taille des sprites
 	spriteSize = window.getSize().x / 32; // attention : ça ne se modifie plus automatiquement en fonction de la taille de la Room
 
@@ -263,7 +261,6 @@ void GameSFML::drawSpider(Spider * spider, const Room & room) {
 	}
 }
 
-
 void GameSFML::drawInfoPlayer(const Game & game) {
 
 	// HP :
@@ -299,7 +296,7 @@ void GameSFML::drawStory() {
 	wstring story2 = L"le bâtiment Nautibus. Alors que vous vous êtes déjà bien enfoncé dans ce lieu de légende,";
 	wstring story3 = L"vous faites tomber une fiole étrange au sol...";
 	wstring story4 = L"MALHEUR ! Elle se brise et son contenu s'évapore rapidement. Vous commencez à tousser";
-	wstring story5 = L"violament. Il faut à tout prix sortir du bâtiment pour rejoindre l'hôpital le plus proche";
+	wstring story5 = L"violemment. Il faut à tout prix sortir du bâtiment pour rejoindre l'hôpital le plus proche";
 	wstring story6 = L"avant que vous ne soyez totalement infecté.";
 	wstring story7 = L"DEPECHEZ-VOUS !";
 
