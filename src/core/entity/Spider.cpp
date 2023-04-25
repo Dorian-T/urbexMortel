@@ -6,10 +6,12 @@ using namespace std;
 
 Spider::Spider() : Entity() {
 	direction = 1;
+	time = 0;
 }
 
 Spider::Spider(Vector2D p, unsigned int h, unsigned int w) : Entity(p, h, w) {
 	direction = 1;
+	time = 0;
 }
 
 int Spider::getDirection() const {
