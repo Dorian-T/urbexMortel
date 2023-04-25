@@ -140,8 +140,10 @@ int Game::update (int time) {
 		removeSpider();
 		addSpider();
 	}
-	for(unsigned int i = 0; i < getNbRat(); i++)
+	for(unsigned int i = 0; i < getNbRat(); i++) {
 		rats[i]->move(building, player);
+		rats[i]->gravity(building);
+	}
 	for(unsigned int i = 0; i < getNbSpider(); i++)
 		spiders[i]->move(building);
 	collisionRat();
