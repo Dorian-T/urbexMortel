@@ -16,16 +16,16 @@ Game::Game() {
 }
 
 Game::~Game() {
-	if (building!=NULL)
+	if (building != NULL)
 		delete building;
-	if (player!=NULL)
+	if (player != NULL)
 		delete player;
-	if (size(rats)!=0) {
+	if (rats.size() != 0) {
 		for (unsigned int i = 0; i < size(rats); i++)
 			delete rats[i];
 		rats.clear();
 	}	
-	if (size(spiders)!=0) {
+	if (spiders.size() != 0) {
 		for (unsigned int i = 0; i < size(spiders); i++)
 			delete spiders[i];
 		spiders.clear();
@@ -90,7 +90,7 @@ void Game::addRat() {
 }
 
 void Game::removeRat() {
-	for (unsigned int i = 0; i < size(rats); i++)
+	for (unsigned int i = 0; i < rats.size(); i++)
 	{
 		delete rats[i];
 	}
@@ -109,7 +109,7 @@ void Game::addSpider() {
 }
 
 void Game::removeSpider() {
-	for (unsigned int i = 0; i < size(spiders); i++)
+	for (unsigned int i = 0; i < spiders.size(); i++)
 	{
 		delete spiders[i];
 	}
