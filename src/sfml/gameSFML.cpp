@@ -471,15 +471,12 @@ void GameSFML::drawDifficultyMenu(Game & game) {
 void GameSFML::drawMenu() {
 	Font font;
 	font.loadFromFile(PATH_FONTS + "elegantTypeWriter-bold.ttf");
+	bool loop;
+	Event event;
+	while(loop)
+	{
 
-
-	// Text Hp;
-	// Hp.setFont(font);
-	// Hp.setFillColor(red);
-	// Hp.setCharacterSize(spriteSize);
-	// Hp.setString(to_string(player->getHp()));
-	// Hp.setPosition(1*spriteSize,0*spriteSize);
-	// window.draw(Hp);
+	}
 }
 
 void GameSFML::Loop(Game & game) {

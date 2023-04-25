@@ -21,7 +21,7 @@ void Rat::move(Building * B, Player * P) {
 		findDirection(B, P);
 		if(isMovePossible(B, getPosition() + Vector2D(direction, 0))) {
 			setPosition(getPosition() + Vector2D(direction, 0));
-			time += 2; // est-ce que ça marche vraiment ?
+			time += 1; // est-ce que ça marche vraiment ?
 		}
 	}
 	else time -= 1;
