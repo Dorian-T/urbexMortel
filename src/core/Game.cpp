@@ -51,7 +51,7 @@ void Game::setDifficulty(unsigned int difficulty) {
 	getBuilding()->setTimeLeft(getBuilding()->getTotalTime());
 }
 
-Building * Game::getBuilding() const {
+Building* Game::getBuilding() const {
     return building;
 }
 

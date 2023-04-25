@@ -30,7 +30,7 @@ class Building {
 
         /**
          * @brief Temps total en secondes avant le game over
-        */
+         */
         unsigned int totalTime;
 
         /**
@@ -82,14 +82,7 @@ class Building {
          * 
          * @return unsigned int
         */
-        unsigned int getTotalTime();
-
-        /**
-         * @brief Mutateur du temps total avant le game over
-         * 
-         * @return void
-        */
-        void setTotalTime(unsigned int t);
+        unsigned int getTotalTime() const;
 
         /**
          * @brief Accesseur vers la salle actuelle
@@ -97,6 +90,13 @@ class Building {
          * @return unsigned int 
          */
         unsigned int getTimeLeft() const;
+
+        /**
+         * @brief Mutateur du temps total avant le game over
+         * 
+         * @return void
+        */
+        void setTotalTime(unsigned int t);
 
         /**
          * @brief Accesseur vers le temps restant avant le game over

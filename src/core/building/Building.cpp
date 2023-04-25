@@ -46,7 +46,7 @@ unsigned int Building::getNbRoom() {
     return nbRoom;
 }
 
-unsigned int Building::getTotalTime() {
+unsigned int Building::getTotalTime() const {
     return totalTime;
 }
 

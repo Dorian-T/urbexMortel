@@ -84,8 +84,7 @@ bool Player::right(Building * B) {
 	}
 	else if (i == -4) {
 		setPosition (V);
-		int t=B->getTimeLeft();
-		B->setTimeLeft(t+150);
+		drinkPotion(*B);
 		B->getCurrentRoom()->setObstacle(V,nothing);
 	}
 	return b;
@@ -101,9 +100,8 @@ void Player::left (Building * B) {
 		if(i == -1) setPosition(V);
 		else if(i > 0) decreaseHp(i);
 		else if (i == -4) {
-			setPosition (V);
-			int t=B->getTotalTime();
-			B->setTotalTime(t+150);
+			setPosition(V);
+			drinkPotion(*B);
 			B->getCurrentRoom()->setObstacle(V,nothing);
 		}
 	}
@@ -134,8 +132,7 @@ void Player::down(Building * B) {
 		else if(i > 0) decreaseHp(i);
 		else if (i == -4) {
 			setPosition (V);
-			int t=B->getTotalTime();
-			B->setTotalTime(t+150);
+			drinkPotion(*B);
 			B->getCurrentRoom()->setObstacle(V,nothing);
 		}
 	}
@@ -176,6 +173,13 @@ int Player::isMovePossibleGravity(const Vector2D & position, Room * R) const {
 		else if(o == barbedWire) return 1;
 	}
 	return 0;
+}
+
+void Player::drinkPotion(const Building & B) {
+	unsigned int tt = B.getTotalTime();
+	unsigned int tl = B.getTimeLeft();
+	if(tl + 150 > tt) tl = tt;
+	else tl += 150;
 }
 
 unsigned int Player::getHp() {

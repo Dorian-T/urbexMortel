@@ -90,6 +90,11 @@ class Player : public Entity {
          */
         int isMovePossibleGravity(const Vector2D & position, Room * R) const;
 
+        /**
+         * @brief Ajoute du temps avant l'empoisonnement
+         */
+        void drinkPotion(const Building & B);
+
     public:
         /**
          * @brief Constructeur par défaut
