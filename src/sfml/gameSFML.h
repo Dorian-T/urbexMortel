@@ -46,6 +46,12 @@ class GameSFML {
 		unsigned int spriteSize;
 
 		/**
+		 * @brief bool qui sert à savoir si on doit quitter le programme
+		 * 
+		 */
+		bool close;
+
+		/**
 		 * @brief Dessine le jeu dans la fenêtre
 		 * 
 		 * @param game 

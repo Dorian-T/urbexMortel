@@ -28,6 +28,8 @@ GameSFML::GameSFML(const Game & game): window(VideoMode(1920, 1080), "L'Urbex mo
 
 	// initialisation de la taille des sprites
 	spriteSize = window.getSize().x / 32; // attention : ça ne se modifie plus automatiquement en fonction de la taille de la Room
+
+	close=false;
 }
 
 void GameSFML::loadTextures() {
@@ -363,8 +365,11 @@ void GameSFML::drawStory() {
 	Event event;
 	while(!end) {
 		while(window.pollEvent(event)) {
-			if(event.type == Event::Closed)
+			if(event.type == Event::Closed) {
 				window.close();
+				close=false;
+				end =true;
+			}
 			if(event.type == Event::KeyPressed)
 				end = true;
 		}
@@ -394,8 +399,11 @@ void GameSFML::drawEnd(bool victory) {
 	Event event;
 	while(!end) {
 		while(window.pollEvent(event)) {
-			if(event.type == Event::Closed)
+			if(event.type == Event::Closed) {
 				window.close();
+				close=false;
+				end = true;
+			}
 			if(event.type == Event::KeyPressed)
 				end = true;
 		}
@@ -452,8 +460,11 @@ void GameSFML::drawDifficultyMenu(Game & game) {
 	Event event;
 	while(!isChoosen) {
 		while(window.pollEvent(event)) {
-			if(event.type == Event::Closed)
+			if(event.type == Event::Closed) {
 				window.close();
+				close = true;
+				isChoosen = false;
+			}
 			if(event.type == Event::KeyPressed)
 				switch(event.key.code) {
 					case Keyboard::Num1:
@@ -512,8 +523,11 @@ void GameSFML::drawMenu() {
 	while(loop)
 	{
 		while(window.pollEvent(event)) {
-			if(event.type == Event::Closed)
+			if(event.type == Event::Closed) {
 				window.close();
+				close=false;
+				loop=false;
+			}
 			if(event.type == Event::KeyPressed)
 				switch(event.key.code) {
 					case Keyboard::R:
@@ -522,6 +536,8 @@ void GameSFML::drawMenu() {
 
 					case Keyboard::Escape:
 						window.close();	
+						close=false;
+						loop=false;
 						break;
 					default:
 						break;
@@ -535,7 +551,7 @@ void GameSFML::Loop(Game & game) {
 	Clock cl;
 	int time = 3;
 	bool finish;
-	while(window.isOpen()) {
+	while(window.isOpen() || close) {
 		float elapsed = cl.getElapsedTime().asMilliseconds();
 		if(elapsed > 100) {
 		time = game.update(time);
