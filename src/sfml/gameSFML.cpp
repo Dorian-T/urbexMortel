@@ -371,8 +371,7 @@ void GameSFML::drawStory() {
 	while(!end) {
 		while(window.pollEvent(event)) {
 			if(event.type == Event::Closed) {
-				window.close();
-				close=false;
+				close=true;
 				end =true;
 			}
 			if(event.type == Event::KeyPressed)
@@ -435,6 +434,10 @@ void GameSFML::drawString(const wstring & str, unsigned int y) {
 }
 
 void GameSFML::drawDifficultyMenu(Game & game) {
+	if(close) {
+			game.setDifficulty(1);
+		}
+	else {
 	Font font;
 	font.loadFromFile(PATH_FONTS + "elegantTypeWriter-bold.ttf");
 
@@ -464,15 +467,11 @@ void GameSFML::drawDifficultyMenu(Game & game) {
 	bool isChoosen = false;
 	Event event;
 	while(!isChoosen) {
-		if(close) {
-			isChoosen = true,
-			game.setDifficulty(1);
-		}
 		while(window.pollEvent(event)) {
 			if(event.type == Event::Closed) {
-				window.close();
 				close = true;
 				isChoosen = false;
+				game.setDifficulty(1);
 			}
 			if(event.type == Event::KeyPressed)
 				switch(event.key.code) {
@@ -498,6 +497,7 @@ void GameSFML::drawDifficultyMenu(Game & game) {
 						break;
 				}
 		}
+	}
 	}
 }
 
@@ -563,7 +563,7 @@ void GameSFML::drawMenu() {
 	{
 		while(window.pollEvent(event)) {
 			if(event.type == Event::Closed) {
-				window.close();
+				window.close();	
 				close=false;
 				loop=false;
 			}
@@ -586,6 +586,10 @@ void GameSFML::drawMenu() {
 }
 
 void GameSFML::Loop(Game & game) {
+	if(close) {
+		window.close(); 
+	}
+	else {
 	window.setKeyRepeatEnabled(false);
 	Clock cl;
 	int time = 3;
@@ -646,6 +650,7 @@ void GameSFML::Loop(Game & game) {
 			window.close();
 		}
     }
+	}
 }
 
 void GameSFML::randomizeTextures() {
@@ -657,3 +662,4 @@ void GameSFML::randomizeTextures() {
 		textures[j] = tmp;
 	}
 }
+
