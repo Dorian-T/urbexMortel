@@ -535,7 +535,7 @@ void GameSFML::Loop(Game & game) {
 				}
         }
 		draw(game);
-		if(game.getPlayer()->getHp()==0) {
+		if(game.getPlayer()->getHp()==0 || game.getBuilding()->getTimeLeft() == 0) {
 			drawEnd(false);
 			window.close();
 		}
