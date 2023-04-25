@@ -467,7 +467,7 @@ void GameSFML::drawDifficultyMenu(Game & game) {
 	bool isChoosen = false;
 	Event event;
 	while(!isChoosen) {
-		if(!close) {
+		if(close) {
 			isChoosen = true,
 			game.setDifficulty(1);
 		}
