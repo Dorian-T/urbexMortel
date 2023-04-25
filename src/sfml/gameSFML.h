@@ -23,6 +23,7 @@ Dans le vector de textures, on a :
 13 : ratR
 14 : ratL
 15 : spider
+16 : spiderWeb
 */
 
 class GameSFML {
@@ -73,6 +74,16 @@ class GameSFML {
 		void drawPlayer(Player * player);
 
 		/**
+		 * @brief dessine l'arraignée
+		 */
+		void drawSpider(Spider * spider, const Room & room);
+
+		/**
+		 * @brief dessine le rat
+		 */
+		void drawRat(Rat * rat);
+
+		/**
 		 * @brief Dessine les infos du joueur
 		 * 
 		 */
@@ -95,18 +106,6 @@ class GameSFML {
 		 * @param victory
 		 */
 		void drawEnd(bool victory);
-
-		/**
-		 * @brief dessine l'arraignée
-		 * 
-		 */
-		void drawSpider(Spider * spider);
-
-		/**
-		 * @brief dessine le rat
-		 * 
-		 */
-		void drawRat(Rat * rat);
 
 	public:
 

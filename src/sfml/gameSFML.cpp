@@ -94,6 +94,10 @@ void GameSFML::loadTextures() {
 	Texture spiderTexture;
 	spiderTexture.loadFromFile(PATH_TEXTURES + "spider.png");
 	textures.push_back(spiderTexture);
+
+	Texture spiderWebTexture;
+	spiderWebTexture.loadFromFile(PATH_TEXTURES + "spiderWeb.png");
+	textures.push_back(spiderWebTexture);
 }
 
 GameSFML::~GameSFML() {
@@ -120,7 +124,7 @@ void GameSFML::draw(const Game & game) {
 	}
 	for(unsigned int i = 0; i < game.getNbSpider(); i++) {
 		Spider* spider = game.getSpider(i);
-		drawSpider(spider);
+		drawSpider(spider, *game.getBuilding()->getCurrentRoom());
 	}
 
 	window.display();
@@ -233,11 +237,20 @@ void GameSFML::drawRat(Rat * rat) {
 	window.draw(ratRect);
 }
 
-void GameSFML::drawSpider(Spider * spider) {
+void GameSFML::drawSpider(Spider * spider, const Room & room) {
 	RectangleShape spiderRect(Vector2f(spriteSize, spriteSize));
 	spiderRect.setTexture(&textures[15]);
 	spiderRect.setPosition(spider->getPosition().getX()*spriteSize, spider->getPosition().getY()*spriteSize);
 	window.draw(spiderRect);
+
+	RectangleShape spiderWebRect = RectangleShape(Vector2f(spriteSize, spriteSize));
+	spiderWebRect.setTexture(&textures[16]);
+	int i = 1;
+	while(room.getObstacle(Vector2D(spider->getPosition().getX(), spider->getPosition().getY()-i)) == nothing) {
+		spiderWebRect.setPosition(spider->getPosition().getX()*spriteSize, (spider->getPosition().getY()-i)*spriteSize);
+		window.draw(spiderWebRect);
+		i++;
+	}
 }
 
 
