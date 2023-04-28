@@ -29,7 +29,8 @@ void Spider::move(Building * B) {
 		}
 		else direction= direction * -1;
 	}
-	else time -=1;
+	else if(time >2) time = 2;
+	else time -= 1;
 }
 
 bool Spider::isMovePossible(Building *B, const Vector2D & V) const {

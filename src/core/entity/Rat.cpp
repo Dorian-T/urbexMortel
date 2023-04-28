@@ -24,6 +24,7 @@ void Rat::move(Building * B, Player * P) {
 			time += 1; // est-ce que ça marche vraiment ?
 		}
 	}
+	else if(time >1) time = 1;
 	else time -= 1;
 }
 
