@@ -153,7 +153,12 @@ bool Player::standingOnBlock(Building * B) {
 	V.setX(getPosition().getX());
 	V.setY(getPosition().getY() + 1);
 	Obstacle o = B->getCurrentRoom()->getObstacle(V);
-	if(o == trapdoor || o == ladder || o == barbedWire || o == block || o == potion || o == ghostBlock) return true;
+	if(o == trapdoor || o == ladder || o == barbedWire || o == block || o == potion || o == ghostBlock) {
+		return true; 
+	}
+	V.setY(getPosition().getY());
+	o = B->getCurrentRoom()->getObstacle(V);
+	if(o == ladder) {return true;}
 	return false ;
 }
 
