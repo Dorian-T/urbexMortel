@@ -468,9 +468,39 @@ void GameSFML::drawDifficultyMenu(Game & game) {
 	text4.setPosition(spriteSize, spriteSize*4);
 	text4.setFillColor(color);
 
+	Text text5(L"Rappel des touches : ", font, spriteSize*2/3);
+	text5.setPosition(spriteSize, spriteSize*7);
+	text5.setFillColor(color);
+
+	Text text6(L"échap : pour quitter", font, spriteSize*2/3);
+	text6.setPosition(spriteSize, spriteSize*8);
+	text6.setFillColor(color);
+
+	Text text7(L"z : sauter", font, spriteSize*2/3);
+	text7.setPosition(spriteSize, spriteSize*9);
+	text7.setFillColor(color);
+
+	Text text8(L"s : descendre", font, spriteSize*2/3);
+	text8.setPosition(spriteSize, spriteSize*10);
+	text8.setFillColor(color);
+
+	Text text9(L"q : pour aller à gauche", font, spriteSize*2/3);
+	text9.setPosition(spriteSize, spriteSize*11);
+	text9.setFillColor(color);
+
+	Text text10(L"d : pour aller à droite", font, spriteSize*2/3);
+	text10.setPosition(spriteSize, spriteSize*12);
+	text10.setFillColor(color);
+
+	Text text11(L"r : pour un bonus", font, spriteSize*2/3);
+	text11.setPosition(spriteSize, spriteSize*13);
+	text11.setFillColor(color);
+
 	window.clear();
 	drawBackground(32, 18);
 	window.draw(text1); window.draw(text2); window.draw(text3); window.draw(text4);
+	window.draw(text5); window.draw(text6); window.draw(text7); window.draw(text8);
+	window.draw(text9); window.draw(text10); window.draw(text11); 
 	window.display();
 
 	bool isChoosen = false;
@@ -479,7 +509,7 @@ void GameSFML::drawDifficultyMenu(Game & game) {
 		while(window.pollEvent(event)) {
 			if(event.type == Event::Closed) {
 				close = true;
-				isChoosen = false;
+				isChoosen = true;
 				game.setDifficulty(1);
 			}
 			if(event.type == Event::KeyPressed)
@@ -525,19 +555,19 @@ void GameSFML::drawMenu() {
 	text2.setPosition(spriteSize, spriteSize*3);
 	text2.setFillColor(color);
 
-	Text text3(L"R - pour reprendre la partie", font, spriteSize*2/3);
+	Text text3(L"R : pour reprendre la partie", font, spriteSize*2/3);
 	text3.setPosition(spriteSize, spriteSize*4);
 	text3.setFillColor(color);
 
-	Text text4(L"échap - pour quitter", font, spriteSize*2/3);
+	Text text4(L"échap : pour quitter", font, spriteSize*2/3);
 	text4.setPosition(spriteSize, spriteSize*5);
 	text4.setFillColor(color);
 
-	Text text5(L"Rappelle des touches : ", font, spriteSize*2/3);
+	Text text5(L"Rappel des touches : ", font, spriteSize*2/3);
 	text5.setPosition(spriteSize, spriteSize*7);
 	text5.setFillColor(color);
 
-	Text text6(L"échap - pour quitter", font, spriteSize*2/3);
+	Text text6(L"échap : pour quitter", font, spriteSize*2/3);
 	text6.setPosition(spriteSize, spriteSize*8);
 	text6.setFillColor(color);
 
