@@ -35,7 +35,7 @@ void Spider::move(Building * B) {
 
 bool Spider::isMovePossible(Building *B, const Vector2D & V) const {
 	if(V.getX() < B->getCurrentRoom()->getDimX() && V.getX() >= 0 && V.getY() < B->getCurrentRoom()->getDimY() && V.getY() >= 0)
-		if(B->getCurrentRoom()->getObstacle(V) == nothing)
+		if(B->getCurrentRoom()->getObstacle(V) == nothing || B->getCurrentRoom()->getObstacle(V) == fakeBlock)
 			return true;
 	return false;
 }

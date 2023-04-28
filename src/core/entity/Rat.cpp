@@ -49,7 +49,7 @@ bool Rat::isPlayerArround(Building * B, Player * P) const {
 
 bool Rat::isMovePossible(Building *B, const Vector2D & V) const {
 	if(V.getX() < B->getCurrentRoom()->getDimX() && V.getX() >= 0 && V.getY() < B->getCurrentRoom()->getDimY() && V.getY() >= 0)
-		if(B->getCurrentRoom()->getObstacle(V) == nothing)
+		if(B->getCurrentRoom()->getObstacle(V) == nothing || B->getCurrentRoom()->getObstacle(V) == fakeBlock )
 			return true;
 	return false;
 }
@@ -63,7 +63,7 @@ void Rat::gravity(Building * B) {
 
 bool Rat::isMovePossibleGravity(const Vector2D & position, Room * R) const {
 	if(position.getY() < R->getDimY())
-		if(R->getObstacle(position) == nothing)
+		if(R->getObstacle(position) == nothing || R->getObstacle(position) == fakeBlock)
 			return true;
 	return false;
 }
