@@ -199,7 +199,7 @@ bool Player::getOrientation() {
 	return orientation;
 }
 
-void Player::StandingOnfallingBlock(Building * b) {
+void Player::StandingOnGhostBlock(Building * b) {
 	if(standingOnBlock(b)) {
 		Vector2D V;
 		V.setX(getPosition().getX());

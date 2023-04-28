@@ -149,7 +149,7 @@ int Game::update (int time) {
 	collisionRat();
 	collisionSpider();
 
-	player->StandingOnfallingBlock(building);
+	player->StandingOnGhostBlock(building);
 
 	return time;
 }

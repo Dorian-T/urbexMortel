@@ -199,13 +199,13 @@ class Player : public Entity {
         bool getOrientation();
 
         /**
-         * @brief action de block qui tombe
+         * @brief action de block famtome 
          * 
          * @param b
          * @return true 
          * @return false 
          */
-        void StandingOnfallingBlock(Building * b);
+        void StandingOnGhostBlock(Building * b);
 
         /**
          * @brief Tests de non-regression
