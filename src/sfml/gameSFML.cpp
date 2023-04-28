@@ -172,6 +172,15 @@ void GameSFML::drawObstacles(const Room & room) {
 						window.draw(block);
 					}
 					break;
+				
+				case ghostBlock:
+					{
+						RectangleShape block(Vector2f(spriteSize, spriteSize));
+						block.setPosition(i*spriteSize, j*spriteSize);
+						block.setTexture(&textures[2]);
+						window.draw(block);
+					}
+					break;
 
 				case door:
 					{

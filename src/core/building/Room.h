@@ -21,7 +21,8 @@ enum Obstacle {
     door = 'D',
 	ladder = 'H',
 	trapdoor = '-',
-    potion = 'P'
+    potion = 'P',
+    ghostBlock = '%'
 };
 
 /**

@@ -153,7 +153,7 @@ bool Player::standingOnBlock(Building * B) {
 	V.setX(getPosition().getX());
 	V.setY(getPosition().getY() + 1);
 	Obstacle o = B->getCurrentRoom()->getObstacle(V);
-	if(o == trapdoor || o == ladder || o == barbedWire || o == block || o == potion) return true;
+	if(o == trapdoor || o == ladder || o == barbedWire || o == block || o == potion || o == ghostBlock) return true;
 	return false ;
 }
 
@@ -197,6 +197,16 @@ unsigned int Player::getTimeInvincible() {
 
 bool Player::getOrientation() {
 	return orientation;
+}
+
+void Player::StandingOnfallingBlock(Building * b) {
+	if(standingOnBlock(b)) {
+		Vector2D V;
+		V.setX(getPosition().getX());
+		V.setY(getPosition().getY() + 1);
+		Obstacle o = b->getCurrentRoom()->getObstacle(V);
+		if(o == ghostBlock) b->getCurrentRoom()->setObstacle(V, nothing);
+	}
 }
 
 void Player::regressionTest() { // a modifier
