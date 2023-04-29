@@ -36,7 +36,7 @@ void Game::setDifficulty(unsigned int difficulty) {
 	if(difficulty==3) {
 		building = new Building(8);
 		player = new Player(Vector2D(12, 16), lilith, 1);
-		getBuilding()->setTotalTime(getBuilding()->getTotalTime()*20);
+		getBuilding()->setTotalTime(getBuilding()->getTotalTime()*10);
 	}
 	else if(difficulty==2) {
 		building = new Building(5);
@@ -46,7 +46,7 @@ void Game::setDifficulty(unsigned int difficulty) {
 	else {
 		building = new Building(3);
 		player = new Player(Vector2D(12, 16), lilith, 5);
-		getBuilding()->setTotalTime(getBuilding()->getTotalTime()*10);
+		getBuilding()->setTotalTime(getBuilding()->getTotalTime()*20);
 	}
 	getBuilding()->setTimeLeft(getBuilding()->getTotalTime());
 }
