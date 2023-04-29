@@ -93,7 +93,7 @@ void Room::regressionTest() {
         for(unsigned int x = 0; x < dimX; x++) {
             file >> o1;
             o2 = (char) arrayObstacle[y*dimX + x];
-            assert(o1 == o2 || (o1 == 'R' && o2 == 0) || (o1 == 'S' && o2 == 0));
+            assert(o1 == o2 || (o1 == 'R' && o2 == '.') || (o1 == 'S' && o2 == '.'));
         }
     assert(arrayRat.size() == 1); assert(arrayRat[0].getX() == 1 && arrayRat[0].getY() == 1);
     assert(arraySpider.size() == 1); assert(arraySpider[0].getX() == 2 && arraySpider[0].getY() == 0);
