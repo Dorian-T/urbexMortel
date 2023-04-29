@@ -686,6 +686,11 @@ void GameSFML::Loop(Game & game) {
 						randomizeTextures();
 						break;
 
+					case Keyboard::T:
+						textures.clear();
+						loadTextures();
+						break;
+
 					case Keyboard::Escape:
 						drawMenu();
 						break;
