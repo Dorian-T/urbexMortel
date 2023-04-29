@@ -24,6 +24,7 @@ GameSFML::GameSFML(const Game & game): window(VideoMode(1920, 1080), "L'Urbex mo
 
 	// initialisation des textures
 	loadTextures();
+	loadSkins();
 
 	// initialisation de la taille des sprites
 	spriteSize = window.getSize().x / 32; // attention : ça ne se modifie plus automatiquement en fonction de la taille de la Room
@@ -76,14 +77,6 @@ void GameSFML::loadTextures() {
 	poisonBarTexture.loadFromFile(PATH_TEXTURES + "poisonBar.png");
 	textures.push_back(poisonBarTexture);
 
-	Texture playerRTexture;
-	playerRTexture.loadFromFile(PATH_SKINS + "playerR.png");
-	textures.push_back(playerRTexture);
-
-	Texture playerLTexture;
-	playerLTexture.loadFromFile(PATH_SKINS + "playerL.png");
-	textures.push_back(playerLTexture);
-
 	Texture ratRTexture;
 	ratRTexture.loadFromFile(PATH_TEXTURES + "ratR.png");
 	textures.push_back(ratRTexture);
@@ -99,6 +92,24 @@ void GameSFML::loadTextures() {
 	Texture spiderWebTexture;
 	spiderWebTexture.loadFromFile(PATH_TEXTURES + "spiderWeb.png");
 	textures.push_back(spiderWebTexture);
+}
+
+void GameSFML::loadSkins() {
+	Texture lilithRTexture;
+	lilithRTexture.loadFromFile(PATH_SKINS + "lilithR.png");
+	skins.push_back(lilithRTexture);
+
+	Texture lilithLTexture;
+	lilithLTexture.loadFromFile(PATH_SKINS + "lilithL.png");
+	skins.push_back(lilithLTexture);
+
+	Texture doraRTexture;
+	doraRTexture.loadFromFile(PATH_SKINS + "doraR.png");
+	skins.push_back(doraRTexture);
+
+	Texture doraLTexture;
+	doraLTexture.loadFromFile(PATH_SKINS + "doraL.png");
+	skins.push_back(doraLTexture);
 }
 
 GameSFML::~GameSFML() {
@@ -239,9 +250,9 @@ void GameSFML::drawObstacles(const Room & room) {
 void GameSFML::drawPlayer(Player * player) {
 	Sprite playerSprite;
 	if(player->getOrientation())
-		playerSprite.setTexture(textures[11]);
+		playerSprite.setTexture(skins[0]);
 	else
-		playerSprite.setTexture(textures[12]);
+		playerSprite.setTexture(skins[1]);
 	playerSprite.setScale((float) spriteSize / playerSprite.getTexture()->getSize().x, (float) spriteSize * 2 / playerSprite.getTexture()->getSize().y);
 	playerSprite.setPosition(player->getPosition().getX()*spriteSize, player->getPosition().getY()*spriteSize - spriteSize);
 
@@ -254,20 +265,20 @@ void GameSFML::drawRat(Rat * rat) {
 	RectangleShape ratRect(Vector2f(spriteSize, spriteSize));
 	ratRect.setPosition(rat->getPosition().getX()*spriteSize, rat->getPosition().getY()*spriteSize);
 	if(rat->getDirection() == -1)
-		ratRect.setTexture(&textures[14]);
+		ratRect.setTexture(&textures[12]);
 	else
-		ratRect.setTexture(&textures[13]);
+		ratRect.setTexture(&textures[11]);
 	window.draw(ratRect);
 }
 
 void GameSFML::drawSpider(Spider * spider, const Room & room) {
 	RectangleShape spiderRect(Vector2f(spriteSize, spriteSize));
-	spiderRect.setTexture(&textures[15]);
+	spiderRect.setTexture(&textures[13]);
 	spiderRect.setPosition(spider->getPosition().getX()*spriteSize, spider->getPosition().getY()*spriteSize);
 	window.draw(spiderRect);
 
 	RectangleShape spiderWebRect = RectangleShape(Vector2f(spriteSize, spriteSize));
-	spiderWebRect.setTexture(&textures[16]);
+	spiderWebRect.setTexture(&textures[14]);
 	int i = 1;
 	while(room.getObstacle(Vector2D(spider->getPosition().getX(), spider->getPosition().getY()-i)) == nothing) {
 		spiderWebRect.setPosition(spider->getPosition().getX()*spriteSize, (spider->getPosition().getY()-i)*spriteSize);
