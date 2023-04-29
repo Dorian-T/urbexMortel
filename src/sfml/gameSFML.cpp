@@ -12,6 +12,7 @@ using namespace sf;
 
 
 const string PATH_TEXTURES = "data/textures/";
+const string PATH_SKINS = "data/skins/";
 const string PATH_FONTS = "data/fonts/";
 
 // Constructeur et destructeur :
@@ -76,11 +77,11 @@ void GameSFML::loadTextures() {
 	textures.push_back(poisonBarTexture);
 
 	Texture playerRTexture;
-	playerRTexture.loadFromFile(PATH_TEXTURES + "playerR.png");
+	playerRTexture.loadFromFile(PATH_SKINS + "playerR.png");
 	textures.push_back(playerRTexture);
 
 	Texture playerLTexture;
-	playerLTexture.loadFromFile(PATH_TEXTURES + "playerL.png");
+	playerLTexture.loadFromFile(PATH_SKINS + "playerL.png");
 	textures.push_back(playerLTexture);
 
 	Texture ratRTexture;
