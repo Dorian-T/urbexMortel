@@ -178,6 +178,7 @@ void GameSFML::drawObstacles(const Room & room) {
 						RectangleShape block(Vector2f(spriteSize, spriteSize));
 						block.setPosition(i*spriteSize, j*spriteSize);
 						block.setTexture(&textures[2]);
+						block.setFillColor(Color(255,255, 255, 200));
 						window.draw(block);
 					}
 					break;
@@ -187,6 +188,7 @@ void GameSFML::drawObstacles(const Room & room) {
 						RectangleShape block(Vector2f(spriteSize, spriteSize));
 						block.setPosition(i*spriteSize, j*spriteSize);
 						block.setTexture(&textures[2]);
+						block.setFillColor(Color(255,255, 255, 240));
 						window.draw(block);
 					}
 					break;
