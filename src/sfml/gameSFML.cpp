@@ -110,6 +110,14 @@ void GameSFML::loadSkins() {
 	Texture doraLTexture;
 	doraLTexture.loadFromFile(PATH_SKINS + "doraL.png");
 	skins.push_back(doraLTexture);
+
+	Texture BatmanRTexture;
+	doraRTexture.loadFromFile(PATH_SKINS + "BatmanR.png");
+	skins.push_back(doraRTexture);
+
+	Texture BatmanLTexture;
+	doraLTexture.loadFromFile(PATH_SKINS + "BatmanL.png");
+	skins.push_back(doraLTexture);
 }
 
 GameSFML::~GameSFML() {
