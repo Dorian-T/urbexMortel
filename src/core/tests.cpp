@@ -28,7 +28,7 @@ void movementPlayerRegressionTest() {
 	P.right(&B);
 	assert(P.getPosition().getX() == 1 && P.getPosition().getY() == 7);
 	assert(P.getHp() == 4);
-	for(int i = 0; i < 5; i++) P.decreaseTimeInvincible();
+	for(int i = 0; i < 20; i++) P.decreaseTimeInvincible();
 	cout << "\tTest du mouvement vers la droite degat : OK" << endl;
 
 	P.up(&B);
@@ -46,7 +46,7 @@ void movementPlayerRegressionTest() {
 	P.gravity(&B);
 	assert(P.getPosition().getX() == 2 && P.getPosition().getY() == 6);
 	assert(P.getHp() == 3);
-	for(int i = 0; i < 5; i++) P.decreaseTimeInvincible();
+	for(int i = 0; i < 20; i++) P.decreaseTimeInvincible();
 	cout << "\tTest de la gravite degat : OK" << endl;
 
 	P.right(&B);
@@ -61,7 +61,7 @@ void movementPlayerRegressionTest() {
 	P.left(&B);
 	assert(P.getPosition().getX() == 3 && P.getPosition().getY() == 7);
 	assert(P.getHp() == 2);
-	for(int i = 0; i < 5; i++) P.decreaseTimeInvincible();
+	for(int i = 0; i < 20; i++) P.decreaseTimeInvincible();
 	cout << "\tTest du mouvement vers la gauche degat : OK" << endl;
 
 	P.right(&B);
@@ -94,7 +94,7 @@ void movementPlayerRegressionTest() {
 	P.up(&B);
 	assert(P.getPosition().getX() == 4 && P.getPosition().getY() == 3);
 	assert(P.getHp() == 1);
-	for(int i = 0; i < 5; i++) P.decreaseTimeInvincible();
+	for(int i = 0; i < 20; i++) P.decreaseTimeInvincible();
 	cout << "\tTest du mouvement vers le haut degat : OK" << endl;
 
 	P.down(&B);

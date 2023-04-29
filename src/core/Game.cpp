@@ -177,10 +177,17 @@ bool Game::keyboardAction (const char touche) {
 void Game::regressionTest() { // TODO : à refaire et vérifier
 	cout << endl << "Test de la classe Game" << endl;
 
-	assert(building->getNbRoom() == NB_ROOM);
+	assert(building == NULL);
 	assert(room == 0);
-	assert(player->getPosition().getX() == 12 && player->getPosition().getY() == 16); assert(player->getHp() == 3); assert(player->getSkin() == M);
+	assert(player == NULL);
 	cout << "\tTest du constructeur par defaut : OK" << endl;
+
+	setDifficulty(1);
+	assert(building->getNbRoom()==5);
+	assert(room == 0);
+	assert(player->getHp() == 5); assert(player->getSkin() == M) ; 
+	assert(player->getPosition().getX() == 12 && player->getPosition().getY() == 16);
+	cout << "\tTest de getBuilding : OK" << endl;
 
 	assert(getBuilding() == building);
 	cout << "\tTest de getBuilding : OK" << endl;
@@ -196,6 +203,10 @@ void Game::regressionTest() { // TODO : à refaire et vérifier
 	if(NB_ROOM > 1) {
 		assert(building->finishRoom());
 		assert(changeRoom() == true);
+		removeRat();
+		addRat();
+		removeSpider();
+		addSpider();
 		unsigned int n = building->getCurrentRoom()->getNbRat();
 		if(n > 0) {
 			assert(rats.size() == n);
