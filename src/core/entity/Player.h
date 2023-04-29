@@ -9,7 +9,8 @@ enum Skin {
     lilith = 0,
     dora = 2,
     batman = 4,
-    Clara = 6
+    Clara = 6,
+    Daisy = 8
 };
 
 /**

@@ -126,6 +126,14 @@ void GameSFML::loadSkins() {
 	Texture coaraLTexture;
 	doraLTexture.loadFromFile(PATH_SKINS + "coaraL.png");
 	skins.push_back(doraLTexture);
+
+	Texture DaisyRTexture;
+	doraRTexture.loadFromFile(PATH_SKINS + "DaisyR.png");
+	skins.push_back(doraRTexture);
+
+	Texture DaisyLTexture;
+	doraLTexture.loadFromFile(PATH_SKINS + "DaisyL.png");
+	skins.push_back(doraLTexture);
 }
 
 GameSFML::~GameSFML() {
@@ -605,10 +613,14 @@ void GameSFML::drawSkinMenu(Game & game) {
 	text5.setPosition(spriteSize, spriteSize*5);
 	text5.setFillColor(color);
 
+	Text text6(L"5 - Daisy", font, spriteSize*2/3);
+	text6.setPosition(spriteSize, spriteSize*6);
+	text6.setFillColor(color);
+
 	window.clear();
 	drawBackground(32, 18);
 	window.draw(text1); window.draw(text2); window.draw(text3); window.draw(text4);
-	window.draw(text5);
+	window.draw(text5); window.draw(text6);
 	window.display();
 
 	bool isChoosen = false;
@@ -649,6 +661,14 @@ void GameSFML::drawSkinMenu(Game & game) {
 						S = Clara ;
 						game.getPlayer()->setSkin(S);
 						break;	
+
+					case Keyboard::Num5:
+					case Keyboard::Numpad5:
+						isChoosen = true;
+						S = Daisy ;
+						game.getPlayer()->setSkin(S);
+						break;	
+
 
 					default:
 						break;
