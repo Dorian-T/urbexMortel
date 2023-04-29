@@ -110,9 +110,37 @@ void movementPlayerRegressionTest() {
 void movementRatRegressionTest() {
 	cout << endl << "Test des mouvements de Rat" << endl;
 	Building B(PATH_ROOMS + "test.txt");
-	Rat R(Vector2D(1, 7), M, 5);
+	Rat R(Vector2D(1, 7), 1, 1);
 
 	// TODO
+}
+
+void movementSpiderRegressionTest() {
+	cout << endl << "Test des mouvements de Spider" << endl;
+	Building B(PATH_ROOMS + "test.txt");
+	Spider S(Vector2D(2, 0), 1, 1);
+
+	S.move(&B);
+	assert(S.getPosition().getX() == 2 && S.getPosition().getY() == 1);
+	cout << "\tTest du movement vers le bas : OK" << endl;
+
+	S.move(&B);
+	assert(S.getPosition().getX() == 2 && S.getPosition().getY() == 1);
+	cout << "\tTest du non movement vers le bas : OK" << endl;
+
+	for(unsigned int i = 0;i< 8;i++) { 
+		S.move(&B); 
+		}
+	assert(S.getPosition().getX() == 2 && S.getPosition().getY() == 3);
+	assert(S.getDirection() == -1);
+	cout << "\tTest du changement de direction : OK" << endl;
+
+	S.move(&B);
+	assert(S.getPosition().getX() == 2 && S.getPosition().getY() == 2);
+	cout << "\tTest du non movement vers le haut : OK" << endl;
+
+	cout << "Test des mouvements de Spider : OK" << endl;
+	
 }
 
 int main () {
@@ -140,9 +168,11 @@ int main () {
 	B.regressionTest();
 
 	Game G;
-	G.regressionTest();
+	G.regressionTest(); // problème
 
 	movementPlayerRegressionTest();
+
+	movementSpiderRegressionTest();
 
 	return 0;
 }
