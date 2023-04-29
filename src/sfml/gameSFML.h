@@ -150,8 +150,17 @@ class GameSFML {
 
 		/**
 		 * @brief Dessine le menu de difficulté
+		 * 
+		 * @param game 
 		 */
 		void drawDifficultyMenu(Game & game);
+
+		/**
+		 * @brief Dessine le menu de skin
+		 * 
+		 * @param game 
+		 */
+		void drawSkinMenu(Game & game);
 };
 
 #endif

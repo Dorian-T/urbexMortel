@@ -22,6 +22,10 @@ Skin Player::getSkin() const {
 	return skin;
 }
 
+void Player::setSkin(Skin S) {
+	skin = S;
+}
+
 bool Player::decreaseHp(unsigned int h) {
 	if(timeInvincible == 0) {
 		if(hp < h) hp = 0;

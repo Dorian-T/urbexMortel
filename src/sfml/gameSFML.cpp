@@ -546,6 +546,76 @@ void GameSFML::drawDifficultyMenu(Game & game) {
 	}
 }
 
+void GameSFML::drawSkinMenu(Game & game) {
+	Skin S;
+	S = F;
+	if(close) {
+			game.getPlayer()->setSkin(S);
+		}
+	else {
+	Font font;
+	font.loadFromFile(PATH_FONTS + "elegantTypeWriter-bold.ttf");
+
+	Color color(245, 245, 245, 255);
+
+	Text text1(L"Choisissez votre skin :", font, spriteSize*2/3);
+	text1.setPosition(spriteSize, spriteSize*1);
+	text1.setFillColor(color);
+
+	Text text2(L"1 - Lilith", font, spriteSize*2/3);
+	text2.setPosition(spriteSize, spriteSize*2);
+	text2.setFillColor(color);
+
+	Text text3(L"2 - Dora", font, spriteSize*2/3);
+	text3.setPosition(spriteSize, spriteSize*3);
+	text3.setFillColor(color);
+
+	Text text4(L"3 - Batman", font, spriteSize*2/3);
+	text4.setPosition(spriteSize, spriteSize*4);
+	text4.setFillColor(color);
+
+	window.clear();
+	drawBackground(32, 18);
+	window.draw(text1); window.draw(text2); window.draw(text3); window.draw(text4);
+	window.display();
+
+	bool isChoosen = false;
+	Event event;
+	while(!isChoosen) {
+		while(window.pollEvent(event)) {
+			if(event.type == Event::Closed) {
+				close = true;
+				isChoosen = true;
+				game.getPlayer()->setSkin(S);
+			}
+			if(event.type == Event::KeyPressed)
+				switch(event.key.code) {
+					case Keyboard::Num1:
+					case Keyboard::Numpad1:
+						isChoosen = true;
+						game.getPlayer()->setSkin(S);
+						break;
+
+					case Keyboard::Num2:
+					case Keyboard::Numpad2:
+						isChoosen = true;
+						game.getPlayer()->setSkin(S);
+						break;
+
+					case Keyboard::Num3:
+					case Keyboard::Numpad3:
+						isChoosen = true;
+						game.getPlayer()->setSkin(S);
+						break;
+
+					default:
+						break;
+				}
+		}
+	}
+	}
+}
+
 void GameSFML::drawMenu() {
 	Font font;
 	font.loadFromFile(PATH_FONTS + "elegantTypeWriter-bold.ttf");

@@ -117,6 +117,13 @@ class Player : public Entity {
         Skin getSkin() const;
 
         /**
+         * @brief Modifie le skin
+         * 
+         * @param S 
+         */
+        void setSkin(Skin S);
+
+        /**
          * @brief Baisse les points de vie
          * 
          * @details si le joueur est invincible, les points de vie ne sont pas baissés
