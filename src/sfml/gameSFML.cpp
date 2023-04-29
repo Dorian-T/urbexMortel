@@ -118,6 +118,14 @@ void GameSFML::loadSkins() {
 	Texture BatmanLTexture;
 	doraLTexture.loadFromFile(PATH_SKINS + "BatmanL.png");
 	skins.push_back(doraLTexture);
+
+	Texture coaraRTexture;
+	doraRTexture.loadFromFile(PATH_SKINS + "coaraR.png");
+	skins.push_back(doraRTexture);
+
+	Texture coaraLTexture;
+	doraLTexture.loadFromFile(PATH_SKINS + "coaraL.png");
+	skins.push_back(doraLTexture);
 }
 
 GameSFML::~GameSFML() {
@@ -593,9 +601,14 @@ void GameSFML::drawSkinMenu(Game & game) {
 	text4.setPosition(spriteSize, spriteSize*4);
 	text4.setFillColor(color);
 
+	Text text5(L"4 - Clara", font, spriteSize*2/3);
+	text5.setPosition(spriteSize, spriteSize*5);
+	text5.setFillColor(color);
+
 	window.clear();
 	drawBackground(32, 18);
 	window.draw(text1); window.draw(text2); window.draw(text3); window.draw(text4);
+	window.draw(text5);
 	window.display();
 
 	bool isChoosen = false;
@@ -629,6 +642,13 @@ void GameSFML::drawSkinMenu(Game & game) {
 						S = batman ;
 						game.getPlayer()->setSkin(S);
 						break;
+
+					case Keyboard::Num4:
+					case Keyboard::Numpad4:
+						isChoosen = true;
+						S = Clara ;
+						game.getPlayer()->setSkin(S);
+						break;	
 
 					default:
 						break;
