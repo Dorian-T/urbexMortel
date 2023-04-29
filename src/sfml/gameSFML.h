@@ -6,11 +6,11 @@
 #include <vector>
 
 /*
-Dans le vector de textures, on a :
-00 : background
-01 : barbedWire
-02 : block
-03 : door1
+vector des textures :			vector des skins :
+00 : background					00 : lilithR
+01 : barbedWire					01 : lilithL
+02 : block						02 : doraR
+03 : door1						03 : doraL
 04 : door2
 05 : ladder
 06 : trapdoor
@@ -18,12 +18,10 @@ Dans le vector de textures, on a :
 08 : heart
 09 : poisonSkull
 10 : poisonBar
-11 : playerR
-12 : playerL
-13 : ratR
-14 : ratL
-15 : spider
-16 : spiderWeb
+11 : ratR
+12 : ratL
+13 : spider
+14 : spiderWeb
 */
 
 class GameSFML {
@@ -39,6 +37,11 @@ class GameSFML {
 		 * @brief Les textures des obstacles
 		 */
 		std::vector<sf::Texture> textures;
+
+		/**
+		 * @brief Les skins des personnages
+		 */
+		std::vector<sf::Texture> skins;
 
 		/**
 		 * @brief La taille d'une case
@@ -124,6 +127,11 @@ class GameSFML {
 		 * @brief Charge les textures
 		 */
 		void loadTextures();
+
+		/**
+		 * @brief Charge les skins
+		 */
+		void loadSkins();
 
 		/**
 		 * @brief Destructeur
