@@ -48,10 +48,10 @@ void Spider::regressionTest() {
 	assert(direction == 1);
 	cout << "\tconstructeur par défaut : OK" << endl;
 
-	Spider R(Vector2D(6, 8), 1, 1);
-	assert(R.getPosition().getX() == 6 && R.getPosition().getY() == 8);
-	assert(R.getHeight() == 1 && R.getWidth() == 1);
-	assert(R.getDirection() == 1);
+	Spider S(Vector2D(6, 8), 1, 1);
+	assert(S.getPosition().getX() == 6 && S.getPosition().getY() == 8);
+	assert(S.getHeight() == 1 && S.getWidth() == 1);
+	assert(S.getDirection() == 1);
 	cout << "\tconstructeur par defaut : OK" << endl;
 
 	cout << "Test de la classe Spider : OK" << endl;
