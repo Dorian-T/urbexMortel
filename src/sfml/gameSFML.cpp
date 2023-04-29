@@ -236,7 +236,6 @@ void GameSFML::drawObstacles(const Room & room) {
 }
 
 void GameSFML::drawPlayer(Player * player) {
-	bool clock = true;
 	Sprite playerSprite;
 	if(player->getOrientation())
 		playerSprite.setTexture(textures[11]);
@@ -245,9 +244,8 @@ void GameSFML::drawPlayer(Player * player) {
 	playerSprite.setScale((float) spriteSize / playerSprite.getTexture()->getSize().x, (float) spriteSize * 2 / playerSprite.getTexture()->getSize().y);
 	playerSprite.setPosition(player->getPosition().getX()*spriteSize, player->getPosition().getY()*spriteSize - spriteSize);
 
-	if(player->getTimeInvincible() > 0)
-		if(clock) playerSprite.setColor(Color(255, 0, 0, 128));
-	clock = !clock;
+	if(player->getTimeInvincible() > 0 && player->getTimeInvincible() % 2 == 0)
+		playerSprite.setColor(Color(255, 0, 0, 128));
 	window.draw(playerSprite);
 }
 
