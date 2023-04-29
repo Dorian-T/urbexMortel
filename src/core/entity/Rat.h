@@ -19,7 +19,7 @@ class Rat: public Entity {
 		/**
 		 * @brief Direction du rat
 		 */
-		unsigned int direction;
+		int direction;
 
 		/**
 		 * @brief Temps avant le prochain déplacement

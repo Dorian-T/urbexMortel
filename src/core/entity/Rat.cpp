@@ -21,7 +21,7 @@ void Rat::move(Building * B, Player * P) {
 		findDirection(B, P);
 		if(isMovePossible(B, getPosition() + Vector2D(direction, 0))) {
 			setPosition(getPosition() + Vector2D(direction, 0));
-			time += 1; // est-ce que ça marche vraiment ?
+			time += 1;
 		}
 	}
 	else if(time >1) time = 1;
@@ -43,7 +43,7 @@ void Rat::findDirection(Building * B, Player * P) {
 }
 
 bool Rat::isPlayerArround(Building * B, Player * P) const {
-	if(getPosition().distance(P->getPosition()) <= 10) return true;
+	if(getPosition().distance(P->getPosition()) <= 15) return true;
 	else return false;
 }
 
