@@ -152,6 +152,11 @@ class GameSFML {
 		void randomizeTextures();
 
 		/**
+		 * @brief Easter egg
+		 */
+		void randomizeSkins();
+
+		/**
 		 * @brief Dessine l'histoire du jeu
 		 */
 		void drawStory();

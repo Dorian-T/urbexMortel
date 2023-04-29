@@ -791,11 +791,13 @@ void GameSFML::Loop(Game & game) {
 
 					case Keyboard::R:
 						randomizeTextures();
+						randomizeSkins();
 						break;
 
 					case Keyboard::T:
 						textures.clear();
 						loadTextures();
+						loadSkins();
 						break;
 
 					case Keyboard::Escape:
@@ -822,6 +824,16 @@ void GameSFML::randomizeTextures() {
 		tmp = textures[i];
 		textures[i] = textures[j];
 		textures[j] = tmp;
+	}
+}
+
+void GameSFML::randomizeSkins() {
+	Texture tmp;
+	for(unsigned int i = 0; i < skins.size(); ++i) {
+		int j = rand() % skins.size();
+		tmp = skins[i];
+		skins[i] = skins[j];
+		skins[j] = tmp;
 	}
 }
 
