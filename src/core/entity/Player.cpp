@@ -228,11 +228,11 @@ void Player::regressionTest() { // a modifier
 
 	assert(P.decreaseHp(1) == true);
 	assert(P.hp == 2);
-	assert(P.timeInvincible == 5);
+	assert(P.timeInvincible == 20);
 	P.decreaseTimeInvincible();
-	assert(P.timeInvincible == 4);
+	assert(P.timeInvincible == 19);
 	cout << "\tdecreaseTimeInvincible : OK" << endl;
-	for(unsigned int i = 0; i < 4; i++)
+	for(unsigned int i = 0; i < 19; i++)
 		P.decreaseTimeInvincible();
 	assert(P.decreaseHp(2) == false);
 	assert(P.hp == 0);

@@ -124,11 +124,14 @@ int main () {
 	Entity E;
 	E.regressionTest();
 
-	// Player P;
-	// P.regressionTest(); // probleme
+	Player P;
+	P.regressionTest(); // probleme
 
 	Rat Ra;
 	Ra.regressionTest();
+
+	Spider Sp;
+	Sp.regressionTest();
 
 	Room Ro(PATH_ROOMS + "test.txt");
 	Ro.regressionTest();
