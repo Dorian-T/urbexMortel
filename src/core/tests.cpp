@@ -15,7 +15,7 @@ using namespace std;
 void movementPlayerRegressionTest() {
 	cout << endl << "Test des mouvements de Player" << endl;
 	Building B(PATH_ROOMS + "test.txt");
-	Player P(Vector2D(1, 7), M, 5);
+	Player P(Vector2D(1, 7), lilith, 5);
 
 	P.down(&B);
 	assert(P.getPosition().getX() == 1 && P.getPosition().getY() == 7);

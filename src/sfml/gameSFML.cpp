@@ -250,9 +250,9 @@ void GameSFML::drawObstacles(const Room & room) {
 void GameSFML::drawPlayer(Player * player) {
 	Sprite playerSprite;
 	if(player->getOrientation())
-		playerSprite.setTexture(skins[0]);
+		playerSprite.setTexture(skins[player->getSkin()]);
 	else
-		playerSprite.setTexture(skins[1]);
+		playerSprite.setTexture(skins[player->getSkin() + 1]);
 	playerSprite.setScale((float) spriteSize / playerSprite.getTexture()->getSize().x, (float) spriteSize * 2 / playerSprite.getTexture()->getSize().y);
 	playerSprite.setPosition(player->getPosition().getX()*spriteSize, player->getPosition().getY()*spriteSize - spriteSize);
 
@@ -559,7 +559,7 @@ void GameSFML::drawDifficultyMenu(Game & game) {
 
 void GameSFML::drawSkinMenu(Game & game) {
 	Skin S;
-	S = F;
+	S = lilith;
 	if(close) {
 			game.getPlayer()->setSkin(S);
 		}
@@ -604,18 +604,21 @@ void GameSFML::drawSkinMenu(Game & game) {
 					case Keyboard::Num1:
 					case Keyboard::Numpad1:
 						isChoosen = true;
+						S = lilith ;
 						game.getPlayer()->setSkin(S);
 						break;
 
 					case Keyboard::Num2:
 					case Keyboard::Numpad2:
 						isChoosen = true;
+						S = dora ;
 						game.getPlayer()->setSkin(S);
 						break;
 
 					case Keyboard::Num3:
 					case Keyboard::Numpad3:
 						isChoosen = true;
+						S = batman ;
 						game.getPlayer()->setSkin(S);
 						break;
 

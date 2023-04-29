@@ -11,8 +11,9 @@ int main() {
 	Game game;
     GameSFML GSFML(game);
 
-	GSFML.drawStory();
+	/*GSFML.drawStory();*/
 	GSFML.drawDifficultyMenu(game);
+    GSFML.drawSkinMenu(game);
 
     GSFML.Loop(game);
 }

@@ -35,17 +35,17 @@ Game::~Game() {
 void Game::setDifficulty(unsigned int difficulty) {
 	if(difficulty==3) {
 		building = new Building(8);
-		player = new Player(Vector2D(12, 16), M, 1);
+		player = new Player(Vector2D(12, 16), lilith, 1);
 		getBuilding()->setTotalTime(getBuilding()->getTotalTime()*20);
 	}
 	else if(difficulty==2) {
 		building = new Building(5);
-		player = new Player(Vector2D(12, 16), M, 3);
+		player = new Player(Vector2D(12, 16), lilith, 3);
 		getBuilding()->setTotalTime(getBuilding()->getTotalTime()*15);
 	}
 	else {
 		building = new Building(3);
-		player = new Player(Vector2D(12, 16), M, 5);
+		player = new Player(Vector2D(12, 16), lilith, 5);
 		getBuilding()->setTotalTime(getBuilding()->getTotalTime()*10);
 	}
 	getBuilding()->setTimeLeft(getBuilding()->getTotalTime());
@@ -185,7 +185,7 @@ void Game::regressionTest() { // TODO : à refaire et vérifier
 	setDifficulty(1);
 	assert(building->getNbRoom()==5);
 	assert(room == 0);
-	assert(player->getHp() == 5); assert(player->getSkin() == M) ; 
+	assert(player->getHp() == 5); assert(player->getSkin() == lilith) ; 
 	assert(player->getPosition().getX() == 12 && player->getPosition().getY() == 16);
 	cout << "\tTest de getBuilding : OK" << endl;
 

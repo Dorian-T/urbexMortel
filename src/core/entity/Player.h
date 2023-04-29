@@ -6,8 +6,9 @@
 #include "../building/Building.h"
 
 enum Skin {
-    M,
-    F
+    lilith = 0,
+    dora = 2,
+    batman = 4
 };
 
 /**

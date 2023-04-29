@@ -5,7 +5,7 @@
 using namespace std;
 
 Player::Player() {
-	skin = M;
+	skin = lilith;
 	hp = 0;
 	timeInvincible = 0;
 	orientation = true;
@@ -222,12 +222,12 @@ void Player::regressionTest() { // a modifier
 	cout << endl << "Test de la classe Player" << endl;
 
 	assert(getPosition().getX() == 0 && getPosition().getY() == 0 && getHeight() == 0 && getWidth() == 0);
-	assert(skin == M && hp == 0 && timeInvincible == 0);
+	assert(skin == lilith && hp == 0 && timeInvincible == 0);
 	cout << "\tconstructeur par defaut : OK" << endl;
 
-	Player P(Vector2D(2, 3), F, 3);
+	Player P(Vector2D(2, 3), dora, 3);
 	assert(P.getPosition().getX() == 2 && P.getPosition().getY() == 3 && P.getHeight() == 2 && P.getWidth() == 1);
-	assert(P.skin == F), assert(P.hp == 3); assert(P.timeInvincible == 0);
+	assert(P.skin == dora), assert(P.hp == 3); assert(P.timeInvincible == 0);
 	cout << "\tconstructeur parametre : OK" << endl;
 
 	assert(P.decreaseHp(1) == true);
