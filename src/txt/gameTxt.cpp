@@ -88,8 +88,10 @@ void txtLoop (Game & ga) {
 				ga.keyboardAction('s');
 				break;
 			case 'z':
+			if(ga.getPlayer()->standingOnBlock(ga.getBuilding())) {
 				ga.keyboardAction('z');
 				time = 4;
+			}
 				break;
 			case 'd':
 				ok = ga.keyboardAction('d');
