@@ -58,6 +58,12 @@ void movementPlayerRegressionTest() {
 	assert(P.getPosition().getX() == 3 && P.getPosition().getY() == 7);
 	cout << "\tTest de la gravite bloque : OK" << endl;
 
+	assert(B.getCurrentRoom()->getObstacle(Vector2D (3,8)) == ghostBlock);
+	P.StandingOnGhostBlock(&B);
+	assert(P.getPosition().getX() == 3 && P.getPosition().getY() == 7);
+	assert(B.getCurrentRoom()->getObstacle(Vector2D (3,8)) == nothing);
+	cout << "\tTest du ghost block : OK" << endl;
+
 	P.left(&B);
 	assert(P.getPosition().getX() == 3 && P.getPosition().getY() == 7);
 	assert(P.getHp() == 2);
@@ -76,7 +82,7 @@ void movementPlayerRegressionTest() {
 	P.right(&B);
 	P.up(&B);
 	assert(P.getPosition().getX() == 4 && P.getPosition().getY() == 6);
-	cout << "\tTest du mouvement vers le haut sur echelle : OK" << endl;
+	cout << "\tTest du mouvement vers le haut sur echelle plus fake block : OK" << endl;
 
 	P.gravity(&B);
 	assert(P.getPosition().getX() == 4 && P.getPosition().getY() == 6);
@@ -85,6 +91,7 @@ void movementPlayerRegressionTest() {
 	P.down(&B);
 	assert(P.getPosition().getX() == 4 && P.getPosition().getY() == 7);
 	cout << "\tTest du mouvement vers le bas sur echelle : OK" << endl;
+
 
 	P.up(&B);
 	P.up(&B);
@@ -99,7 +106,7 @@ void movementPlayerRegressionTest() {
 
 	P.down(&B);
 	assert(P.getPosition().getX() == 4 && P.getPosition().getY() == 4);
-	cout << "\tTest du mouvement vers le bas par une trappe : OK" << endl;
+	cout << "\tTest du mouvement vers le bas par une trappe plus fake block : OK" << endl;
 
 	assert(!P.right(&B));
 	cout << "\tTest du changement de salle : OK" << endl;
