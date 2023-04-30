@@ -42,6 +42,8 @@ Plusieurs niveaux de difficultés sont proposés en début de partie (facile, mo
 - Différents obstacles :
 	- les barbelés : ils font perdre des points de vie au joueur s'il les touche
 	- les blocs : ce sont à la fois les murs et le sol
+	- les faux blocs : ils ont l'apparence d'un block mais on peut passer à travers
+	- les blocs fantômes : ce sont des sols qui disparraissent quand le joueur est dessus
 	- les portes : elles permettent de passer d'un niveau à l'autre
 	- les échelles : elles permettent de monter ou descendre
 	- les trappes : elles permettent de monter ou descendre mais on peut également marcher dessus
