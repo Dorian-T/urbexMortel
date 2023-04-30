@@ -2,6 +2,7 @@
 #define _GAME_SFML
 
 #include <SFML/Graphics.hpp>
+#include <SFML/Audio.hpp>
 #include "../core/Game.h"
 #include <vector>
 
@@ -53,6 +54,11 @@ class GameSFML {
 		 * 
 		 */
 		bool close;
+
+		/**
+		 * @brief Musique du jeu
+		 */
+		// sf::Music music;
 
 		/**
 		 * @brief Dessine le jeu dans la fenêtre

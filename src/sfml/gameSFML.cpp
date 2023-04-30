@@ -1,4 +1,5 @@
 #include <SFML/Graphics.hpp>
+#include <SFML/Audio.hpp>
 #include "../core/entity/Vector2D.h"
 #include "../core/building/Room.h" // utile ?
 #include "../core/Game.h"
@@ -11,9 +12,11 @@ using namespace std;
 using namespace sf;
 
 
-const string PATH_TEXTURES = "data/textures/";
-const string PATH_SKINS = "data/skins/";
+const bool isMusicOn = false;
 const string PATH_FONTS = "data/fonts/";
+const string PATH_MUSIC = "data/music/";
+const string PATH_SKINS = "data/skins/";
+const string PATH_TEXTURES = "data/textures/";
 
 // Constructeur et destructeur :
 
@@ -30,6 +33,11 @@ GameSFML::GameSFML(const Game & game): window(VideoMode(1920, 1080), "L'Urbex mo
 	spriteSize = window.getSize().x / 32; // attention : ça ne se modifie plus automatiquement en fonction de la taille de la Room
 
 	close=false;
+
+	// if(music.openFromFile(PATH_MUSIC + "theme.ogg")) {
+	// 	music.setLoop(true);
+	// 	music.play();
+	// }
 }
 
 void GameSFML::loadTextures() {
