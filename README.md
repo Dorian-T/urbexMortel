@@ -56,12 +56,24 @@ Plusieurs niveaux de difficultés sont proposés en début de partie (facile, mo
 	- facile : 3 salles intermédiaires, 5 coeur et 2 fois le temps minimal par salle
 	- moyen : 5 salles intermédiaires, 3 coeur et 1,5 fois le temps minimal par salle
 	- difficile : 8 salles intermédiaires, 1 coeur et le temps minimal par salle
+- Différents personnages jouables :
+	- batman 
+	- coaraa 
+	- daisy 
+	- dora 
+	- gadget
+	- lilith
+	- maestro
+	- pikmin
+	- tiboyou
+	- yumi
 
 ## Organisation de l'archive
 - bin : contient les exécutables
 - data : contient les données
 	- fonts : contient les polices de caractères
 	- rooms : contient les fichiers des niveaux au format .txt
+	- skins : contient les images des skins
 	- textures : contient les images des textures
 - doc : contient la documentation
 - obj : contient les fichiers objets
