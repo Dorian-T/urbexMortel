@@ -4,12 +4,12 @@
 #include <iostream>
 using namespace std;
 
-Player::Player() {
-	skin = lilith;
-	hp = 0;
-	timeInvincible = 0;
-	orientation = true;
-}
+// Player::Player() {
+// 	skin = lilith;
+// 	hp = 0;
+// 	timeInvincible = 0;
+// 	orientation = true;
+// }
 
 Player::Player(const Vector2D & P, Skin s, unsigned int health): Entity(P, 2, 1) {
 	skin = s;

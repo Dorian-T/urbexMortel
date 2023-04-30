@@ -52,11 +52,11 @@ void Game::setDifficulty(unsigned int difficulty) {
 }
 
 Building* Game::getBuilding() const {
-    return building;
+	return building;
 }
 
 Player * Game::getPlayer() const { // TODO : a modifier pour le multi
-    return player;
+	return player;
 }
 
 unsigned int Game::getNbRat() const {
@@ -125,7 +125,7 @@ void Game::collisionSpider() {
 
 int Game::update (int time) {
 
-    if(time == 0)
+	if(time == 0)
 		player->gravity(building);
 	else time = time - 1;
 

@@ -20,7 +20,7 @@ int chooseDifficulty() {
 
 int main() {
 	srand(time(NULL));
-    termClear();
+	termClear();
 	Game game;
 
 	int diff;
@@ -33,7 +33,7 @@ int main() {
 
 
 	txtLoop(game);
-    termClear();
+	termClear();
 
 	if(game.getPlayer()->getHp() == 0 || game.getBuilding()->getTimeLeft() == 0)
 		cout << "T'es mort, nul !" << endl;

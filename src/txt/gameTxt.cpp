@@ -52,7 +52,7 @@ void txtDraw(WinTXT & win, const Game & ga) {
 	win.print(11,18,std::to_string(building->getIntCurrentRoom()+1).c_str());
 	win.print(12,18,'/');
 	win.print(13,18,std::to_string(building->getNbRoom()).c_str());
-    win.print(15,18,'T');
+	win.print(15,18,'T');
 	win.print(16,18,':');
 	win.print(17,18,std::to_string(ga.getBuilding()->getTimeLeft()).c_str());
 
@@ -60,7 +60,7 @@ void txtDraw(WinTXT & win, const Game & ga) {
 }
 
 void txtLoop (Game & ga) {
-    WinTXT win (ga.getBuilding()->getCurrentRoom()->getDimX()+1,ga.getBuilding()->getCurrentRoom()->getDimY()+1);
+	WinTXT win (ga.getBuilding()->getCurrentRoom()->getDimX()+1,ga.getBuilding()->getCurrentRoom()->getDimY()+1);
 	int time = 3;
 	bool ok = true;
 	int c;
@@ -69,13 +69,13 @@ void txtLoop (Game & ga) {
 	ga.addSpider();
 
 	while (ok) {
-	    txtDraw(win,ga);
+		txtDraw(win,ga);
 
-        #ifdef _WIN32
-        Sleep(100);
+		#ifdef _WIN32
+		Sleep(100);
 		#else
 		usleep(100000);
-        #endif // WIN32
+		#endif // WIN32
 
 		time=ga.update(time);
 

@@ -882,13 +882,13 @@ void GameSFML::Loop(Game & game) {
 					default:
 						break;
 				}
-        }
+		}
 		draw(game);
 		if(game.getPlayer()->getHp()==0 || game.getBuilding()->getTimeLeft() == 0) {
 			drawEnd(false);
 			window.close();
 		}
-    }
+	}
 	}
 }
 
