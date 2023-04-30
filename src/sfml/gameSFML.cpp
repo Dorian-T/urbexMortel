@@ -90,10 +90,10 @@ void GameSFML::loadSkins() {
 	skin.loadFromFile(PATH_SKINS + "batmanL.png");
 	skins.push_back(skin);
 
-	skin.loadFromFile(PATH_SKINS + "coaraR.png");
+	skin.loadFromFile(PATH_SKINS + "coaraaR.png");
 	skins.push_back(skin);
 
-	skin.loadFromFile(PATH_SKINS + "coaraL.png");
+	skin.loadFromFile(PATH_SKINS + "coaraaL.png");
 	skins.push_back(skin);
 
 	skin.loadFromFile(PATH_SKINS + "daisyR.png");
@@ -609,7 +609,7 @@ void GameSFML::drawSkinMenu(Game & game) {
 		text2.setPosition(spriteSize, spriteSize*2);
 		text2.setFillColor(color);
 
-		Text text3(L"1 - Coara", font, spriteSize*2/3);
+		Text text3(L"1 - Coaraa", font, spriteSize*2/3);
 		text3.setPosition(spriteSize, spriteSize*3);
 		text3.setFillColor(color);
 
@@ -672,7 +672,7 @@ void GameSFML::drawSkinMenu(Game & game) {
 						case Keyboard::Num1:
 						case Keyboard::Numpad1:
 							isChoosen = true;
-							game.getPlayer()->setSkin(coara);
+							game.getPlayer()->setSkin(coaraa);
 							break;
 
 						case Keyboard::Num2:
