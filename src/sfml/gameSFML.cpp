@@ -485,7 +485,7 @@ void GameSFML::drawString(const wstring & str, unsigned int y) {
 
 void GameSFML::drawDifficultyMenu(Game & game) {
 	if(close) {
-			game.setDifficulty(1); // !!!!!!!!!
+			game.setDifficulty(1);
 		}
 	else {
 	Font font;
@@ -548,7 +548,7 @@ void GameSFML::drawDifficultyMenu(Game & game) {
 	Event event;
 	while(!isChoosen) {
 		while(window.pollEvent(event)) {
-			if(event.type == Event::Closed) { // !!!!!!!!!
+			if(event.type == Event::Closed) {
 				close = true;
 				isChoosen = true;
 				game.setDifficulty(1);
