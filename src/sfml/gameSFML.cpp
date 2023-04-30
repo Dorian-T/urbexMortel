@@ -582,6 +582,8 @@ void GameSFML::drawDifficultyMenu(Game & game) {
 }
 
 void GameSFML::drawSkinMenu(Game & game) {
+	if(close) { game.getPlayer()->setSkin(lilith); }
+	else {
 	Font font;
 	font.loadFromFile(PATH_FONTS + "elegantTypeWriter-bold.ttf");
 
@@ -623,6 +625,7 @@ void GameSFML::drawSkinMenu(Game & game) {
 		while(window.pollEvent(event)) {
 			if(event.type == Event::Closed) {
 				isChoosen = true;
+				close = true;
 				game.getPlayer()->setSkin(lilith);
 			}
 			if(event.type == Event::KeyPressed)
@@ -661,6 +664,8 @@ void GameSFML::drawSkinMenu(Game & game) {
 						break;
 				}
 		}
+	}
+
 	}
 }
 
