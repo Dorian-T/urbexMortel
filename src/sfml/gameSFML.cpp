@@ -637,7 +637,7 @@ void GameSFML::drawSkinMenu(Game & game) {
 		text9.setPosition(spriteSize, spriteSize*9);
 		text9.setFillColor(color);
 
-		Text text10(L"8 - tibouyou", font, spriteSize*2/3);
+		Text text10(L"8 - Tibouyou", font, spriteSize*2/3);
 		text10.setPosition(spriteSize, spriteSize*10);
 		text10.setFillColor(color);
 
