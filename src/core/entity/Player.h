@@ -14,7 +14,7 @@ enum Skin {
 	lilith = 10,
 	maestro = 12,
 	pikmin = 14,
-	tiboyou = 16,
+	tibouyou = 16,
 	yumi = 18
 };
 

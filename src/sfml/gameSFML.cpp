@@ -132,10 +132,10 @@ void GameSFML::loadSkins() {
 	skin.loadFromFile(PATH_SKINS + "pikminL.png");
 	skins.push_back(skin);
 
-	skin.loadFromFile(PATH_SKINS + "tiboyouR.png");
+	skin.loadFromFile(PATH_SKINS + "tibouyouR.png");
 	skins.push_back(skin);
 
-	skin.loadFromFile(PATH_SKINS + "tiboyouL.png");
+	skin.loadFromFile(PATH_SKINS + "tibouyouL.png");
 	skins.push_back(skin);
 
 	skin.loadFromFile(PATH_SKINS + "yumiR.png");
@@ -637,7 +637,7 @@ void GameSFML::drawSkinMenu(Game & game) {
 		text9.setPosition(spriteSize, spriteSize*9);
 		text9.setFillColor(color);
 
-		Text text10(L"8 - Tiboyou", font, spriteSize*2/3);
+		Text text10(L"8 - tibouyou", font, spriteSize*2/3);
 		text10.setPosition(spriteSize, spriteSize*10);
 		text10.setFillColor(color);
 
@@ -714,7 +714,7 @@ void GameSFML::drawSkinMenu(Game & game) {
 						case Keyboard::Num8:
 						case Keyboard::Numpad8:
 							isChoosen = true;
-							game.getPlayer()->setSkin(tiboyou);
+							game.getPlayer()->setSkin(tibouyou);
 							break;
 
 						case Keyboard::Num9:

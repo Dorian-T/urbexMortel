@@ -65,7 +65,7 @@ Plusieurs niveaux de difficultés sont proposés en début de partie (facile, mo
 	- lilith
 	- maestro
 	- pikmin
-	- tiboyou
+	- tibouyou
 	- yumi
 
 ## Organisation de l'archive
