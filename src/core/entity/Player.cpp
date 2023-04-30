@@ -226,26 +226,49 @@ void Player::drinkPotion(Building & B) {
 void Player::regressionTest() { // a modifier
 	cout << endl << "Test de la classe Player" << endl;
 
-	assert(getPosition().getX() == 0 && getPosition().getY() == 0 && getHeight() == 0 && getWidth() == 0);
-	assert(skin == lilith && hp == 0 && timeInvincible == 0);
-	cout << "\tconstructeur par defaut : OK" << endl;
-
-	Player P(Vector2D(2, 3), dora, 3);
-	assert(P.getPosition().getX() == 2 && P.getPosition().getY() == 3 && P.getHeight() == 2 && P.getWidth() == 1);
-	assert(P.skin == dora), assert(P.hp == 3); assert(P.timeInvincible == 0);
+	assert(getPosition().getX() == 2 && getPosition().getY() == 3);
+	assert(getHeight() == 2 && getWidth() == 1);
+	assert(skin == dora), assert(hp == 3); assert(timeInvincible == 0); assert(orientation == true);
 	cout << "\tconstructeur parametre : OK" << endl;
 
-	assert(P.decreaseHp(1) == true);
-	assert(P.hp == 2);
-	assert(P.timeInvincible == 20);
-	P.decreaseTimeInvincible();
-	assert(P.timeInvincible == 19);
+	assert(getSkin() == skin);
+	cout << "\tgetSkin : OK" << endl;
+
+	setSkin(gadget);
+	assert(getSkin() == gadget);
+	cout << "\tsetSkin : OK" << endl;
+
+	assert(getHp() == hp);
+	cout << "\tgetHp : OK" << endl;
+
+	assert(decreaseHp(1) == true);
+	assert(hp == 2);
+	assert(timeInvincible == 20);
+	decreaseTimeInvincible();
+	assert(timeInvincible == 19);
 	cout << "\tdecreaseTimeInvincible : OK" << endl;
+
+	assert(decreaseHp(1) == true);
+	assert(hp == 2);
 	for(unsigned int i = 0; i < 19; i++)
-		P.decreaseTimeInvincible();
-	assert(P.decreaseHp(2) == false);
-	assert(P.hp == 0);
+		decreaseTimeInvincible();
+	assert(decreaseHp(2) == false);
+	assert(hp == 0);
 	cout << "\tdecreaseHp : OK" << endl;
 
+	assert(getTimeInvincible() == timeInvincible);
+	cout << "\tgetTimeInvincible : OK" << endl;
+
+	assert(getOrientation() == orientation);
+	cout << "\tgetOrientation : OK" << endl;
+
+	Building B(PATH_ROOMS + "test.txt");
+	B.setTimeLeft(0);
+	drinkPotion(B);
+	assert(B.getTimeLeft() == 300);
+	cout << "\tdrinkPotion : OK" << endl;
+
+	// Les tests des déplacements sont effectués dans tests.cpp
+
 	cout << "Test de la classe Player : OK" << endl;
- }
+}

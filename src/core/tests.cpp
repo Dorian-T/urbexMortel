@@ -152,8 +152,8 @@ int main () {
 	Entity E;
 	E.regressionTest();
 
-	// Player P;
-	// P.regressionTest(); // probleme
+	Player P(Vector2D(2, 3), dora, 3);
+	P.regressionTest();
 
 	Rat Ra;
 	Ra.regressionTest();
