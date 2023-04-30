@@ -33,147 +33,116 @@ GameSFML::GameSFML(const Game & game): window(VideoMode(1920, 1080), "L'Urbex mo
 }
 
 void GameSFML::loadTextures() {
-	Texture backgroundTexture;
-	backgroundTexture.loadFromFile(PATH_TEXTURES + "background.png");
-	textures.push_back(backgroundTexture);
+	Texture obstacle;
 
-	Texture barbedWireTexture;
-	barbedWireTexture.loadFromFile(PATH_TEXTURES + "barbedWire.png");
-	textures.push_back(barbedWireTexture);
+	obstacle.loadFromFile(PATH_TEXTURES + "background.png");
+	textures.push_back(obstacle);
 
-	Texture blockTexture;
-	blockTexture.loadFromFile(PATH_TEXTURES + "block.png");
-	textures.push_back(blockTexture);
+	obstacle.loadFromFile(PATH_TEXTURES + "barbedWire.png");
+	textures.push_back(obstacle);
 
-	Texture door1Texture;
-	door1Texture.loadFromFile(PATH_TEXTURES + "door1.png");
-	textures.push_back(door1Texture);
+	obstacle.loadFromFile(PATH_TEXTURES + "block.png");
+	textures.push_back(obstacle);
 
-	Texture door2Texture;
-	door2Texture.loadFromFile(PATH_TEXTURES + "door2.png");
-	textures.push_back(door2Texture);
+	obstacle.loadFromFile(PATH_TEXTURES + "door1.png");
+	textures.push_back(obstacle);
 
-	Texture ladderTexture;
-	ladderTexture.loadFromFile(PATH_TEXTURES + "ladder.png");
-	textures.push_back(ladderTexture);
+	obstacle.loadFromFile(PATH_TEXTURES + "door2.png");
+	textures.push_back(obstacle);
 
-	Texture trapdoorTexture;
-	trapdoorTexture.loadFromFile(PATH_TEXTURES + "trapdoor.png");
-	textures.push_back(trapdoorTexture);
+	obstacle.loadFromFile(PATH_TEXTURES + "ladder.png");
+	textures.push_back(obstacle);
 
-	Texture potionTexture;
-	potionTexture.loadFromFile(PATH_TEXTURES + "potion.png");
-	textures.push_back(potionTexture);
+	obstacle.loadFromFile(PATH_TEXTURES + "trapdoor.png");
+	textures.push_back(obstacle);
 
-	Texture heartTexture;
-	heartTexture.loadFromFile(PATH_TEXTURES + "heart.png");
-	textures.push_back(heartTexture);
+	obstacle.loadFromFile(PATH_TEXTURES + "potion.png");
+	textures.push_back(obstacle);
 
-	Texture poisonSkullTexture;
-	poisonSkullTexture.loadFromFile(PATH_TEXTURES + "poisonSkull.png");
-	textures.push_back(poisonSkullTexture);
+	obstacle.loadFromFile(PATH_TEXTURES + "heart.png");
+	textures.push_back(obstacle);
 
-	Texture poisonBarTexture;
-	poisonBarTexture.loadFromFile(PATH_TEXTURES + "poisonBar.png");
-	textures.push_back(poisonBarTexture);
+	obstacle.loadFromFile(PATH_TEXTURES + "poisonSkull.png");
+	textures.push_back(obstacle);
 
-	Texture ratRTexture;
-	ratRTexture.loadFromFile(PATH_TEXTURES + "ratR.png");
-	textures.push_back(ratRTexture);
+	obstacle.loadFromFile(PATH_TEXTURES + "poisonBar.png");
+	textures.push_back(obstacle);
 
-	Texture ratLTexture;
-	ratLTexture.loadFromFile(PATH_TEXTURES + "ratL.png");
-	textures.push_back(ratLTexture);
+	obstacle.loadFromFile(PATH_TEXTURES + "ratR.png");
+	textures.push_back(obstacle);
 
-	Texture spiderTexture;
-	spiderTexture.loadFromFile(PATH_TEXTURES + "spider.png");
-	textures.push_back(spiderTexture);
+	obstacle.loadFromFile(PATH_TEXTURES + "ratL.png");
+	textures.push_back(obstacle);
 
-	Texture spiderWebTexture;
-	spiderWebTexture.loadFromFile(PATH_TEXTURES + "spiderWeb.png");
-	textures.push_back(spiderWebTexture);
+	obstacle.loadFromFile(PATH_TEXTURES + "spider.png");
+	textures.push_back(obstacle);
+	
+	obstacle.loadFromFile(PATH_TEXTURES + "spiderWeb.png");
+	textures.push_back(obstacle);
 }
 
 void GameSFML::loadSkins() {
-	Texture batmanRTexture;
-	batmanRTexture.loadFromFile(PATH_SKINS + "batmanR.png");
-	skins.push_back(batmanRTexture);
+	Texture skin;
 
-	Texture batmanLTexture;
-	batmanLTexture.loadFromFile(PATH_SKINS + "batmanL.png");
-	skins.push_back(batmanLTexture);
+	skin.loadFromFile(PATH_SKINS + "batmanR.png");
+	skins.push_back(skin);
 
-	Texture coaraR;
-	coaraR.loadFromFile(PATH_SKINS + "coaraR.png");
-	skins.push_back(coaraR);
+	skin.loadFromFile(PATH_SKINS + "batmanL.png");
+	skins.push_back(skin);
 
-	Texture coaraL;
-	coaraL.loadFromFile(PATH_SKINS + "coaraL.png");
-	skins.push_back(coaraL);
+	skin.loadFromFile(PATH_SKINS + "coaraR.png");
+	skins.push_back(skin);
 
-	Texture daisyR;
-	daisyR.loadFromFile(PATH_SKINS + "daisyR.png");
-	skins.push_back(daisyR);
+	skin.loadFromFile(PATH_SKINS + "coaraL.png");
+	skins.push_back(skin);
 
-	Texture daisyL;
-	daisyL.loadFromFile(PATH_SKINS + "daisyL.png");
-	skins.push_back(daisyL);
+	skin.loadFromFile(PATH_SKINS + "daisyR.png");
+	skins.push_back(skin);
 
-	Texture doraR;
-	doraR.loadFromFile(PATH_SKINS + "doraR.png");
-	skins.push_back(doraR);
+	skin.loadFromFile(PATH_SKINS + "daisyL.png");
+	skins.push_back(skin);
 
-	Texture doraL;
-	doraL.loadFromFile(PATH_SKINS + "doraL.png");
-	skins.push_back(doraL);
+	skin.loadFromFile(PATH_SKINS + "doraR.png");
+	skins.push_back(skin);
 
-	Texture gadgetR;
-	gadgetR.loadFromFile(PATH_SKINS + "gadgetR.png");
-	skins.push_back(gadgetR);
+	skin.loadFromFile(PATH_SKINS + "doraL.png");
+	skins.push_back(skin);
 
-	Texture gadgetL;
-	gadgetL.loadFromFile(PATH_SKINS + "gadgetL.png");
-	skins.push_back(gadgetL);
+	skin.loadFromFile(PATH_SKINS + "gadgetR.png");
+	skins.push_back(skin);
 
-	Texture lilithR;
-	lilithR.loadFromFile(PATH_SKINS + "lilithR.png");
-	skins.push_back(lilithR);
+	skin.loadFromFile(PATH_SKINS + "gadgetL.png");
+	skins.push_back(skin);
 
-	Texture lilithL;
-	lilithL.loadFromFile(PATH_SKINS + "lilithL.png");
-	skins.push_back(lilithL);
+	skin.loadFromFile(PATH_SKINS + "lilithR.png");
+	skins.push_back(skin);
 
-	Texture maestroR;
-	maestroR.loadFromFile(PATH_SKINS + "maestroR.png");
-	skins.push_back(maestroR);
+	skin.loadFromFile(PATH_SKINS + "lilithL.png");
+	skins.push_back(skin);
 
-	Texture maestroL;
-	maestroL.loadFromFile(PATH_SKINS + "maestroL.png");
-	skins.push_back(maestroL);
+	skin.loadFromFile(PATH_SKINS + "maestroR.png");
+	skins.push_back(skin);
 
-	Texture pikminR;
-	pikminR.loadFromFile(PATH_SKINS + "pikminR.png");
-	skins.push_back(pikminR);
+	skin.loadFromFile(PATH_SKINS + "maestroL.png");
+	skins.push_back(skin);
 
-	Texture pikminL;
-	pikminL.loadFromFile(PATH_SKINS + "pikminL.png");
-	skins.push_back(pikminL);
+	skin.loadFromFile(PATH_SKINS + "pikminR.png");
+	skins.push_back(skin);
 
-	Texture tiboyouR;
-	tiboyouR.loadFromFile(PATH_SKINS + "tiboyouR.png");
-	skins.push_back(tiboyouR);
+	skin.loadFromFile(PATH_SKINS + "pikminL.png");
+	skins.push_back(skin);
 
-	Texture tiboyouL;
-	tiboyouL.loadFromFile(PATH_SKINS + "tiboyouL.png");
-	skins.push_back(tiboyouL);
+	skin.loadFromFile(PATH_SKINS + "tiboyouR.png");
+	skins.push_back(skin);
 
-	Texture yumiR;
-	yumiR.loadFromFile(PATH_SKINS + "yumiR.png");
-	skins.push_back(yumiR);
+	skin.loadFromFile(PATH_SKINS + "tiboyouL.png");
+	skins.push_back(skin);
 
-	Texture yumiL;
-	yumiL.loadFromFile(PATH_SKINS + "yumiL.png");
-	skins.push_back(yumiL);
+	skin.loadFromFile(PATH_SKINS + "yumiR.png");
+	skins.push_back(skin);
+
+	skin.loadFromFile(PATH_SKINS + "yumiL.png");
+	skins.push_back(skin);
 }
 
 GameSFML::~GameSFML() {
@@ -573,15 +542,19 @@ void GameSFML::drawDifficultyMenu(Game & game) {
 	text10.setPosition(spriteSize, spriteSize*12);
 	text10.setFillColor(color);
 
-	Text text11(L"r : pour un bonus", font, spriteSize*2/3);
+	Text text11(L"r : pour une surprise", font, spriteSize*2/3);
 	text11.setPosition(spriteSize, spriteSize*13);
 	text11.setFillColor(color);
 
+	Text text12(L"t : pour enlever la surprise", font, spriteSize*2/3);
+	text12.setPosition(spriteSize, spriteSize*14);
+	text12.setFillColor(color);
+
 	window.clear();
 	drawBackground(32, 18);
-	window.draw(text1); window.draw(text2); window.draw(text3); window.draw(text4);
-	window.draw(text5); window.draw(text6); window.draw(text7); window.draw(text8);
-	window.draw(text9); window.draw(text10); window.draw(text11); 
+	window.draw(text1);		window.draw(text2);		window.draw(text3);		window.draw(text4);
+	window.draw(text5);		window.draw(text6);		window.draw(text7);		window.draw(text8);
+	window.draw(text9);		window.draw(text10);	window.draw(text11);	window.draw(text12);
 	window.display();
 
 	bool isChoosen = false;
