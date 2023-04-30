@@ -6,11 +6,16 @@
 #include "../building/Building.h"
 
 enum Skin {
-    lilith = 0,
-    dora = 2,
-    batman = 4,
-    clara = 6,
-    daisy = 8
+    batman = 0,
+    coara = 2,
+    daisy = 4,
+    dora = 6,
+    gadget = 8,
+    lilith = 10,
+    maestro = 12,
+    pikmin = 14,
+    tiboyou = 16,
+    yumi = 18
 };
 
 /**

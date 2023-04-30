@@ -95,45 +95,85 @@ void GameSFML::loadTextures() {
 }
 
 void GameSFML::loadSkins() {
-	Texture lilithRTexture;
-	lilithRTexture.loadFromFile(PATH_SKINS + "lilithR.png");
-	skins.push_back(lilithRTexture);
+	Texture batmanRTexture;
+	batmanRTexture.loadFromFile(PATH_SKINS + "batmanR.png");
+	skins.push_back(batmanRTexture);
 
-	Texture lilithLTexture;
-	lilithLTexture.loadFromFile(PATH_SKINS + "lilithL.png");
-	skins.push_back(lilithLTexture);
+	Texture batmanLTexture;
+	batmanLTexture.loadFromFile(PATH_SKINS + "batmanL.png");
+	skins.push_back(batmanLTexture);
 
-	Texture doraRTexture;
-	doraRTexture.loadFromFile(PATH_SKINS + "doraR.png");
-	skins.push_back(doraRTexture);
+	Texture coaraR;
+	coaraR.loadFromFile(PATH_SKINS + "coaraR.png");
+	skins.push_back(coaraR);
 
-	Texture doraLTexture;
-	doraLTexture.loadFromFile(PATH_SKINS + "doraL.png");
-	skins.push_back(doraLTexture);
+	Texture coaraL;
+	coaraL.loadFromFile(PATH_SKINS + "coaraL.png");
+	skins.push_back(coaraL);
 
-	Texture BatmanRTexture;
-	doraRTexture.loadFromFile(PATH_SKINS + "BatmanR.png");
-	skins.push_back(doraRTexture);
+	Texture daisyR;
+	daisyR.loadFromFile(PATH_SKINS + "daisyR.png");
+	skins.push_back(daisyR);
 
-	Texture BatmanLTexture;
-	doraLTexture.loadFromFile(PATH_SKINS + "BatmanL.png");
-	skins.push_back(doraLTexture);
+	Texture daisyL;
+	daisyL.loadFromFile(PATH_SKINS + "daisyL.png");
+	skins.push_back(daisyL);
 
-	Texture coaraRTexture;
-	doraRTexture.loadFromFile(PATH_SKINS + "coaraR.png");
-	skins.push_back(doraRTexture);
+	Texture doraR;
+	doraR.loadFromFile(PATH_SKINS + "doraR.png");
+	skins.push_back(doraR);
 
-	Texture coaraLTexture;
-	doraLTexture.loadFromFile(PATH_SKINS + "coaraL.png");
-	skins.push_back(doraLTexture);
+	Texture doraL;
+	doraL.loadFromFile(PATH_SKINS + "doraL.png");
+	skins.push_back(doraL);
 
-	Texture DaisyRTexture;
-	doraRTexture.loadFromFile(PATH_SKINS + "DaisyR.png");
-	skins.push_back(doraRTexture);
+	Texture gadgetR;
+	gadgetR.loadFromFile(PATH_SKINS + "gadgetR.png");
+	skins.push_back(gadgetR);
 
-	Texture DaisyLTexture;
-	doraLTexture.loadFromFile(PATH_SKINS + "DaisyL.png");
-	skins.push_back(doraLTexture);
+	Texture gadgetL;
+	gadgetL.loadFromFile(PATH_SKINS + "gadgetL.png");
+	skins.push_back(gadgetL);
+
+	Texture lilithR;
+	lilithR.loadFromFile(PATH_SKINS + "lilithR.png");
+	skins.push_back(lilithR);
+
+	Texture lilithL;
+	lilithL.loadFromFile(PATH_SKINS + "lilithL.png");
+	skins.push_back(lilithL);
+
+	Texture maestroR;
+	maestroR.loadFromFile(PATH_SKINS + "maestroR.png");
+	skins.push_back(maestroR);
+
+	Texture maestroL;
+	maestroL.loadFromFile(PATH_SKINS + "maestroL.png");
+	skins.push_back(maestroL);
+
+	Texture pikminR;
+	pikminR.loadFromFile(PATH_SKINS + "pikminR.png");
+	skins.push_back(pikminR);
+
+	Texture pikminL;
+	pikminL.loadFromFile(PATH_SKINS + "pikminL.png");
+	skins.push_back(pikminL);
+
+	Texture tiboyouR;
+	tiboyouR.loadFromFile(PATH_SKINS + "tiboyouR.png");
+	skins.push_back(tiboyouR);
+
+	Texture tiboyouL;
+	tiboyouL.loadFromFile(PATH_SKINS + "tiboyouL.png");
+	skins.push_back(tiboyouL);
+
+	Texture yumiR;
+	yumiR.loadFromFile(PATH_SKINS + "yumiR.png");
+	skins.push_back(yumiR);
+
+	Texture yumiL;
+	yumiL.loadFromFile(PATH_SKINS + "yumiL.png");
+	skins.push_back(yumiL);
 }
 
 GameSFML::~GameSFML() {
@@ -582,90 +622,139 @@ void GameSFML::drawDifficultyMenu(Game & game) {
 }
 
 void GameSFML::drawSkinMenu(Game & game) {
-	if(close) { game.getPlayer()->setSkin(lilith); }
-	else {
-	Font font;
-	font.loadFromFile(PATH_FONTS + "elegantTypeWriter-bold.ttf");
+	if(!close) {
+		Font font;
+		font.loadFromFile(PATH_FONTS + "elegantTypeWriter-bold.ttf");
 
-	Color color(245, 245, 245, 255);
+		Color color(245, 245, 245, 255);
 
-	Text text1(L"Choisissez votre skin :", font, spriteSize*2/3);
-	text1.setPosition(spriteSize, spriteSize*1);
-	text1.setFillColor(color);
+		Text text1(L"Choisissez votre skin :", font, spriteSize*2/3);
+		text1.setPosition(spriteSize, spriteSize*1);
+		text1.setFillColor(color);
 
-	Text text2(L"1 - Lilith", font, spriteSize*2/3);
-	text2.setPosition(spriteSize, spriteSize*2);
-	text2.setFillColor(color);
+		Text text2(L"0 - Batman", font, spriteSize*2/3);
+		text2.setPosition(spriteSize, spriteSize*2);
+		text2.setFillColor(color);
 
-	Text text3(L"2 - Dora", font, spriteSize*2/3);
-	text3.setPosition(spriteSize, spriteSize*3);
-	text3.setFillColor(color);
+		Text text3(L"1 - Coara", font, spriteSize*2/3);
+		text3.setPosition(spriteSize, spriteSize*3);
+		text3.setFillColor(color);
 
-	Text text4(L"3 - Batman", font, spriteSize*2/3);
-	text4.setPosition(spriteSize, spriteSize*4);
-	text4.setFillColor(color);
+		Text text4(L"2 - Daisy", font, spriteSize*2/3);
+		text4.setPosition(spriteSize, spriteSize*4);
+		text4.setFillColor(color);
 
-	Text text5(L"4 - Clara", font, spriteSize*2/3);
-	text5.setPosition(spriteSize, spriteSize*5);
-	text5.setFillColor(color);
+		Text text5(L"3 - Dora", font, spriteSize*2/3);
+		text5.setPosition(spriteSize, spriteSize*5);
+		text5.setFillColor(color);
 
-	Text text6(L"5 - Daisy", font, spriteSize*2/3);
-	text6.setPosition(spriteSize, spriteSize*6);
-	text6.setFillColor(color);
+		Text text6(L"4 - Inspecteur Gadget", font, spriteSize*2/3);
+		text6.setPosition(spriteSize, spriteSize*6);
+		text6.setFillColor(color);
 
-	window.clear();
-	drawBackground(32, 18);
-	window.draw(text1); window.draw(text2); window.draw(text3); window.draw(text4);
-	window.draw(text5); window.draw(text6);
-	window.display();
+		Text text7(L"5 - Lilith", font, spriteSize*2/3);
+		text7.setPosition(spriteSize, spriteSize*7);
+		text7.setFillColor(color);
 
-	bool isChoosen = false;
-	Event event;
-	while(!isChoosen) {
-		while(window.pollEvent(event)) {
-			if(event.type == Event::Closed) {
-				isChoosen = true;
-				close = true;
-				game.getPlayer()->setSkin(lilith);
-			}
-			if(event.type == Event::KeyPressed)
-				switch(event.key.code) {
-					case Keyboard::Num1:
-					case Keyboard::Numpad1:
-						isChoosen = true;
-						game.getPlayer()->setSkin(lilith);
-						break;
+		Text text8(L"6 - Maestro", font, spriteSize*2/3);
+		text8.setPosition(spriteSize, spriteSize*8);
+		text8.setFillColor(color);
 
-					case Keyboard::Num2:
-					case Keyboard::Numpad2:
-						isChoosen = true;
-						game.getPlayer()->setSkin(dora);
-						break;
+		Text text9(L"7 - Pikmin rouge", font, spriteSize*2/3);
+		text9.setPosition(spriteSize, spriteSize*9);
+		text9.setFillColor(color);
 
-					case Keyboard::Num3:
-					case Keyboard::Numpad3:
-						isChoosen = true;
-						game.getPlayer()->setSkin(batman);
-						break;
+		Text text10(L"8 - Tiboyou", font, spriteSize*2/3);
+		text10.setPosition(spriteSize, spriteSize*10);
+		text10.setFillColor(color);
 
-					case Keyboard::Num4:
-					case Keyboard::Numpad4:
-						isChoosen = true;
-						game.getPlayer()->setSkin(clara);
-						break;	
+		Text text11(L"9 - Yumi", font, spriteSize*2/3);
+		text11.setPosition(spriteSize, spriteSize*11);
+		text11.setFillColor(color);
 
-					case Keyboard::Num5:
-					case Keyboard::Numpad5:
-						isChoosen = true;
-						game.getPlayer()->setSkin(daisy);
-						break;	
+		window.clear();
+		drawBackground(32, 18);
+		window.draw(text1);
+		window.draw(text2); window.draw(text3); window.draw(text4); window.draw(text5); window.draw(text6);
+		window.draw(text7); window.draw(text8); window.draw(text9); window.draw(text10); window.draw(text11);
+		window.display();
 
-					default:
-						break;
+		bool isChoosen = false;
+		Event event;
+		while(!isChoosen) {
+			while(window.pollEvent(event)) {
+				if(event.type == Event::Closed) {
+					isChoosen = true;
+					close = true;
+					game.getPlayer()->setSkin(lilith);
 				}
-		}
-	}
+				if(event.type == Event::KeyPressed)
+					switch(event.key.code) {
+						case Keyboard::Num0:
+						case Keyboard::Numpad0:
+							isChoosen = true;
+							game.getPlayer()->setSkin(batman);
+							break;
 
+						case Keyboard::Num1:
+						case Keyboard::Numpad1:
+							isChoosen = true;
+							game.getPlayer()->setSkin(coara);
+							break;
+
+						case Keyboard::Num2:
+						case Keyboard::Numpad2:
+							isChoosen = true;
+							game.getPlayer()->setSkin(daisy);
+							break;
+
+						case Keyboard::Num3:
+						case Keyboard::Numpad3:
+							isChoosen = true;
+							game.getPlayer()->setSkin(dora);
+							break;
+
+						case Keyboard::Num4:
+						case Keyboard::Numpad4:
+							isChoosen = true;
+							game.getPlayer()->setSkin(gadget);
+							break;
+
+						case Keyboard::Num5:
+						case Keyboard::Numpad5:
+							isChoosen = true;
+							game.getPlayer()->setSkin(lilith);
+							break;
+
+						case Keyboard::Num6:
+						case Keyboard::Numpad6:
+							isChoosen = true;
+							game.getPlayer()->setSkin(maestro);
+							break;
+
+						case Keyboard::Num7:
+						case Keyboard::Numpad7:
+							isChoosen = true;
+							game.getPlayer()->setSkin(pikmin);
+							break;
+
+						case Keyboard::Num8:
+						case Keyboard::Numpad8:
+							isChoosen = true;
+							game.getPlayer()->setSkin(tiboyou);
+							break;
+
+						case Keyboard::Num9:
+						case Keyboard::Numpad9:
+							isChoosen = true;
+							game.getPlayer()->setSkin(yumi);
+							break;
+
+						default:
+							break;
+					}
+			}
+		}
 	}
 }
 
