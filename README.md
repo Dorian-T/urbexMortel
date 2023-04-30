@@ -72,6 +72,7 @@ Plusieurs niveaux de difficultés sont proposés en début de partie (facile, mo
 - bin : contient les exécutables
 - data : contient les données
 	- fonts : contient les polices de caractères
+	- music : contient la musique 
 	- rooms : contient les fichiers des niveaux au format .txt
 	- skins : contient les images des skins
 	- textures : contient les images des textures
