@@ -16,7 +16,7 @@ S_PATH = src/sfml/
 S_HEADERS = $(S_PATH)gameSFML.h
 S_OBJ = obj/gameSFML.o obj/mainSFML.o
 SFML_O = -I/usr/include/SFML 
-SFML_E = -lsfml-graphics -lsfml-window -lsfml-system
+SFML_E = -lsfml-graphics -lsfml-window -lsfml-system -lsfml-audio
 
 
 all: bin/tests bin/mainTxt bin/mainSFML
