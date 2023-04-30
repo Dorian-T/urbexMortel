@@ -108,8 +108,9 @@ class Player : public Entity {
 		/**
 		 * @brief Constructeur paramétré
 		 * 
-		 * @param s
-		 * @param h
+		 * @param p
+         * @param s
+         * @param health
 		 */
 		Player(const Vector2D & p, Skin s, unsigned int health);
 
@@ -121,11 +122,18 @@ class Player : public Entity {
 		Skin getSkin() const;
 
 		/**
-		 * @brief Modifie le skin
+		 * @brief Modificateur du skin
 		 * 
-		 * @param S 
+		 * @param S
 		 */
 		void setSkin(Skin S);
+
+		/**
+		 * @brief Accesseur de hp
+		 * 
+		 * @return unsigned int 
+		 */
+		unsigned int getHp();
 
 		/**
 		 * @brief Baisse les points de vie
@@ -140,9 +148,23 @@ class Player : public Entity {
 		bool decreaseHp(unsigned int h);
 
 		/**
+		 * @brief Accesseur de timeInvincible
+		 * 
+		 * @return unsigned int 
+		 */
+		unsigned int getTimeInvincible();
+
+		/**
 		 * @brief Baisse le temps d'invincibilité
 		 */
 		void decreaseTimeInvincible();
+
+		/**
+		 * @brief Accesseur de orientation
+		 * 
+		 * @return bool
+		 */
+		bool getOrientation();
 
 		/**
 		 * @brief Déplacement vers le haut (saut)
@@ -173,14 +195,6 @@ class Player : public Entity {
 		void left(Building * B);
 
 		/**
-		 * @brief Renvoie si le joueur est sur un block ou non
-		 * 
-		 * @param b 
-		 * @return bool
-		 */
-		bool standingOnBlock(Building * b);
-
-		/**
 		 * @brief Application de la gravité
 		 * 
 		 * @param R 
@@ -188,35 +202,20 @@ class Player : public Entity {
 		void gravity(Building * B);
 
 		/**
-		 * @brief Accesseur de hp
+		 * @brief Renvoie si le joueur est sur un block ou non
 		 * 
-		 * @return unsigned int 
+		 * @param b 
+		 * @return bool
 		 */
-		unsigned int getHp();
-
-		/**
-		 * @brief Accesseur de timeInvincible
-		 * 
-		 * @return unsigned int 
-		 */
-		unsigned int getTimeInvincible();
-
-		/**
-		 * @brief Get the Orientation object
-		 * 
-		 * @return true 
-		 * @return false 
-		 */
-		bool getOrientation();
+		bool standingOnBlock(Building * B);
 
 		/**
 		 * @brief action de block famtome 
 		 * 
 		 * @param b
-		 * @return true 
-		 * @return false 
+		 * @return bool 
 		 */
-		void StandingOnGhostBlock(Building * b);
+		void StandingOnGhostBlock(Building * B);
 
 		/**
 		 * @brief Tests de non-regression

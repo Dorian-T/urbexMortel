@@ -1,15 +1,13 @@
 #include "Player.h"
 #include "../building/Room.h"
+
 #include <assert.h>
 #include <iostream>
+
 using namespace std;
 
-// Player::Player() {
-// 	skin = lilith;
-// 	hp = 0;
-// 	timeInvincible = 0;
-// 	orientation = true;
-// }
+
+// Constructeur :
 
 Player::Player(const Vector2D & P, Skin s, unsigned int health): Entity(P, 2, 1) {
 	skin = s;
@@ -17,6 +15,9 @@ Player::Player(const Vector2D & P, Skin s, unsigned int health): Entity(P, 2, 1)
 	timeInvincible = 0;
 	orientation = true;
 }
+
+
+// Accesseurs et mutateurs :
 
 Skin Player::getSkin() const {
 	return skin;
@@ -38,13 +39,27 @@ bool Player::decreaseHp(unsigned int h) {
 	return true;
 }
 
+unsigned int Player::getHp() {
+	return hp;
+}
+
+unsigned int Player::getTimeInvincible() {
+	return timeInvincible;
+}
+
 void Player::decreaseTimeInvincible() {
 	timeInvincible--;
 }
 
-void Player::up(Building * B) { // peut-etre qu'il faudra modifier en passant a la version graphique
-	if(standingOnBlock(B))
-	{
+bool Player::getOrientation() {
+	return orientation;
+}
+
+
+// Déplacements :
+
+void Player::up(Building * B) {
+	if(standingOnBlock(B)) {
 		Vector2D V;
 		V.setX(getPosition().getX());
 		if(getPosition().getY() > 1) {
@@ -54,7 +69,7 @@ void Player::up(Building * B) { // peut-etre qu'il faudra modifier en passant a 
 			else if(i > 0) decreaseHp(i);
 			else if(i == -3) {
 				V.setY(V.getY()-2);
-				Obstacle o =B->getCurrentRoom()->getObstacle(V);
+				Obstacle o = B->getCurrentRoom()->getObstacle(V);
 				if(o == barbedWire) decreaseHp(1);
 				if(o == nothing) setPosition(V);
 			}
@@ -75,7 +90,7 @@ int Player::isMovePossibleUp(const Vector2D & position, Room * R) const {
 
 bool Player::right(Building * B) {
 	Vector2D V;
-	bool b=true;
+	bool b = true;
 	orientation = true;
 	V.setY(getPosition().getY());
 	V.setX(getPosition().getX() + 1);
@@ -84,7 +99,7 @@ bool Player::right(Building * B) {
 	else if(i > 0) decreaseHp(i);
 	else if(i == -2) {
 		b = B->finishRoom();
-		if(b)setPosition(Vector2D(1,B->getCurrentRoom()->getDimY()-2));
+		if(b) setPosition(Vector2D(1,B->getCurrentRoom()->getDimY()-2));
 	}
 	else if (i == -4) {
 		setPosition (V);
@@ -152,21 +167,7 @@ int Player::isMovePossibleDown(const Vector2D & position, Room * R) const {
 	return 0;
 }
 
-bool Player::standingOnBlock(Building * B) {
-	Vector2D V;
-	V.setX(getPosition().getX());
-	V.setY(getPosition().getY() + 1);
-	Obstacle o = B->getCurrentRoom()->getObstacle(V);
-	if(o == trapdoor || o == ladder || o == barbedWire || o == block || o == potion || o == ghostBlock) {
-		return true; 
-	}
-	V.setY(getPosition().getY());
-	o = B->getCurrentRoom()->getObstacle(V);
-	if(o == ladder) {return true;}
-	return false ;
-}
-
-void Player::gravity(Building * B) { // a modifier : probleme avec les trappes
+void Player::gravity(Building * B) {
 	Vector2D V;
 	V.setX(getPosition().getX());
 	V.setY(getPosition().getY());
@@ -188,24 +189,18 @@ int Player::isMovePossibleGravity(const Vector2D & position, Room * R) const {
 	return 0;
 }
 
-void Player::drinkPotion(Building & B) {
-	unsigned int tt = B.getTotalTime();
-	unsigned int tl = B.getTimeLeft();
-	if(tl + 300 > tt) tl = tt;
-	else tl += 300;
-	B.setTimeLeft(tl);
-}
-
-unsigned int Player::getHp() {
-	return hp;
-}
-
-unsigned int Player::getTimeInvincible() {
-	return timeInvincible;
-}
-
-bool Player::getOrientation() {
-	return orientation;
+bool Player::standingOnBlock(Building * B) {
+	Vector2D V;
+	V.setX(getPosition().getX());
+	V.setY(getPosition().getY() + 1);
+	Obstacle o = B->getCurrentRoom()->getObstacle(V);
+	if(o == trapdoor || o == ladder || o == barbedWire || o == block || o == potion || o == ghostBlock)
+		return true; 
+	V.setY(getPosition().getY());
+	o = B->getCurrentRoom()->getObstacle(V);
+	if(o == ladder)
+		return true;
+	return false ;
 }
 
 void Player::StandingOnGhostBlock(Building * b) {
@@ -218,29 +213,62 @@ void Player::StandingOnGhostBlock(Building * b) {
 	}
 }
 
+
+void Player::drinkPotion(Building & B) {
+	unsigned int tt = B.getTotalTime();
+	unsigned int tl = B.getTimeLeft();
+	if(tl + 300 > tt) tl = tt;
+	else tl += 300;
+	B.setTimeLeft(tl);
+}
+
+
 void Player::regressionTest() { // a modifier
 	cout << endl << "Test de la classe Player" << endl;
 
-	assert(getPosition().getX() == 0 && getPosition().getY() == 0 && getHeight() == 0 && getWidth() == 0);
-	assert(skin == lilith && hp == 0 && timeInvincible == 0);
-	cout << "\tconstructeur par defaut : OK" << endl;
-
-	Player P(Vector2D(2, 3), dora, 3);
-	assert(P.getPosition().getX() == 2 && P.getPosition().getY() == 3 && P.getHeight() == 2 && P.getWidth() == 1);
-	assert(P.skin == dora), assert(P.hp == 3); assert(P.timeInvincible == 0);
+	assert(getPosition().getX() == 2 && getPosition().getY() == 3);
+	assert(getHeight() == 2 && getWidth() == 1);
+	assert(skin == dora), assert(hp == 3); assert(timeInvincible == 0); assert(orientation == true);
 	cout << "\tconstructeur parametre : OK" << endl;
 
-	assert(P.decreaseHp(1) == true);
-	assert(P.hp == 2);
-	assert(P.timeInvincible == 20);
-	P.decreaseTimeInvincible();
-	assert(P.timeInvincible == 19);
+	assert(getSkin() == skin);
+	cout << "\tgetSkin : OK" << endl;
+
+	setSkin(gadget);
+	assert(getSkin() == gadget);
+	cout << "\tsetSkin : OK" << endl;
+
+	assert(getHp() == hp);
+	cout << "\tgetHp : OK" << endl;
+
+	assert(decreaseHp(1) == true);
+	assert(hp == 2);
+	assert(timeInvincible == 20);
+	decreaseTimeInvincible();
+	assert(timeInvincible == 19);
 	cout << "\tdecreaseTimeInvincible : OK" << endl;
+
+	assert(decreaseHp(1) == true);
+	assert(hp == 2);
 	for(unsigned int i = 0; i < 19; i++)
-		P.decreaseTimeInvincible();
-	assert(P.decreaseHp(2) == false);
-	assert(P.hp == 0);
+		decreaseTimeInvincible();
+	assert(decreaseHp(2) == false);
+	assert(hp == 0);
 	cout << "\tdecreaseHp : OK" << endl;
 
+	assert(getTimeInvincible() == timeInvincible);
+	cout << "\tgetTimeInvincible : OK" << endl;
+
+	assert(getOrientation() == orientation);
+	cout << "\tgetOrientation : OK" << endl;
+
+	Building B(PATH_ROOMS + "test.txt");
+	B.setTimeLeft(0);
+	drinkPotion(B);
+	assert(B.getTimeLeft() == 300);
+	cout << "\tdrinkPotion : OK" << endl;
+
+	// Les tests des déplacements sont effectués dans tests.cpp
+
 	cout << "Test de la classe Player : OK" << endl;
- }
+}
