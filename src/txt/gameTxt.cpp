@@ -25,6 +25,8 @@ void txtDraw(WinTXT & win, const Game & ga) {
 		for(unsigned int y=0;y<building->getCurrentRoom()->getDimY();++y) {
 			c = (char) building->getCurrentRoom()->getObstacle(Vector2D(x,y));
 			if( c == '.') win.print(x, y, ' ');
+			else if( c == 'O') win.print(x, y, '#');
+			else if( c == '%') win.print(x, y, '#');
 			else win.print(x, y, c);
 		}	
 	
