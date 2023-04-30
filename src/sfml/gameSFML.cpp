@@ -346,8 +346,8 @@ void GameSFML::drawStory() {
 	wstring story2 = L"le bâtiment Nautibus. Alors que vous vous êtes déjà bien enfoncé dans ce lieu de légende,";
 	wstring story3 = L"vous faites tomber une fiole étrange au sol...";
 	wstring story4 = L"MALHEUR ! Elle se brise et son contenu s'évapore rapidement. Vous commencez à tousser";
-	wstring story5 = L"violemment. Il faut à tout prix sortir du bâtiment pour rejoindre l'hôpital le plus proche";
-	wstring story6 = L"avant que vous ne soyez totalement infecté.";
+	wstring story5 = L"violemment. Il faut à tout prix sortir du bâtiment pour rejoindre l'hôpital le plus";
+	wstring story6 = L"proche avant que vous ne soyez totalement infecté.";
 	wstring story7 = L"DEPECHEZ-VOUS !";
 
 	Font font;
@@ -485,7 +485,7 @@ void GameSFML::drawString(const wstring & str, unsigned int y) {
 
 void GameSFML::drawDifficultyMenu(Game & game) {
 	if(close) {
-			game.setDifficulty(1);
+			game.setDifficulty(1); // !!!!!!!!!
 		}
 	else {
 	Font font;
@@ -548,7 +548,7 @@ void GameSFML::drawDifficultyMenu(Game & game) {
 	Event event;
 	while(!isChoosen) {
 		while(window.pollEvent(event)) {
-			if(event.type == Event::Closed) {
+			if(event.type == Event::Closed) { // !!!!!!!!!
 				close = true;
 				isChoosen = true;
 				game.setDifficulty(1);
@@ -582,12 +582,6 @@ void GameSFML::drawDifficultyMenu(Game & game) {
 }
 
 void GameSFML::drawSkinMenu(Game & game) {
-	Skin S;
-	S = lilith;
-	if(close) {
-			game.getPlayer()->setSkin(S);
-		}
-	else {
 	Font font;
 	font.loadFromFile(PATH_FONTS + "elegantTypeWriter-bold.ttf");
 
@@ -628,53 +622,45 @@ void GameSFML::drawSkinMenu(Game & game) {
 	while(!isChoosen) {
 		while(window.pollEvent(event)) {
 			if(event.type == Event::Closed) {
-				close = true;
 				isChoosen = true;
-				game.getPlayer()->setSkin(S);
+				game.getPlayer()->setSkin(lilith);
 			}
 			if(event.type == Event::KeyPressed)
 				switch(event.key.code) {
 					case Keyboard::Num1:
 					case Keyboard::Numpad1:
 						isChoosen = true;
-						S = lilith ;
-						game.getPlayer()->setSkin(S);
+						game.getPlayer()->setSkin(lilith);
 						break;
 
 					case Keyboard::Num2:
 					case Keyboard::Numpad2:
 						isChoosen = true;
-						S = dora ;
-						game.getPlayer()->setSkin(S);
+						game.getPlayer()->setSkin(dora);
 						break;
 
 					case Keyboard::Num3:
 					case Keyboard::Numpad3:
 						isChoosen = true;
-						S = batman ;
-						game.getPlayer()->setSkin(S);
+						game.getPlayer()->setSkin(batman);
 						break;
 
 					case Keyboard::Num4:
 					case Keyboard::Numpad4:
 						isChoosen = true;
-						S = Clara ;
-						game.getPlayer()->setSkin(S);
+						game.getPlayer()->setSkin(clara);
 						break;	
 
 					case Keyboard::Num5:
 					case Keyboard::Numpad5:
 						isChoosen = true;
-						S = Daisy ;
-						game.getPlayer()->setSkin(S);
+						game.getPlayer()->setSkin(daisy);
 						break;	
-
 
 					default:
 						break;
 				}
 		}
-	}
 	}
 }
 
@@ -755,6 +741,7 @@ void GameSFML::drawMenu() {
 						close=false;
 						loop=false;
 						break;
+
 					default:
 						break;
 				}
@@ -817,6 +804,7 @@ void GameSFML::Loop(Game & game) {
 					case Keyboard::T:
 						textures.clear();
 						loadTextures();
+						skins.clear();
 						loadSkins();
 						break;
 
@@ -849,11 +837,17 @@ void GameSFML::randomizeTextures() {
 
 void GameSFML::randomizeSkins() {
 	Texture tmp;
-	for(unsigned int i = 0; i < skins.size(); ++i) {
-		int j = rand() % skins.size();
-		tmp = skins[i];
-		skins[i] = skins[j];
-		skins[j] = tmp;
+	for(unsigned int i = 0; i < skins.size()/2; ++i) {
+		int j = rand() % skins.size()/2;
+		tmp = skins[i*2];
+		skins[i*2] = skins[j*2];
+		skins[j*2] = tmp;
+	}
+	for(unsigned int i = 0; i < skins.size()/2; ++i) {
+		int j = rand() % skins.size()/2;
+		tmp = skins[i*2+1];
+		skins[i*2+1] = skins[j*2+1];
+		skins[j*2+1] = tmp;
 	}
 }
 
