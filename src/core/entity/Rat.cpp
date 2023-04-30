@@ -6,10 +6,12 @@ using namespace std;
 
 Rat::Rat() : Entity() {
 	direction = 0;
+	time = 0;
 }
 
 Rat::Rat(Vector2D p, unsigned int h, unsigned int w) : Entity(p, h, w) {
 	direction = 0;
+	time = 0; 
 }
 
 int Rat::getDirection() const {
