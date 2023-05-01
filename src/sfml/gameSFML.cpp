@@ -1,7 +1,7 @@
 #include <SFML/Graphics.hpp>
 #include <SFML/Audio.hpp>
 #include "../core/entity/Vector2D.h"
-#include "../core/building/Room.h" // utile ?
+#include "../core/building/Room.h"
 #include "../core/Game.h"
 #include "gameSFML.h"
 
