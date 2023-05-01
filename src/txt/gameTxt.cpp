@@ -1,88 +1,100 @@
-#include <iostream>
 #ifdef _WIN32
 #include <windows.h>
 #else
 #include <unistd.h>
 #endif // WIN32
-#include "winTxt.h"
 
-#include "../core/Game.h"
+#include "gameTxt.h"
 #include "../core/entity/Vector2D.h"
 #include "../core/entity/Player.h"
 #include "../core/building/Building.h"
-#include "gameTxt.h"
-#include <unistd.h>
 
-void txtDraw(WinTXT & win, const Game & ga) {
-	Building* building = ga.getBuilding();
-	Player* player = ga.getPlayer();
-	
-	
-	win.clear();
+#include <iostream>
+
+
+GameTXT::GameTXT(const Game & G) {
+	window = new WinTXT(33, 19);
+	termClear();
+}
+
+void GameTXT::draw(const Game & G) {
+	window->clear();
+
+	// affichage de la salle :
+	Room * room = G.getBuilding()->getCurrentRoom();
 	char c;
+	for(unsigned int x=0; x<room->getDimX(); ++x)
+		for(unsigned int y=0; y<room->getDimY(); ++y) {
+			c = (char) room->getObstacle(Vector2D(x,y));
+			if(c == '.')		window->print(x, y, ' ');
+			else if( c == 'O')	window->print(x, y, '#');
+			else if( c == '%')	window->print(x, y, '#');
+			else				window->print(x, y, c);
+		}
 
-	for(unsigned int x=0;x<building->getCurrentRoom()->getDimX();++x)
-		for(unsigned int y=0;y<building->getCurrentRoom()->getDimY();++y) {
-			c = (char) building->getCurrentRoom()->getObstacle(Vector2D(x,y));
-			if( c == '.') win.print(x, y, ' ');
-			else if( c == 'O') win.print(x, y, '#');
-			else if( c == '%') win.print(x, y, '#');
-			else win.print(x, y, c);
-		}	
-	
 	// affichage du joueur :
-	win.print(player->getPosition().getX(),player->getPosition().getY(),'X');
-	win.print(player->getPosition().getX(),player->getPosition().getY()-1,'O');
-	
+	Player * player = G.getPlayer();
+	window->print(player->getPosition().getX(), player->getPosition().getY(), 'X');
+	window->print(player->getPosition().getX(), player->getPosition().getY()-1, 'O');
+
 	// affichage des rats :
-	for(unsigned int i = 0; i < ga.getNbRat(); i++) {
-		Rat* rat = ga.getRat(i);
-		win.print(rat->getPosition().getX(), ga.getRat(i)->getPosition().getY(), 'R');
+	for(unsigned int i = 0; i < G.getNbRat(); i++) {
+		Rat * rat = G.getRat(i);
+		window->print(rat->getPosition().getX(), rat->getPosition().getY(), 'R');
 	}
 
 	// affichage des araignées :
-	for(unsigned int i = 0; i < ga.getNbSpider(); i++) {
-		Spider* spider = ga.getSpider(i);
-		win.print(spider->getPosition().getX(), ga.getSpider(i)->getPosition().getY(), 'S');
+	for(unsigned int i = 0; i < G.getNbSpider(); i++) {
+		Spider * spider = G.getSpider(i);
+		window->print(spider->getPosition().getX(), spider->getPosition().getY(), 'S');
 		int j = 1;
 		// affichage de la toile :
-		while(building->getCurrentRoom()->getObstacle(Vector2D(spider->getPosition().getX(), spider->getPosition().getY()-j)) == nothing) {
-			win.print(spider->getPosition().getX(), spider->getPosition().getY()-j, '|');
+		while(room->getObstacle(Vector2D(spider->getPosition().getX(), spider->getPosition().getY()-j)) == nothing) {
+			window->print(spider->getPosition().getX(), spider->getPosition().getY()-j, '|');
 			j++;
 		}
 	}
 
-	unsigned int hp = player->getHp();
-	unsigned int TimeInv = player->getTimeInvincible();
-	win.print(0,18,'H');
-	win.print(1,18,':');
-	win.print(2,18,std::to_string(hp).c_str());
-	win.print(4,18,'I');
-	win.print(5,18,':');
-	win.print(6,18,std::to_string(TimeInv).c_str());
-	win.print(9,18,'R');
-	win.print(10,18,':');
-	win.print(11,18,std::to_string(building->getIntCurrentRoom()+1).c_str());
-	win.print(12,18,'/');
-	win.print(13,18,std::to_string(building->getNbRoom()).c_str());
-	win.print(15,18,'T');
-	win.print(16,18,':');
-	win.print(17,18,std::to_string(ga.getBuilding()->getTimeLeft()).c_str());
+	// affichage des informations :
 
-	win.draw();
+	// affichage de la vie du joueur :
+	unsigned int hp = player->getHp();
+	window->print(0,18,'H');
+	window->print(1,18,':');
+	window->print(2,18,std::to_string(hp).c_str());
+
+	// affichage du temps d'invincibilité du joueur :
+	unsigned int timeInv = player->getTimeInvincible();
+	window->print(4,18,'I');
+	window->print(5,18,':');
+	window->print(6,18,std::to_string(timeInv).c_str());
+
+	// affichage de la salle actuelle :
+	Building * building = G.getBuilding();
+	window->print(9,18,'R');
+	window->print(10,18,':');
+	window->print(11,18,std::to_string(building->getIntCurrentRoom()+1).c_str());
+	window->print(12,18,'/');
+	window->print(13,18,std::to_string(building->getNbRoom()).c_str());
+
+	// affichage du temps restant :
+	window->print(15,18,'T');
+	window->print(16,18,':');
+	window->print(17,18,std::to_string(G.getBuilding()->getTimeLeft()).c_str());
+
+	window->draw();
 }
 
-void txtLoop (Game & ga) {
-	WinTXT win (ga.getBuilding()->getCurrentRoom()->getDimX()+1,ga.getBuilding()->getCurrentRoom()->getDimY()+1);
+void GameTXT::loop(Game & G) {
 	int time = 3;
-	bool ok = true;
+	bool close = false;
 	int c;
 
-	ga.addRat();
-	ga.addSpider();
+	G.addRat();
+	G.addSpider();
 
-	while (ok) {
-		txtDraw(win,ga);
+	while (!close) {
+		draw(G);
 
 		#ifdef _WIN32
 		Sleep(100);
@@ -90,31 +102,36 @@ void txtLoop (Game & ga) {
 		usleep(100000);
 		#endif // WIN32
 
-		time=ga.update(time);
+		time = G.update(time);
 
-		c = win.getCh();
+		c = window->getCh();
 		switch (c) {
-			case 'q':
-				ga.keyboardAction('q');
-				break;
-			case 's':
-				ga.keyboardAction('s');
-				break;
+
 			case 'z':
-			if(ga.getPlayer()->standingOnBlock(*ga.getBuilding()->getCurrentRoom())) {
-				ga.keyboardAction('z');
-				time = 4;
-			}
+				if(G.getPlayer()->standingOnBlock(*G.getBuilding()->getCurrentRoom())) {
+					G.getPlayer()->up(*G.getBuilding());
+					time = 4;
+				}
 				break;
+
+			case 'q':
+				G.getPlayer()->left(*G.getBuilding());
+				break;
+
+			case 's':
+				G.getPlayer()->down(*G.getBuilding());
+				break;
+
 			case 'd':
-				ok = ga.keyboardAction('d');
+				close = !G.getPlayer()->right(*G.getBuilding());
 				break;
+
 			case 'p':
-				ok = false;
+				close = true;
 				break;
 		}
 
-		if (ga.getPlayer()->getHp() == 0 || ga.getBuilding()->getTimeLeft() == 0)
-			ok = false;
+		if (G.getPlayer()->getHp() == 0 || G.getBuilding()->getTimeLeft() == 0)
+			close = true;
 	}
 }

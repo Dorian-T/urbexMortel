@@ -501,104 +501,103 @@ void GameSFML::drawString(const wstring & str, unsigned int y) {
 }
 
 void GameSFML::drawDifficultyMenu(Game & game) {
-	if(close) {
-			game.setDifficulty(1);
-		}
+	if(close)
+		game.setDifficulty(1);
 	else {
-	Font font;
-	font.loadFromFile(PATH_FONTS + "elegantTypeWriter-bold.ttf");
+		Font font;
+		font.loadFromFile(PATH_FONTS + "elegantTypeWriter-bold.ttf");
 
-	Color color(245, 245, 245, 255);
+		Color color(245, 245, 245, 255);
 
-	Text text1(L"Choisissez votre difficulté :", font, spriteSize*2/3);
-	text1.setPosition(spriteSize, spriteSize*1);
-	text1.setFillColor(color);
+		Text text1(L"Choisissez votre difficulté :", font, spriteSize*2/3);
+		text1.setPosition(spriteSize, spriteSize*1);
+		text1.setFillColor(color);
 
-	Text text2(L"1 - Facile", font, spriteSize*2/3);
-	text2.setPosition(spriteSize, spriteSize*2);
-	text2.setFillColor(color);
+		Text text2(L"1 - Facile", font, spriteSize*2/3);
+		text2.setPosition(spriteSize, spriteSize*2);
+		text2.setFillColor(color);
 
-	Text text3(L"2 - Moyen", font, spriteSize*2/3);
-	text3.setPosition(spriteSize, spriteSize*3);
-	text3.setFillColor(color);
+		Text text3(L"2 - Moyen", font, spriteSize*2/3);
+		text3.setPosition(spriteSize, spriteSize*3);
+		text3.setFillColor(color);
 
-	Text text4(L"3 - Difficile", font, spriteSize*2/3);
-	text4.setPosition(spriteSize, spriteSize*4);
-	text4.setFillColor(color);
+		Text text4(L"3 - Difficile", font, spriteSize*2/3);
+		text4.setPosition(spriteSize, spriteSize*4);
+		text4.setFillColor(color);
 
-	Text text5(L"Rappel des touches : ", font, spriteSize*2/3);
-	text5.setPosition(spriteSize, spriteSize*7);
-	text5.setFillColor(color);
+		Text text5(L"Rappel des touches : ", font, spriteSize*2/3);
+		text5.setPosition(spriteSize, spriteSize*7);
+		text5.setFillColor(color);
 
-	Text text6(L"échap : pour quitter", font, spriteSize*2/3);
-	text6.setPosition(spriteSize, spriteSize*8);
-	text6.setFillColor(color);
+		Text text6(L"échap : pour quitter", font, spriteSize*2/3);
+		text6.setPosition(spriteSize, spriteSize*8);
+		text6.setFillColor(color);
 
-	Text text7(L"z : sauter", font, spriteSize*2/3);
-	text7.setPosition(spriteSize, spriteSize*9);
-	text7.setFillColor(color);
+		Text text7(L"z : sauter", font, spriteSize*2/3);
+		text7.setPosition(spriteSize, spriteSize*9);
+		text7.setFillColor(color);
 
-	Text text8(L"s : descendre", font, spriteSize*2/3);
-	text8.setPosition(spriteSize, spriteSize*10);
-	text8.setFillColor(color);
+		Text text8(L"s : descendre", font, spriteSize*2/3);
+		text8.setPosition(spriteSize, spriteSize*10);
+		text8.setFillColor(color);
 
-	Text text9(L"q : pour aller à gauche", font, spriteSize*2/3);
-	text9.setPosition(spriteSize, spriteSize*11);
-	text9.setFillColor(color);
+		Text text9(L"q : pour aller à gauche", font, spriteSize*2/3);
+		text9.setPosition(spriteSize, spriteSize*11);
+		text9.setFillColor(color);
 
-	Text text10(L"d : pour aller à droite", font, spriteSize*2/3);
-	text10.setPosition(spriteSize, spriteSize*12);
-	text10.setFillColor(color);
+		Text text10(L"d : pour aller à droite", font, spriteSize*2/3);
+		text10.setPosition(spriteSize, spriteSize*12);
+		text10.setFillColor(color);
 
-	Text text11(L"r : pour une surprise", font, spriteSize*2/3);
-	text11.setPosition(spriteSize, spriteSize*13);
-	text11.setFillColor(color);
+		Text text11(L"r : pour une surprise", font, spriteSize*2/3);
+		text11.setPosition(spriteSize, spriteSize*13);
+		text11.setFillColor(color);
 
-	Text text12(L"t : pour enlever la surprise", font, spriteSize*2/3);
-	text12.setPosition(spriteSize, spriteSize*14);
-	text12.setFillColor(color);
+		Text text12(L"t : pour enlever la surprise", font, spriteSize*2/3);
+		text12.setPosition(spriteSize, spriteSize*14);
+		text12.setFillColor(color);
 
-	window.clear();
-	drawBackground(32, 18);
-	window.draw(text1);		window.draw(text2);		window.draw(text3);		window.draw(text4);
-	window.draw(text5);		window.draw(text6);		window.draw(text7);		window.draw(text8);
-	window.draw(text9);		window.draw(text10);	window.draw(text11);	window.draw(text12);
-	window.display();
+		window.clear();
+		drawBackground(32, 18);
+		window.draw(text1);		window.draw(text2);		window.draw(text3);		window.draw(text4);
+		window.draw(text5);		window.draw(text6);		window.draw(text7);		window.draw(text8);
+		window.draw(text9);		window.draw(text10);	window.draw(text11);	window.draw(text12);
+		window.display();
 
-	bool isChoosen = false;
-	Event event;
-	while(!isChoosen) {
-		while(window.pollEvent(event)) {
-			if(event.type == Event::Closed) {
-				close = true;
-				isChoosen = true;
-				game.setDifficulty(1);
-			}
-			if(event.type == Event::KeyPressed)
-				switch(event.key.code) {
-					case Keyboard::Num1:
-					case Keyboard::Numpad1:
-						isChoosen = true;
-						game.setDifficulty(1);
-						break;
-
-					case Keyboard::Num2:
-					case Keyboard::Numpad2:
-						isChoosen = true;
-						game.setDifficulty(2);
-						break;
-
-					case Keyboard::Num3:
-					case Keyboard::Numpad3:
-						isChoosen = true;
-						game.setDifficulty(3);
-						break;
-
-					default:
-						break;
+		bool isChoosen = false;
+		Event event;
+		while(!isChoosen) {
+			while(window.pollEvent(event)) {
+				if(event.type == Event::Closed) {
+					close = true;
+					isChoosen = true;
+					game.setDifficulty(1);
 				}
+				if(event.type == Event::KeyPressed)
+					switch(event.key.code) {
+						case Keyboard::Num1:
+						case Keyboard::Numpad1:
+							isChoosen = true;
+							game.setDifficulty(1);
+							break;
+
+						case Keyboard::Num2:
+						case Keyboard::Numpad2:
+							isChoosen = true;
+							game.setDifficulty(2);
+							break;
+
+						case Keyboard::Num3:
+						case Keyboard::Numpad3:
+							isChoosen = true;
+							game.setDifficulty(3);
+							break;
+
+						default:
+							break;
+					}
+			}
 		}
-	}
 	}
 }
 
@@ -824,7 +823,7 @@ void GameSFML::drawMenu() {
 	}
 }
 
-void GameSFML::Loop(Game & game) {
+void GameSFML::loop(Game & game) {
 	if(close)
 		window.close(); 
 	else {
@@ -891,7 +890,7 @@ void GameSFML::Loop(Game & game) {
 					}
 			}
 			draw(game);
-			if(game.getPlayer()->getHp()==0 || game.getBuilding()->getTimeLeft() == 0) {
+			if(game.getPlayer()->getHp() == 0 || game.getBuilding()->getTimeLeft() == 0) {
 				drawEnd(false);
 				window.close();
 			}
