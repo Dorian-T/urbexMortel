@@ -2,11 +2,9 @@
 #include <SFML/Audio.hpp>
 #include "gameSFML.h"
 
-#include <iostream>
 #include <time.h>
 #include <stdlib.h>
 
-using namespace std;
 using namespace sf;
 
 int main() {

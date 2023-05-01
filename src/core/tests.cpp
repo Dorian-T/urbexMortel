@@ -117,7 +117,7 @@ void movementPlayerRegressionTest() {
 void movementRatRegressionTest() {
 	cout << endl << "Test des mouvements de Rat" << endl;
 	Building B(PATH_ROOMS + "test.txt");
-	Rat R(Vector2D(1, 7), 1, 1);
+	Rat R(Vector2D(1, 7));
 
 	// TODO
 }
@@ -162,7 +162,7 @@ int main () {
 	Player P(Vector2D(2, 3), dora, 3);
 	P.regressionTest();
 
-	Rat Ra;
+	Rat Ra(Vector2D(6, 8));
 	Ra.regressionTest();
 
 	Spider Sp;

@@ -31,7 +31,7 @@ class Rat: public Entity {
 		 * 
 		 * @param B 
 		 */
-		void findDirection(Building * B, Player * P);
+		void findDirection(const Player & P);
 
 		/**
 		 * @brief Verifie si le joueur est a proximité
@@ -39,7 +39,7 @@ class Rat: public Entity {
 		 * @param B 
 		 * @return bool
 		 */
-		bool isPlayerArround(Building * B, Player * P) const;
+		bool isPlayerArround(const Player & P) const;
 
 		/**
 		 * @brief Verifie si le déplacement est possible
@@ -48,7 +48,7 @@ class Rat: public Entity {
 		 * @param V
 		 * @return bool
 		 */
-		bool isMovePossible(Building *B, const Vector2D & V) const;
+		bool isMovePossible(const Room & R, const Vector2D & V) const;
 
 		/**
 		 * @brief Verifie si le déplacement vers le bas est possible
@@ -57,24 +57,16 @@ class Rat: public Entity {
 		 * @param R
 		 * @return bool
 		 */
-		bool isMovePossibleGravity(const Vector2D & position, Room * R) const;
+		bool isMovePossibleGravity(const Room & R, const Vector2D & V) const;
 
 	public:
-
-		/**
-		 * @brief Constructeur par défaut
-		 */
-		Rat();
 
 		/**
 		 * @brief Constructeur paramétré
 		 * 
 		 * @param p
-		 * @param h
-		 * @param w
-		 * @param d
 		 */
-		Rat(Vector2D p, unsigned int h, unsigned int w);
+		Rat(Vector2D p);
 
 		/**
 		 * @brief Accesseur de la direction
@@ -88,14 +80,14 @@ class Rat: public Entity {
 		 * 
 		 * @param B
 		 */
-		void move(Building * B, Player * P);
+		void move(const Room & R, const Player & P);
 
 		/**
 		 * @brief Application de la gravité
 		 * 
 		 * @param B
 		 */
-		void gravity(Building * B);
+		void gravity(const Room & R);
 
 		/**
 		 * @brief Test de non-régression

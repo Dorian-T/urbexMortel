@@ -86,7 +86,7 @@ bool Game::changeRoom() {
 
 void Game::addRat() {
 	for(unsigned int i = building->getCurrentRoom()->getNbRat(); i > 0; i--)
-		rats.push_back(new Rat(*building->getCurrentRoom()->getRat(i-1), 1, 1));
+		rats.push_back(new Rat(*building->getCurrentRoom()->getRat(i-1)));
 }
 
 void Game::removeRat() {
@@ -141,8 +141,8 @@ int Game::update (int time) {
 		addSpider();
 	}
 	for(unsigned int i = 0; i < getNbRat(); i++) {
-		rats[i]->move(building, player);
-		rats[i]->gravity(building);
+		rats[i]->move(*building->getCurrentRoom(), *player);
+		rats[i]->gravity(*building->getCurrentRoom());
 	}
 	for(unsigned int i = 0; i < getNbSpider(); i++)
 		spiders[i]->move(building);
