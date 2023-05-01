@@ -30,15 +30,26 @@ void txtDraw(WinTXT & win, const Game & ga) {
 			else win.print(x, y, c);
 		}	
 	
+	// affichage du joueur :
 	win.print(player->getPosition().getX(),player->getPosition().getY(),'X');
 	win.print(player->getPosition().getX(),player->getPosition().getY()-1,'O');
+	
+	// affichage des rats :
 	for(unsigned int i = 0; i < ga.getNbRat(); i++) {
 		Rat* rat = ga.getRat(i);
 		win.print(rat->getPosition().getX(), ga.getRat(i)->getPosition().getY(), 'R');
 	}
+
+	// affichage des araignées :
 	for(unsigned int i = 0; i < ga.getNbSpider(); i++) {
 		Spider* spider = ga.getSpider(i);
 		win.print(spider->getPosition().getX(), ga.getSpider(i)->getPosition().getY(), 'S');
+		int j = 1;
+		// affichage de la toile :
+		while(building->getCurrentRoom()->getObstacle(Vector2D(spider->getPosition().getX(), spider->getPosition().getY()-j)) == nothing) {
+			win.print(spider->getPosition().getX(), spider->getPosition().getY()-j, '|');
+			j++;
+		}
 	}
 
 	unsigned int hp = player->getHp();
