@@ -825,78 +825,77 @@ void GameSFML::drawMenu() {
 }
 
 void GameSFML::Loop(Game & game) {
-	if(close) {
+	if(close)
 		window.close(); 
-	}
 	else {
-	window.setKeyRepeatEnabled(false);
-	Clock cl;
-	int time = 3;
-	bool finish;
-	while(window.isOpen() || close) {
-		float elapsed = cl.getElapsedTime().asMilliseconds();
-		if(elapsed > 100) {
-		time = game.update(time);
-		cl.restart();
-		};
-		Event event;
-		while(window.pollEvent(event)) {
-			elapsed = cl.getElapsedTime().asMilliseconds();
+		window.setKeyRepeatEnabled(false);
+		Clock cl;
+		int time = 3;
+		bool finish;
+		while(window.isOpen() || close) {
+			float elapsed = cl.getElapsedTime().asMilliseconds();
 			if(elapsed > 100) {
 			time = game.update(time);
 			cl.restart();
 			};
-			if(event.type == Event::Closed)
-			window.close();
-			else if(event.type == Event::KeyPressed) 
-				switch(event.key.code) {
-					case Keyboard::Z:
-						if(game.getPlayer()->standingOnBlock(game.getBuilding())) time = 3;
-						game.getPlayer()->up(game.getBuilding());
-						break;
+			Event event;
+			while(window.pollEvent(event)) {
+				elapsed = cl.getElapsedTime().asMilliseconds();
+				if(elapsed > 100) {
+				time = game.update(time);
+				cl.restart();
+				};
+				if(event.type == Event::Closed)
+				window.close();
+				else if(event.type == Event::KeyPressed) 
+					switch(event.key.code) {
+						case Keyboard::Z:
+							if(game.getPlayer()->standingOnBlock(*game.getBuilding()->getCurrentRoom())) time = 3;
+							game.getPlayer()->up(*game.getBuilding());
+							break;
 
-					case Keyboard::D:
-						finish=game.getPlayer()->right(game.getBuilding());
-						if(!finish) {
-							drawEnd(true);
-							window.close();
-						}
-						break;
+						case Keyboard::D:
+							finish = game.getPlayer()->right(*game.getBuilding());
+							if(!finish) {
+								drawEnd(true);
+								window.close();
+							}
+							break;
 
-					case Keyboard::S:
-						game.getPlayer()->down(game.getBuilding());
-						break;
+						case Keyboard::S:
+							game.getPlayer()->down(*game.getBuilding());
+							break;
 
-					case Keyboard::Q:
-						game.getPlayer()->left(game.getBuilding());
-						break;
+						case Keyboard::Q:
+							game.getPlayer()->left(*game.getBuilding());
+							break;
 
-					case Keyboard::R:
-						randomizeTextures();
-						randomizeSkins();
-						break;
+						case Keyboard::R:
+							randomizeTextures();
+							randomizeSkins();
+							break;
 
-					case Keyboard::T:
-						textures.clear();
-						loadTextures();
-						skins.clear();
-						loadSkins();
-						break;
+						case Keyboard::T:
+							textures.clear();
+							loadTextures();
+							skins.clear();
+							loadSkins();
+							break;
 
-					case Keyboard::Escape:
-						drawMenu();
-						break;
+						case Keyboard::Escape:
+							drawMenu();
+							break;
 
-					default:
-						break;
-				}
+						default:
+							break;
+					}
+			}
+			draw(game);
+			if(game.getPlayer()->getHp()==0 || game.getBuilding()->getTimeLeft() == 0) {
+				drawEnd(false);
+				window.close();
+			}
 		}
-		draw(game);
-		if(game.getPlayer()->getHp()==0 || game.getBuilding()->getTimeLeft() == 0) {
-			drawEnd(false);
-			window.close();
-		}
-	}
 	}
 }
 

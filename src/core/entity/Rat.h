@@ -28,14 +28,14 @@ class Rat: public Entity {
 		/**
 		 * @brief Choisi une direction
 		 * 
-		 * @param B 
+		 * @param P
 		 */
 		void findDirection(const Player & P);
 
 		/**
 		 * @brief Verifie si le joueur est a proximité
 		 * 
-		 * @param B 
+		 * @param P
 		 * @return bool
 		 */
 		bool isPlayerArround(const Player & P) const;
@@ -43,7 +43,7 @@ class Rat: public Entity {
 		/**
 		 * @brief Verifie si le déplacement est possible
 		 * 
-		 * @param B
+		 * @param R
 		 * @param V
 		 * @return bool
 		 */
@@ -52,8 +52,8 @@ class Rat: public Entity {
 		/**
 		 * @brief Verifie si le déplacement vers le bas est possible
 		 * 
-		 * @param position
 		 * @param R
+		 * @param V
 		 * @return bool
 		 */
 		bool isMovePossibleGravity(const Room & R, const Vector2D & V) const;
@@ -70,21 +70,22 @@ class Rat: public Entity {
 		/**
 		 * @brief Accesseur de la direction
 		 * 
-		 * @return Vector2D
+		 * @return int
 		 */
 		int getDirection() const;
 
 		/**
 		 * @brief Déplacement du rat
 		 * 
-		 * @param B
+		 * @param R
+		 * @param P
 		 */
 		void move(const Room & R, const Player & P);
 
 		/**
 		 * @brief Application de la gravité
 		 * 
-		 * @param B
+		 * @param R
 		 */
 		void gravity(const Room & R);
 

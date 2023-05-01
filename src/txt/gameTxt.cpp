@@ -101,7 +101,7 @@ void txtLoop (Game & ga) {
 				ga.keyboardAction('s');
 				break;
 			case 'z':
-			if(ga.getPlayer()->standingOnBlock(ga.getBuilding())) {
+			if(ga.getPlayer()->standingOnBlock(*ga.getBuilding()->getCurrentRoom())) {
 				ga.keyboardAction('z');
 				time = 4;
 			}
