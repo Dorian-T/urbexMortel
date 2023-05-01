@@ -54,9 +54,9 @@ class Player : public Entity {
 		 * @details retourne -3 si on monte sur une trappe
 		 * @details retourne un entier positif indiquant le nombre de dégats si le déplacement est impossible
 		 * 
-		 * @param position 
 		 * @param R 
-		 * @return int 
+		 * @param V
+		 * @return int
 		 */
 		int isMovePossibleUp(const Room & R, const Vector2D & V) const;
 
@@ -68,9 +68,9 @@ class Player : public Entity {
 		 * @details retourne -4 si on boit une potion
 		 * @details retourne un entier positif indiquant le nombre de dégats si le déplacement est impossible
 		 * 
-		 * @param position 
 		 * @param R 
-		 * @return int 
+		 * @param V
+		 * @return int
 		 */
 		int isMovePossibleSide(const Room & R, const Vector2D & V) const;
 
@@ -81,9 +81,9 @@ class Player : public Entity {
 		 * @details retourne -4 si on boit une potion
 		 * @details retourne un entier positif indiquant le nombre de dégats si le déplacement est impossible
 		 * 
-		 * @param position 
 		 * @param R 
-		 * @return int 
+		 * @param V
+		 * @return int
 		 */
 		int isMovePossibleDown(const Room & R, const Vector2D & V) const;
 
@@ -93,18 +93,21 @@ class Player : public Entity {
 		 * @details retourne -1 si le déplacement est possible
 		 * @details retourne un entier positif indiquant le nombre de dégats si le déplacement est impossible
 		 * 
-		 * @param position 
-		 * @param R 
-		 * @return int 
+		 * @param R
+		 * @param V
+		 * @return int
 		 */
 		int isMovePossibleGravity(const Room & R, const Vector2D & V) const;
 
 		/**
 		 * @brief Ajoute du temps avant l'empoisonnement
+		 * 
+		 * @param B
 		 */
 		void drinkPotion(Building & B);
 
 	public:
+
 		/**
 		 * @brief Constructeur paramétré
 		 * 
@@ -142,7 +145,6 @@ class Player : public Entity {
 		 * @details renvoie faux si le joueur est mort
 		 * 
 		 * @param h
-		 * 
 		 * @return bool
 		 */
 		bool decreaseHp(unsigned int h);
@@ -150,7 +152,7 @@ class Player : public Entity {
 		/**
 		 * @brief Accesseur de timeInvincible
 		 * 
-		 * @return unsigned int 
+		 * @return unsigned int
 		 */
 		unsigned int getTimeInvincible();
 
@@ -169,42 +171,42 @@ class Player : public Entity {
 		/**
 		 * @brief Déplacement vers le haut (saut)
 		 * 
-		 * @param R
+		 * @param B
 		 */
 		void up(Building & B);
 
 		/**
 		 * @brief Déplacement vers la droite et renvoie un bool si on a fini
 		 * 
-		 * @param R 
+		 * @param B
 		 */
 		bool right(Building & B);
 
 		/**
 		 * @brief Déplacement vers le bas
 		 * 
-		 * @param R 
+		 * @param B
 		 */
 		void down(Building & B);
 
 		/**
 		 * @brief Déplacement vers la gauche
 		 * 
-		 * @param R 
+		 * @param B
 		 */
 		void left(Building & B);
 
 		/**
 		 * @brief Application de la gravité
 		 * 
-		 * @param R 
+		 * @param R
 		 */
 		void gravity(const Room & R);
 
 		/**
 		 * @brief Renvoie si le joueur est sur un block ou non
 		 * 
-		 * @param b 
+		 * @param R
 		 * @return bool
 		 */
 		bool standingOnBlock(const Room & R) const;
@@ -212,8 +214,7 @@ class Player : public Entity {
 		/**
 		 * @brief action de block famtome 
 		 * 
-		 * @param b
-		 * @return bool 
+		 * @param R
 		 */
 		void StandingOnGhostBlock(Room & R);
 
