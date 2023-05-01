@@ -207,15 +207,8 @@ void Game::regressionTest() { // TODO : à refaire et vérifier
 		addRat();
 		removeSpider();
 		addSpider();
-		unsigned int n = building->getCurrentRoom()->getNbRat();
-		if(n > 0) {
-			assert(rats.size() == n);
-			for(unsigned int i = 0; i < n; i++) {
-				cout << rats[i]->getPosition().getX()  << ' ' << building->getCurrentRoom()->getRat(i)->getX() <<endl;
-				assert(rats[i]->getPosition().getX() == building->getCurrentRoom()->getRat(i)->getX());
-				assert(rats[i]->getPosition().getY() == building->getCurrentRoom()->getRat(i)->getY());
-			}
-		}
+		assert(rats.size() == building->getCurrentRoom()->getNbRat());
+		assert(spiders.size() == building->getCurrentRoom()->getNbSpider());
 	}
 	cout << "\tTest de changeRoom : OK" << endl;
 

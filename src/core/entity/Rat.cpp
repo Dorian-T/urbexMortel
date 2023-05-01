@@ -28,7 +28,7 @@ void Rat::move(const Room & R, const Player & P) {
 		findDirection(P);
 		if(isMovePossible(R, getPosition() + Vector2D(direction, 0))) {
 			setPosition(getPosition() + Vector2D(direction, 0));
-			time += 1;
+			time += 2;
 		}
 	}
 	else if(time >1) time = 1;

@@ -37,7 +37,7 @@ Vector2D Vector2D::operator+(const Vector2D & V) const {
 }
 
 float Vector2D::distance(const Vector2D & V) const {
-	return sqrt(pow(x - V.x, 2) + pow(y - V.y, 2));
+	return sqrt(pow((int) (x - V.x), 2) + pow((int) (y - V.y), 2));
 }
 
 void Vector2D::regressionTest() {

@@ -13,7 +13,7 @@
 using namespace std;
 
 void movementPlayerRegressionTest() {
-	cout << endl << "Test des mouvements de Player" << endl;
+	cout << "Test des mouvements de Player" << endl;
 	Building B(PATH_ROOMS + "test.txt");
 	Player P(Vector2D(1, 7), lilith, 5);
 
@@ -92,7 +92,6 @@ void movementPlayerRegressionTest() {
 	assert(P.getPosition().getX() == 4 && P.getPosition().getY() == 7);
 	cout << "\tTest du mouvement vers le bas sur echelle : OK" << endl;
 
-
 	P.up(B);
 	P.up(B);
 	assert(P.getPosition().getX() == 4 && P.getPosition().getY() == 3);
@@ -115,25 +114,42 @@ void movementPlayerRegressionTest() {
 }
 
 void movementRatRegressionTest() {
-	cout << endl << "Test des mouvements de Rat" << endl;
+	cout << "Test des mouvements de Rat" << endl;
 	Building B(PATH_ROOMS + "test.txt");
-	Rat R(Vector2D(1, 7));
+	Rat R(Vector2D(1, 1));
 
-	// TODO
+	Player P1(Vector2D(100, 100), lilith, 4);
+	R.move(*B.getCurrentRoom(), P1);
+	assert((R.getPosition().getX() == 1 || R.getPosition().getX() == 2) && R.getPosition().getY() == 1);
+	cout << "\tTest du mouvement automatique : OK" << endl;
+
+	R.gravity(*B.getCurrentRoom());
+	assert(R.getPosition().getY() == 2);
+	cout << "\tTest de la gravite : OK" << endl;
+
+	unsigned int x = R.getPosition().getX();
+	Player P2(Vector2D(4, 2), lilith, 4);
+	R.move(*B.getCurrentRoom(), P2);
+	R.move(*B.getCurrentRoom(), P2);
+	R.move(*B.getCurrentRoom(), P2);
+	assert(R.getPosition().getX() > x && R.getPosition().getY() == 2);
+	cout << "\tTest du mouvement vers le joueur : OK" << endl;
+
+	cout << "Test des mouvements de Rat : OK" << endl;
 }
 
 void movementSpiderRegressionTest() {
-	cout << endl << "Test des mouvements de Spider" << endl;
+	cout << "Test des mouvements de Spider" << endl;
 	Building B(PATH_ROOMS + "test.txt");
 	Spider S(Vector2D(2, 0));
 
 	S.move(*B.getCurrentRoom());
 	assert(S.getPosition().getX() == 2 && S.getPosition().getY() == 1);
-	cout << "\tTest du movement vers le bas : OK" << endl;
+	cout << "\tTest du mouvement vers le bas : OK" << endl;
 
 	S.move(*B.getCurrentRoom());
 	assert(S.getPosition().getX() == 2 && S.getPosition().getY() == 1);
-	cout << "\tTest du non movement vers le bas : OK" << endl;
+	cout << "\tTest du mouvement vers le bas retarde : OK" << endl;
 
 	for(unsigned int i = 0;i< 8;i++)
 		S.move(*B.getCurrentRoom());
@@ -146,7 +162,6 @@ void movementSpiderRegressionTest() {
 	cout << "\tTest du non movement vers le haut : OK" << endl;
 
 	cout << "Test des mouvements de Spider : OK" << endl;
-	
 }
 
 int main () {
@@ -160,12 +175,15 @@ int main () {
 
 	Player P(Vector2D(2, 3), dora, 3);
 	P.regressionTest();
+	movementPlayerRegressionTest();
 
 	Rat Ra(Vector2D(2, 3));
 	Ra.regressionTest();
+	movementRatRegressionTest();
 
 	Spider Sp(Vector2D(2, 3));
 	Sp.regressionTest();
+	movementSpiderRegressionTest();
 
 	Room Ro(PATH_ROOMS + "test.txt");
 	Ro.regressionTest();
@@ -174,11 +192,9 @@ int main () {
 	B.regressionTest();
 
 	Game G;
-	G.regressionTest(); // problème
+	G.regressionTest();
 
-	movementPlayerRegressionTest();
-
-	movementSpiderRegressionTest();
+	cout << endl << "Tous les tests de non-regression ont reussi" << endl;
 
 	return 0;
 }

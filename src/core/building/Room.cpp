@@ -81,7 +81,7 @@ Vector2D* Room::getSpider(unsigned int i) {
 }
 
 void Room::regressionTest() {
-	cout << endl << "la classe Room" << endl;
+	cout << endl << "Test de la classe Room" << endl;
 
 	char o1, o2;
 	assert(dimX == 6 && dimY == 9);
@@ -125,5 +125,5 @@ void Room::regressionTest() {
 	assert(getSpider(0)->getX() == arraySpider[0].getX() && getSpider(0)->getY() == arraySpider[0].getY());
 	cout << "\tgetSpider : OK" << endl;
 
-	cout << "la classe Room : OK" << endl;
+	cout << "Test de la classe Room : OK" << endl;
 }
