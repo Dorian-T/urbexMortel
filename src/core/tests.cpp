@@ -125,24 +125,23 @@ void movementRatRegressionTest() {
 void movementSpiderRegressionTest() {
 	cout << endl << "Test des mouvements de Spider" << endl;
 	Building B(PATH_ROOMS + "test.txt");
-	Spider S(Vector2D(2, 0), 1, 1);
+	Spider S(Vector2D(2, 0));
 
-	S.move(&B);
+	S.move(*B.getCurrentRoom());
 	assert(S.getPosition().getX() == 2 && S.getPosition().getY() == 1);
 	cout << "\tTest du movement vers le bas : OK" << endl;
 
-	S.move(&B);
+	S.move(*B.getCurrentRoom());
 	assert(S.getPosition().getX() == 2 && S.getPosition().getY() == 1);
 	cout << "\tTest du non movement vers le bas : OK" << endl;
 
-	for(unsigned int i = 0;i< 8;i++) { 
-		S.move(&B); 
-		}
+	for(unsigned int i = 0;i< 8;i++)
+		S.move(*B.getCurrentRoom());
 	assert(S.getPosition().getX() == 2 && S.getPosition().getY() == 3);
 	assert(S.getDirection() == -1);
 	cout << "\tTest du changement de direction : OK" << endl;
 
-	S.move(&B);
+	S.move(*B.getCurrentRoom());
 	assert(S.getPosition().getX() == 2 && S.getPosition().getY() == 2);
 	cout << "\tTest du non movement vers le haut : OK" << endl;
 
@@ -162,10 +161,10 @@ int main () {
 	Player P(Vector2D(2, 3), dora, 3);
 	P.regressionTest();
 
-	Rat Ra(Vector2D(6, 8));
+	Rat Ra(Vector2D(2, 3));
 	Ra.regressionTest();
 
-	Spider Sp;
+	Spider Sp(Vector2D(2, 3));
 	Sp.regressionTest();
 
 	Room Ro(PATH_ROOMS + "test.txt");

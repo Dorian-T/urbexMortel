@@ -5,7 +5,6 @@
 #include "Entity.h"
 #include "../building/Building.h"
 
-class Building;
 
 /**
  * @brief Classe représentant un spider
@@ -32,24 +31,17 @@ class Spider: public Entity {
 		 * @param V
 		 * @return bool
 		 */
-		bool isMovePossible(Building *B, const Vector2D & V) const;
+		bool isMovePossible(const Room & R, const Vector2D & V) const;
 
 
 	public:
 
 		/**
-		 * @brief Constructeur par défaut
-		 */
-		Spider();
-
-		/**
 		 * @brief Constructeur paramétré
 		 * 
 		 * @param p
-		 * @param h
-		 * @param w
 		 */
-		Spider(Vector2D p, unsigned int h, unsigned int w);
+		Spider(Vector2D p);
 
 		/**
 		 * @brief Accesseur de la direction
@@ -63,7 +55,7 @@ class Spider: public Entity {
 		 * 
 		 * @param B
 		 */
-		void move(Building * B);
+		void move(const Room & R);
 
 		/**
 		 * @brief Test de non-régression

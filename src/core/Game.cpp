@@ -105,7 +105,7 @@ void Game::collisionRat() {
 
 void Game::addSpider() {
 	for(unsigned int i = building->getCurrentRoom()->getNbSpider(); i > 0; i--)
-		spiders.push_back(new Spider(*building->getCurrentRoom()->getSpider(i-1), 1, 1));
+		spiders.push_back(new Spider(*building->getCurrentRoom()->getSpider(i-1)));
 }
 
 void Game::removeSpider() {
@@ -145,7 +145,7 @@ int Game::update (int time) {
 		rats[i]->gravity(*building->getCurrentRoom());
 	}
 	for(unsigned int i = 0; i < getNbSpider(); i++)
-		spiders[i]->move(building);
+		spiders[i]->move(*building->getCurrentRoom());
 	collisionRat();
 	collisionSpider();
 

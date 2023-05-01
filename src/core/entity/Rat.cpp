@@ -1,5 +1,4 @@
 #include "Rat.h"
-#include "../building/Building.h"
 
 #include <assert.h>
 #include <iostream>
@@ -81,12 +80,12 @@ bool Rat::isMovePossibleGravity(const Room & R, const Vector2D & position) const
 void Rat::regressionTest() {
 	cout << endl << "Test de la classe Rat" << endl;
 
-	assert(getPosition().getX() == 6 && getPosition().getY() == 8);
+	assert(getPosition().getX() == 2 && getPosition().getY() == 3);
 	assert(getHeight() == 1 && getWidth() == 1);
 	assert(direction == 0); assert(time == 0);
-	cout << "\tconstructeur par defaut : OK" << endl;
+	cout << "\tconstructeur parametre : OK" << endl;
 
-	assert(getDirection() == 0);
+	assert(getDirection() == direction);
 	cout << "\tgetDirection : OK" << endl;
 
 	cout << "Test de la classe Rat : OK" << endl;

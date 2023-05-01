@@ -1,15 +1,12 @@
 #include "Spider.h"
-#include "../building/Building.h"
-#include <iostream>
+
 #include <assert.h>
+#include <iostream>
+
 using namespace std;
 
-Spider::Spider() : Entity() {
-	direction = 1;
-	time = 0;
-}
 
-Spider::Spider(Vector2D p, unsigned int h, unsigned int w) : Entity(p, h, w) {
+Spider::Spider(Vector2D p) : Entity(p, 1, 1) {
 	direction = 1;
 	time = 0;
 }
@@ -18,24 +15,23 @@ int Spider::getDirection() const {
 	return direction;
 }
 
-void Spider::move(Building * B) {
-	if(time==0) {
-		Vector2D V;
-		V=getPosition();
-		V.setY(V.getY()+direction);
-		if(isMovePossible(B, V)) {
+void Spider::move(const Room & R) {
+	if(time == 0) {
+		Vector2D V = getPosition();
+		V.setY(V.getY() + direction);
+		if(isMovePossible(R, V)) {
 			setPosition(V);
 			time += 2;
 		}
-		else direction= direction * -1;
+		else direction = -direction;
 	}
 	else if(time >2) time = 2;
 	else time -= 1;
 }
 
-bool Spider::isMovePossible(Building *B, const Vector2D & V) const {
-	if(V.getX() < B->getCurrentRoom()->getDimX() && V.getX() >= 0 && V.getY() < B->getCurrentRoom()->getDimY() && V.getY() >= 0)
-		if(B->getCurrentRoom()->getObstacle(V) == nothing || B->getCurrentRoom()->getObstacle(V) == fakeBlock)
+bool Spider::isMovePossible(const Room & R, const Vector2D & V) const {
+	if(V.getX() < R.getDimX() && V.getX() >= 0 && V.getY() < R.getDimY() && V.getY() >= 0)
+		if(R.getObstacle(V) == nothing || R.getObstacle(V) == fakeBlock)
 			return true;
 	return false;
 }
@@ -43,16 +39,13 @@ bool Spider::isMovePossible(Building *B, const Vector2D & V) const {
 void Spider::regressionTest() { 
 	cout << endl << "Test de la classe Spider" << endl;
 
-	assert(getPosition().getX() == 0 && getPosition().getY() == 0);
-	assert(getHeight() == 0 && getWidth() == 0);
-	assert(direction == 1);
-	cout << "\tconstructeur par défaut : OK" << endl;
+	assert(getPosition().getX() == 2 && getPosition().getY() == 3);
+	assert(getHeight() == 1 && getWidth() == 1);
+	assert(direction == 1); assert(time == 0);
+	cout << "\tconstructeur parametre : OK" << endl;
 
-	Spider S(Vector2D(6, 8), 1, 1);
-	assert(S.getPosition().getX() == 6 && S.getPosition().getY() == 8);
-	assert(S.getHeight() == 1 && S.getWidth() == 1);
-	assert(S.getDirection() == 1);
-	cout << "\tconstructeur par defaut : OK" << endl;
+	assert(getDirection() == direction);
+	cout << "\tgetDirection : OK" << endl;
 
 	cout << "Test de la classe Spider : OK" << endl;
 }

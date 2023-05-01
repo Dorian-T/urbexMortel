@@ -4,9 +4,8 @@
 #include "Vector2D.h"
 #include "Entity.h"
 #include "Player.h"
-#include "../building/Building.h"
+#include "../building/Room.h"
 
-class Building;
 
 /**
  * @brief Classe représentant un rat
