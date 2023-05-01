@@ -27,7 +27,7 @@ class Spider: public Entity {
 		/**
 		 * @brief Verifie si le déplacement est possible
 		 * 
-		 * @param B
+		 * @param R
 		 * @param V
 		 * @return bool
 		 */
@@ -53,7 +53,7 @@ class Spider: public Entity {
 		/**
 		 * @brief Déplacement du spider
 		 * 
-		 * @param B
+		 * @param R
 		 */
 		void move(const Room & R);
 
