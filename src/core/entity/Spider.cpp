@@ -55,5 +55,7 @@ void Spider::regressionTest() {
 	assert(getDirection() == direction);
 	cout << "\tgetDirection : OK" << endl;
 
+	// Les tests de déplacements sont dans tests.cpp
+
 	cout << "Test de la classe Spider : OK" << endl;
 }

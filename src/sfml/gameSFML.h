@@ -7,24 +7,33 @@
 #include <vector>
 
 /*
-vector des textures :			vector des skins :
-00 : background					00 : lilithR
-01 : barbedWire					01 : lilithL
-02 : block						02 : doraR
-03 : door1						03 : doraL
-04 : door2
-05 : ladder
-06 : trapdoor
-07 : potion
-08 : heart
-09 : poisonSkull
-10 : poisonBar
-11 : ratR
-12 : ratL
-13 : spider
-14 : spiderWeb
+	vector des skins :		vector des textures :
+00	batmanL					background
+01	batmanR					barbedWire
+02	coaraaL					block
+03	coaraaR					door1
+04	daisyL					door2
+05	daisyR					ladder
+06	doraL					trapdoor
+07	doraR					potion
+08	gadgetL					heart
+09	gadgetR					poisonSkull
+10	lilithL					poisonBar
+11	lilithR					ratR
+12	maestroL				ratL
+13	maestroR				spider
+14	pikminL					spiderWeb
+15	pikminR
+16	tiboyouL
+17	tiboyouR
+18	yumiL
+19	yumiR
 */
 
+
+/**
+ * @brief Classe s'occupant de l'affichage SFML du jeu
+ */
 class GameSFML {
 
 	private:

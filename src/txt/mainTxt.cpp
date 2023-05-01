@@ -20,9 +20,10 @@ int chooseDifficulty() {
 
 int main() {
 	srand(time(NULL));
-	termClear();
 	Game game;
+	GameTXT GTXT(game);
 
+	// choix de la difficulté
 	int diff;
 	cout << "Choisissez la difficulté :" << endl;
 	cout << "1. Facile" << endl;
@@ -31,10 +32,10 @@ int main() {
 	cin >> diff;
 	game.setDifficulty(diff);
 
-
-	txtLoop(game);
+	GTXT.loop(game);
 	termClear();
 
+	// message de fin
 	if(game.getPlayer()->getHp() == 0 || game.getBuilding()->getTimeLeft() == 0)
 		cout << "T'es mort, nul !" << endl;
 	else
