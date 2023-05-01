@@ -3,7 +3,7 @@
 
 #include "Vector2D.h"
 #include "Entity.h"
-#include "../building/Building.h"
+#include "../building/Room.h"
 
 
 /**

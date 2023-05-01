@@ -6,14 +6,22 @@
 using namespace std;
 
 
+// Constructeur :
+
 Spider::Spider(Vector2D p) : Entity(p, 1, 1) {
 	direction = 1;
 	time = 0;
 }
 
+
+// Accesseur :
+
 int Spider::getDirection() const {
 	return direction;
 }
+
+
+// Déplacements :
 
 void Spider::move(const Room & R) {
 	if(time == 0) {
