@@ -6,6 +6,20 @@
 }
 
 {
+   <SFML:window>
+   Memcheck:Leak
+   ...
+   obj:/usr/lib/x86_64-linux-gnu/libsfml-window.so.2.5.1
+}
+
+{
+   <SFML:system>
+   Memcheck:Leak
+   ...
+   obj:/usr/lib/x86_64-linux-gnu/libsfml-system.so.2.5.1
+}
+
+{
    driver_1_wsl
    Memcheck:Leak
    ...
