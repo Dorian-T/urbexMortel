@@ -58,7 +58,7 @@ class Player : public Entity {
 		 * @param R 
 		 * @return int 
 		 */
-		int isMovePossibleUp(const Vector2D & position, Room * R) const;
+		int isMovePossibleUp(const Room & R, const Vector2D & V) const;
 
 		/**
 		 * @brief Vérifie si le déplacement vers la gauche ou la droite est possible
@@ -72,7 +72,7 @@ class Player : public Entity {
 		 * @param R 
 		 * @return int 
 		 */
-		int isMovePossibleSide(const Vector2D & position, Room * R) const;
+		int isMovePossibleSide(const Room & R, const Vector2D & V) const;
 
 		/**
 		 * @brief Vérifie si le déplacement vers le bas est possible
@@ -85,7 +85,7 @@ class Player : public Entity {
 		 * @param R 
 		 * @return int 
 		 */
-		int isMovePossibleDown(const Vector2D & position, Room * R) const;
+		int isMovePossibleDown(const Room & R, const Vector2D & V) const;
 
 		/**
 		 * @brief Vérifie si le déplacement vers le bas est possible
@@ -97,7 +97,7 @@ class Player : public Entity {
 		 * @param R 
 		 * @return int 
 		 */
-		int isMovePossibleGravity(const Vector2D & position, Room * R) const;
+		int isMovePossibleGravity(const Room & R, const Vector2D & V) const;
 
 		/**
 		 * @brief Ajoute du temps avant l'empoisonnement
@@ -171,35 +171,35 @@ class Player : public Entity {
 		 * 
 		 * @param R
 		 */
-		void up(Building * B);
+		void up(Building & B);
 
 		/**
 		 * @brief Déplacement vers la droite et renvoie un bool si on a fini
 		 * 
 		 * @param R 
 		 */
-		bool right(Building * B);
+		bool right(Building & B);
 
 		/**
 		 * @brief Déplacement vers le bas
 		 * 
 		 * @param R 
 		 */
-		void down(Building * B);
+		void down(Building & B);
 
 		/**
 		 * @brief Déplacement vers la gauche
 		 * 
 		 * @param R 
 		 */
-		void left(Building * B);
+		void left(Building & B);
 
 		/**
 		 * @brief Application de la gravité
 		 * 
 		 * @param R 
 		 */
-		void gravity(Building * B);
+		void gravity(const Room & R);
 
 		/**
 		 * @brief Renvoie si le joueur est sur un block ou non
@@ -207,7 +207,7 @@ class Player : public Entity {
 		 * @param b 
 		 * @return bool
 		 */
-		bool standingOnBlock(Building * B);
+		bool standingOnBlock(const Room & R) const;
 
 		/**
 		 * @brief action de block famtome 
@@ -215,7 +215,7 @@ class Player : public Entity {
 		 * @param b
 		 * @return bool 
 		 */
-		void StandingOnGhostBlock(Building * B);
+		void StandingOnGhostBlock(Room & R);
 
 		/**
 		 * @brief Tests de non-regression

@@ -150,7 +150,7 @@ class Game {
 		 * @param touche
 		 * @return bool
 		 */
-		bool keyboardAction (const char touche);
+		bool keyboardAction(char touche);
 
 		/**
 		 * @brief Tests de non-regression

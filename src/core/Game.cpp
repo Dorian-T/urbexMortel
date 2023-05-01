@@ -126,7 +126,7 @@ void Game::collisionSpider() {
 int Game::update (int time) {
 
 	if(time == 0)
-		player->gravity(building);
+		player->gravity(*building->getCurrentRoom());
 	else time = time - 1;
 
 	if(player->getTimeInvincible() > 0)
@@ -149,26 +149,26 @@ int Game::update (int time) {
 	collisionRat();
 	collisionSpider();
 
-	player->StandingOnGhostBlock(building);
+	player->StandingOnGhostBlock(*building->getCurrentRoom());
 
 	return time;
 }
 
-bool Game::keyboardAction (const char touche) {
+bool Game::keyboardAction(char touche) {
 	bool b;
 	switch(touche) {
 		case 'q' :
-				player->left(building);
+				player->left(*building);
 				break;
 		case 'd' :
 				
-				b = player->right(building);
+				b = player->right(*building);
 				return b;
 		case 'z' :
-				player->up(building);
+				player->up(*building);
 				break;
 		case 's' :
-				player->down(building);
+				player->down(*building);
 				break;
 	}
 	return true;
