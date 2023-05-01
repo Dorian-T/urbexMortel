@@ -154,27 +154,7 @@ int Game::update (int time) {
 	return time;
 }
 
-bool Game::keyboardAction(char touche) {
-	bool b;
-	switch(touche) {
-		case 'q' :
-				player->left(*building);
-				break;
-		case 'd' :
-				
-				b = player->right(*building);
-				return b;
-		case 'z' :
-				player->up(*building);
-				break;
-		case 's' :
-				player->down(*building);
-				break;
-	}
-	return true;
-}
-
-void Game::regressionTest() { // TODO : à refaire et vérifier
+void Game::regressionTest() {
 	cout << endl << "Test de la classe Game" << endl;
 
 	assert(building == NULL);
@@ -211,8 +191,6 @@ void Game::regressionTest() { // TODO : à refaire et vérifier
 		assert(spiders.size() == building->getCurrentRoom()->getNbSpider());
 	}
 	cout << "\tTest de changeRoom : OK" << endl;
-
-	// TODO : tester keyboardAction
 
 	// TODO : tester update
 

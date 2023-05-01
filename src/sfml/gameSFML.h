@@ -120,7 +120,6 @@ class GameSFML {
 
 		/**
 		 * @brief Dessine le menu
-		 * 
 		 */
 		void drawMenu();
 
@@ -159,7 +158,7 @@ class GameSFML {
 		 * @param game 
 		 * @param window 
 		 */
-		void Loop(Game & game);
+		void loop(Game & game);
 
 		/**
 		 * @brief Easter egg

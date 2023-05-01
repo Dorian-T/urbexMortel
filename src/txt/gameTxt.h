@@ -4,7 +4,9 @@
 #include "../core/Game.h"
 #include "winTxt.h"
 
-
+/**
+ * @brief Classe représentant le jeu dans la console
+ */
 class GameTXT {
 	private:
 

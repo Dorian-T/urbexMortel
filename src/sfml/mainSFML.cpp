@@ -16,6 +16,6 @@ int main() {
 	GSFML.drawDifficultyMenu(game);
 	GSFML.drawSkinMenu(game);
 
-	GSFML.Loop(game);
+	GSFML.loop(game);
 	return 0;
 }

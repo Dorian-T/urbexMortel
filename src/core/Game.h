@@ -145,14 +145,6 @@ class Game {
 		int update(int time);
 
 		/**
-		 * @brief Redistribution des actions clavier vers les fonctions de déplacement
-		 * 
-		 * @param touche
-		 * @return bool
-		 */
-		bool keyboardAction(char touche);
-
-		/**
 		 * @brief Tests de non-regression
 		 */
 		void regressionTest();

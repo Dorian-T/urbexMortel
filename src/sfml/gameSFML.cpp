@@ -823,7 +823,7 @@ void GameSFML::drawMenu() {
 	}
 }
 
-void GameSFML::Loop(Game & game) {
+void GameSFML::loop(Game & game) {
 	if(close)
 		window.close(); 
 	else {
