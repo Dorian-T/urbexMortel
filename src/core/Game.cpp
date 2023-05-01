@@ -175,10 +175,6 @@ void Game::regressionTest() {
 	assert(getPlayer() == player);
 	cout << "\tTest de getPlayer : OK" << endl;
 
-	// TODO : tester getNbRat
-
-	// TODO : tester getRat
-
 	assert(changeRoom() == false);
 	if(NB_ROOM > 1) {
 		assert(building->finishRoom());
@@ -191,8 +187,6 @@ void Game::regressionTest() {
 		assert(spiders.size() == building->getCurrentRoom()->getNbSpider());
 	}
 	cout << "\tTest de changeRoom : OK" << endl;
-
-	// TODO : tester update
 
 	cout << "Test de la classe Game : OK" << endl;
 }
